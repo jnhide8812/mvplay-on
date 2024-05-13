@@ -22,19 +22,19 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
 				/WEB-INF/spring/appServlet/servlet-context.xml
-				/WEB-INF/spring/appServlet/security-context.xml
+			<!-- 	/WEB-INF/spring/appServlet/security-context.xml -->
 			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 		
-		<!-- 업로드 관련 설정 -->
+		<!-- 업로드 관련 설정 
 		<multipart-config>
 			<location>C:\\temp\\upload</location>
-			<max-file-siz>209715220</max-file-siz>   				<!-- 20mb -->
-			<max-request-size>41943040</max-request-size>			<!-- 40mb -->
-			<file-size-threshold>20971520</file-size-threshold>		<!-- 20mb -->
+			<max-file-siz>209715220</max-file-siz>   				
+			<max-request-size>41943040</max-request-size>			
+			<file-size-threshold>20971520</file-size-threshold>		
 		</multipart-config>
-		
+		-->
 		
 	</servlet>
 		
