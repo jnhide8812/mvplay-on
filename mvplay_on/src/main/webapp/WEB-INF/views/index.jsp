@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+임시 페이지
 
 </body>
 </html>
