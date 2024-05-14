@@ -8,9 +8,7 @@
 </head>
 <body>
 임시 페이지
-AAAAA
+AAAAAAAA
 수정
-agjkl;djsafkl
-aghdjkl
 </body>
 </html>
