@@ -5,10 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/login.css">
 </head>
 <body>
+<h1>회원가입 페이지</h1>
 
-<h1>로그인 페이지</h1>
 </body>
 </html>
