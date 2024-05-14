@@ -50,4 +50,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# ignore properties file
+config.properties
+
+#ignore file
+MANIFEST.MF
+.classpath
+
+
 # End of https://www.toptal.com/developers/gitignore/api/java,windows
