@@ -13,7 +13,7 @@
 		<header>
 			<div class="login_area">
 				<span><a href="/member/login">로그인</a></span>
-				<div class="join_button"><a href="/member/join">회원가입</a></div>
+				<div class="join_button"><a href="/member/signUp">회원가입</a></div>
 			</div>
 		</header>
 		<nav>
