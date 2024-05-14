@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-개별 구매 페이지
+<h3>개별 구매 페이지... 결제하기 누르면 결제 팝업</h3>
 </body>
 </html>

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+결제방법을 등록해주세요(카드/카카오페이...) 결제방법 등록 -> 결제 팝업
 </body>
 </html>

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+1개월 12개월 구독권 선택 누르면 3으로 넘어감
 </body>
 </html>
