@@ -6,11 +6,16 @@
 <meta charset="UTF-8">
 <title>회원가입</title>
 <link rel="stylesheet" href="/resources/css/member/signUp">
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
+
 </head>
 <body>
 <div id="container">
@@ -33,7 +38,7 @@
 						<div class="mail_wrap">
 							<label>이메일</label>
 							<div class="mail_input_box">
-								<input class="mail_input" name="memberMail">
+								<input class="mail_input" name="userId">
 							</div>
 							<span class="final_mail_ck">이메일을 입력해주세요.</span> <span
 								class="mail_input_box_warn"></span>
@@ -53,7 +58,7 @@
 						<div class="pw_wrap">
 							<label>비밀번호</label>>
 							<div class="pw_input_box">
-								<input class="pw_input" name="memberPw" />
+								<input class="pw_input" name="upw" />
 							</div>
 							<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
 						</div>
@@ -73,7 +78,7 @@
 								<label>생년월일</label>
 							</div>
 							<div class="form_section_content">
-								<input name="birthday" autocomplete="off" readonly="readonly">
+								<input name="ubirth" autocomplete="off" readonly="readonly">
 								<span class="birth_warn">생년월일을 선택해주세요.</span>
 							</div>
 						</div>
@@ -116,83 +121,29 @@ $(document).ready(function(){
 	});
 });
 
- /* 인증번호 이메일 발송 */
-$(".mail_check_button").click(function(){
-     var email = $(".mail_input").val();           //입력한 이메일
-     var checkBox = $(".mail_check_input");	    //인증번호 입력란
-     var boxWrap = $(".mail_check_input_box");		//인정번호 입력란 박스
-     var warnMsg = $(".mail_input_box_warn");      //이메일 입력 경고글 
-     alert("인증 코드가 입력하신 이메일로 전송 되었습니다.")
-     
-     /* 이메일 형식 유효성 검사 */
-     if(mailFormCheck(email)) {
-        warnMsg.html("이메일 전송 되었습니다. 이메일을 확인해주세요.");
-        warnMsg.css("display", "inline-block");
-     } else {
-        warnMsg.html("올바르지 못한 이메일 형식입니다.");
-        warnMsg.css("display", "inline-block");
-        return false;
-     }
-
-   $.ajax({
-          
-          type:"GET",
-          url:"mailCheck?email=" + email,
-
-          success:function(data){
-       	   
-       	  // console.log("data : " + data);
-       	  checkBox.attr("disabled", false);
-             boxWrap.attr("id", "mail_check_input_box_true");
-             code = data;
-          }
-          
-      });
-  });
-  
-/*인증번호 비교*/
-$(".mail_check_input").blur(function(){
-     
-     var inputCode = $(".mail_check_input").val();    //입력코드
-     var checkResult = $("#mail_check_input_box_warn");   //비교 결과
-      
-     if(inputCode == code){                           
-          checkResult.html("인증번호가 일치합니다");			//일치할 경우
-          checkResult.attr("class", "correct");     
-          mailnumCheck = true;
-      } else {                                            
-          checkResult.html("인증번호를 다시 확인해주세요.");		//일치하지 않을 경우
-          checkResult.attr("class", "incorrect");
-          mailnumCheck = false;
-      } 
-  });
-  
-
-/* 비밀번호 확인 일치 유효성 검사*/
-$('.pwck_input').on("propertychange change keyup paste input", function(){
-	
-	var pw = $('.pw_input').val();
-	var pwck = $('.pwck_input').val();
-	$('.final_pwck_ck').css('display', 'none');
-	
-	if(pw == pwck){
-		$('.pwck_input_re_1').css('display','block');
-		$('.pwck_input_re_2').css('display','none');
-		pwckcorCheck = true;
-	}else{
-		$('.pwck_input_re_1').css('display','none');
-		$('.pwck_input_re_2').css('display','block');
-		pwckcorCheck = false;
-	}
-	
-	
-});
+ 
 
 /* 캘린더 위젯 적용 */
 
+	/* 설정 */
+	const config = {
+		dateFormat: 'yy-mm-dd',
+		 prevText: '이전 달',
+		    nextText: '다음 달',
+		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+		    dayNames: ['일','월','화','수','목','금','토'],
+		    dayNamesShort: ['일','월','화','수','목','금','토'],
+		    dayNamesMin: ['일','월','화','수','목','금','토'],
+		    yearSuffix: '년',
+	        changeMonth: true,
+	        changeYear: true
+		
+}
+
 	/*캘린더*/
 	$(function() {
-		$("input[name='birthday']").datepicker();
+		$("input[name='ubirth']").datepicker(config);
 	});
 </script>
 </body>

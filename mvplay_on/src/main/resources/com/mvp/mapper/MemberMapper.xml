@@ -5,7 +5,7 @@
   <mapper namespace="com.mvp.mapper.MemberMapper">
 
 	<insert id="memberJoin">
-		insert into member values(#{userId}, #{upw}, #{ubirth},#{ugrade})
+		insert into member values(#{userId}, #{upw}, #{ubirth}, 1)
 	</insert>
 
   </mapper>

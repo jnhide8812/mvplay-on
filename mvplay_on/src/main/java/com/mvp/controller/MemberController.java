@@ -34,7 +34,7 @@ public class MemberController {
 	@PostMapping(value="/signUp")
 	public String joinPOST(MemberVO member) throws Exception{ 
 		logger.info("signup 진입");
-		
+		System.out.println("member : "+member);
 		//회원가입 서비스 진행
 		memberservice.memberJoin(member);
 		logger.info("join Service 성공");
