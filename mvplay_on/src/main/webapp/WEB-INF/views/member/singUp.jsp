@@ -41,7 +41,7 @@
 						<div class="pw_wrap">
 							<label>비밀번호</label>>
 							<div class="pw_input_box">
-								<input class="pw_input" name="memberPw" placeho/>
+								<input class="pw_input" name="memberPw"/>
 							</div>
 							<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
 						</div>
