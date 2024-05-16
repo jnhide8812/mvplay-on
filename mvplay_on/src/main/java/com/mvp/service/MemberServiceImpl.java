@@ -12,10 +12,17 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberMapper membermapper;
 	
+	/*회원가입*/
 	@Override
 	public void memberJoin(MemberVO member) throws Exception {
 		
 		membermapper.memberJoin(member);
 		
+	}
+	
+	/*로그인*/
+	@Override
+	public MemberVO memberLogin(MemberVO member) throws Exception {
+		return membermapper.memberLogin(member);
 	}
 }

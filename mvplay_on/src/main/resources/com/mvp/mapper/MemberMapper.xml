@@ -4,8 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mvp.mapper.MemberMapper">
 
+	<!-- 회원가입 -->
 	<insert id="memberJoin">
 		insert into member values(#{userId}, #{upw}, #{ubirth}, 1)
 	</insert>
 
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="com.mvp.model.MemberVO">
+		 select userId, upw, ubirth, ugrade from member where userId = #{userId} and upw = #{upw}
+	</select>
   </mapper>
