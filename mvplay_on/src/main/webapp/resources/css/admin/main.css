@@ -6,3 +6,12 @@
 .admin_move{
 	margin: 0 auto;
 }
+
+a {
+	text-decoration: none;
+}
+
+/*링크 호버시 글씨 굵게-나중에 수정해도 됨*/
+a:hover{
+	font-weight: bold;
+}
