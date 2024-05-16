@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet" href="resources/css/login.css">
+<link rel="stylesheet" href="/resources/css/member/login.css">
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
 <div id="container">
