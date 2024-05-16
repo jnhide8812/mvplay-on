@@ -15,10 +15,7 @@ h1 {
 	width: 1900px;
 	background-color: #000000;
 }
-.wrap {
-	width: 1660px;
-	margin:auto;
-}
+
 header {
 	position:fixed;
 	top:0;
@@ -105,4 +102,6 @@ footer {
 	width: 1660px;
 	height: 320px;
 	background-color: green;
+	right:0;
+	bottom:0;
 }
