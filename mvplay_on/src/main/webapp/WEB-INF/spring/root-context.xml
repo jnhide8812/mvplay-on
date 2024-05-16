@@ -9,6 +9,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+	<!--webapp/config/config.properties -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="${spring.driver}"/>
 		<property name="jdbcUrl" value="${spring.jdbcUrl}"/>
