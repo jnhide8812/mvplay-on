@@ -133,6 +133,21 @@ input.sign_button {
 #mail_check_input_box_true {
 	background-color: white;
 }
+
+.ui-datepicker-trigger {						/* 캘린더 css 설정 */
+    margin-left: 25px;
+    width: 14%;
+    height: 38px;
+    font-weight: 600;
+    background-color: #dfe8f5;
+    font-size: 15px;
+    cursor:pointer;
+}
+input[name='birthday'] {
+    width: 80%;
+    text-align: center;
+}
+
 ul.sign li p{
 	font-size: 11px;
 	color: #84868d;

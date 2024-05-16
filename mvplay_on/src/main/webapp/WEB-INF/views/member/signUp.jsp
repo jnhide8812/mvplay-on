@@ -188,7 +188,7 @@ $('.pwck_input').on("propertychange change keyup paste input", function(){
 	
 });
 
-	/* 캘린더 위젯 적용 */
+/* 캘린더 위젯 적용 */
 
 	/* 설정 */
 	const config = {
@@ -211,7 +211,7 @@ $('.pwck_input').on("propertychange change keyup paste input", function(){
 
 	/*캘린더*/
 	$(function() {
-		$("input[name='publeYear']").datepicker(config);
+		$("input[name='birthday']").datepicker(config);
 	});
 </script>
 </body>
