@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvp.model.MovieVO;
 
 @Controller
+@RequestMapping
 public class MovieController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
