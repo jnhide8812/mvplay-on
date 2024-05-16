@@ -36,6 +36,9 @@ public class MovieVO {
 	
 	//영화 개봉일(movieDate)
 	private Date movieDate;
+	
+	//영화 주소(유튜브 링크)(movieUrl)
+	private String movieUrl;
 
 	//Getter-Setters
 	public String getMovieTitle() {
@@ -126,14 +129,21 @@ public class MovieVO {
 		this.movieDate = movieDate;
 	}
 
+	public String getMovieUrl() {
+		return movieUrl;
+	}
+
+	public void setMovieUrl(String movieUrl) {
+		this.movieUrl = movieUrl;
+	}
+
 	//toString
 	@Override
 	public String toString() {
 		return "MovieVO [movieTitle=" + movieTitle + ", movieId=" + movieId + ", poster=" + poster + ", movieContent="
 				+ movieContent + ", cate1=" + cate1 + ", cate2=" + cate2 + ", movieCheck=" + movieCheck + ", buyPrice="
 				+ buyPrice + ", rentalPrice=" + rentalPrice + ", movieTotalpay=" + movieTotalpay + ", movieDate="
-				+ movieDate + "]";
-	}
-	
+				+ movieDate + ", movieUrl=" + movieUrl + "]";
+	}	
 	
 }
