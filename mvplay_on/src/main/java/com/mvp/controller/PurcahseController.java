@@ -23,8 +23,9 @@ public class PurcahseController {
 	 * @Autowired private PurchaseService purchaseservice;
 	 */
 	  
-	  @Autowired
-	  private MovieService movieservice;
+	/*
+	 * @Autowired private MovieService movieservice;
+	 */
 	 
 	//개별 구매
 	@GetMapping("/vod")
@@ -34,7 +35,7 @@ public class PurcahseController {
 		
 		logger.info("movieGetInfo()........." + movieId);
 
-		ObjectMapper mapper = new ObjectMapper();
+		/* ObjectMapper mapper = new ObjectMapper(); */
 
 		/*
 		 * // 카테고리 리스트 데이터 model.addAttribute("cateList",

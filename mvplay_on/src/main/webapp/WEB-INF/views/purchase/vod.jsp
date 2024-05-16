@@ -87,18 +87,18 @@
                              </div>
                           </div>
                          
-                            <div class="btn_section">
+                           <%--  <div class="btn_section">
                                <button id="purchaseBtn" type="button" onclick="requestPay('${movieInfo.movieId}')" class="btn">결제하기</button>
                           		   <p class="css-1mm6nt9">*이벤트, 쿠폰, 결제 수단 및 캐시 충전 금액 
                           		   등에 따라 가격이 달라질 수 있어요</p>
-                          </div> 
+                          </div>  --%>
                     </div>      
                     
 
-                   <!-- 결제하기 -->
+                  <!--  <!-- 결제하기 -->
                    <form id="moveForm" action="/결제 api로 이동?" method="get" >
                   
-                   </form>
+                   </form> -->
                    
                 </div>
                 
@@ -131,7 +131,7 @@
                // 추가적인 결제 정보들을 여기에 추가할 수 있습니다.
            };
 
-           // AJAX를 사용하여 결제 정보를 서버에 전송
+         /*   // AJAX를 사용하여 결제 정보를 서버에 전송
            $.ajax({
                type: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 지정
                url: "/payment", // 결제 처리를 담당하는 서버의 엔드포인트 지정
@@ -149,7 +149,7 @@
                }
            });
        });
-   });
+   }); */
 
    function requestPay(itemName) {
        var today = new Date();
