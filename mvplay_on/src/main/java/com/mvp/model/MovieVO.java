@@ -3,7 +3,7 @@ package com.mvp.model;
 import java.util.Date;
 
 public class MovieVO {
-
+ 
 	//영화 제목(movieTitle)
 	private String movieTitle;
 	
