@@ -22,24 +22,24 @@ header {
 	top:0;
 	left:0;
 	z-index: 500;
-	width:100%;
+	width:1660px;
 	padding-left: 240px;
 	background-color: #141517;
 }
 .top_content{
 	display: flex;
 	position: relative;
-	text-align: justify;
+	justify-content: flex-end;
 	align-items: center;
-	width: 100%;
+	width: 800px;
 	height: 56px;
-	padding: 12px 80px 12px 20px;
+	padding: 12px 20px 12px 200px;
+	right:10px;
 }
 .search {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	position: absolute;
 	border: 1px solid #ffffff;
 	border-radius: 5px;
 	padding-left: 14px;
@@ -73,6 +73,7 @@ ul.l_area{
 .login_area a{
 	color: #ffffff;
 	font-size: 15px;
+	padding-left: 100px;
 }
 li.join_button {
 	width: 68px;

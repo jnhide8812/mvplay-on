@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
 <link rel="stylesheet" href="resources/css/main.css">
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
 <div id = "containter">
@@ -36,7 +39,37 @@
 			</div>
 		</div>
 		<footer>
-			<h1>footer</h1>
+			<div class="footer_wrap">
+				<div class="r_wrap">
+					<div class="f_right">
+						<div class="f_top">
+							<nav class="top">
+								<ul>
+									<li>왓챠피디아 서비스 이용 약관</li>
+									<li></li>
+									<li class="effect">개인정보 처리 방침</li>
+									<li></li>
+									<li class="effect">왓챠 서비스 이용 약관</li>
+									<li></li>
+									<li>고객센터</li>
+									<li></li>
+									<li>채용정보</li>
+								</ul>
+							</nav>
+						</div>
+						<div class="middle">
+							
+						</div>
+					</div>
+				</div>
+				<div class="l_wrap">
+					<div class="sns_wrap">
+						<ul class="sns">
+							<li><a href="#">f</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
 		</footer>
 	</div>
 </div>
