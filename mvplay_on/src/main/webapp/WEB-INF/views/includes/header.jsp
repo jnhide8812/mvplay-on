@@ -4,13 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MVPlayer</title>
-<link rel="stylesheet" href="resources/css/main.css">
+<title>Insert title here</title>
 </head>
 <body>
-<div id = "containter">
-	<div class="wrap">
-		<header>
+	<header>
 			<div class="top_content">
 				<div class="search">
                 	<input type="text" placeholder="작품명을 입력해주세요" name="searchText" class="main_search">
@@ -24,21 +21,5 @@
 				</div>
 			</div>
 		</header>
-		<nav>
-			<h1>navi-menu</h1>
-		</nav>
-		<div class="main_content">
-			<div class="mnew">
-				<h1>new</h1>
-			</div>
-			<div class="mranking">
-				<h1>ranking</h1>
-			</div>
-		</div>
-		<footer>
-			<h1>footer</h1>
-		</footer>
-	</div>
-</div>
 </body>
 </html>

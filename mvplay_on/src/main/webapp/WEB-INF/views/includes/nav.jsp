@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>회원가입 페이지</h1>
-<h2>수정중</h2>
+	<nav>
+		<h1>navi-menu</h1>
+	</nav>
 </body>
 </html>
