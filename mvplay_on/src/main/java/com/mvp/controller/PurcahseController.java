@@ -29,11 +29,11 @@ public class PurcahseController {
 	 
 	//개별 구매
 	@GetMapping("/vod")
-	public void purchasePageGET(int movieId, Model model) {
+	public void purchasePageGET(/* int movieId, Model model */) {
 		
 		logger.info("vod");
 		
-		logger.info("movieGetInfo()........." + movieId);
+		/* logger.info("movieGetInfo()........." + movieId); */
 
 		/* ObjectMapper mapper = new ObjectMapper(); */
 
