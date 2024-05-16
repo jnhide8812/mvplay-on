@@ -17,18 +17,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvp.model.MovieVO;
 
 @Controller
-@RequestMapping
 public class MovieController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
+	/*
 	//메인 페이지로 이동
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public void mainPageGET() {
 		
 		logger.info("메인 페이지 진입");
 		
-	}
+	} */
 	
 	
 	
