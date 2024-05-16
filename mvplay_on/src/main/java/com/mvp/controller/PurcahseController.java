@@ -19,8 +19,9 @@ public class PurcahseController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	
-	  @Autowired 
-	  private PurchaseService purchaseservice;
+	/*
+	 * @Autowired private PurchaseService purchaseservice;
+	 */
 	  
 	  @Autowired
 	  private MovieService movieservice;
@@ -31,16 +32,18 @@ public class PurcahseController {
 		
 		logger.info("vod");
 		
-		logger.info("goodsGetInfo()........." + movieId);
+		logger.info("movieGetInfo()........." + movieId);
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		// 카테고리 리스트 데이터
-		model.addAttribute("cateList", mapper.writeValueAsString(movieservice.cateList()));
-
-
-		// 조회 페이지 정보
-		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
+		/*
+		 * // 카테고리 리스트 데이터 model.addAttribute("cateList",
+		 * mapper.writeValueAsString(movieservice.cateList()));
+		 * 
+		 * 
+		 * // 조회 페이지 정보 model.addAttribute("movieInfo",
+		 * movieservice.movieGetDetail(movieId));
+		 */
 		
 	}
 	
