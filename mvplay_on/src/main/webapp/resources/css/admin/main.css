@@ -1,1 +1,8 @@
 @charset "UTF-8";
+.admin_wrap{
+	width: 100%;
+
+}
+.admin_move{
+	margin: 0 auto;
+}

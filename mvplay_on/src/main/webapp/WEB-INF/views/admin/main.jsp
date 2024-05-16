@@ -9,13 +9,13 @@
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
-    <div>
-        <div><a href="/">영화등록</a></div>
-        <div><a href="/">영화관리</a></div>
-        <div><a href="/">구독관리</a></div>
-        <div><a href="/">구매/대여관리</a></div>
-        <div><a href="/">문의게시판</a></div>
-        <div><a href="/">추후추가</a></div>
+    <div class="admin_wrap">
+        <div class="admin_move"><a href="">영화등록</a></div>
+        <div class="admin_move"><a href="">영화관리</a></div>
+        <div class="admin_move"><a href="">구독관리</a></div>
+        <div class="admin_move"><a href="">구매/대여관리</a></div>
+        <div class="admin_move"><a href="">문의게시판</a></div>
+        <div class="admin_move"><a href="">추후추가</a></div>
     </div>
 </body>
 </html>
