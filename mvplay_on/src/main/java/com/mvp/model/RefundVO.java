@@ -1,4 +1,4 @@
-package com.mvp.purchase;
+package com.mvp.model;
 
 import java.util.Date;
 

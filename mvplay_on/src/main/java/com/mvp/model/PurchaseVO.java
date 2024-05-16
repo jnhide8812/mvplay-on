@@ -1,11 +1,12 @@
-package com.mvp.purchase;
+package com.mvp.model;
 
 import java.util.Date;
 
 public class PurchaseVO {
 	private String userId;	//유저id
 	private int movieId;	//영화id
-	private int purchasePrice; //구매가
+	private int buyPrice; //소장가
+	private int rentalPrice; //대여가
 	private Date startDate; //구매일
 	private Date expiredDate;	//만료일
 	public String getUserId() {
@@ -20,11 +21,17 @@ public class PurchaseVO {
 	public void setMovieId(int movieId) {
 		this.movieId = movieId;
 	}
-	public int getPurchasePrice() {
-		return purchasePrice;
+	public int getBuyPrice() {
+		return buyPrice;
 	}
-	public void setPurchasePrice(int purchasePrice) {
-		this.purchasePrice = purchasePrice;
+	public void setBuyPrice(int buyPrice) {
+		this.buyPrice = buyPrice;
+	}
+	public int getRentalPrice() {
+		return rentalPrice;
+	}
+	public void setRentalPrice(int rentalPrice) {
+		this.rentalPrice = rentalPrice;
 	}
 	public Date getStartDate() {
 		return startDate;
@@ -40,10 +47,9 @@ public class PurchaseVO {
 	}
 	@Override
 	public String toString() {
-		return "PurchaseVO [userId=" + userId + ", movieId=" + movieId + ", purchasePrice=" + purchasePrice
-				+ ", startDate=" + startDate + ", expiredDate=" + expiredDate + "]";
+		return "PurchaseVO [userId=" + userId + ", movieId=" + movieId + ", buyPrice=" + buyPrice + ", rentalPrice="
+				+ rentalPrice + ", startDate=" + startDate + ", expiredDate=" + expiredDate + "]";
 	}
-	
 	
 	
 	

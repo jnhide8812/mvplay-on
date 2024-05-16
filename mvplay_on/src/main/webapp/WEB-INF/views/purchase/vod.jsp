@@ -22,18 +22,18 @@
                              </div>
                              
                              <div class="form_section_content">
-                                <input type="hidden" name="movieTitle" value="<c:out value="${movieTitle}"/>" >
+                                <input type="hidden" name="movieTitle" value="<c:out value="${movieInfo.movieTitle}"/>" >
                              </div>
                           </div>
                           <div class="form_section">     
                              <div class="form_section_content"><!--  개봉일? -->
-                                <input type="hidden" value="<fmt:formatDate value='${movieDate}' pattern='yyyy-MM-dd'/>" >
+                                <input type="hidden" value="<fmt:formatDate value='${movieInfo.movieDate}' pattern='yyyy-MM-dd'/>" >
                              </div>
                           </div>                                                         
                           <div class="form_section">
                              <div class="form_section_content">
-                                <input type="hidden "name="cate1" value="<c:out value="${cate1}"/>" >
-                                <input type="hidden" name="cate2" value="<c:out value="${cate1}"/>" >
+                                <input type="hidden "name="cate1" value="<c:out value="${movieInfo.cate1}"/>" >
+                                <input type="hidden" name="cate2" value="<c:out value="${movieInfo.cate1}"/>" >
                              </div>
                           </div>               
 							<!-- 별점 -테이블에서 수정중임으로 추후 추가예정 -->
@@ -43,7 +43,7 @@
                                 <label>소장</label>
                              </div>
                              <div class="form_section_content">
-                                <input type="hidden" id="purcahse_movie" value="${purchasePrice}" >
+                                <input type="hidden" id="purcahse_movie" value="${purchaseInfo.purchasePrice}" >
                             	<label>지금 구매하면 평생 감상할 수 있어요</label>
                              </div>
                           </div>   
@@ -52,7 +52,7 @@
                                 <label>대여</label>
                              </div>
                              <div class="form_section_content">
-                                <input type="hidden" id="rent_movie" value="${rentPrice}">
+                                <input type="hidden" id="rent_movie" value="${purchaseInfo.rentPrice}">
                                 <label>지금 구매하면 7일 동안 대여할 수 있어요</label>
                              </div>
                           </div> 
