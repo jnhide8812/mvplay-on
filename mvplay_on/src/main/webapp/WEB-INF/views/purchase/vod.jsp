@@ -102,7 +102,7 @@ $(document).ready(function() {
         var discount = 0; // 할인 정보 (실제 로직에 따라 할인 정보를 가져와야 함)
         var totalAmount = parseFloat(price) - parseFloat(discount); // 총 결제 금액 계산
 
-        // 결제 정보 업데이트
+        // 결제 정보 업데이트22
         $('#contentPrice').text("콘텐츠 가격: " + price);
         $('#discount').text("할인: " + discount);
         $('#totalAmount').text("총 결제 금액: " + totalAmount);
