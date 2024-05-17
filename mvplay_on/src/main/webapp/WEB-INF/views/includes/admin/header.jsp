@@ -17,7 +17,7 @@
 		<div class="admin_move"><a href="">영화등록</a></div>
         <div class="admin_move"><a href="">영화관리</a></div>
         <div class="admin_move"><a href="/admin/subscribe">구독관리</a></div>
-        <div class="admin_move"><a href="/admin/purchase">구매/대여관리</a></div>
+        <div cl	ass="admin_move"><a href="/admin/purchase">구매/대여관리</a></div>
         <div class="admin_move"><a href="/admin/qna">문의게시판</a></div>
         <div class="admin_move"><a href="">추후추가</a></div>
 	</nav>

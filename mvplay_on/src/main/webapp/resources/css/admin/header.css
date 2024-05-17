@@ -6,10 +6,10 @@ ul{list-style: none;}
 
 /*링크 호버시 글씨 굵게-나중에 수정해도 됨*/
 a:hover{ font-weight: bold;}
-.admin_wrap li a:link{color:black;}
-.admin_wrap li a:visited{color:black;}
-.admin_wrap li a:active{color:black;}
-.admin_wrap li a:hover{color:black;}
+a:link{color:black;}
+a:visited{color:black;}
+a:active{color:black;}
+a:hover{color:black;}
 
 .admin_wrap{
 	width: 100%;
@@ -52,13 +52,13 @@ a:hover{ font-weight: bold;}
 	height: 300px;
 	float:left;
 }
-.nav_wrap li{
+.nav_wrap div{
     display: block;
     height: 80px;
     line-height: 80px;
     text-align: center;
 }
-.nav_wrap li a{
+.nav_wrap div a{
     display: block;
     height: 100%;
     width: 95%;
