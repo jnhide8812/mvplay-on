@@ -17,7 +17,7 @@ public class MovieServiceImpl implements MovieService {
 	//개별 구매
 	@Override
 	public MovieVO movieGetDetail(int movieId) {
-		System.out.println("(service)bookGetDetail......." + movieId);
+		System.out.println("(service)movieGetDetail......." + movieId);
 		return mapper.movieGetDetail(movieId);
 	}
 }

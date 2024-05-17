@@ -31,7 +31,7 @@ public class PurcahseController {
 	@GetMapping("/vod")
 	public void purchasePageGET(int movieId, Model model) {
 		//System.out.println("movieId 전:"+movieId);
-		movieId = 4;
+	
 		System.out.println("movieId 후:"+movieId);
 		logger.info("vod");
 		

@@ -82,7 +82,12 @@
                             </div>
                              <div class="form_section_content bct">
                                <div> 
-                                  <label id="contentPrice">콘텐츠 가격: </label>
+                                  <label id="contentPrice">콘텐츠 가격:
+                                  	<c:choose> 
+                                	  <c:when test="${param.buymethod eq 'rent'}">${movieInfo.rentalPrice}</c:when>
+                   				 	  <c:otherwise>${movieInfo.buyPrice}</c:otherwise>
+                                  	</c:choose>
+                                  </label>
                                </div>
                                <div> 
                                 	 <label id="discount">할인: </label>
@@ -100,7 +105,7 @@
                     </div>      
                     
 
-                  <!--  <!-- 결제하기 -->
+                  <!--  <!-- 결제하기 
                    <form id="moveForm" action="/결제 api로 이동?" method="get" >
                   
                    </form> -->
@@ -119,13 +124,23 @@
            var discount = 0; // 할인 정보 (실제 로직에 따라 할인 정보를 가져와야 함)
            var totalAmount = parseFloat(price) - parseFloat(discount); // 총 결제 금액 계산
 
+         
            // 결제 정보 업데이트
            $('#howtopay').text("결제 방법: " + paymentMethod);
            $('#contentPrice').text("콘텐츠 가격: " + price);
            $('#discount').text("할인: " + discount);
            $('#totalAmount').text("총 결제 금액: " + totalAmount);
        }
+			
+       // 페이지 로드 시 updatePaymentInfo 호출하기
+       updatePaymentInfo("${movieInfo.buyPrice}"); // 예를 들어 buyPrice가 초기 콘텐츠 가격일 때
 
+       // 결제 방법이 변경될 때 updatePaymentInfo 호출하기
+       $('input[name="buymethod"]').change(function() {
+           updatePaymentInfo("${movieInfo.buyPrice}"); // 예를 들어 buyPrice가 초기 콘텐츠 가격일 때
+       });
+       
+       
        // 결제하기 버튼 클릭 시
        $("#purchaseBtn").click(function() {
            // 결제 정보를 가져오는 예시 (가격 등)
@@ -135,7 +150,7 @@
                paymentMethod: $('input[name="paymentMethod"]:checked').val() // 선택된 결제 방법
                // 추가적인 결제 정보들을 여기에 추가할 수 있습니다.
            };
- 
+ 	
        // AJAX를 사용하여 결제 정보를 서버에 전송
            $.ajax({
                type: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 지정
