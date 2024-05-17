@@ -19,10 +19,12 @@
 	<!-- 헤더 -->
 		<header>
 			<div class="top_content">
+				<form action="searchc.do" class="sc">
 				<div class="search">
                 	<input type="text" placeholder="작품명을 입력해주세요" name="searchText" class="main_search">
                 	<input type ="button" onclick="location.href='search.do'" class="search_icon">
                 </div>
+                </form>
                 <c:if test="${member == null}">     <!-- 로그인 X -->
 					<div class="login_area">
 						<ul class="l_area">
