@@ -25,6 +25,12 @@ public class AdminController {
 		logger.info("get admin qna");
 	}
 	
+	//무비 추가 GET
+	@GetMapping("/movieInsert")
+	public void getMovieInsert() throws Exception {		
+		logger.info("getMovieInsert");
+	}	
+	
 	//관리자-구매 대여 관리GET
 	@GetMapping("/purchase")
 	public void getAdminPurchase() {
