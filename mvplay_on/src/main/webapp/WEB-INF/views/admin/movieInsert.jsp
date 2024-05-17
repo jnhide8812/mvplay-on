@@ -54,14 +54,20 @@
 				</div>
 				<div class="form_section">
 					<div class="form_section_title">
-						<label>영화 장르</label>
+						<label>영화 장르 1</label>
 					</div>
 					<div class="form_section_content">
-						<input type="radio" name="mainGenre" value="코믹"/>코미디
-						<input type="radio" name="mainGenre" value="호러"/>호러
-						<input type="radio" name="mainGenre" value="로맨스"/>코믹
-						<input type="radio" name="mainGenre" value="액션"/>코믹
-						<input type="radio" name="mainGenre" value="Comic"/>코믹
+						<input type="radio" name="cate1" value="코믹"/>코미디
+						<input type="radio" name="cate1" value="호러"/>호러
+						<input type="radio" name="cate1" value="로맨스"/>로맨스
+						<input type="radio" name="cate1" value="액션"/>액션
+						<input type="radio" name="cate1" value="미스터리"/>미스터리
+					</div>
+					<div class="form_section_title">
+						<label>영화 장르 2</label>
+					</div>
+					<div class="form_section_content">
+						<input name="cate2" id="cate2" readonly="readonly">
 					</div>
 				</div>
 				<div class="form_section">
@@ -109,11 +115,21 @@
 	        }
 	    }
 		
-		ClassicEditor
+		function cateReadOnly() {
+	        var radioValue = document.querySelector('input[name="cate1"]:checked').value;
+	        
+	        if (radioValue != null) {
+	            document.getElementById('buyPrice').readOnly = false;
+	        } else {
+	            document.getElementById('buyPrice').readOnly = true;
+	        }
+	    }
+		
+		/* ClassicEditor
 			.create(document.querySelector('#movieContext_textarea'))
 			.catch(error=>{
 				console.error(error);
-		});
+		}); */
 		
 
 		const config = {
