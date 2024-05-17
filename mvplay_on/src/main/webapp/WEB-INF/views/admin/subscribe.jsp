@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<h1>구독 관리</h1>
 
+<%@ include file="../includes/admin/header.jsp"%>
+<h1>구독 관리</h1>
+<div>
+	구독
+
+</div>
+
+
+<%@ include file="../includes/admin/footer.jsp"%>
 </body>
 </html>
