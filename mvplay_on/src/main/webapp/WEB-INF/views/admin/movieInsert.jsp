@@ -57,11 +57,11 @@
 						<label>영화 장르 1</label>
 					</div>
 					<div class="form_section_content">
-						<input type="radio" name="cate1" value="코믹"/>코미디
-						<input type="radio" name="cate1" value="호러"/>호러
-						<input type="radio" name="cate1" value="로맨스"/>로맨스
-						<input type="radio" name="cate1" value="액션"/>액션
-						<input type="radio" name="cate1" value="미스터리"/>미스터리
+						<input type="radio" name="cate1" value="코믹" onclick="cateReadOnly()"/>코미디
+						<input type="radio" name="cate1" value="호러" onclick="cateReadOnly()"/>호러
+						<input type="radio" name="cate1" value="로맨스" onclick="cateReadOnly()"/>로맨스
+						<input type="radio" name="cate1" value="액션" onclick="cateReadOnly()"/>액션
+						<input type="radio" name="cate1" value="미스터리" onclick="cateReadOnly()"/>미스터리
 					</div>
 					<div class="form_section_title">
 						<label>영화 장르 2</label>
@@ -75,10 +75,10 @@
 						<label>영화 이용등급 설정</label>
 					</div>
 					<div class="form_section_content">
-						<input type="radio" name="movieCheck" value="구독"/>구독전용
-						<input type="radio" name="movieCheck" value="구매"/>구매만 가능
-						<input type="radio" name="movieCheck" value="대여"/>대여만 가능
-						<input type="radio" name="movieCheck" value="구독대여"/>구매 + 대여
+						<input type="radio" name="movieCheck" value="구독" onclick="priceReadOnly()"/>구독전용
+						<input type="radio" name="movieCheck" value="구매" onclick="priceReadOnly()"/>구매만 가능
+						<input type="radio" name="movieCheck" value="대여" onclick="priceReadOnly()"/>대여만 가능
+						<input type="radio" name="movieCheck" value="구독대여" onclick="priceReadOnly()"/>구매 + 대여
 					</div>
 				</div>
 				<div class="form_section">
@@ -94,7 +94,7 @@
 						<label>개봉일</label>
 					</div>
 					<div class="form_section_content">
-					    <input name="movieDate" readonly="readonly">
+					    <input name="movieDate" readonly/>
 					</div>
 				</div>						
 			</form>
@@ -106,24 +106,32 @@
 	</div>
 	<script>
 		function priceReadOnly() {
-	        var radioValue = document.querySelector('input[name="movieCheck"]:checked').value;
-	        
-	        if (radioValue != '구독') {
-	            document.getElementById('buyPrice').readOnly = false;
-	        } else {
-	            document.getElementById('buyPrice').readOnly = true;
+	        var radio = document.getElementsByName('movieCheck');
+	        var input = document.getElementById('buyPrice');
+	
+	        for (var i = 0; i < radio.length; i++) {
+	            if (radio[i].checked && radio[i].value !== '구독') {
+	                input.readOnly = false;
+	                return; // 다른 조건을 확인할 필요 없이 종료
+	            }
 	        }
+	        // 만약에 '구독' 라디오 버튼이 선택되었거나 아무것도 선택되지 않았을 때 readonly를 유지
+	        input.readOnly = true;
 	    }
 		
 		function cateReadOnly() {
-	        var radioValue = document.querySelector('input[name="cate1"]:checked').value;
-	        
-	        if (radioValue != null) {
-	            document.getElementById('buyPrice').readOnly = false;
-	        } else {
-	            document.getElementById('buyPrice').readOnly = true;
-	        }
-	    }
+            var radio = document.getElementsByName('cate1');
+            var input = document.getElementById('cate2');
+
+            for (var i = 0; i < radio.length; i++) {
+                if (radio[i].checked) {
+                    input.readOnly = false;
+                    return; // 다른 조건을 확인할 필요 없이 종료
+                }
+            }
+            // 아무것도 선택되지 않은 경우 readonly 유지
+            input.readOnly = true;
+        }
 		
 		/* ClassicEditor
 			.create(document.querySelector('#movieContext_textarea'))
