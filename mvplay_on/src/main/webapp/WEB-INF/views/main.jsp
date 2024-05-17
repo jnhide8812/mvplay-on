@@ -57,8 +57,10 @@
 								</ul>
 							</nav>
 						</div>
-						<div class="middle">
-							
+						<div class="f_middle">
+							<ul>
+								<li>고객센터(이용 및 결제 문의)</li>
+							</ul>
 						</div>
 					</div>
 				</div>
