@@ -127,7 +127,7 @@ $(document).ready(function() {
             paymentMethod: $('input[name="paymentMethod"]:checked').val() // 선택된 결제 방법
         };
 
-        // AJAX를 사용하여 결제 정보를 서버에 전송
+        // AJAX를 사용하여 결제 정보를 서버에 전송(왜 안돼)
         $.ajax({
             type: "POST", // 혹은 "GET" 등 HTTP 요청 메서드 지정
             url: "/payment", // 결제 처리를 담당하는 서버의 엔드포인트 지정
