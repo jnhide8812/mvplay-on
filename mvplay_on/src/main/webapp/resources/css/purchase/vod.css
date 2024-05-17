@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@import url(style.css);
+
+/*기본 배경 설정 */
+*{
+	margin:0;
+	padding:0;
+}   
+가장 큰 div나 id에
+/*내용 가운데로 */ 
+.class {
+	margin: 0 auto;
+	background-color: #000000;       /*배경색 검정*/
+}
+/*스타일 변형 제거*/
+a {
+	text-decoration: none;
+}
+ul, li {
+	list-style:none;
+}
