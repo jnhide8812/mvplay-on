@@ -21,7 +21,7 @@
                 </div>
 				<div class="login_area">
 					<ul class="l_area">
-						<li><a href="/member/login">로그인</a></li>
+						<li class="lg"><a href="/member/login">로그인</a></li>
 						<li class="join_button"><a href="/member/signUp">회원가입</a></li>
 					</ul>
 				</div>

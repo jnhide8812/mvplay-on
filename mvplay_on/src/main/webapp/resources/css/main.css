@@ -31,10 +31,10 @@ header {
 	position: relative;
 	justify-content: flex-end;
 	align-items: center;
-	width: 800px;
+	width: 1100px;
 	height: 56px;
-	padding: 12px 20px 12px 200px;
-	right:10px;
+	padding: 12px 20px 12px 500px;
+	right:0;
 }
 .search {
 	display: flex;
@@ -70,17 +70,30 @@ ul.l_area{
 	display:flex;
 	flex-direction: row;
 }
+ul.l_area li {
+	margin-right: 15px;
+}
+.login_area {
+	padding-left: 120px;
+}
 .login_area a{
 	color: #ffffff;
 	font-size: 15px;
-	padding-left: 100px;
+	padding: 10px 5px 0px 5px;
+	font-weight: 600;
 }
+
 li.join_button {
-	width: 68px;
-	height: 32px;
+	width: 86px;
+	height: 30px;
 	background-color: #f82f62;
 	border: 1px solid #f82f62;
 	border-radius: 4px;
+	text-align: center;
+	padding: 8px 5px 0px 5px;
+}
+li.lg{
+	padding-top: 10px;
 }
 nav {
 	width: 240px;
