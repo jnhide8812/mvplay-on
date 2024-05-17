@@ -81,6 +81,7 @@ ul.l_area li {
 	font-size: 15px;
 	padding: 10px 5px 0px 5px;
 	font-weight: 600;
+	cursor: pointer;
 }
 
 li.join_button {
@@ -91,9 +92,28 @@ li.join_button {
 	border-radius: 4px;
 	text-align: center;
 	padding: 8px 5px 0px 5px;
+	cursor: pointer;
 }
 li.lg{
 	padding-top: 10px;
+}
+ul.after_login{
+	 display:flex;
+	 justify-content: center;
+	 text-align: center;
+	 margin-left: 50px;
+}
+ul.after_login li {
+	margin-left: 15px;
+}
+ul.after_login a {
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 500;
+	cursor: pointer;
+}
+li.manager a{
+	font-size: 17px;
 }
 nav {
 	width: 240px;
