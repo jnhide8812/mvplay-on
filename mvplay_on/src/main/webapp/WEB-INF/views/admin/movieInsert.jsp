@@ -19,7 +19,7 @@
 			<span>영화등록</span>
 		</div>
 		<div class="admin_content_main">
-			<form action="/admin/movieInsert" method="post" id="insertForm">
+			<form action="/admin/movieInsert" method="post" id="movieInsert">
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 제목</label>
@@ -78,7 +78,7 @@
 						<input type="radio" name="movieCheck" value="구독" onclick="priceReadOnly()"/>구독전용
 						<input type="radio" name="movieCheck" value="구매" onclick="priceReadOnly()"/>구매만 가능
 						<input type="radio" name="movieCheck" value="대여" onclick="priceReadOnly()"/>대여만 가능
-						<input type="radio" name="movieCheck" value="구독대여" onclick="priceReadOnly()"/>구매 + 대여
+						<input type="radio" name="movieCheck" value="구매대여" onclick="priceReadOnly()"/>구매 + 대여
 					</div>
 				</div>
 				<div class="form_section">
@@ -107,11 +107,23 @@
 				</div>						
 			</form>
 			<div class="btn_section">
-				<button id="insertBtn" class="btn insert_btn">등 록</button>
+				<button id="insertBtn">등 록</button>
 			</div>
 		</div>
 	</div>
 	<script>
+	
+		// insertBtn 버튼 요소를 가져오기
+	    var insertBtn = document.getElementById("insertBtn");
+	
+	    // 버튼에 클릭 이벤트를 추가
+	    insertBtn.addEventListener("click", function(event) {
+	        var form = document.getElementById("movieInsert");
+
+	        form.submit();
+	    });
+
+	
 		function priceReadOnly() {
 	        var movieCheckRadios = document.getElementsByName('movieCheck');
 	        var buyPriceInput = document.getElementById('buyPrice');
@@ -129,7 +141,7 @@
 	                    buyPriceInput.readOnly = true;
 	                    buyPriceInput.value = '';
 	                    rentalPriceInput.readOnly = false;
-	                } else if (selectedValue === '구독대여') {
+	                } else if (selectedValue === '구매대여') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = false;
 	                } else {
@@ -188,11 +200,6 @@
 			
 		});
 		
-		$("#insertBtn").click(function(){
-			
-			$("#insertForm").submit();
-			
-		}
 	</script>
 </body>
 </html>

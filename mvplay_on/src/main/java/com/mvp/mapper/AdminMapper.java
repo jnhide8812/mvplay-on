@@ -2,6 +2,6 @@ package com.mvp.mapper;
 
 public interface AdminMapper {
 	
-	public void insertMovie() throws Exception;
+	public void movieInsert() throws Exception;
 
 }
