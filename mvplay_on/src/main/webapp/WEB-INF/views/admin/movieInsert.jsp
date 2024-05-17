@@ -83,10 +83,18 @@
 				</div>
 				<div class="form_section">
 					<div class="form_section_title">
-						<label>영화 가격(구매,대여시에만)</label>
+						<label>영화 구매가격(구매,구매대여시에만)</label>
 					</div>
 					<div class="form_section_content">
 						<input name="buyPrice" id="buyPrice" readonly="readonly">
+					</div>
+				</div>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 대여가격(대여,구매대여시에만)</label>
+					</div>
+					<div class="form_section_content">
+						<input name="rentalPrice" id="rentalPrice" readonly="readonly">
 					</div>
 				</div>
 				<div class="form_section">
@@ -99,24 +107,40 @@
 				</div>						
 			</form>
 			<div class="btn_section">
-				<button id="cancelBtn" class="btn">취 소</button>
-				<button id="enrollBtn" class="btn enroll_btn">등 록</button>
+				<button id="insertBtn" class="btn insert_btn">등 록</button>
 			</div>
 		</div>
 	</div>
 	<script>
 		function priceReadOnly() {
-	        var radio = document.getElementsByName('movieCheck');
-	        var input = document.getElementById('buyPrice');
+	        var movieCheckRadios = document.getElementsByName('movieCheck');
+	        var buyPriceInput = document.getElementById('buyPrice');
+	        var rentalPriceInput = document.getElementById('rentalPrice');
 	
-	        for (var i = 0; i < radio.length; i++) {
-	            if (radio[i].checked && radio[i].value !== '구독') {
-	                input.readOnly = false;
-	                return; // 다른 조건을 확인할 필요 없이 종료
+	        for (var i = 0; i < movieCheckRadios.length; i++) {
+	            if (movieCheckRadios[i].checked) {
+	                var selectedValue = movieCheckRadios[i].value;
+	
+	                if (selectedValue === '구매') {
+	                    buyPriceInput.readOnly = false;
+	                    rentalPriceInput.readOnly = true;
+	                    rentalPriceInput.value = '';
+	                } else if (selectedValue === '대여') {
+	                    buyPriceInput.readOnly = true;
+	                    buyPriceInput.value = '';
+	                    rentalPriceInput.readOnly = false;
+	                } else if (selectedValue === '구독대여') {
+	                    buyPriceInput.readOnly = false;
+	                    rentalPriceInput.readOnly = false;
+	                } else {
+	                    buyPriceInput.readOnly = true;
+	                    buyPriceInput.value = '';
+	                    rentalPriceInput.readOnly = true;
+	                    rentalPriceInput.value = '';
+	                }
+	                return; // 종료
 	            }
 	        }
-	        // 만약에 '구독' 라디오 버튼이 선택되었거나 아무것도 선택되지 않았을 때 readonly를 유지
-	        input.readOnly = true;
 	    }
 		
 		function cateReadOnly() {
@@ -159,8 +183,16 @@
 		}
 
 		$(function() {
+			
 			$("input[name='movieDate']").datepicker(config);
+			
 		});
+		
+		$("#insertBtn").click(function(){
+			
+			$("#insertForm").submit();
+			
+		}
 	</script>
 </body>
 </html>

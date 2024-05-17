@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -25,11 +26,16 @@ public class AdminController {
 		logger.info("get admin qna");
 	}
 	
-	//무비 추가 GET
+	//영화 추가 GET
 	@GetMapping("/movieInsert")
 	public void getMovieInsert() throws Exception {		
 		logger.info("getMovieInsert");
-	}	
+	}
+	
+	@PostMapping("/movieInsert")
+	public void postMovieInsert() throws Exception {		
+		logger.info("postMovieInsert");
+	}
 	
 	//관리자-구매 대여 관리GET
 	@GetMapping("/purchase")
