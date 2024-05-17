@@ -7,16 +7,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header>
+	<%@ include file="../includes/admin/header.jsp"%>
+</header>
 
 
-<%@ include file="../includes/admin/header.jsp"%>
-<h1>구독 관리</h1>
 <div>
 	구독
-
 </div>
 
-
-<%@ include file="../includes/admin/footer.jsp"%>
+<footer>
+	<%@ include file="../includes/admin/footer.jsp"%>
+</footer>
 </body>
 </html>

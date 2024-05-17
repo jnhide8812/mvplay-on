@@ -1,15 +1,19 @@
 package com.mvp.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mvp.model.MovieVO;
+import com.mvp.model.AskBoardVO;
 import com.mvp.service.AdminService;
+import com.mvp.service.AskBoardService;
 
 
 @Controller
@@ -21,6 +25,9 @@ public class AdminController {
 	@Autowired
 	AdminService adService;
 	
+	@Autowired
+	AskBoardService askService; 	//문의게시판 연결
+	
 	//관리자 메인 페이지GET
 	@GetMapping("/main")
 	public void getAdminMain() throws Exception {		
@@ -29,8 +36,19 @@ public class AdminController {
 	
 	//관리자 문의 게시판 GET 
 	@GetMapping("/qna")
-	public void getAdminQna() {
+	public void getAdminQna(Model model) {
+		//참고 boardEx - kun~ 
 		logger.info("get admin qna");
+		List<AskBoardVO> boardList = askService.selectList();
+		model.addAttribute("list", boardList);
+		
+	}
+	//관리자 문의 게시글 상세 조회 GET
+	@GetMapping("/qnaDetail")
+	public void getAdminQnaDetail(int ano, Model model) {
+		logger.info("qna admin Detail get");
+		AskBoardVO vo = askService.select(ano);
+		model.addAttribute("vo", vo);
 	}
 	
 	//영화 추가 GET
