@@ -32,6 +32,7 @@ public class MovieController {
 	
 	
 	
+	
 	/* 이하 어드민 에서 필요할 거 같은 영화 관련 매핑
 	 
 	//영화 관리 페이지 접속
