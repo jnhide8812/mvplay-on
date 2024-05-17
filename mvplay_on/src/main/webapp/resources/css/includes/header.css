@@ -4,19 +4,6 @@
 	margin:0;
 	padding:0;
 }
-a {
-	text-decoration: none;
-}
-h1 {
-	color: #ffffff;
-	font-size: 50px;
-	font-weight: 600px;
-}
-#container{
-	max-width: 1900px;
-	background-color: #000000;
-}
-
 header {
 	position:fixed;
 	top:0;
@@ -123,33 +110,4 @@ ul.after_login a {
 }
 li.manager a{
 	font-size: 17px;
-}
-nav {
-	width: 240px;
-	height: 100%;
-	background-color: #141517;
-	border-right: 1px solid #1b1c1d;
-	left: 0px;
-	top:0px;
-	position: fixed;
-	z-index: 501;
-}
-span.menu_name {
-	color: #ffffff;
-	font-size: 14px;
-}
-.main_content{
-	width: 1660px;
-	height: 800px;
-	background-color: yellow;
-	display:flex;
-	flex-direction:column;
-	padding:56px 0 0 240px;
-}
-footer {
-	max-width: 1660px;
-	height: 320px;
-	background-color: green;
-	right:0;
-	bottom:0;
 }

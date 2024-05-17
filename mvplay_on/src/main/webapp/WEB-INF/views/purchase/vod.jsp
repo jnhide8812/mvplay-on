@@ -7,12 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- iamport -->
+<!-- import -->
 <script type="text/javascript" src="http://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 </head>
 <body>
 <h2>구매 컨텐츠</h2>
-<!-- <%@include file="../includes/header.jsp" %> -->
+<!--<%@include file="../includes/header.jsp" %>   -->
 
 <div class="content_wrap">
     <div class="content_subject"></div>
