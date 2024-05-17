@@ -7,7 +7,7 @@
 
 	<!-- 개별 구매 -->
 	<select id="movieGetDetail" resultType="com.mvp.model.MovieVO">
-		 select movieId, movieTitle, movieDate, cate1, cate2, buyPrice, rentalPrice from movie where movieId = #{movieId} 
+		 select movieId, poster, movieTitle, movieDate, cate1, cate2, buyPrice, rentalPrice from movie where movieId = #{movieId} 
 	</select>
   
   

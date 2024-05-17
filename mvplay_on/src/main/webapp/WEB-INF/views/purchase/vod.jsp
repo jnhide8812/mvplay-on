@@ -23,6 +23,7 @@
                 <label>개별 구매</label>
         
             <ul>
+            	<li>${movieInfo.poster}포스터</li>
                 <li>${movieInfo.movieTitle}</li>
            		 <li><fmt:formatDate value='${movieInfo.movieDate}' pattern='yyyy-MM-dd'/></li>
          		 <li>${movieInfo.cate1}</li>
@@ -146,20 +147,27 @@ $(document).ready(function() {
     });
 });
 
-function requestPay(itemName) {
+$("#purchaseBtn").click(function() {
+    requestPay(); // 매개변수 없이 함수 호출
+});
+
+
+function requestPay() {
     var today = new Date();
     var hours = today.getHours();
     var minutes = today.getMinutes();
     var seconds = today.getSeconds();
     var makeMerchantUid = hours + minutes + seconds;
-
+    var itemName = "${movieInfo.movieTitle}";
+    var amount = $('input[name="buymethod"]:checked').val() === 'rent' ? "${movieInfo.rentalPrice}" : "${movieInfo.buyPrice}";
+    
     console.log("Requesting payment for item: " + itemName);
     IMP.init('imp13216508');
     IMP.request_pay({
         pg: "kakaopay", // 카카오페이
         merchant_uid: "IMP" + makeMerchantUid,
         name: itemName,
-        amount: 50000,
+        amount: amount,
         buyer_email: "moviePlayOn@namebr.com",
         buyer_name: '무비플레이온',
         buyer_tel: '010-000-0000'
