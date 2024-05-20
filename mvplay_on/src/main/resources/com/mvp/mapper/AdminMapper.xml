@@ -8,6 +8,29 @@
           insert into movie(movieTitle, poster, movieContent, movieUrl, cate1, cate2, movieCheck, buyPrice, rentalPrice, movieDate) values(#{movieTitle}, #{poster}, #{movieContent}, #{movieUrl}, #{cate1}, #{cate2}, #{movieCheck}, #{buyPrice}, #{rentalPrice}, #{movieDate})
           
       </insert>
+      
+      <!-- 영화 목록 -->
+      <select id="getMovieTotal" resultType="com.mvp.model.MovieVO">
+      
+	      <![CDATA[
+	          select * from (
+	              select /*+INDEX_DESC(movie SYS_C008625) */ 
+	                  rownum as rn, movieId, MovieTitle, cate1, movieDate, movieCheck
+	            from movie 
+	            where
+	             
+	      ]]>         
+	            <if test="keyword != null">
+	                movieTitle like '%'||#{keyword}||'%' and
+	            </if>
+	            
+	      <![CDATA[        
+	             rownum <= #{pageNum}*#{amount}
+	            )
+	        where rn > (#{pageNum} - 1) * #{amount}
+	      ]]>
+      
+      </select>
 
 
 </mapper>

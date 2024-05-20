@@ -14,6 +14,9 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 </head>
 <body>
+	<header>
+	   <%@ include file="../includes/admin/header.jsp"%>
+	</header>
 	<div class="admin_content_wrap">
 		<div class="admin_content_subject">
 			<span>영화등록</span>
@@ -102,7 +105,7 @@
 						<label>개봉일</label>
 					</div>
 					<div class="form_section_content">
-					    <input name="movieDate" readonly/>
+					    <input name="movieDate" readonly="readonly"/>
 					</div>
 				</div>						
 			</form>
@@ -111,6 +114,9 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+	   <%@ include file="../includes/admin/footer.jsp"%>
+	</footer>
 	<script>
 	
 		// insertBtn 버튼 요소를 가져오기
