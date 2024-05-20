@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="resources/css/includes/nav.css">
 <nav class="sd_nv">
 			<div class="bar_wrap">
 				<div class="logo_w">
