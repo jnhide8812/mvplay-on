@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>구매 컨텐츠</h2>
-<!--<%@include file="../includes/header.jsp" %>   -->
+<%@include file="../includes/header.jsp" %>
 
 <div class="content_wrap">
     <div class="content_subject"></div>
@@ -90,7 +90,7 @@
     </div>
 </div>
 
-<!-- <%@include file="../includes/footer.jsp" %> -->
+<%@include file="../includes/footer.jsp" %>
 
 <script>
 $(document).ready(function() {
