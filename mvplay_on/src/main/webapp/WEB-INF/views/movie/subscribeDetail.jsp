@@ -26,6 +26,88 @@
 		<button>구독하기</button>
 		<button>구매하기</button>
 	</div>
+	
+	<!-- 댓글 -->
+	<div>
+		<ul>
+		<c:forEach items="${replyList}" var="replyList">
+			<li>
+				<p>
+				<span></span>
+				${replyList.userId}
+				(<fmt:formatDate value="${replyList.regDate}" pattern="yyyy-MM-dd"/>)
+				</p>
+				
+				<p>${replyList.content}</p>
+				
+				<p>                
+				   <button type="button" class="replyUpdate btn btn-warning btn-xs" data-movieNum="${replyList.replyNum}">수정</button>
+				   <button type="button" class="replyDelete btn btn-danger btn-xs" data-movieNum="${replyList.replyNum}">삭제</button>
+				   
+				   <script>
+				    $(".replyUpdate").click(function(){
+				     self.location = "/movie/replyUpdate?replyNum=${read.replyNum}"
+				      + "&page=${scri.page}"
+				      + "&perPageNum=${scri.perPageNum}"
+				      + "&searchType=${scri.searchType}"
+				      + "&keyword=${scri.keyword}"
+				      + "&movieNum=" + $(this).attr("data-movieNum");          
+				    });
+				    
+				    $(".replyDelete").click(function(){
+				     self.location = "/movie/replyDelete?replyNum=${read.replyNum}"
+				      + "&page=${scri.page}"
+				      + "&perPageNum=${scri.perPageNum}"
+				      + "&searchType=${scri.searchType}"
+				      + "&keyword=${scri.keyword}"
+				      + "&movieNum=" + $(this).attr("data-movieNum");   
+				    });         
+				   </script>
+				</p>
+				
+			</li>
+		</c:forEach>
+		</ul>
+		
+		<section class="replyForm">
+			<form role="form" method="post" autocomplete="off" class="form-horizontal">
+			
+				<input type="hidden" id="replyNum" name="replyNum" value="${read.replyNum}" readonly="readonly" />
+				<input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
+				<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
+				<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
+				<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}" readonly="readonly" />
+				
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label">작성자</label>
+					<div class="col-sm-10">
+						<input type="text" id="writer" name="writer" class="form-control" />
+					</div>
+				</div>
+				 
+				<div class="form-group">
+					<label for="content" class="col-sm-2 control-label">댓글 내용</label>
+					<div class="col-sm-10">
+						<textarea id="content" name="content" class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="repSubmit btn btn-success">작성</button>
+					</div>
+					<script>
+						var formObj = $(".replyForm form[role='form']");
+						        
+						$(".repSubmit").click(function(){
+						 formObj.attr("action", "replyWrite");
+						 formObj.submit();
+						});
+					</script>
+				</div>
+			</form>
+		</section>
+	</div>
 </div>
 </body>
 </html>
