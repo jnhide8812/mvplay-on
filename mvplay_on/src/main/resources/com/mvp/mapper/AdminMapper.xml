@@ -6,7 +6,7 @@
 
       <insert id="movieInsert" parameterType="com.mvp.model.MovieVO">
           insert into movie(movieTitle, poster, movieContent, movieUrl, cate1, cate2, movieCheck, buyPrice, rentalPrice, movieDate) values(#{movieTitle}, #{poster}, #{movieContent}, #{movieUrl}, #{cate1}, #{cate2}, #{movieCheck}, #{buyPrice}, #{rentalPrice}, #{movieDate})
-     
+          
       </insert>
 
 

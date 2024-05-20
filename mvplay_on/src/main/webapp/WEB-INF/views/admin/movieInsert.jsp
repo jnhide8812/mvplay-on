@@ -41,7 +41,7 @@
 						<label>영화 소개</label>
 					</div>
 					<div class="form_section_content">
-						<textarea name="movieContext" id="movieContext_textarea"></textarea>
+						<textarea name="movieContent" id="movieContext_textarea"></textarea>
 					</div>
 				</div>
 				<div class="form_section">

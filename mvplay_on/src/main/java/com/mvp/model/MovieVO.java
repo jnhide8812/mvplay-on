@@ -1,6 +1,6 @@
 package com.mvp.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class MovieVO {
 

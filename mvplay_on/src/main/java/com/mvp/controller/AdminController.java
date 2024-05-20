@@ -64,7 +64,7 @@ public class AdminController {
 		
 		System.out.println("movieVo : " + mvo.toString());
 		
-		//adService.movieInsert(mvo);
+		adService.movieInsert(mvo);
 	}
 	
 	//관리자-구매 대여 관리GET
