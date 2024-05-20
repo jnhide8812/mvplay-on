@@ -26,5 +26,11 @@ public class AdminServiceImpl implements AdminService {
 	public List<MovieVO> movieList(Criteria cri) throws Exception {
 		return admapper.movieList(cri);
 	}
+	
+	@Override
+	public int getMovieTotal(Criteria cri) throws Exception {
+
+		return admapper.getMovieTotal(cri);
+	}
 
 }

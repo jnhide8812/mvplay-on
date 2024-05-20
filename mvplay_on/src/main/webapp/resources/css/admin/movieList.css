@@ -27,6 +27,44 @@
 }
 
 .movie_table thead {
-	background-color: #f8f9fd;	
+	background-color: #f8f9fd;
 	font-weight: 500;
+}
+
+/* 페이지 버튼 인터페이스 */
+.page_wrap {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+
+.page_wrap a {
+	color: black;
+}
+
+.page {
+	list-style: none;
+	display: inline-block;
+}
+
+.page_btn {
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	margin-left: 20px;
+}
+
+.next, .prev {
+	border: 1px solid #ccc;
+	padding: 0 10px;
+}
+
+.next a, .prev a {
+	color: #ccc;
+}
+
+.active { /* 현재 페이지 버튼 */
+	border: 2px solid black;
+	font-weight: 400;
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
+import com.mvp.model.PageVO;
 import com.mvp.service.AdminService;
 import com.mvp.service.AskBoardService;
 
@@ -74,6 +75,12 @@ public class AdminController {
 		List mvList = adService.movieList(cri);
 		
 		model.addAttribute("mvList", mvList);
+		
+		int total = adService.getMovieTotal(cri);
+		
+		PageVO page = new PageVO(cri, total);
+		
+		model.addAttribute("page", page);
 		
 	}
 	
