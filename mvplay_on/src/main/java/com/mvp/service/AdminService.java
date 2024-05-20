@@ -10,5 +10,7 @@ public interface AdminService {
 	public void movieInsert(MovieVO mvo) throws Exception;
 	
 	public List<MovieVO> movieList(Criteria cri) throws Exception;
+	
+	public int getMovieTotal(Criteria cri) throws Exception;
 
 }

@@ -31,6 +31,18 @@
 	      ]]>
       
       </select>
+      
+      <select id="getMovieTotal" resultType="int">
+      
+          select count(*) from movie
+          
+          <if test="keyword != null">
+          
+             where movieTitle like '%' || #{keyword} || '%'
+          
+          </if>
+          
+      </select>
 
 
 </mapper>
