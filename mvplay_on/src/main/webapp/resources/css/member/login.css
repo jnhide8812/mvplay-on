@@ -5,21 +5,70 @@
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
-	font-family: "Noto Sans KR", sans-serif;
+}
+a {
+	text-decoration: none;
+}
+#container {
+	width: 1900px;
+	height: 100vh;
 }
 #l_wrap {
-	width: 1900px;
-	height: 100%;
+	width: 100%;
 	background-color: #000000;
 }
-.login_main{
-	width: 320px;
+.member_h {
+	height: 72px;
+	padding: 15px 50px;
+	top:0;
+	position: fixed;
+	z-index: 500;
+	width: 100%;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.sign_button a{
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 500;
+	border: 1px solid #babac1;
+	border-radius: 5px;
+	letter-spacing: -0.4px;
+	padding: 6px 12px;
+	cursor:pointer;
+}
+.login_main {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+}
+
+form.l_box{
+	width: 400px;
 	height: 450px;
-	margin: 0px auto;
 	display: flex;
 	flex-direction: column;
 }
-
+form.l_box ul li {
+	position: relative;
+}
+input.id_input {
+	font-size: 16px;
+	letter-spacing: -0.5px;
+	line-height: normal;
+	border:1px solid #d4d4d4;
+	border-radius: 4px;
+	padding: 10px 10px 10px 14px;
+}
 .s_footer{
 	bottom: 5px;
 }
