@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mvp.mapper.AdminMapper;
+import com.mvp.model.MovieVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -12,9 +13,9 @@ public class AdminServiceImpl implements AdminService {
 	AdminMapper admapper;
 	
 	@Override
-	public void movieInsert() throws Exception {
+	public void movieInsert(MovieVO mvo) throws Exception {
 		
-		admapper.movieInsert();
+		admapper.movieInsert(mvo);
 		
 	}
 

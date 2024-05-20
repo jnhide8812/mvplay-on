@@ -19,7 +19,7 @@
 			<span>영화등록</span>
 		</div>
 		<div class="admin_content_main">
-			<form action="/admin/movieInsert" method="post" id="movieInsert">
+			<form action="/admin/movieInsert" method="post" id="m_Insert">
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 제목</label>
@@ -33,7 +33,7 @@
 						<label>포스터</label>
 					</div>
 					<div class="form_section_content">
-						<input name="poster" readonly="readonly">
+						<input name="poster">
 					</div>
 				</div>
 				<div class="form_section">
@@ -75,10 +75,10 @@
 						<label>영화 이용등급 설정</label>
 					</div>
 					<div class="form_section_content">
-						<input type="radio" name="movieCheck" value="구독" onclick="priceReadOnly()"/>구독전용
-						<input type="radio" name="movieCheck" value="구매" onclick="priceReadOnly()"/>구매만 가능
-						<input type="radio" name="movieCheck" value="대여" onclick="priceReadOnly()"/>대여만 가능
-						<input type="radio" name="movieCheck" value="구매대여" onclick="priceReadOnly()"/>구매 + 대여
+						<input type="radio" name="movieCheck" value="0" onclick="priceReadOnly()"/>구독전용
+						<input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능
+						<input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여만 가능
+						<input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여
 					</div>
 				</div>
 				<div class="form_section">
@@ -118,9 +118,9 @@
 	
 	    // 버튼에 클릭 이벤트를 추가
 	    insertBtn.addEventListener("click", function(event) {
-	        var form = document.getElementById("movieInsert");
-
-	        form.submit();
+	        var a1 = document.getElementById("m_Insert");
+			alert(a1.movieDate);
+	        a1.submit();
 	    });
 
 	
@@ -133,15 +133,15 @@
 	            if (movieCheckRadios[i].checked) {
 	                var selectedValue = movieCheckRadios[i].value;
 	
-	                if (selectedValue === '구매') {
+	                if (selectedValue === '1') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = true;
 	                    rentalPriceInput.value = '';
-	                } else if (selectedValue === '대여') {
+	                } else if (selectedValue === '2') {
 	                    buyPriceInput.readOnly = true;
 	                    buyPriceInput.value = '';
 	                    rentalPriceInput.readOnly = false;
-	                } else if (selectedValue === '구매대여') {
+	                } else if (selectedValue === '3') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = false;
 	                } else {
@@ -199,6 +199,7 @@
 			$("input[name='movieDate']").datepicker(config);
 			
 		});
+
 		
 	</script>
 </body>

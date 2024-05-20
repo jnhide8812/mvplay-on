@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvp.model.AskBoardVO;
+import com.mvp.model.MovieVO;
 import com.mvp.service.AdminService;
 import com.mvp.service.AskBoardService;
 
@@ -58,10 +59,12 @@ public class AdminController {
 	}
 	
 	@PostMapping("/movieInsert")
-	public void postMovieInsert() throws Exception {		
+	public void postMovieInsert(MovieVO mvo) throws Exception {		
 		logger.info("postMovieInsert");
 		
-		adService.movieInsert();
+		System.out.println("movieVo : " + mvo.toString());
+		
+		//adService.movieInsert(mvo);
 	}
 	
 	//관리자-구매 대여 관리GET
