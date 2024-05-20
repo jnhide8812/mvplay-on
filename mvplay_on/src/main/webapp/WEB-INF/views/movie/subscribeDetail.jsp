@@ -47,19 +47,11 @@
 				   <script>
 				    $(".replyUpdate").click(function(){
 				     self.location = "/movie/replyUpdate?replyNum=${read.replyNum}"
-				      + "&page=${scri.page}"
-				      + "&perPageNum=${scri.perPageNum}"
-				      + "&searchType=${scri.searchType}"
-				      + "&keyword=${scri.keyword}"
 				      + "&movieNum=" + $(this).attr("data-movieNum");          
 				    });
 				    
 				    $(".replyDelete").click(function(){
 				     self.location = "/movie/replyDelete?replyNum=${read.replyNum}"
-				      + "&page=${scri.page}"
-				      + "&perPageNum=${scri.perPageNum}"
-				      + "&searchType=${scri.searchType}"
-				      + "&keyword=${scri.keyword}"
 				      + "&movieNum=" + $(this).attr("data-movieNum");   
 				    });         
 				   </script>
@@ -73,22 +65,16 @@
 			<form role="form" method="post" autocomplete="off" class="form-horizontal">
 			
 				<input type="hidden" id="replyNum" name="replyNum" value="${read.replyNum}" readonly="readonly" />
-				<input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
-				<input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
-				<input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
-				<input type="hidden" id="keyword" name="keyword" value="${scri.keyword}" readonly="readonly" />
 				
 				<div class="form-group">
 					<label for="writer" class="col-sm-2 control-label">작성자</label>
-					<div class="col-sm-10">
-						<input type="text" id="writer" name="writer" class="form-control" />
-					</div>
+					<input type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly">
 				</div>
 				 
 				<div class="form-group">
 					<label for="content" class="col-sm-2 control-label">댓글 내용</label>
 					<div class="col-sm-10">
-						<textarea id="content" name="content" class="form-control"></textarea>
+						<textarea id="replyContent" name="replyContent" class="form-control"></textarea>
 					</div>
 				</div>
 				
