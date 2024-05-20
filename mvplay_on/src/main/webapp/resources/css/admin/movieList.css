@@ -25,3 +25,8 @@
 .th_column {
 	width: 140px;
 }
+
+.movie_table thead {
+	background-color: #f8f9fd;	
+	font-weight: 500;
+}

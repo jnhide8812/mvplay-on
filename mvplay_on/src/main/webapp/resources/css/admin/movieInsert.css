@@ -1,1 +1,15 @@
 @charset "UTF-8";
+
+.admin_content_wrap {
+	width: 80%;
+	float: left;
+	min-height:700px;
+}
+
+.admin_content_subject > span {
+	margin-left: 30px;
+	display: inline-block;
+	color: black;
+	font-size: 35px;
+	font-weight: bolder;
+}
