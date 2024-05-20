@@ -10,12 +10,12 @@
       </insert>
       
       <!-- 영화 목록 -->
-      <select id="getMovieTotal" resultType="com.mvp.model.MovieVO">
+      <select id="movieList" resultType="com.mvp.model.MovieVO">
       
 	      <![CDATA[
 	          select * from (
 	              select /*+INDEX_DESC(movie SYS_C008625) */ 
-	                  rownum as rn, movieId, MovieTitle, cate1, movieDate, movieCheck
+	                  rownum as rn, movieId, movieTitle, cate1, movieDate, movieCheck
 	            from movie 
 	            where
 	             

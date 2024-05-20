@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.admin_content_wrap {
+	width: 80%;
+	float: left;
+	min-height: 700px;
+}
+
+.movie_table_wrap {
+	padding: 20px 35px
+}
+
+.movie_table {
+	width: 100%;
+	border: 1px solid #d3d8e1;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.movie_table td {
+	padding: 10px 5px;
+	border: 1px solid #e9ebf0;
+}
+
+.th_column {
+	width: 140px;
+}

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvp.model.AskBoardVO;
+import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 import com.mvp.service.AdminService;
 import com.mvp.service.AskBoardService;
@@ -58,13 +59,22 @@ public class AdminController {
 		logger.info("getMovieInsert");
 	}
 	
+	//영화 추가 POST
 	@PostMapping("/movieInsert")
 	public void postMovieInsert(MovieVO mvo) throws Exception {		
 		logger.info("postMovieInsert");
 		
-		System.out.println("movieVo : " + mvo.toString());
-		
 		adService.movieInsert(mvo);
+	}
+	
+	//영화 리스트 GET
+	@GetMapping("/movieList")
+	public void getMovieList(Criteria cri, Model model) throws Exception {
+		
+		List mvList = adService.movieList(cri);
+		
+		model.addAttribute("mvList", mvList);
+		
 	}
 	
 	//관리자-구매 대여 관리GET
