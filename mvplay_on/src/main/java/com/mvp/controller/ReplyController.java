@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mvp.model.ReplyVO;
+import com.mvp.model.ReplyVO; 
 import com.mvp.service.ReplyService;
 
 public class ReplyController {
