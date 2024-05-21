@@ -27,12 +27,11 @@
 		<div class="main_content">
 		<!-- 영화 신작 -->
 			<div class="">
-				
 				<div class="">
 					<img alt="" src="${movieList.poster}">
 					<div>
-						<button id="subscribeBtn" class="btn">구독하기</button>
-						<button id="buyBtn" class="btn buy_btn">구매하기</button>
+						<button id="likeBtn" class="btn like_btn">보고싶어요</button>
+						<button id="ratingBtn" class="btn rating_btn">평가하기</button>
 					</div>
 				</div>
 				
@@ -53,19 +52,17 @@
 						<!-- 영화 줄거리 -->
 						<input name="movieContent" value='<c:out value="${movieInfo.movieContent}"></c:out>' />
 					</div>
+					<div>
+						<button id="subscribeBtn" class="btn">구독하기</button>
+						<button id="buyBtn" class="btn buy_btn">구매하기</button>
+					</div>
 				</div>
 			</div>
-		</div>
 		<!-- 푸터 -->
 		<%@include file="../includes/footer.jsp" %>
 
 </div>  <!-- id="container" -->
 <script>
-/* 목록 이동 버튼 */
-$("#cancelBtn").on("click", function(e){
-	e.preventDefault();
-	$("#moveForm").submit();	
-});	
 </script>
 </body>
 </html>
