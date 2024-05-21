@@ -15,9 +15,28 @@
 	
 	<!-- 게시글 목록 조회 -->
 	<select id="selectList" resultType="com.mvp.model.AskBoardVO">
-		SELECT *
-		FROM askBoard
-		ORDER BY ano DESC
+		<![CDATA[
+		SELECT * FROM(
+			SELECT /*+INDEX_DESC(askBoard SYS_C008540)*/ ROWNUM AS rn, ano, userId, title, content, answerCk,regDate, updateDate, viewCnt FROM askBoard
+			WHERE   
+	      ]]>         
+            <if test="keyword != null">
+                title LIKE '%'||#{keyword}||'%' AND
+            </if>
+            
+	      <![CDATA[        
+	             rownum <= #{pageNum} * #{amount}
+	            )
+	        where rn > (#{pageNum} - 1) * #{amount}
+	      ]]>
+	</select>
+	
+	<!-- 게시글 개수 -->
+	<select id="boardGetTotal" resultType="int">
+		SELECT COUNT(*) FROM askBoard
+		<if test="keyword !=null">
+			WHERE title LIKE '%'|| #{keyword} || '%' 
+		</if>
 	</select>
 	
 
