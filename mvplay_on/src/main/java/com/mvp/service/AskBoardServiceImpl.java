@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvp.mapper.AskBoardMapper;
 import com.mvp.model.AskBoardVO;
+import com.mvp.model.Criteria;
 @Service
 public class AskBoardServiceImpl implements AskBoardService{
 
@@ -19,8 +20,13 @@ public class AskBoardServiceImpl implements AskBoardService{
 	}
 
 	@Override
-	public List<AskBoardVO> selectList() {
-		return askMapper.selectList();
+	public List<AskBoardVO> selectList(Criteria cri) {
+		return askMapper.selectList(cri);
+	}
+
+	@Override
+	public int boardGetTotal(Criteria cri) {
+		return askMapper.boardGetTotal(cri);
 	}
 	
 

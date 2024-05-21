@@ -39,11 +39,20 @@ public class AdminController {
 	
 	//관리자 문의 게시판 GET 
 	@GetMapping("/qna")
-	public void getAdminQna(Model model) {
+	public void getAdminQna(Criteria cri, Model model) {
 		//참고 boardEx - kun~ 
 		logger.info("get admin qna");
-		List<AskBoardVO> boardList = askService.selectList();
-		model.addAttribute("list", boardList);
+		List<AskBoardVO> boardList = askService.selectList(cri);
+		
+		if(!boardList.isEmpty()) {
+			model.addAttribute("list", boardList);	
+		}else {
+			model.addAttribute("listCheck", "empty");
+		}
+		
+		//페이지 이동 인터페이스 데이터
+		model.addAttribute("pageMaker", new PageVO(cri, askService.boardGetTotal(cri)));
+		
 		
 	}
 	//관리자 문의 게시글 상세 조회 GET

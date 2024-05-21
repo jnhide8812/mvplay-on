@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="/resources/css/member/signUp">
+<!-- <link rel="stylesheet" href="/resources/css/member/signUp.css"> -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -20,18 +20,18 @@
 <body>
 <div id="container">
 	<div class="sign_wrap">
-		<form id="sign_form" method="post">
+		<div class="member_h">
 			<header>
-				<div class="sl_top">
-					<div class="logo_area">
-						<h1 class="top">로고</h1>
-					</div>
-					<div class="login">
-						<a href="/member/login">로그인</a>
-					</div>
+				<div class="logo_w">
+					<a href="/main"><img src="../resources/icon/logo_m.png" class="title_icon"></a>
+				</div>
+				<div class="login_button">
+					<a href="/member/login">로그인</a>
 				</div>
 			</header>
-			<div class="s_content">
+		</div>
+		<div class="s_content">
+			<form id="sign_form" method="post">
 				<h1>회원가입</h1>
 				<ul class="sign">
 					<li>
@@ -92,24 +92,23 @@
 						<p>결제 정보요? 충분히 눌러보시고 입력해도 늦지 않아요.</p>
 					</li>
 				</ul>
+			</form>
+		</div>
+		<div class="s_footer">
+			<div class="f_content">
+				<p class="line1">
+					<span class="e1">고객센터(이용 및 경제 문의) cs@watcha.co.kr</span>,
+					02-515-9985(유료)/<span class="e1">제휴 및 대외 협력
+					https://watcha.team/contact</span><br>
+				</p>
+				<p class="line2">
+					주식회사 왓차/대표 박태훈/서울특별시 서초구 강남대로 343 신덕빌딩 3층 / 사업자등록번호 211-88-66013 /
+					<span class="e2">통신판매업 신고번호 제 2019-서울서초-0965호</span> / 호스팅 서비스 제공자
+					아마존웹서비시즈코리아 유한회사 / 대표번호 02-518-9985 / <span class="e2">이용약관</span>
+					/ 개인정보 처리 방침 / 청소년 보호청책
+				</p>
 			</div>
-
-			<div class="s_footer">
-				<div class="f_content">
-					<p class="line1">
-						<span class="e1">고객센터(이용 및 경제 문의) cs@watcha.co.kr</span>,
-						02-515-9985(유료)/<span class="e1">제휴 및 대외 협력
-							https://watcha.team/contact</span><br>
-					</p>
-					<p class="line2">
-						주식회사 왓차/대표 박태훈/서울특별시 서초구 강남대로 343 신덕빌딩 3층 / 사업자등록번호 211-88-66013 /
-						<span class="e2">통신판매업 신고번호 제 2019-서울서초-0965호</span> / 호스팅 서비스 제공자
-						아마존웹서비시즈코리아 유한회사 / 대표번호 02-518-9985 / <span class="e2">이용약관</span>
-						/ 개인정보 처리 방침 / 청소년 보호청책
-					</p>
-				</div>
-			</div>
-		</form>
+		</div>
 	</div>
 </div>
 <script>

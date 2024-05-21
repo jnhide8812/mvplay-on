@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
 <div id="container">
-	<div id="l_wrap">
+	<div class="l_wrap">
 		<div class="member_h">
 			<header>
 				<div class="logo_w">
@@ -29,14 +30,24 @@
 							<h1>로그인</h1>
 						</div>
 						<div class="find">
-							<a href="findPW.do">비밀번호 잊어버리셨나요?</a>
+							<a href="findId.do">아이디 찾기</a>
+							<span class="mf">|</span>
+							<a href="findPass.do">비밀번호 찾기</a>
 						</div>
 					</li>
-					<li><input type="text" placeholder="이메일을 입력해주세요" name="userId"
-						class="id_input"></li>
-					<li><input type="password" placeholder="비밀번호를 입력해주세요"
-						name="upw" class="pw_iput"></li>
-					<li><input type="button" value="로그인" class="login_button">
+					<li>
+						<input type="text" placeholder="이메일(example@gmail.com)" name="userId"
+						class="login_input">
+					</li>
+					<li>
+						<input type="password" placeholder="비밀번호를 입력해주세요"
+						name="upw" class="login_input">
+					</li>
+					<c:if test="${result == 0}">
+						<div class = "login_warn">이메일 또는 비밀번호를 잘못 입력하셨습니다.</div>
+					</c:if>
+					<li>
+						<input type="button" value="로그인" class="login_button">
 					</li>
 				</ul>
 			</form>
