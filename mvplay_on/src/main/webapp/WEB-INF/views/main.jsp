@@ -34,7 +34,7 @@
 				<ul>
 				
 					<li>
-					<a class="move" href='<c:out value="${movieList.movieId}"></c:out>'>
+					<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
 						<!--<c:out value="${movieList.poster}"></c:out>-->
 						<c:out value="${movieList.movieTitle}"></c:out> <!-- 임시 앵커 -->
 						<img alt="" src="${movieList.poster}">
@@ -74,14 +74,10 @@ let moveForm = $('#moveForm');
 	});
 	
 	/* 영화 조회 */
-	$(".move").on("click",function(e) {
+	$(".move").click(function(e) {
 		e.preventDefault();
 		moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr("href") + "'>");
-		moveForm.attr("action",
-		/*if(member != null && ugrade == 2||3 ) {
-			"/movie/subscribeDetail.jsp"
-		}*/
-		"/movie/movieDetail.jsp");
+		moveForm.attr("action", "/movie/movieDetail");
 		moveForm.submit();
 	});
 </script>

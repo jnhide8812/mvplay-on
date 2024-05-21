@@ -16,6 +16,9 @@ public interface MovieService {
 	//영화 리스트
 	public List<MovieVO> movieList();
 	
+	//영화 정보 가져오기
+	public List<MovieVO> movieInfo(int movieId);
+	
 	//영화 조회
 	public MovieVO movieGetDetail(int movieId);
 

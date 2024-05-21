@@ -25,4 +25,8 @@
 		from movie where movieId = #{movieId}	
 	</select>
 	
+	<!-- 영화 정보 받아오기 -->
+	<select id="movieGetInfo" resultType="com.mvp.model.MovieVO" >
+	</select>
+	
   </mapper>

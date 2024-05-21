@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
-<link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="../resources/css/main.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -38,13 +38,13 @@
 				<div>
 					<div>
 						<!-- 영화 제목 -->
-						<h1><input name="movieTitle" value="<c:out value="${movieInfo.movieTitle}"></c:out>" /></h1>
+						<h1><input type="text" id="movieTitle" name="movieTitle" value="${movieInfo.movieTitle}" readonly="readonly" /></h1>
 					</div>
 					<div>
 						<!-- 영화 평점 -->
-						<input name="movieRating" value='<c:out value=></c:out>' />
+						<input type="text" id="movieRating" name="movieRating" value='<c:out value="${movieInfo.rating}"></c:out>' readonly="readonly" />
 						<!-- 영화 개봉일 -->
-						<input name="regDate" value='<c:out value="${movieInfo.regDate}"></c:out>' />
+						<input name="regDate" value='<c:out value="${movieInfo.regDate}"></c:out>' pattern='yyyy-MM-dd' />
 						<!-- 영화 장르 -->
 						<input name="movieTag" value='<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>' />
 					</div>
@@ -58,6 +58,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 		<!-- 푸터 -->
 		<%@include file="../includes/footer.jsp" %>
 

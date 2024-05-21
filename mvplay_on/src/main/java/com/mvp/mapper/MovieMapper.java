@@ -18,6 +18,8 @@ public interface MovieMapper {
 	//영화 조회
 	public MovieVO movieGetDetail(int movieId);
 	
+	//영화 정보 가져오기
+	public List<MovieVO> movieGetInfo(int movieId);
 	/*영화 평점
 	public int movieGetRating();*/
 }
