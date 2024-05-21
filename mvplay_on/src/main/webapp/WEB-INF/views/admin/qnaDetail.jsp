@@ -45,15 +45,20 @@
 	color: #292929;
 	border:2px solid black;
 	min-width: 600px;
-	background-color: #f7f7f7;	
+	max-width: 1000px;
+		
 }
 .table_answer th, td{
 	text-align: left;
 	height: 30px;
 	border: 1px solid black;
 	padding : 5px;
+	
 }
-
+.answerDiv{
+	min-height: 100px; 
+	
+}
 </style>
 
 </head>
@@ -68,7 +73,8 @@
 		
 		<table class="table_qna">
 			<tr>
-				<th colspan="4" class="table_title"><c:out value="${vo.title}"/></th>
+				<th><c:out value="${vo.ano }"/></th>
+				<th colspan="3" class="table_title"><c:out value="${vo.title}"/></th>
 			</tr>
 			<tr>
 				<th>등록자명</th><td><c:out value="${vo.userId }"/></td><th>등록일</th><td><fmt:formatDate value="${vo.regDate}" pattern="yyyy-MM-dd" /></td>
@@ -82,37 +88,32 @@
 		
 		</table>
 	</div><!-- 문의 게시글 영역 qna_detail_area -->
+	<br>
 	
-	답변 달기 / 답변 보이기 / 답변 수정하기 필요함
 	<!-- 답변 댓글영역 -->
-	
 	<div class="qna_answer_area">
-	<hr>
 	
 	<!-- 답변이 있으면 보임 -->
 	<div>
 		<c:if test="${vo.answerCk =='O'}">
 		<table class="table_answer">
 			<tr>
-				<td colspan="2"><c:out value="${vo.answer }"/></td>
+				<td colspan="2"><div class="answerDiv"><c:out value="${vo.answer }"/></div></td>
 			</tr>
 			<tr>
-				<td>답변일 : <c:out value="${vo.answerDate }"/></td><td>수정 버튼 예정임</td>
+				<td>답변일 : <c:out value="${vo.answerDate }"/></td><td>삭제 버튼 예정임</td>
 			</tr>
-	
 		</table>
 		</c:if>
 	</div>
 	
-	<!-- 답변이 없으면 답변 달기 -->
+	<!-- 답변 달기 -->
 	<div>
-		<c:if test="${vo.answerCk =='X'}">
-			<form action="/admin/qnaDetail" method="post">
-				<input type="hidden" name="ano" value='<c:out value="${vo.ano }" />'>
-				<input type="text" name="answer">
-				<input type="submit" value="답변 달기">
-			</form>
-		</c:if>	
+		<form action="/admin/qnaDetail" method="post">
+			<input type="hidden" name="ano" value='<c:out value="${vo.ano }" />'>
+			<input type="text" name="answer">
+			<input type="submit" value="답변 달기/수정하기">
+		</form>
 	</div>
 	
 	</div>
