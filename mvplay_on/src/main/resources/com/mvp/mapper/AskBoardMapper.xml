@@ -39,6 +39,15 @@
 		</if>
 	</select>
 	
+	<!-- 관리자 답변 달기 -->
+	<update id="addAnswer">
+		UPDATE askBoard SET 
+			ANSWERCK='O', 
+			ANSWER = #{answer}, 
+			ANSWERDATE = sysdate
+		where ano = #{ano}
+	</update>
+	
 
 
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
@@ -67,6 +68,23 @@ public class AdminController {
 		AskBoardVO vo = askService.select(ano);
 		model.addAttribute("vo", vo);
 	}
+	
+   //관리자-문의 게시판 답변 달기
+   @PostMapping("/qnaDetail")
+   public String postAnswerBoard(AskBoardVO avo, Model model,RedirectAttributes rttr) {
+      logger.info("qnaDetail post");
+      askService.addAnswer(avo);
+      
+      //업데이트한 정보 가져오기
+      AskBoardVO vo = askService.select(avo.getAno());
+      model.addAttribute("vo", vo);
+      
+      //1-> result로 변경 xml int로 변경, etc....
+      rttr.addFlashAttribute("answer_result", 1);
+      return "redirect:/admin/qna";
+      
+   }
+	
 	
 	//영화 추가 GET
 	@GetMapping("/movieInsert")

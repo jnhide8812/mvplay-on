@@ -43,4 +43,11 @@ public class AskBoardVO {
 	//조회수
 	private int viewCnt;
 	
+	//답변
+	private String answer;
+	
+	//답변일
+	private Date answerDate;
+	
+	
 }

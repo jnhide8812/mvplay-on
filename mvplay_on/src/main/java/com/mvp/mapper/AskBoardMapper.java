@@ -18,6 +18,8 @@ public interface AskBoardMapper {
 	//게시글 개수
 	public int boardGetTotal(Criteria cri);
 	
+	//관리자 답변 달기
+	public void addAnswer(AskBoardVO avo);
 	
 
 }

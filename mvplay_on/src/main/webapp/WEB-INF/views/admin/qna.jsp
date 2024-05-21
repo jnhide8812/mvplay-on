@@ -16,26 +16,26 @@
 }
 
 /* 문의 게시판 */
-.table_q{
+.table_qna{
 	border-collapse: collapse;
 	color: #292929;
 	border:2px solid black;
 	
 }
-.table_q th{
+.table_qna th{
 	background-color: #f7f7f7;
 	text-align: center;
 	min-width: 100px;
 	height: 46px;
 	border: 1px solid black;
 }
-.table_q td{
+.table_qna td{
 	text-align: center;
 	height: 34px;
 	border: 1px solid black;
 }
 /* 문의게시판-제목 th */
-.table_t{
+.table_title{
 	width: 500px;
 }
 
@@ -118,9 +118,9 @@
 		<!-- 게시물 있음 -->
 		<div class="qboard_area">
 		<c:if test="${listCheck !='empty' }">
-			<table class="table_q">
+			<table class="table_qna">
 				<tr>
-					<th>번호</th><th class="table_t">제목</th><th>작성자</th><th>작성일자</th><th>답변 여부</th><th>조회수</th>
+					<th>번호</th><th class="table_title">제목</th><th>작성자</th><th>작성일자</th><th>답변 여부</th><th>조회수</th>
 				</tr>
 
 				<!-- 목록 시작 -->

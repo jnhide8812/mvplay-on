@@ -28,6 +28,14 @@ public class AskBoardServiceImpl implements AskBoardService{
 	public int boardGetTotal(Criteria cri) {
 		return askMapper.boardGetTotal(cri);
 	}
+
+	@Override
+	public void addAnswer(AskBoardVO avo) {
+		askMapper.addAnswer(avo);
+		
+	}
+
+	
 	
 
 }
