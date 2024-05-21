@@ -95,7 +95,7 @@
 			 	<li></li>
 			 	<li></li>
 			 	<li></li>
-			 </ul>
+			 </ul> 
 				<h1>new</h1>
 				<img src="resources/icon/f_icon.png">
 				<c:forEach items="${movieList}" var="movieList">
