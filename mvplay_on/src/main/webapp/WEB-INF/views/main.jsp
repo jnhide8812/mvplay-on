@@ -12,6 +12,10 @@
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
+<script>
+
+</script>  
+  
 </head>
 <body>
 <div id = "container">
@@ -89,13 +93,6 @@
 		<!-- 영화 신작 -->
 			<div class="mnew">
 			 <c:if test="${listcheck != 'empty'}">
-			 <ul>
-			 	<li></li>
-			 	<li></li>
-			 	<li></li>
-			 	<li></li>
-			 	<li></li>
-			 </ul> 
 				<h1>new</h1>
 				<img src="resources/icon/f_icon.png">
 				<c:forEach items="${movieList}" var="movieList">
@@ -103,12 +100,14 @@
 				
 					<li>
 					<a class="move" href='<c:out value="${movieList.movieId}"></c:out>'>
-						<c:out value="${movieList.poster}"></c:out>
+						<!--<c:out value="${movieList.poster}"></c:out>-->
+						<c:out value="${movieList.movieTitle}"></c:out> <!-- 임시 앵커 -->
+						<img alt="" src="${movieList.poster}">
 					</a>
+					<c:out value="${movieList.movieTitle}"></c:out><br>
+					<c:out value="${movieList.cate1}"></c:out>, <c:out value="${movieList.cate2}"></c:out><br>
+					<!--평점 구간 <c:out value="${movieRating}"></c:out><br>-->
 					</li>
-					<li><c:out value="${movieList.movieTitle}"></c:out></li>
-					<li><c:out value="${movieList.cate1}"></c:out>, <c:out value="${movieList.cate2}"></c:out></li>
-					<li><c:out value="${movieList.movieTotalpay}"></c:out></li>
 					
 				</ul>
 				</c:forEach>
@@ -210,6 +209,18 @@
 				document.location.reload();
 			}
 		}); //ajax 
+	});
+	
+	/* 영화 조회 */
+	$(".move").on("click",function(e) {
+		e.preventDefault();
+		moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr("href") + "'>");
+		moveForm.attr("action",
+		if(member != null && ugrade == 2||3 ) {
+			"/movie/subscribeDetail.jsp"
+		}
+		"/movie/movieDetail.jsp");
+		moveForm.submit();
 	});
 </script>
 </body>

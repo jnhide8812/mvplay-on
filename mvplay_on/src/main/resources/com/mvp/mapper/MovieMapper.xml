@@ -5,10 +5,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mvp.mapper.MovieMapper">
 
-	<!-- 개별 구매 -->
+	<!-- 개별 구매
 	<select id="movieGetDetail" resultType="com.mvp.model.MovieVO">
 		 select movieId, poster, movieTitle, movieDate, cate1, cate2, buyPrice, rentalPrice from movie where movieId = #{movieId} 
-	</select>
+	</select> -->
   
   	
   	<!-- 영화 리스트 -->
@@ -17,11 +17,19 @@
   	</select>
   
   
-  
-  
-  
-  
-  
-  
+  	<!-- 영화 조회 -->
+	<select id="movieGetDetail" resultType="com.mvp.model.MovieVO">
+		select movieId, movieTitle, poster, movieContent, 
+		movieDate, movieCheck, cate1, cate2, buyPrice, rentalPrice
+		movieUrl 
+		from movie where movieId = #{movieId}	
+	</select>
+	
+	<!-- 평점
+  	<select id="movieGetRating">
+  	select sum(rating) / count(*) 
+	from rating where movieId = #{movieId}
+  	</select>
+  	 -->
   
   </mapper>
