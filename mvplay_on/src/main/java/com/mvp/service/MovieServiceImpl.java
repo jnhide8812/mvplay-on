@@ -9,6 +9,8 @@ import com.mvp.mapper.MovieMapper;
 import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 
+import lombok.extern.log4j.Log4j;
+
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -17,12 +19,12 @@ public class MovieServiceImpl implements MovieService {
 	private MovieMapper mapper;
 	
 	
-	//개별 구매
+	/*개별 구매
 	@Override
 	public MovieVO movieGetDetail(int movieId) {
 		System.out.println("(service)movieGetDetail......." + movieId);
 		return mapper.movieGetDetail(movieId);
-	}
+	}*/
 		
 	//영화 총 갯수
 	@Override
@@ -38,6 +40,20 @@ public class MovieServiceImpl implements MovieService {
 		
 		return mapper.getMovieList();
 	}
+	
+	//영화 조회
+	@Override
+	public MovieVO movieGetDetail(int movieId) {
+		System.out.println("movieGetDetail"+movieId);
+		return mapper.movieGetDetail(movieId);
+	}
+	
+	/*영화 평점
+	@Override
+	public int movieGetRating() {
+		return mapper.movieGetRating();
+	}*/
+	
 	
 	
 }
