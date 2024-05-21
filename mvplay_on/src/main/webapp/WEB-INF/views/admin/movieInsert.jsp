@@ -244,7 +244,7 @@
 				
 			}
             
-			formData.append("poster", fileObj);
+			formData.append("uploadFile", fileObj);
 			
 			$.ajax({
 				url: '/admin/uploadAjax',

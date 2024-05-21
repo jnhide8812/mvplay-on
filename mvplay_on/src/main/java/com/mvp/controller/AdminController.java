@@ -84,7 +84,7 @@ public class AdminController {
 	
 	// 영화 포스터 업로드
 	@PostMapping("/uploadAjax")
-	public void postUploadAjax(MultipartFile[] poster) {
+	public void postUploadAjax(MultipartFile[] uploadFile) {
 		
 		logger.info("postUploadAjax");
 		
@@ -105,7 +105,7 @@ public class AdminController {
 			uploadPath.mkdirs();
 		}
 		
-		for(MultipartFile multipartFile : poster) {
+		for(MultipartFile multipartFile : uploadFile) {
 			
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
