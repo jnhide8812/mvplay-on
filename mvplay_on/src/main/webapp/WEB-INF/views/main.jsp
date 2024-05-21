@@ -58,6 +58,8 @@
 
 </div>  <!-- id="container" -->
 <script>
+let moveForm = $('#moveForm');
+
 	/*로그아웃 버튼 적용 */
 	$("#logout_button").click(function() {
 		//alert("버튼작동");

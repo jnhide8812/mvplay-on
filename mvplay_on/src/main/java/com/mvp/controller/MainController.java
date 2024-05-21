@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 import com.mvp.service.MovieService;
@@ -53,6 +55,18 @@ public class MainController {
 		List<MovieVO> movieList = movieService.movieList();
 		request.setAttribute("movieList", movieList);
 		return "main";
+		
+	}
+	
+	//영화 디테일 확인
+	@GetMapping("movieDetail")
+	public void movieDetailGET(int movieId, Criteria cri, Model model)throws JsonProcessingException {
+		logger.info("영화 정보..." + movieId);
+			
+		ObjectMapper mapper = new ObjectMapper();
+			
+		model.addAttribute("cri",cri);
+		model.addAttribute("movieInfo",movieService.movieGetDetail(movieId));
 		
 	}
 	

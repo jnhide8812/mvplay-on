@@ -27,6 +27,8 @@ public class MovieController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
+	
+	
 	//영화 디테일 확인
 	@GetMapping("movieDetail")
 	public void movieDetailGET(int movieId, Criteria cri, Model model)throws JsonProcessingException {
@@ -38,15 +40,6 @@ public class MovieController {
 		model.addAttribute("movieInfo",movieService.movieGetDetail(movieId));
 	
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	/*
 	//메인 페이지로 이동
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
