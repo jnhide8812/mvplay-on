@@ -39,4 +39,13 @@ public class MovieServiceImpl implements MovieService {
 		return mapper.movieGetTotal(cri);
 			
 	}
+	
+	//영화 리스트
+	@Override
+	public List<MovieVO> movieList(Criteria cri) {
+		
+		return mapper.getMovieList(cri);
+	}
+	
+	
 }
