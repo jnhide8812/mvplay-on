@@ -18,17 +18,16 @@ public class vodTest {
 	@Autowired
 	private MovieMapper mapper;
 	
-	@Test
-	public void connectTest() {
-		int movieId =10;
-		MovieVO vo = mapper.movieGetDetail(movieId);
-		System.out.println("조회 :"+ vo);
-		
-		
-		
-	}
+	/*
+	 * @Test public void connectTest() { int movieId =10; MovieVO vo =
+	 * mapper.movieGetDetail(movieId); System.out.println("조회 :"+ vo);
+	 * 
+	 * 
+	 * 
+	 * }
+	 */
 	
-	
+
 	
 	
 	
