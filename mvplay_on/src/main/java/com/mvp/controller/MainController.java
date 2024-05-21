@@ -28,7 +28,7 @@ public class MainController {
 		logger.info("mainPageGET()");
 	}
 	
-	//리스트 데이터 받아오기
+	/*리스트 데이터 받아오기
 	@RequestMapping(value = "main", method = RequestMethod.GET)
 	public void mainListGET(Criteria cri, Model model) throws Exception{
 		logger.info("movieListGET");
@@ -43,7 +43,7 @@ public class MainController {
 			return;
 		}
 		
-	}
+	}*/
 	
 	
 }
