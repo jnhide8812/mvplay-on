@@ -88,8 +88,31 @@
 		<div class="main_content">
 		<!-- 영화 신작 -->
 			<div class="mnew">
+			 <c:if test="${listcheck != 'empty'}">
+			 <ul>
+			 	<li></li>
+			 	<li></li>
+			 	<li></li>
+			 	<li></li>
+			 	<li></li>
+			 </ul>
 				<h1>new</h1>
 				<img src="resources/icon/f_icon.png">
+				<c:forEach items="${movieList}" var="movieList">
+				<ul>
+				
+					<li>
+					<a class="move" href='<c:out value="${movieList.movieId}"></c:out>'>
+						<c:out value="${movieList.poster}"></c:out>
+					</a>
+					</li>
+					<li><c:out value="${movieList.movieTitle}"></c:out></li>
+					<li><c:out value="${movieList.cate1}"></c:out>, <c:out value="${movieList.cate2}"></c:out></li>
+					<li><c:out value="${movieList.movieTotalpay}"></c:out></li>
+					
+				</ul>
+				</c:forEach>
+			</c:if>
 			</div>
 		<!-- 영화 랭킹 -->
 			<div class="mranking">
