@@ -6,12 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>mvplay_on</title>
+
 <link rel="stylesheet" href="/resources/css/admin/movieInsert.css">
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 </head>
 <body>
 	<header>
@@ -21,44 +23,54 @@
 		<div class="admin_content_subject">
 			<span>영화등록</span>
 		</div>
+		<br>
 		<div class="admin_content_main">
 			<form action="/admin/movieInsert" method="post" id="m_Insert">
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 제목</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input name="movieTitle">
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>포스터</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 소개</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<textarea name="movieContent" id="movieContext_textarea"></textarea>
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 URL</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input name="movieUrl">
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 장르 1</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input type="radio" name="cate1" value="코믹" onclick="cateReadOnly()"/>코미디
 						<input type="radio" name="cate1" value="호러" onclick="cateReadOnly()"/>호러
@@ -66,17 +78,21 @@
 						<input type="radio" name="cate1" value="액션" onclick="cateReadOnly()"/>액션
 						<input type="radio" name="cate1" value="미스터리" onclick="cateReadOnly()"/>미스터리
 					</div>
+					<br>
 					<div class="form_section_title">
 						<label>영화 장르 2</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input name="cate2" id="cate2" readonly="readonly">
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 이용등급 설정</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input type="radio" name="movieCheck" value="0" onclick="priceReadOnly()"/>구독전용
 						<input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능
@@ -84,31 +100,38 @@
 						<input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 구매가격(구매,구매대여시에만)</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input name="buyPrice" id="buyPrice" value="0" readonly="readonly">
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 대여가격(대여,구매대여시에만)</label>
 					</div>
+					<br>
 					<div class="form_section_content">
 						<input name="rentalPrice" id="rentalPrice" value="0" readonly="readonly">
 					</div>
 				</div>
+				<br>
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>개봉일</label>
 					</div>
+					<br>
 					<div class="form_section_content">
-					    <input name="movieDate" readonly="readonly"/>
+					    <input name="movieDate" autocomplete="off" readonly="readonly"/>
 					</div>
 				</div>						
 			</form>
+			<br>
 			<div class="btn_section">
 				<button id="insertBtn">등 록</button>
 			</div>
@@ -159,7 +182,7 @@
 	                return; // 종료
 	            }
 	        }
-	    }
+	    };
 		
 		function cateReadOnly() {
             var radio = document.getElementsByName('cate1');
@@ -173,12 +196,18 @@
             }
             // 아무것도 선택되지 않은 경우 readonly 유지
             input.readOnly = true;
-        }
+        };
 		
 		ClassicEditor
 			.create(document.querySelector('#movieContext_textarea'))
 			.catch(error=>{
 				console.error(error);
+		});
+		
+		$(function() {
+			
+			$("input[name='movieDate']").datepicker(config);
+			
 		});
 		
 
@@ -198,15 +227,8 @@
 			yearSuffix : '년',
 			changeMonth : true,
 			changeYear : true
-		}
+		};
 
-		$(function() {
-			
-			$("input[name='movieDate']").datepicker(config);
-			
-		});
-
-		
 	</script>
 </body>
 </html>
