@@ -46,13 +46,13 @@ header {
 	cursor:pointer;
 }
 /*메인*/
-/*.s_content{
-	width: 430px;
-	height: 510px;
-	margin-top: 150px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+.s_content{
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	z-index: 1;
+	padding-top: 250px;
+	padding-bottom: 340px;
 }
 h1 {
 	color: #ffffff;
@@ -63,83 +63,33 @@ h1 {
 	justify-content: center;
 	margin: 5px 40px;
 }
-ul.sign {
+ul.sign{
 	display: flex;
-	flex-direction: column;
-	align-content: center;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
-label{
-	font-size: 16px;
+label {
 	color: #ffffff;
-	margin-bottom: 4px;
+	font-size: 16px;
+	font-weight: 500;
+	text-align: left;
 }
-input{
+input.mail_input, input.pw_input, input.birth_input {
+	background-color: #191a1c;
+	border:1px solid #e73e3e;
+	display:block;
 	width: 310px;
-	height: 46px;
-	background-color: #191A1C;
-	border: 1px solid red;
-	border-radius: 5px;
+	height: 48px;
+	caret-color: #f82f62;
+	border-radius: 4px;
 	color: #ffffff;
 	font-size: 14px;
-	margin-bottom: 5px;
+	font-weight: 400;
+	letter-spacing: 0;
+	line-height: 20px;
+	padding: 13px 11px;
 }
-input.sign_button {
-	width: 310px;
-	height: 46px;
-	background-color: #505155;
-	color: #999ca1;
-	font-size: 15px;
-	border: 1px solid #505155;
-	border-radius: 4px;
-}
-.mail_check_button {
-	border: 1px solid #505155;
-    height: 51px;
-    width: 150px;
-    float: right;
-    text-align: center;
-    background-color: #505155;
-    cursor: pointer;
-   	border-radius: 5px;
-}
-.main_check_wrap {
-	display:flex;
-	flex-direction: row;
-}
-.mail_check_button span{
-	color: #FFFFFF;
-	font-size:15px;
-	font-weight:700;
-	
-}*/
-/*이메일 전송 완료 표시*/
-/*#mail_check_input_box_false {
-	background-color: #ebebe4;
-}
-#mail_check_input_box_true {
-	background-color: white;
-}
-
-.ui-datepicker-trigger {		*/				/* 캘린더 css 설정 */
-   /* margin-left: 25px;
-    width: 14%;
-    height: 38px;
-    font-weight: 600;
-    background-color: #dfe8f5;
-    font-size: 15px;
-    cursor:pointer;
-}
-input[name='birthday'] {
-    width: 80%;
-    text-align: center;
-}
-
-ul.sign li p{
-	font-size: 11px;
-	color: #84868d;
-}*/
-
 /*footer*/
 .s_footer{
 	width: 100%;

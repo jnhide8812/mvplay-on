@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<!-- <link rel="stylesheet" href="/resources/css/member/signUp.css"> -->
+<link rel="stylesheet" href="/resources/css/member/signUp.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -31,7 +31,7 @@
 			</header>
 		</div>
 		<div class="s_content">
-			<form id="sign_form" method="post">
+			<form id="sign_form" method="post"> 
 				<h1>회원가입</h1>
 				<ul class="sign">
 					<li>
@@ -40,7 +40,7 @@
 							<div class="mail_input_box">
 								<input class="mail_input" name="userId">
 							</div>
-							<span class="final_mail_ck">이메일을 입력해주세요.</span> <span
+							<span class="final_mail_ck">이메일(example@gmail.com)</span> <span
 								class="mail_input_box_warn"></span>
 							<div class="mail_check_wrap">
 								<div class="mail_check_input_box" id="mail_check_input_box_false">
@@ -78,7 +78,7 @@
 								<label>생년월일</label>
 							</div>
 							<div class="form_section_content">
-								<input name="ubirth" autocomplete="off" readonly="readonly">
+								<input name="ubirth" autocomplete="off" readonly="readonly" class="birth_input">
 								<span class="birth_warn">생년월일을 선택해주세요.</span>
 							</div>
 						</div>
