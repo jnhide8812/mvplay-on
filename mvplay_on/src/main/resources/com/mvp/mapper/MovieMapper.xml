@@ -21,15 +21,8 @@
 	<select id="movieGetDetail" resultType="com.mvp.model.MovieVO">
 		select movieId, movieTitle, poster, movieContent, 
 		movieDate, movieCheck, cate1, cate2, buyPrice, rentalPrice
-		movieUrl 
+		movieUrl, (select sum(rating) / count(*) from rating where movieId = #{movieId})
 		from movie where movieId = #{movieId}	
 	</select>
 	
-	<!-- 평점
-  	<select id="movieGetRating">
-  	select sum(rating) / count(*) 
-	from rating where movieId = #{movieId}
-  	</select>
-  	 -->
-  
   </mapper>
