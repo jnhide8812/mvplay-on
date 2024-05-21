@@ -2,6 +2,8 @@ package com.mvp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mvp.model.Criteria;
+import com.mvp.model.MovieVO;
 import com.mvp.service.MovieService;
 
 @Controller
@@ -22,19 +25,19 @@ public class MainController {
 	@Autowired
 	private MovieService movieService;
 	
-	//메인 페이지 이동
+	/*메인 페이지 이동
 	@GetMapping("/main")
 	public void mainPageGET() {
 		logger.info("mainPageGET()");
-	}
+	}*/
 	
 	/*리스트 데이터 받아오기
-	@RequestMapping(value = "main", method = RequestMethod.GET)
+	@RequestMapping("/main")
 	public void mainListGET(Criteria cri, Model model) throws Exception{
 		logger.info("movieListGET");
 		
 		//영화 리스트
-		List movieList = movieService.getMovieList(cri);
+		List movieList = movieService.movieList(cri);
 		
 		if (!movieList.isEmpty()) {
 			model.addAttribute("movieList", movieList);
@@ -45,5 +48,12 @@ public class MainController {
 		
 	}*/
 	
+	@RequestMapping("/main")
+	public String list(HttpServletRequest request) {
+		List<MovieVO> movieList = movieService.movieList();
+		request.setAttribute("movieList", movieList);
+		return "main";
+		
+	}
 	
 }

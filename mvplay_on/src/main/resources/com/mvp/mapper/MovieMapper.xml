@@ -10,7 +10,11 @@
 		 select movieId, poster, movieTitle, movieDate, cate1, cate2, buyPrice, rentalPrice from movie where movieId = #{movieId} 
 	</select>
   
-  
+  	
+  	<!-- 영화 리스트 -->
+  	<select id="getMovieList" resultType="com.mvp.model.MovieVO">
+  		select * from movie
+  	</select>
   
   
   

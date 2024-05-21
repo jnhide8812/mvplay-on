@@ -23,14 +23,6 @@ public class MovieServiceImpl implements MovieService {
 		System.out.println("(service)movieGetDetail......." + movieId);
 		return mapper.movieGetDetail(movieId);
 	}
-	
-	//영화 검색
-	@Override
-	public List<MovieVO> getMovieList(Criteria cri) {
-		
-		return mapper.getMovieList(cri);
-			
-	}
 		
 	//영화 총 갯수
 	@Override
@@ -42,9 +34,9 @@ public class MovieServiceImpl implements MovieService {
 	
 	//영화 리스트
 	@Override
-	public List<MovieVO> movieList(Criteria cri) {
+	public List<MovieVO> movieList() {
 		
-		return mapper.getMovieList(cri);
+		return mapper.getMovieList();
 	}
 	
 	

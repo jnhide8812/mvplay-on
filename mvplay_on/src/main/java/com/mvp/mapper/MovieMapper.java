@@ -10,8 +10,10 @@ public interface MovieMapper {
 	public MovieVO movieGetDetail(int movieId); 
 	
 	//영화 검색
-	public List<MovieVO> getMovieList(Criteria cri);
-		
+	public List<MovieVO> getMovieList();
+	
 	//영화 총 갯수
 	public int movieGetTotal(Criteria cri);
+
+	
 }
