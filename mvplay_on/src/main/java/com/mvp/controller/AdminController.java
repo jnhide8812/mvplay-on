@@ -1,6 +1,10 @@
 package com.mvp.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
@@ -75,6 +80,53 @@ public class AdminController {
 		logger.info("postMovieInsert");
 		
 		adService.movieInsert(mvo);
+	}
+	
+	// 영화 포스터 업로드
+	@PostMapping("/uploadAjax")
+	public void postUploadAjax(MultipartFile[] poster) {
+		
+		logger.info("postUploadAjax");
+		
+		String uploadFolder = "C:\\temp";
+		
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		Date date = new Date();
+		
+		String str = sdf.format(date);
+		
+		String datePath = str.replace("-", File.separator);
+		
+		/* 폴더 생성 */
+		File uploadPath = new File(uploadFolder, datePath);
+		
+		if(uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+		
+		for(MultipartFile multipartFile : poster) {
+			
+			/* 파일 이름 */
+			String uploadFileName = multipartFile.getOriginalFilename();
+			
+			/* uuid 적용 파일 이름 */
+			String uuid = UUID.randomUUID().toString();
+			
+			uploadFileName = uuid + "_" + uploadFileName;
+			
+			/* 파일 위치, 파일 이름을 합친 File 객체 */
+			File saveFile = new File(uploadPath, uploadFileName);
+			
+			/* 파일 저장 */
+			try {
+				multipartFile.transferTo(saveFile);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+			
+		}
+		
 	}
 	
 	//영화 리스트 GET

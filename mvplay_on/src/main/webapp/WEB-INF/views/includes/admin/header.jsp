@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../resources/css/admin/header.css">
-<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <div class="admin_wrap">
 <div class="wrapper">
     <header class="top_gnb_area">
