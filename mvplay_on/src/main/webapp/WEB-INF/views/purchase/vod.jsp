@@ -134,7 +134,7 @@ function requestPay(itemName) {
     }, function(rsp) {
         if (rsp.success) {
             $.ajax({
-                url: '/purchase/validation' + rsp.imp_uid, // 서버 측에서 결제를 검증하는 URL
+                url: '/purchase/validation/' + rsp.imp_uid, // 서버 측에서 결제를 검증하는 URL
                 type: 'POST',
                 dataType: 'json',
                 data: JSON.stringify({
@@ -164,7 +164,7 @@ function requestPay(itemName) {
                             name: 'merchant_uid',
                             value: rsp.merchant_uid
                         }).appendTo('#movie_move');
-                        $('#movie_move').attr('action', '/purchase/purchaseDetail').submit();
+                        $('#movie_move').attr('action', '/movie/purchaseDetail').submit();
                     } else {
                         // 결제 취소 처리
                         alert('결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.');

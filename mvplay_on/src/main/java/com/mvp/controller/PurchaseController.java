@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvp.model.MemberVO;
 import com.mvp.model.PurchaseVO;
+import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
-import com.siot.IamportRestClient.exception.IamportResponseException;
+import com.mvp.service.PurchaseService;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
@@ -27,14 +30,19 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@Slf4j
-@RequestMapping(value = "/purchase/*")
+@RequestMapping()
 @RequiredArgsConstructor
 public class PurchaseController {
     private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
 
     private IamportClient iamportClient;
-
+    
+    @Autowired
+    private PurchaseService purchaseService;
+    @Autowired
+    private MemberService memberService;
+    
+    
     @Autowired
     private MovieService movieservice;
 
@@ -50,32 +58,47 @@ public class PurchaseController {
     }
 
     // 개별 구매
-    @GetMapping("/vod")
+    @GetMapping("/purchase/vod")
     public void purchasePageGET(int movieId, Model model) {
         System.out.println("movieId 후:" + movieId);
         logger.info("vod");
         logger.info("purchasePageGET()........." + movieId);
 
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
-        System.out.println(movieservice.movieGetDetail(movieId));
+       
     }
 
-    @PostMapping("/vod")
-    public String purchasePagePost(PurchaseVO purchase, HttpServletRequest request) {
-        System.out.println("구매 상세페이지 이동" + purchase);
-        return "redirect:/purchase/purchaseDetail";
+    @PostMapping("/purchase/vod")
+    public String purchasePagePost(PurchaseVO pvo,MemberVO member, HttpServletRequest request) {
+        System.out.println("구매 상세페이지 이동" + pvo);
+        
+        purchaseService.getBuyInfo(pvo);
+       
+       HttpSession session = request.getSession();
+       
+       try {
+    	   MemberVO memberLogin = memberService.memberLogin(member);
+			memberLogin.setUpw("");
+			session.setAttribute("member", memberLogin);
+			
+		} catch (Exception e) {
+			 logger.error("Error during member login", e);
+		
+	}
+       
+        return "redirect:/movie/purchaseDetail"; 
     }
 
-    @PostMapping("/purchase/validation/{imp_uid}")
+    @PostMapping("purchase/validation/{imp_uid}")
     @ResponseBody
     public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException {
         IamportResponse<Payment> payment = null;
 		payment = iamportClient.paymentByImpUid(imp_uid);
-       
+       System.out.println("payment"+payment);
         return payment;
     }
 
-    @GetMapping("/payFail") // payFail 페이지에 대한 매핑
+    @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
     public String payFail() {
         return "purchase/payFail"; // payFail.jsp가 있는 경로를 반환
     }
