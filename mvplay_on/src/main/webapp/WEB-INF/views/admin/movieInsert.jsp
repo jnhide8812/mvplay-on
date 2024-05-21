@@ -36,7 +36,7 @@
 						<label>포스터</label>
 					</div>
 					<div class="form_section_content">
-						<input name="poster">
+						<input type="file" id ="fileItem" name='uploadFile' style="height: 30px;">
 					</div>
 				</div>
 				<div class="form_section">
@@ -89,7 +89,7 @@
 						<label>영화 구매가격(구매,구매대여시에만)</label>
 					</div>
 					<div class="form_section_content">
-						<input name="buyPrice" id="buyPrice" readonly="readonly">
+						<input name="buyPrice" id="buyPrice" value="0" readonly="readonly">
 					</div>
 				</div>
 				<div class="form_section">
@@ -97,7 +97,7 @@
 						<label>영화 대여가격(대여,구매대여시에만)</label>
 					</div>
 					<div class="form_section_content">
-						<input name="rentalPrice" id="rentalPrice" readonly="readonly">
+						<input name="rentalPrice" id="rentalPrice" value="0" readonly="readonly">
 					</div>
 				</div>
 				<div class="form_section">
@@ -175,11 +175,11 @@
             input.readOnly = true;
         }
 		
-		/* ClassicEditor
+		ClassicEditor
 			.create(document.querySelector('#movieContext_textarea'))
 			.catch(error=>{
 				console.error(error);
-		}); */
+		});
 		
 
 		const config = {
