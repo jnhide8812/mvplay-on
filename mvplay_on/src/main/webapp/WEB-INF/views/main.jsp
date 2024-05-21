@@ -64,7 +64,7 @@ let moveForm = $('#moveForm');
 	$("#logout_button").click(function() {
 		//alert("버튼작동");
 		$.ajax({
-			type : "POST",
+			type : "POST", 
 			url : "/member/logout.do",
 			success : function(data) {
 				//alert("로그아웃 성공");

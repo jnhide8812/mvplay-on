@@ -50,7 +50,7 @@ public class MovieController {
 	@RequestMapping(value = "movieManage", method = RequestMethod.GET)
 	public void goodsManageGET(Criteria cri, Model model) throws Exception{
         logger.info("영화 등록 페이지 접속");
-	}
+	} 
 
 	//영화 등록 페이지로 이동
 	@RequestMapping(value = "movieEnroll", method = RequestMethod.GET)
