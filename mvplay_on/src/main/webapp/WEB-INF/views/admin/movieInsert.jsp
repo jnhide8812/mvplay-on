@@ -166,19 +166,15 @@
 	                if (selectedValue === '1') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = true;
-	                    rentalPriceInput.value = '';
 	                } else if (selectedValue === '2') {
 	                    buyPriceInput.readOnly = true;
-	                    buyPriceInput.value = '';
 	                    rentalPriceInput.readOnly = false;
 	                } else if (selectedValue === '3') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = false;
 	                } else {
 	                    buyPriceInput.readOnly = true;
-	                    buyPriceInput.value = '';
 	                    rentalPriceInput.readOnly = true;
-	                    rentalPriceInput.value = '';
 	                }
 	                return; // 종료
 	            }

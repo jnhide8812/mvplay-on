@@ -35,6 +35,12 @@ public class AskBoardServiceImpl implements AskBoardService{
 		
 	}
 
+	@Override
+	public void deleteAnswer(AskBoardVO avo) {
+		askMapper.deleteAnswer(avo);
+		
+	}
+
 	
 	
 

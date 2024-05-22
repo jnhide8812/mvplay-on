@@ -8,33 +8,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.mvp.model.AskBoardVO;
+import com.mvp.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-public class AskBoardTest {
-private static final Logger logger = LoggerFactory.getLogger(AskBoardTest.class);
+public class AdminPurchaseMapperTest {
+private static final Logger logger = LoggerFactory.getLogger(AdminPurchaseMapperTest.class);
 	
 	@Autowired
-	private AskBoardMapper mapper;
+	private AdminPurchaseMapper mapper;
+	
 	
 	@Test
-	public void addTest() {
-		AskBoardVO vo = new AskBoardVO();
+	public void apmTest() {
+		logger.info("테스트");
+		Criteria cri = new Criteria();
 		
-		vo.setAno(424);
-		mapper.deleteAnswer(vo);
+		//mapper.adminSelectPurchaseList(cri);
 		
-		logger.info("test vo : "+vo);
-		/*
-		vo.setAnswer("답변00001");
-		
-		mapper.addAnswer(vo);
-		
-		logger.info("test vo : "+vo);
-		*/
+		mapper.boardGetTotal(cri);
+		logger.info("....:  "+mapper.boardGetTotal(cri));
 		
 	}
 	
-
 }

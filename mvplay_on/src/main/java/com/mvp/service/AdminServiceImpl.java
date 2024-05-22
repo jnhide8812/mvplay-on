@@ -32,5 +32,10 @@ public class AdminServiceImpl implements AdminService {
 
 		return admapper.getMovieTotal(cri);
 	}
+	
+	@Override
+	public MovieVO getMovieDetail(int movieId) throws Exception {
+		return admapper.getMovieDetail(movieId);
+	}
 
 }

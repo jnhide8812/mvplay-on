@@ -48,6 +48,14 @@
 		where ano = #{ano}
 	</update>
 	
+	<!-- 관리자 답변 삭제 -->
+	<update id="deleteAnswer">
+		UPDATE askBoard SET 
+			ANSWERCK='X', 
+			ANSWER = null, 
+			ANSWERDATE = null
+		where ano = #{ano}
+	</update>
 
 
 </mapper>

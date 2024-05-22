@@ -84,6 +84,25 @@ public class AdminController {
       return "redirect:/admin/qna";
       
    }
+   
+   	//관리자 문의 게시판 답변 삭제
+   	@PostMapping("/deleteAnswer")
+   	public String postDeleteAnswer(AskBoardVO avo, Criteria cri, Model model,RedirectAttributes rttr) {
+      logger.info("deleteAnswer post");
+      System.out.println("삭제_포스트 매핑 안됨?");
+      System.out.println("cri:::"+ cri);
+      askService.deleteAnswer(avo);
+      
+      //업데이트한 정보 가져오기
+      AskBoardVO vo = askService.select(avo.getAno());
+      model.addAttribute("vo", vo);
+      
+      //1-> result로 변경 xml int로 변경, etc....
+      rttr.addFlashAttribute("answer_delete_result", 1);
+      return "redirect:/admin/qna";
+      
+   }
+   
 	
 	
 	//영화 추가 GET
@@ -94,7 +113,7 @@ public class AdminController {
 	
 	//영화 추가 POST
 	@PostMapping("/movieInsert")
-	public void postMovieInsert(MovieVO mvo) throws Exception {		
+	public void postMovieInsert(MovieVO mvo, String poster) throws Exception {		
 		logger.info("postMovieInsert");
 		
 		adService.movieInsert(mvo);
@@ -108,16 +127,8 @@ public class AdminController {
 		
 		String uploadFolder = "C:\\temp";
 		
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
-		Date date = new Date();
-		
-		String str = sdf.format(date);
-		
-		String datePath = str.replace("-", File.separator);
-		
 		/* 폴더 생성 */
-		File uploadPath = new File(uploadFolder, datePath);
+		File uploadPath = new File(uploadFolder);
 		
 		if(uploadPath.exists() == false) {
 			uploadPath.mkdirs();
@@ -127,11 +138,6 @@ public class AdminController {
 			
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
-			
-			/* uuid 적용 파일 이름 */
-			String uuid = UUID.randomUUID().toString();
-			
-			uploadFileName = uuid + "_" + uploadFileName;
 			
 			/* 파일 위치, 파일 이름을 합친 File 객체 */
 			File saveFile = new File(uploadPath, uploadFileName);
@@ -163,16 +169,19 @@ public class AdminController {
 		
 	}
 	
-	//관리자-구매 대여 관리GET
-	@GetMapping("/purchase")
-	public void getAdminPurchase() {
-		logger.info("get admin purchase");
+	//영화 상세 페이지 GET
+	@GetMapping("/movieDetail")
+	public void getMovieDetail(int movieId, Criteria cri, Model model) throws Exception {
+		
+		
+		// 목록 페이지 조건 정보
+		model.addAttribute("cri", cri);
+		
+		// 상세 페이지 정보
+		model.addAttribute("movieInfo", adService.getMovieDetail(movieId));
+		
 	}
 	
-	//관리자-구매 대여 관리GET
-	@GetMapping("/subscribe")
-	public void getAdminSubscribe() {
-		logger.info("get admin subscribe");
-	}
+	
 
 }

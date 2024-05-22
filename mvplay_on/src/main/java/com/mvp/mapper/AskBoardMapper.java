@@ -21,5 +21,7 @@ public interface AskBoardMapper {
 	//관리자 답변 달기
 	public void addAnswer(AskBoardVO avo);
 	
+	//관리자 답변 삭제
+	public void deleteAnswer(AskBoardVO avo);
 
 }

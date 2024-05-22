@@ -29,7 +29,8 @@
 				<c:forEach items="#{mvList}" var="mvList">
 					<tr>
 						<td><c:out value="${mvList.movieId}"></c:out></td>
-						<td><c:out value="${mvList.movieTitle}"></c:out></td>
+						<td><a class="move" href='<c:out value="${mvList.movieId}"/>'>
+						    <c:out value="${mvList.movieTitle}"></c:out></a></td>
 						<td><c:out value="${mvList.cate1}"></c:out></td>
 						<td><fmt:formatDate value="${mvList.movieDate}"
 								pattern="yyyy-MM-dd" /></td>
@@ -45,7 +46,7 @@
 					<input type="text" name="keyword"
 						value='<c:out value="${page.cri.keyword}"></c:out>'>
 					<input type="hidden" name="pageNum"
-						value='<c:out value="${page.cri.pageNum }"></c:out>'>
+						value='<c:out value="${page.cri.pageNum}"></c:out>'>
 					<input type="hidden" name="amount" value='${page.cri.amount}'>
 					<button class='btn search_btn'>검 색</button>
 				</div>
@@ -62,7 +63,7 @@
 				<!-- 페이지 번호 -->
 				<c:forEach begin="${page.pageStart}" end="${page.pageEnd}" var="num">
 					<li class="page_btn ${page.cri.pageNum == num ? "active":""}">
-						<a href="/admin/movieList?pageNum=${num}&amount=10">${num}</a>
+						<a href="${num}">${num}</a>
 					</li>
 				</c:forEach>
 				<!-- 다음 버튼 -->
@@ -92,7 +93,7 @@
 		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
 		    
 		    moveForm.submit();
-		}
+		});
 		
 		let searchForm = $('#searchForm');
 
@@ -109,6 +110,17 @@
 			
 			searchForm.find("input[name='pageNum']").val("1");
 			searchForm.submit();
+			
+		});
+		
+		// 영화 상세 페이지 이동
+		$(".move").on("click", function(e){
+			
+			e.preventDefault();
+			
+			moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr('href') + "'>");
+			moveForm.attr("action", "/admin/movieDetail");
+			moveForm.submit();
 			
 		});
 	</script>
