@@ -182,16 +182,6 @@ public class AdminController {
 		
 	}
 	
-	//관리자-구매 대여 관리GET
-	@GetMapping("/purchase")
-	public void getAdminPurchase() {
-		logger.info("get admin purchase");
-	}
 	
-	//관리자-구매 대여 관리GET
-	@GetMapping("/subscribe")
-	public void getAdminSubscribe() {
-		logger.info("get admin subscribe");
-	}
 
 }
