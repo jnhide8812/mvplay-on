@@ -45,7 +45,20 @@ public class AdminPurchaseController {
 	
 	//관리자-구매 대여 관리GET
 	@GetMapping("/subscribe")
-	public void getAdminSubscribe() {
+	public void getAdminSubscribe(Criteria cri, Model model) {
 		logger.info("get admin subscribe");
+		
+		List<PurchaseViewVO> boardList = apMapper.adminSelectSubscribeList(cri);
+		
+		if(!boardList.isEmpty()) {
+			model.addAttribute("list", boardList);	
+		}else {
+			model.addAttribute("listCheck", "empty");
+		}
+		
+		//페이지 이동 인터페이스 데이터
+		model.addAttribute("pageMaker", new PageVO(cri, apMapper.subscribeGetTotal(cri)));
+		
+		
 	}
 }
