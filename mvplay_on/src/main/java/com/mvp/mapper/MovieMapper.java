@@ -6,8 +6,8 @@ import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 
 public interface MovieMapper {
-	/*구매 정보
-	public MovieVO movieGetDetail(int movieId);*/ 
+	//구매 정보
+	public MovieVO movieBuyDetail(int movieId);
 	
 	//영화 검색
 	public List<MovieVO> getMovieList();

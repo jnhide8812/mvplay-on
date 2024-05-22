@@ -28,6 +28,12 @@
 	
 	<!-- 댓글 -->
 	<div>
+		<div>
+			<!-- 결제 폼(결제 페이지로 데이터 전송용) -->
+			<form action="/purchase/${user.userId}" method="get" class="purchase_form">
+				<input type="hidden" name="movieId" value="${movieInfo.movieId }">
+			</form>
+		</div>
 		<ul>
 		<c:forEach items="${replyList}" var="replyList">
 			<li>
