@@ -25,9 +25,20 @@
 					<!-- 관리자 계정 -->
 						<li class="manager"><a href="/admin/main">관리자 페이지</a></li>
 					</c:if>
+					<c:forEach items="${list}" var="list">
 						<li><a id="logout_button">로그아웃</a></li>
-						<li><a href="/member/mypage">My</a></li>
+						<li><a href="member/myPage">My</a></li>
+					</c:forEach>
 					</ul>
 				</c:if>
 			</div>
 		</header>
+<script>
+	/*mypage이동*/
+	$(".move").on("click", function(e){
+		e.preventDefault();
+		moveForm.append("<input type='hidden' name="userId" value='"+ $(this).attr("href")+"'>"");
+		moveForm.attr("action", "member/myPage");
+		moveForm.submit();
+	});
+</script>

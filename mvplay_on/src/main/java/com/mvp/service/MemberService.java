@@ -9,4 +9,7 @@ public interface MemberService {
 	
 	//로그인
 	public MemberVO memberLogin(MemberVO member) throws Exception;
+	
+	//마이페이지
+	public MemberVO memberGetDetail(int userId) throws Exception;
 }

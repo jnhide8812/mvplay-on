@@ -9,4 +9,7 @@ public interface MemberMapper {
 	
 	//로그인
 	public MemberVO memberLogin(MemberVO member);
+	
+	//마이페이지
+	public MemberVO memberGetDetail(int userId);
 }
