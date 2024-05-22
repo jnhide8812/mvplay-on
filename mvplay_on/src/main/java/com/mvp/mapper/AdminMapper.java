@@ -12,5 +12,7 @@ public interface AdminMapper {
 	public List<MovieVO> movieList(Criteria cri) throws Exception;
 	
 	public int getMovieTotal(Criteria cri) throws Exception;
+	
+	public MovieVO getMovieDetail(int movieId) throws Exception;
 
 }

@@ -44,5 +44,14 @@
           
       </select>
 
+	  <!-- 영화 상세 페이지 -->
+	  <select id="getMovieDetail" resultType="com.mvp.model.MovieVO">
+
+		  select movieId, movieTitle, poster, movieContent, movieUrl,
+		      cate1, cate2, movieCheck, buyPrice, rentalPrice, movieDate
+		      from movie where movieId = #{movieId}
+
+	  </select>
+
 
 </mapper>

@@ -94,7 +94,7 @@ public class AdminController {
 	
 	//영화 추가 POST
 	@PostMapping("/movieInsert")
-	public void postMovieInsert(MovieVO mvo) throws Exception {		
+	public void postMovieInsert(MovieVO mvo, String poster) throws Exception {		
 		logger.info("postMovieInsert");
 		
 		adService.movieInsert(mvo);
@@ -108,16 +108,8 @@ public class AdminController {
 		
 		String uploadFolder = "C:\\temp";
 		
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
-		Date date = new Date();
-		
-		String str = sdf.format(date);
-		
-		String datePath = str.replace("-", File.separator);
-		
 		/* 폴더 생성 */
-		File uploadPath = new File(uploadFolder, datePath);
+		File uploadPath = new File(uploadFolder);
 		
 		if(uploadPath.exists() == false) {
 			uploadPath.mkdirs();
@@ -127,11 +119,6 @@ public class AdminController {
 			
 			/* 파일 이름 */
 			String uploadFileName = multipartFile.getOriginalFilename();
-			
-			/* uuid 적용 파일 이름 */
-			String uuid = UUID.randomUUID().toString();
-			
-			uploadFileName = uuid + "_" + uploadFileName;
 			
 			/* 파일 위치, 파일 이름을 합친 File 객체 */
 			File saveFile = new File(uploadPath, uploadFileName);
@@ -160,6 +147,19 @@ public class AdminController {
 		PageVO page = new PageVO(cri, total);
 		
 		model.addAttribute("page", page);
+		
+	}
+	
+	//영화 상세 페이지 GET
+	@GetMapping("/movieDetail")
+	public void getMovieDetail(int movieId, Criteria cri, Model model) throws Exception {
+		
+		
+		// 목록 페이지 조건 정보
+		model.addAttribute("cri", cri);
+		
+		// 상세 페이지 정보
+		model.addAttribute("movieInfo", adService.getMovieDetail(movieId));
 		
 	}
 	
