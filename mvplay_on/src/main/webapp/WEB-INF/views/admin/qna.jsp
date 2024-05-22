@@ -151,7 +151,7 @@
 	<div class="search_wrap">
 		<form id="searchForm" action="/admin/qna" method="get">
 			<div class="search_input">
-				<input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword }'/>">
+				제목 검색 : <input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword }'/>">
 				<input type="hidden" name="pageNum" value="<c:out value='${pageMaker.cri.pageNum}'/>">
 				<input type="hidden" name="amount" value="<c:out value='${pageMaker.cri.amount}'/>">
 				<button class="btn search_btn">검 색</button>

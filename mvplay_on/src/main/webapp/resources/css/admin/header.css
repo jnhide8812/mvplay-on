@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(style.css);     /* 글씨체랑 기본 설정 */
+/* @import url(style.css);     글씨체랑 기본 설정 */
 
 *{margin: 0; padding:0;}
 a{text-decoration: none;}

@@ -84,6 +84,25 @@ public class AdminController {
       return "redirect:/admin/qna";
       
    }
+   
+   	//관리자 문의 게시판 답변 삭제
+   	@PostMapping("/deleteAnswer")
+   	public String postDeleteAnswer(AskBoardVO avo, Criteria cri, Model model,RedirectAttributes rttr) {
+      logger.info("deleteAnswer post");
+      System.out.println("삭제_포스트 매핑 안됨?");
+      System.out.println("cri:::"+ cri);
+      askService.deleteAnswer(avo);
+      
+      //업데이트한 정보 가져오기
+      AskBoardVO vo = askService.select(avo.getAno());
+      model.addAttribute("vo", vo);
+      
+      //1-> result로 변경 xml int로 변경, etc....
+      rttr.addFlashAttribute("answer_delete_result", 1);
+      return "redirect:/admin/qna";
+      
+   }
+   
 	
 	
 	//영화 추가 GET

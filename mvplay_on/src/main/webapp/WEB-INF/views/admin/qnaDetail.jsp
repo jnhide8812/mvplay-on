@@ -57,10 +57,24 @@
 }
 .answerDiv{
 	min-height: 100px; 
+	font-size: 16px;
+	/* background-color: yellow; */
 	
 }
-</style>
+/* ck 에디터 -div */
+.ckeditor{
+	width: 700px;
+	height: 500px;
+	font-size: 14px;
+}
 
+
+</style>
+<script src="https://cdn.ckeditor.com/ckeditor5/26.0.0/classic/ckeditor.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -98,28 +112,36 @@
 		<c:if test="${vo.answerCk =='O'}">
 		<table class="table_answer">
 			<tr>
-				<td colspan="2"><div class="answerDiv"><c:out value="${vo.answer }"/></div></td>
+				<td>
+					<div class="answerDiv"><pre>${vo.answer }</pre></div>
+				</td>
 			</tr>
 			<tr>
-				<td>답변일 : <c:out value="${vo.answerDate }"/></td><td>삭제 버튼 예정임</td>
+				<td>답변일 : <c:out value="${vo.answerDate }"/></td>
 			</tr>
 		</table>
 		</c:if>
 	</div>
 	
+	<br>
+	
 	<!-- 답변 달기 -->
-	<div>
-		<form action="/admin/qnaDetail" method="post">
+	<div class="ckeditor">
+		<form id="answerForm">
 			<input type="hidden" name="ano" value='<c:out value="${vo.ano }" />'>
-			<input type="text" name="answer">
-			<input type="submit" value="답변 달기/수정하기">
+			<textarea name="answer" id="answer_editor">${vo.answer }</textarea>
+			<button id="addAnserBtn">답변 달기/수정하기</button>
+			<button id="deleteAnser">삭제하기</button>		
 		</form>
+		
+		
+		
+		
 	</div>
 	
 	</div>
 	<!-- 답변 영역 끝 : qna_answer_area -->
 	
-
 	
 	
 	
@@ -132,6 +154,66 @@
 <footer>
 	<%@ include file="../includes/admin/footer.jsp"%>
 </footer>
+<script>
+//CK에디터
+ClassicEditor
+	.create(document.querySelector('#answer_editor'))
+	.catch(error=>{
+		console.error(error);
+});
+
+
+var answerForm = $("#answerForm");
+/*답변 달기 버튼*/
+$("#addAnserBtn").on("click", function(e){
+	e.preventDefault();
+	answerForm.attr("action", "/admin/qnaDetail");
+	answerForm.attr("method", "post");
+	answerForm.submit();
+});
+
+
+
+
+//답변 삭제 버튼
+$("#deleteAnser").on("click", function(e){
+	e.preventDefault();
+	answerForm.attr("action", "/admin/deleteAnswer");
+	answerForm.attr("method", "post");
+	answerForm.submit();
+});
+
+
+
+ 
+ 
+ 
+</script>
+
+
+<!-- 시간 나면 페이징 처리 예정 : 검색어와 타입 넣어야함
+참고 : boardEx => read.jsp 
+
+//댓글-삭제 버튼 클릭
+$(".replyDelete").click(function(){
+	self.location = "/board/replyDelete?bno=${read.bno}"
+			+ "&page=${scri.page}"
+			+ "&perPageNum=${scri.perPageNum}"
+			+ "&searchType=${scri.searchType}"
+			+ "&keyword=${scri.keyword}"
+			+ "&rno=" + $(this).attr("data-rno");
+});
+
+//약간 수정 - 참고 
+self.location = "/admin/qnaDetail?ano=${vo.ano}"
+	+ "&pageNum=${cri.pageNum}"
+	+ "&amount=${cri.amount}"
+	+ "&ano="?????;
+});
+
+	
+ -->
+
 
 </body>
 </html>
