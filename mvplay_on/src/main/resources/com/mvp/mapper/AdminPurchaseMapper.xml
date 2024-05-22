@@ -9,7 +9,7 @@
 		<![CDATA[
 
 			SELECT * FROM(
-			    SELECT /*+ INDEX_DESC(purchase SYS_C008503)*/ ROWNUM AS rn, userId, movieId,
+			    SELECT /*+ INDEX_DESC(purchase SYS_C008544)*/ ROWNUM AS rn, id, userId, movieId,
 			    (SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieName,
 			    startDate, expiredDate,rentalPrice, buyPrice
 			    FROM purchase
@@ -23,6 +23,8 @@
 	             rownum <= #{pageNum} * #{amount}
 	            )
 	        where rn > (#{pageNum} - 1) * #{amount}
+	        
+	        
 	      ]]>
 		
 	</select>
