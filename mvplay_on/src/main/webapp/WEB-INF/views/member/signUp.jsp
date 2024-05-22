@@ -36,50 +36,39 @@
 				<ul class="sign">
 					<li>
 						<div class="mail_wrap">
-							<label>이메일</label>
-							<div class="mail_input_box">
-								<input class="mail_input" name="userId">
+							<div class="mail_input">
+								<input class="sinput" name="userId" placeholder="이메일(example@gmail.com)">
 							</div>
-							<span class="final_mail_ck">이메일(example@gmail.com)</span> <span
-								class="mail_input_box_warn"></span>
-							<div class="mail_check_wrap">
-								<div class="mail_check_input_box" id="mail_check_input_box_false">
-									<input class="mail_check_input" disabled="disabled" />
+							<div class="mail_check">
+								<div class="mail_check_input" id="mail_cehck_input_false">
+									<input class="mail_ckinput" disabled="disabled" placeholder="인증번호">
 								</div>
-								<div class="mail_check_button">
+								<div class="mail_button">
 									<span>인증번호 전송</span>
 								</div>
 								<div class="clearfix"></div>
-								<span id="mail_check_input_box_warn"></span>
+								<span id="mail_check_input_warn"></span>
 							</div>
 						</div>
 					</li>
 					<li>
 						<div class="pw_wrap">
-							<label>비밀번호</label>>
-							<div class="pw_input_box">
-								<input class="pw_input" name="upw" />
+							<div class="pw_input">
+								<input class="sinput" name="upw" placeholder="비밀번호">
 							</div>
-							<span class="final_pw_ck">비밀번호를 입력해주세요.</span>
-						</div>
-						<div class="pwck_wrap">
-							<div class="pwck_name">비밀번호 확인</div>
-							<div class="pwck_input_box">
-								<input class="pwck_input">
+							<div class="pwck_wrap">
+								<div class="pwck_input">
+									<input class="sinput" placeholder="비밀번호 확인">
+								</div>
+								<span class="pwck_input_re1">비밀번호가 일치합니다.</span>
+								<span class="pwck_input_re2">비밀번호가 일치하지 않습니다.</span>
 							</div>
-							<span class="final_pwck_ck">비밀번호 확인을 입력해주세요.</span> <span
-								class="pwck_input_re_1">비밀번호가 일치합니다.</span> <span
-								class="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
 						</div>
 					</li>
 					<li>
 						<div class="birth_wrap">
-							<div class="birthday">
-								<label>생년월일</label>
-							</div>
 							<div class="form_section_content">
-								<input name="ubirth" autocomplete="off" readonly="readonly" class="birth_input">
-								<span class="birth_warn">생년월일을 선택해주세요.</span>
+								<input name="ubirth" autocomplete="off" readonly="readonly" class="sinput" placeholder="생년월일">
 							</div>
 						</div>
 					</li>
@@ -89,7 +78,7 @@
 						</div>
 					</li>
 					<li>
-						<p>결제 정보요? 충분히 눌러보시고 입력해도 늦지 않아요.</p>
+						<p class="cnt">결제 정보요? 충분히 눌러보시고 입력해도 늦지 않아요.</p>
 					</li>
 				</ul>
 			</form>
