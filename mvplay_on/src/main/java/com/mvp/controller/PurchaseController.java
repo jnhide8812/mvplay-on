@@ -30,7 +30,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-@RequestMapping()
+@RequestMapping
 @RequiredArgsConstructor
 public class PurchaseController {
     private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
@@ -57,17 +57,19 @@ public class PurchaseController {
         this.iamportClient = new IamportClient();
     }
 
-    // 개별 구매
+    // 개별 구매 페이지 이동
     @GetMapping("/purchase/vod")
-    public void purchasePageGET(int movieId, Model model) {
-        System.out.println("movieId 후:" + movieId);
-        logger.info("vod");
+    public String purchasePageGET(int movieId, Model model) {
+    	
+    	System.out.println("movieId" + movieId);
+    	logger.info("vod");
         logger.info("purchasePageGET()........." + movieId);
 
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
        
+        return "/movie/movieDetail";
     }
-
+    //소장
     @PostMapping("/purchase/vod")
     public String purchasePagePost(PurchaseVO pvo,MemberVO member, HttpServletRequest request) {
         System.out.println("구매 상세페이지 이동" + pvo);

@@ -20,10 +20,19 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 		return apMapper.adminSelectPurchaseList(cri);
 	}
 
-
 	@Override
 	public int boardGetTotal(Criteria cri) {
 		return apMapper.boardGetTotal(cri);
+	}
+
+	@Override
+	public List<PurchaseViewVO> adminSelectSubscribeList(Criteria cri) {
+		return apMapper.adminSelectSubscribeList(cri);
+	}
+
+	@Override
+	public int subscribeGetTotal(Criteria cri) {
+		return apMapper.subscribeGetTotal(cri);
 	}
 
 }

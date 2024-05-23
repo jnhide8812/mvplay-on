@@ -19,7 +19,7 @@ public class PurchaseViewVO {
 	
 	//구독권
 	private String goods;		//구독권 종류'b', 'p'
-	private int subscrivePrice; //
+	private int subscribePrice; //
 	
 	
 }

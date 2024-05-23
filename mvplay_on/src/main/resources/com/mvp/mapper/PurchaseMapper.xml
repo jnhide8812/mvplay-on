@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mvp.mapper.PurchaseMapper">
   	
-  	<!-- 개별 구매 주문 처리 -->
+  	<!-- 구매 영화 정보 -->
   	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
 		select userId, movieId, buyPrice,rentalPrice from purchase where movieId = #{movieId}
 	</select>

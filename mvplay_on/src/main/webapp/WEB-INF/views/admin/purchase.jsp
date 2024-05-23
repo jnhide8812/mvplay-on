@@ -114,22 +114,21 @@
 
 <div class="admin_content_wrap">
 
-	<h2>문의 게시판</h2><br>
+	<h2>구매 대여 관리</h2><br>
 	<div class="wrap">
 		<!-- 게시물 있음 -->
 		<div class="qboard_area">
 		<c:if test="${listCheck !='empty' }">
 			<table class="table_purchase">
 				<tr>
-					<th>번호</th><th>유저</th><th>영화아이디</th><th class="table_title">영화제목</th><th>대여가</th><th>소장가</th><th>구매일</th><th>만료일</th>
+					<th>주문번호</th><th>유저</th><th class="table_title">영화제목</th><th>대여가</th><th>소장가</th><th>구매일</th><th>만료일</th>
 				</tr>
 
 				<!-- 목록 시작 -->
 				<c:forEach items="${list }" var="list">
 					<tr>
-						<td>${list.rn }</td>
+						<td>${list.id }</td>
 						<td>${list.userId }</td>
-						<td>${list.movieId }</td>
 						<td>${list.movieName }</td>
 						<td>${list.rentalPrice }</td>
 						<td>${list.buyPrice }</td>

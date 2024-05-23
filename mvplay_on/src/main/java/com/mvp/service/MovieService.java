@@ -6,9 +6,9 @@ import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 
 public interface MovieService {
-	/*개별 구매 
-	public MovieVO movieGetDetail(int movieId);
-	*/
+	//개별 구매 
+	public MovieVO movieBuyDetail(int movieId);
+	
 			
 	//영화 총 갯수
 	public int movieGetTotal(Criteria cri);

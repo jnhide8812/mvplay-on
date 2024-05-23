@@ -19,12 +19,12 @@ public class MovieServiceImpl implements MovieService {
 	private MovieMapper mapper;
 	
 	
-	/*개별 구매
+	//개별 구매
 	@Override
-	public MovieVO movieGetDetail(int movieId) {
-		System.out.println("(service)movieGetDetail......." + movieId);
-		return mapper.movieGetDetail(movieId);
-	}*/
+	public MovieVO movieBuyDetail(int movieId) {
+		System.out.println("(service)movieBuyDetail......." + movieId);
+		return mapper.movieBuyDetail(movieId);
+	}
 		
 	//영화 총 갯수
 	@Override

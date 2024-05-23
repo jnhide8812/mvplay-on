@@ -7,9 +7,8 @@
 	<!-- 관리자 개별 구매/대여 관리 리스트 출력-->
 	<select id="adminSelectPurchaseList" resultType="com.mvp.model.PurchaseViewVO">
 		<![CDATA[
-
 			SELECT * FROM(
-			    SELECT /*+ INDEX_DESC(purchase SYS_C008503)*/ ROWNUM AS rn, userId, movieId,
+			    SELECT /*+ INDEX_DESC(purchase SYS_C008544)*/ ROWNUM AS rn, id, userId, movieId,
 			    (SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieName,
 			    startDate, expiredDate,rentalPrice, buyPrice
 			    FROM purchase
@@ -24,15 +23,46 @@
 	            )
 	        where rn > (#{pageNum} - 1) * #{amount}
 	      ]]>
-		
 	</select>
 	
-	<!-- 내역 게시글 개수 like로 할지 =이퀄로 할지 결정할 것 -->
+	<!-- 구매 내역 cri 토탈 계산 -->
 	<select id="boardGetTotal" resultType="int">
 		SELECT COUNT(*) FROM purchase
 		<if test="keyword !=null">
 			WHERE userId LIKE '%'|| #{keyword} || '%' 
 		</if>
 	</select>
+	
+	<!-- 관리자 구독 내역 리스트 출력 -->
+	<select id="adminSelectSubscribeList" resultType="com.mvp.model.PurchaseViewVO">
+		<![CDATA[
+			SELECT * FROM(
+			    SELECT /*+ INDEX_DESC(SUBSCRIBEPAYMENT SYS_C008545)*/ ROWNUM AS rn, id, userId,
+			    goods, subscribePrice, startDate, expiredDate
+			    FROM SUBSCRIBEPAYMENT
+			    WHERE
+			]]>         
+            <if test="keyword != null">
+                userId LIKE '%'||#{keyword}||'%' AND
+            </if>
+            
+	      <![CDATA[        
+	             rownum <= #{pageNum} * #{amount}
+	            )
+	        where rn > (#{pageNum} - 1) * #{amount}
+	      ]]>
+	</select>
+	
+	<!-- 관리자 구독 내역 cri 토탈 계산 -->
+	<select id="subscribeGetTotal" resultType="int">
+		SELECT COUNT(*) FROM SUBSCRIBEPAYMENT
+		<if test="keyword !=null">
+			WHERE userId LIKE '%'|| #{keyword} || '%' 
+		</if>
+	</select>
+	
+	
+	
+	
 	
   </mapper>
