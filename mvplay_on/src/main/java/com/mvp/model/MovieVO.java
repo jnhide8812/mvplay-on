@@ -39,6 +39,9 @@ public class MovieVO {
 	
 	//영화 주소(유튜브 링크)(movieUrl)
 	private String movieUrl;
+	
+	//영화 평점(rating)
+	private int rating;
 
 	//Getter-Setters
 	public String getMovieTitle() {
@@ -137,13 +140,21 @@ public class MovieVO {
 		this.movieUrl = movieUrl;
 	}
 
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	
 	//toString
 	@Override
 	public String toString() {
 		return "MovieVO [movieTitle=" + movieTitle + ", movieId=" + movieId + ", poster=" + poster + ", movieContent="
 				+ movieContent + ", cate1=" + cate1 + ", cate2=" + cate2 + ", movieCheck=" + movieCheck + ", buyPrice="
 				+ buyPrice + ", rentalPrice=" + rentalPrice + ", movieTotalpay=" + movieTotalpay + ", movieDate="
-				+ movieDate + ", movieUrl=" + movieUrl + "]";
-	}	
+				+ movieDate + ", movieUrl=" + movieUrl + ", rating=" + rating + "]";
+	}
 	
 }

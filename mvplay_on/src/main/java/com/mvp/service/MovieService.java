@@ -8,16 +8,12 @@ import com.mvp.model.MovieVO;
 public interface MovieService {
 	//개별 구매 
 	public MovieVO movieBuyDetail(int movieId);
-	
 			
 	//영화 총 갯수
 	public int movieGetTotal(Criteria cri);
 	
 	//영화 리스트
 	public List<MovieVO> movieList();
-	
-	//영화 정보 가져오기
-	public List<MovieVO> movieInfo(int movieId);
 	
 	//영화 조회
 	public MovieVO movieGetDetail(int movieId);

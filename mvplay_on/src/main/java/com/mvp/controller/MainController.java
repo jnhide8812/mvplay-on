@@ -59,19 +59,14 @@ public class MainController {
 		
 	}
 	
-	/*
-	//영화 디테일 확인
-	@GetMapping("movieDetail")
-	public void movieDetailGET(int movieId, Criteria cri, Model model)throws JsonProcessingException {
-		logger.info("영화 정보..." + movieId);
-			
-		ObjectMapper mapper = new ObjectMapper();
-			
-		model.addAttribute("cri",cri);
-		model.addAttribute("movieInfo",movieService.movieGetDetail(movieId));
-		
+	@GetMapping("/movie/movieDetail")
+	public void movieGetInfoGET(int movieId, Model model) throws JsonProcessingException {
+		logger.info("영화 정보를 보는 페이지에 접속 중..."+movieId);
+		model.addAttribute("movieInfo", movieService.movieGetDetail(movieId));
 	}
-	*/
+	
+	
+	/*영화 디테일 페이지 접속
 	@RequestMapping(value = "/movie/movieDetail", method = RequestMethod.GET)
 	public void movieDetailGET(@RequestParam("movieId") int movieId, Model model) {
 		
@@ -80,6 +75,6 @@ public class MainController {
 		MovieVO vo = movieService.movieGetDetail(movieId);
 		model.addAttribute("movieDetail",vo);
 		
-	}
+	}*/
 	
 }

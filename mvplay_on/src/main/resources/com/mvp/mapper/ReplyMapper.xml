@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvp.mapper.ReplyMapper">
+
+	<!-- rno:replyNum  bno:movieId -->
+
+	<!-- 댓글 조회 -->
+	<select id="readReply" resultType="com.mvp.model.ReplyVO">
+		select replyNum, replyContent, userId, regDate
+		from reply where movieId = #{movieId}	
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="writeReply">
+	 insert into
+	  reply(movieId, replyContent, userId)
+	    values(#{movieId}, #{content}, #{userId})
+	</insert>
+	
+	<!-- 댓글 수정 -->
+	<update id="replyUpdate">
+	   update reply
+	       set replyContent = #{replyContent}
+	       where replyNum = #{replyNum}
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="replyDelete">
+	   delete from reply
+	    where replyNum = #{replyNum}
+	</delete>
+
+</mapper>
