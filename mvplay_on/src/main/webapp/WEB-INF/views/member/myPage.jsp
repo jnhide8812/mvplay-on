@@ -38,7 +38,9 @@
 						</c:if>
 					</div>
 				</li>
-				<li><a href="sub_button">이용권 구매 ></a></li>
+				<li>
+					<button id="sub_btn" class="pbtn">이용권 변경></button>
+				</li>
 			</ul>
 			<ul class="final_date">
 				<li>
@@ -56,18 +58,19 @@
 				</li>
 				<li>
 					<div class="pw_change">
-						<a href="/member/findPass">비밀번호 변경></a>
+						<button id="pw_btn" class="pbtn">비밀번호 변경></button>
 					</div>
 				</li>
 			</ul>
 		</fieldset>
 		<div class="ask_button_wrap">
-			<div class="ask_button">
-				<a href="#">문의하기</a>
-			</div>
+			<button id="boardBtn" class="btn">문의하기</button>
 		</div>
 	</div> 
 	<%@include file="../includes/footer.jsp" %>
 </div>
+<script>
+
+</script>
 </body>
 </html>
