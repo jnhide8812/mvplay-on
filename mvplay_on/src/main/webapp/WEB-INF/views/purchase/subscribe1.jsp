@@ -38,6 +38,7 @@
          <div class="btn_section_effect">
         
             <button id="subscribeBtn111" type="button" class="btn">구독 시작하기</button>
+        	<button type="submit">다음</button>
         </div>  
         
         

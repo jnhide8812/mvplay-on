@@ -29,6 +29,7 @@
         <div class="btn_section_effect">
         
             <button id="subscribeBtn" type="button" class="btn">결제 주기 선택</button>
+       		<button type="submit">다음</button>
         </div>  
     </form>
       
