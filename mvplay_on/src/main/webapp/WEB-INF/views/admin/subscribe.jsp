@@ -23,7 +23,7 @@
 	
 }
 .table_purchase th{
-	min-width: 70px;
+	min-width: 100px;
 	background-color: #f7f7f7;
 	text-align: center;
 	height: 46px;
@@ -121,7 +121,7 @@
 		<c:if test="${listCheck !='empty' }">
 			<table class="table_purchase">
 				<tr>
-					<th>주문번호</th><th>유저</th><th class="table_title">영화제목</th><th>대여가</th><th>구매일</th><th>만료일</th>
+					<th>주문번호</th><th>유 저</th><th class="table_title">구 독 권</th><th>대 여 가</th><th>구 독 일</th><th>만 료 일</th>
 				</tr>
 
 				<!-- 목록 시작 -->
@@ -129,10 +129,13 @@
 					<tr>
 						<td>${list.id }</td>
 						<td>${list.userId }</td>
-						<td>${list.goods }</td>
-						<td>${list.SUBSCRIBEPRICE }</td>
+						<td><c:if test="${list.goods eq 'b'}">베이직</c:if>
+							<c:if test="${list.goods eq 'p'}">프리미엄</c:if>
+						</td>
+						<td>${list.subscribePrice }</td>
 						<td><fmt:formatDate value="${list.startDate}" pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${list.expiredDate}" pattern="yyyy-MM-dd" /></td>
+						
 
 					</tr>
 				</c:forEach>

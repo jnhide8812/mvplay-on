@@ -121,7 +121,7 @@
 		<c:if test="${listCheck !='empty' }">
 			<table class="table_purchase">
 				<tr>
-					<th>주문번호</th><th>유저</th><th class="table_title">영화제목</th><th>대여가</th><th>소장가</th><th>구매일</th><th>만료일</th>
+					<th>주문번호</th><th>유저</th><th class="table_title">영화제목</th><th>대여가</th><th>소장가</th><th>구매일</th><th>만료일</th><th>환불하기</th>
 				</tr>
 
 				<!-- 목록 시작 -->
@@ -134,6 +134,7 @@
 						<td>${list.buyPrice }</td>
 						<td><fmt:formatDate value="${list.startDate}" pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${list.expiredDate}" pattern="yyyy-MM-dd" /></td>
+						<td><a href="admin/refund">환불하기</a></td>
 
 					</tr>
 				</c:forEach>

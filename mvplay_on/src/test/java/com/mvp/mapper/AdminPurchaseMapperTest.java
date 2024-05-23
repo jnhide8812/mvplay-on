@@ -29,7 +29,7 @@ private static final Logger logger = LoggerFactory.getLogger(AdminPurchaseMapper
 		//mapper.boardGetTotal(cri);
 		//logger.info("....:  "+mapper.boardGetTotal(cri));
 		
-		//mapper.adminSelectSubscribeList(cri);
+		mapper.adminSelectSubscribeList(cri);
 		logger.info("....:  "+mapper.subscribeGetTotal(cri));
 		
 		

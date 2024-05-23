@@ -51,7 +51,8 @@ public class AdminPurchaseController {
 		List<PurchaseViewVO> boardList = apMapper.adminSelectSubscribeList(cri);
 		
 		if(!boardList.isEmpty()) {
-			model.addAttribute("list", boardList);	
+			model.addAttribute("list", boardList);
+			logger.info("list  :::"+ boardList);
 		}else {
 			model.addAttribute("listCheck", "empty");
 		}
