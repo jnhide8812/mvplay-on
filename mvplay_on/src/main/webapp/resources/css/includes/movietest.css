@@ -5,9 +5,11 @@
 @charset "UTF-8";
 .admin_wrap{
 	width: 100%;
+}
+
 body {
     margin: 0
-}
+	}
 
 @font-face {
     font-display: block;
