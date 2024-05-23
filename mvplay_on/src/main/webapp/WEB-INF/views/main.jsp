@@ -34,7 +34,7 @@
 				<ul>
 				
 					<li>
-					<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
+					<a class="move" href="${movieList.movieId}">
 						<!--<c:out value="${movieList.poster}"></c:out>-->
 						<c:out value="${movieList.movieTitle}"></c:out> <!-- 임시 앵커 -->
 						<img alt="" src="${movieList.poster}">

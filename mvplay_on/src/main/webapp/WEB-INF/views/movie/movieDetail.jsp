@@ -25,7 +25,6 @@
 		<%@include file="../includes/nav.jsp" %>
 		<!-- 메인 content -->
 		<div class="main_content">
-		<!-- 영화 신작 -->
 			<div class="">
 				<div class="">
 					<img alt="" src="${movieInfo.poster}">
