@@ -57,7 +57,7 @@ input.search_icon{
 	width: 20px;
 	height: 20px;
 	margin: 5px 10px;
-	background: url(/icon/search.png)0px 0px no-repeat;
+	background: url(../../icon/search.png)0px 0px no-repeat;
 	border: none;
 }
 /*로그인/회원가입*/
@@ -74,14 +74,14 @@ ul.l_area li {
 .login_area a{
 	color: #ffffff;
 	font-size: 15px;
-	padding: 10px 5px 0px 5px;
-	font-weight: 600;
+	padding: 6px;
+	font-weight: 500;
 	cursor: pointer;
 }
 
 li.join_button {
 	width: 86px;
-	height: 30px;
+	height: 32px;
 	background-color: #f82f62;
 	border: 1px solid #f82f62;
 	border-radius: 4px;
@@ -97,16 +97,40 @@ ul.after_login{
 	 justify-content: center;
 	 text-align: center;
 	 margin-left: 50px;
+	 align-items: center;
 }
 ul.after_login li {
 	margin-left: 15px;
 }
-ul.after_login a {
+button.lout{
+	background-color: #000000;
+	border: none;
 	color: #ffffff;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 500;
-	cursor: pointer;
 }
 li.manager a{
-	font-size: 17px;
+	width: 114px;
+	height: 32px;
+	background-color: #F82F62;
+	border: 1px solid #DE2A60;
+	border-radius: 5px;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 400;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+button.move{
+	width: 32px;
+	height: 32px;
+	background-color: #F82F62;
+	border: 1px solid #DE2A60;
+	border-radius: 50%;
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 500;
+	padding: 2px;
+	text-align: center;
+	cursor: pointer;
 }

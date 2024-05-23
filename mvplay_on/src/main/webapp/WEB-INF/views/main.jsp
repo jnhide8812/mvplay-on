@@ -53,26 +53,13 @@
 				<h1>ranking</h1>
 			</div>
 		</div>
-		<!-- 푸터 -->
+		<!-- FOOTER -->
 		<%@include file="includes/footer.jsp" %>
 
 </div>  <!-- id="container" -->
 <script>
 let moveForm = $('#moveForm');
 
-	/*로그아웃 버튼 적용 */
-	$("#logout_button").click(function() {
-		//alert("버튼작동");
-		$.ajax({
-			type : "POST", 
-			url : "/member/logout.do",
-			success : function(data) {
-				//alert("로그아웃 성공");
-				document.location.reload();
-			}
-		}); //ajax 
-	});
-	
 	/* 영화 조회 */
 	$(".move").click(function(e) {
 		e.preventDefault();
