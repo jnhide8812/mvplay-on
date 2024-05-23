@@ -38,31 +38,97 @@
 				<div>
 					<div>
 						<!-- 영화 제목 -->
-						<h1><input type="text" id="movieTitle" name="movieTitle" value="${movieInfo.movieTitle}" readonly="readonly" /></h1>
+						<h1><input type="text" id="movieTitle" name="movieTitle" value="${movieInfo.movieTitle}" disabled="disabled" /></h1>
 					</div>
 					<div>
+					<ul>
 						<!-- 영화 평점 -->
-						<input type="text" id="movieRating" name="movieRating" value='<c:out value="${movieInfo.rating}"></c:out>' readonly="readonly" />
+						<li>
+						<label>평균 </label>
+						<c:out value="${movieInfo.rating}"></c:out>
+						<label>점</label>
 						<!-- 영화 개봉일 -->
-						<input name="regDate" value='<c:out value="${movieInfo.regDate}"></c:out>' pattern='yyyy-MM-dd' />
+						<fmt:formatDate value="${movieInfo.movieDate}" pattern="yyyy년"></fmt:formatDate>
 						<!-- 영화 장르 -->
-						<input name="movieTag" value='<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>' />
+						<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>
+						</li>
+					</ul>
 					</div>
 					<div>
 						<!-- 영화 줄거리 -->
-						<input name="movieContent" value='<c:out value="${movieInfo.movieContent}"></c:out>' />
+						<input name="movieContent" value='<c:out value="${movieInfo.movieContent}"></c:out>' disabled="disabled" />
 					</div>
 					<div>
 						<button id="subscribeBtn" class="btn">구독하기</button>
 						<button id="buyBtn" class="btn buy_btn">구매하기</button>
 					</div>
-				</div>
 			</div>
+		</div>
+	</div>
+		<div id="reply">
+				 <ol class="replyList">
+				  <c:forEach items="${repList}" var="repList">
+				   <li>
+				    <p>
+				    <span class="glyphicon glyphicon-user"></span>
+				     ${repList.writer}
+				     (<fmt:formatDate value="${repList.regDate}" pattern="yyyy-MM-dd" />)
+				    </p>
+				    
+				    <p>${repList.content}</p>
+				    
+				    <p>                
+					   <button type="button" class="replyUpdate btn btn-warning btn-xs" data-rno="${repList.rno}">수정</button>
+					   <button type="button" class="replyDelete btn btn-danger btn-xs" data-rno="${repList.rno}">삭제</button>
+					   
+					   <script>					    
+					    $(".replyDelete").click(function(){
+					     self.location = "/movie/replyDelete?movieId=${read.movieId}"
+					      + "&replyNum=" + $(this).attr("data-replyNum");   
+					    });         
+					   </script>
+					</p>
+				    
+				  </li>
+				 </c:forEach>     
+				</ol>
+				
+				<section class="replyForm">
+				<form role="form" method="post" autocomplete="off" class="form-horizontal">
+			
+				<input type="hidden" id="replyNum" name="replyNum" value="${read.replyNum}" readonly="readonly" />
+				
+				<div class="form-group">
+					<label for="writer" class="col-sm-2 control-label">작성자</label>
+					<input type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly">
+				</div>
+				 
+				<div class="form-group">
+					<label for="content" class="col-sm-2 control-label">댓글 내용</label>
+					<div class="col-sm-10">
+						<textarea id="replyContent" name="replyContent" class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="repSubmit btn btn-success">작성</button>
+					</div>
+					<script>
+						var formObj = $(".replyForm form[role='form']");
+						        
+						$(".repSubmit").click(function(){
+						 formObj.attr("action", "replyWrite");
+						 formObj.submit();
+						});
+					</script>
+				</div>
+			</form>
+		</section>
 		</div>
 		<!-- 푸터 -->
 		<%@include file="../includes/footer.jsp" %>
-
-</div>  <!-- id="container" -->
+	</div>  <!-- id="container" -->
 <script>
 </script>
 </body>

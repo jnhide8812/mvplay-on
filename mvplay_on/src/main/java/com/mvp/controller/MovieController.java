@@ -28,6 +28,7 @@ public class MovieController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	
+	
 	/*
 	//영화 디테일 확인
 	@GetMapping("movieDetail")

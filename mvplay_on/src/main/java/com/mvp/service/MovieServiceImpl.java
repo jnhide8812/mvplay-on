@@ -47,12 +47,6 @@ public class MovieServiceImpl implements MovieService {
 		System.out.println("movieGetDetail"+movieId);
 		return mapper.movieGetDetail(movieId);
 	}
-	
-	//영화 정보 가져오기
-	@Override
-	public List<MovieVO> movieInfo(int movieId) {
-		return mapper.movieGetInfo(movieId);
-	}
 		
 	/*영화 평점
 	@Override
