@@ -20,4 +20,10 @@ public interface AskBoardService {
 	
 	//관리자 답변 삭제
 	public void deleteAnswer(AskBoardVO avo);
+	
+	//게시글 등록
+	public void enroll(AskBoardVO board);
+	
+	/*게시판 목록*/
+	public List<AskBoardVO> getList();
 }

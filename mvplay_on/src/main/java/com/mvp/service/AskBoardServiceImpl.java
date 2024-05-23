@@ -41,7 +41,17 @@ public class AskBoardServiceImpl implements AskBoardService{
 		
 	}
 
+	/*게시글 등록*/
+	@Override
+	public void enroll(AskBoardVO board) {
+		askMapper.enroll(board);
+		
+	}
+	
+	@Override
+	public List<AskBoardVO> getList() {
+		return askMapper.getList();
+	}
 	
 	
-
 }

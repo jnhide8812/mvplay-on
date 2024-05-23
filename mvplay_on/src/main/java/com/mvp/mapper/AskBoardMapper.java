@@ -6,8 +6,9 @@ import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
 
 public interface AskBoardMapper {
-	//게시글 작성
 	
+	//게시글 등록
+	public void enroll(AskBoardVO avo);
 	
 	//게시글 조회
 	public AskBoardVO select(int ano);
@@ -23,5 +24,8 @@ public interface AskBoardMapper {
 	
 	//관리자 답변 삭제
 	public void deleteAnswer(AskBoardVO avo);
+	
+	//게시글 목록
+	public List<AskBoardVO> getList();
 
 }
