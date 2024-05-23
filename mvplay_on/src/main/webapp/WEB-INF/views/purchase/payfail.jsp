@@ -11,7 +11,7 @@
 <script type="text/javascript" src="http://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 </head>
 <body>
-<h2>구매 컨텐츠</h2>
+<h2>결제에 실패하였습니다</h2>
 <form id="movie_move">
 <div class="content_wrap">
     <div class="content_subject"></div>

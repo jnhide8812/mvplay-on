@@ -20,4 +20,14 @@
 		insert into purchase(userId, movieId, rentalPrice, expiredDate) values(#{userId}, #{movieId}, #{rentalPrice}, sysdate +7)
 	</insert>
 	
+	  <!-- 구독 정보  -->
+    <select id="getSubscriptionInfo" parameterType="int" resultType="com.mvp.model.SubscribtionVO">
+        SELECT * FROM subscription WHERE Id = #{Id}
+    </select>
+	<!-- 구독 정보 디비 저장  -->
+    <insert id="enrollSubscription" parameterType="com.mvp.model.SubscribtionVO">
+        INSERT INTO subscription (startDate, expiredDate, price, userId)
+        VALUES (#{startDate}, #{expiredDate}, #{price}, #{userId})
+    </insert>
+	
   </mapper>

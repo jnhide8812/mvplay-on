@@ -1,7 +1,5 @@
 package com.mvp.service;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mvp.mapper.MovieMapper;
 import com.mvp.mapper.PurchaseMapper;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.SubscribtionVO;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
@@ -18,9 +17,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	@Autowired
 	private PurchaseMapper purchasemapper;
-	
-	
-	
 	
 	//구매
 	@SuppressWarnings("unused")
@@ -45,6 +41,16 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	return purchasemapper.enrollPurchase_2(pvo);
 	}
+	//구독 정보
+	 @Override
+	 public SubscribtionVO getSubscriptionInfo(int id) {
+	        return purchasemapper.getSubscriptionInfo(id);
+	    }
+	 //구독 디비 대입
+	 @Override
+	 public int enrollSubscription(SubscribtionVO svo) {
+		 return purchasemapper.enrollSubscription(svo);
+	    }
 	
 	
 	

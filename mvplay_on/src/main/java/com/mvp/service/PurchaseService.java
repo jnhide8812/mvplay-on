@@ -2,6 +2,7 @@ package com.mvp.service;
 
 
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.SubscribtionVO;
 
 public interface PurchaseService {
 	
@@ -13,4 +14,10 @@ public interface PurchaseService {
 			
 	//개별 구매(대여) 영화 purchase table에 등록
 	public int enrollPurchase_2(PurchaseVO pvo);
+	
+	 // 구독 정보 가져오기
+    public SubscribtionVO getSubscriptionInfo(int id);
+    
+    // 구독 정보 등록
+    public int enrollSubscription(SubscribtionVO svo);
 }

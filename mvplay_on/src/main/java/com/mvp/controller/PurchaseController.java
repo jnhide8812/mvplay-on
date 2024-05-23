@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvp.model.MemberVO;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
@@ -27,7 +28,6 @@ import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequestMapping
@@ -67,7 +67,7 @@ public class PurchaseController {
 
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
        
-        return "/movie/movieDetail";
+        return "redirect:/movie/purchaseDetail"; 
     }
     //소장
     @PostMapping("/purchase/vod")
@@ -101,7 +101,52 @@ public class PurchaseController {
     }
 
     @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
-    public String payFail() {
-        return "purchase/payFail"; // payFail.jsp가 있는 경로를 반환
+    public void payFail() {
+      
     }
+//======구독=====
+    // 첫 번째 구독 선택 페이지 매핑
+    @GetMapping("/purchase/subscribe1")
+    public void subscribe1Page(HttpServletRequest request) {
+    HttpSession session = request.getSession();
+       logger.info("purchase");
+    }
+   
+    // 2번째 구독 옵션 선택 페이지 매핑
+   
+    @GetMapping("/purchase/subscribe2")
+    public void subscribe2Page(HttpServletRequest request,Model model) {
+    	 HttpSession session = request.getSession();
+    	logger.info("get purchase2");	
+    }
+   
+    @PostMapping("/purchase/subscribe2")
+    public void postSubscribe2Page(SubscribtionVO svo){
+    	logger.info("post purchase2");
+    	logger.info("svo :"+svo);	
+    }
+   
+    // 3번째 결제 완료 페이지 매핑
+    @GetMapping("/purchase/subscribe3")
+    public void subscribe3Page(HttpServletRequest request) {
+    	HttpSession session = request.getSession();
+    }
+    @PostMapping("/purchase/subscribe3")
+    public void postSubscribe3Page(SubscribtionVO svo){
+    	
+    	logger.info("post purchase3");
+    	logger.info("svo :"+svo);	
+    	
+    	
+    	
+    }
+
+
+
+
 }
+
+
+
+
+
