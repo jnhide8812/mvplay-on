@@ -113,10 +113,12 @@ public class AdminController {
 	
 	//영화 추가 POST
 	@PostMapping("/movieInsert")
-	public void postMovieInsert(MovieVO mvo, String poster) throws Exception {		
+	public String postMovieInsert(MovieVO mvo, String poster) throws Exception {		
 		logger.info("postMovieInsert");
 		
 		adService.movieInsert(mvo);
+		
+		return "redirect:/admin/movieList";
 	}
 	
 	// 영화 포스터 업로드
@@ -157,6 +159,8 @@ public class AdminController {
 	@GetMapping("/movieList")
 	public void getMovieList(Criteria cri, Model model) throws Exception {
 		
+		logger.info("getMovieList");
+		
 		List mvList = adService.movieList(cri);
 		
 		model.addAttribute("mvList", mvList);
@@ -169,10 +173,11 @@ public class AdminController {
 		
 	}
 	
-	//영화 상세 페이지 GET
-	@GetMapping("/movieDetail")
+	//영화 상세,수정 페이지 GET
+	@GetMapping({"/movieDetail", "/movieUpdate"})
 	public void getMovieDetail(int movieId, Criteria cri, Model model) throws Exception {
 		
+		logger.info("getMovieDetail");
 		
 		// 목록 페이지 조건 정보
 		model.addAttribute("cri", cri);
@@ -182,6 +187,40 @@ public class AdminController {
 		
 	}
 	
+	@PostMapping("/movieUpdate")
+	public String postMovieUpdate(MovieVO mvo, RedirectAttributes rttr, String movieTitle) throws Exception {
+		
+		logger.info("postMovieUpdate");
+		
+		System.out.println("movieTitle : " + movieTitle);
+		
+		int result = adService.movieUpdate(mvo);
+		
+		if (result == 1) {
+			rttr.addFlashAttribute("update_result", result);
+			return "redirect:/admin/movieList";
+		} else {
+			result = -1;
+			rttr.addFlashAttribute("update_result", result);
+			return "redirect:/admin/movieUpdate";
+		}
+	}
 	
+	@PostMapping("/movieDelete")
+	public String postMovieDelete(int movieId, RedirectAttributes rttr) throws Exception {
+
+		logger.info("postMovieDelete");
+		
+		int result = adService.movieDelete(movieId);
+		
+		if (result == 1) {
+			rttr.addFlashAttribute("delete_result", result);
+			return "redirect:/admin/movieList";
+		} else {
+			result = -1;
+			rttr.addFlashAttribute("delete_result", result);
+			return "redirect:/admin/movieUpdate";
+		}
+	}
 
 }

@@ -37,5 +37,15 @@ public class AdminServiceImpl implements AdminService {
 	public MovieVO getMovieDetail(int movieId) throws Exception {
 		return admapper.getMovieDetail(movieId);
 	}
+	
+	@Override
+	public int movieUpdate(MovieVO mvo) throws Exception {
+		return admapper.movieUpdate(mvo);
+	}
+	
+	@Override
+	public int movieDelete(int movieId) throws Exception {
+		return admapper.movieDelete(movieId);
+	}
 
 }
