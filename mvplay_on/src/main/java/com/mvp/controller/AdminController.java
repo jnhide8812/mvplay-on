@@ -127,7 +127,8 @@ public class AdminController {
 		
 		logger.info("postUploadAjax");
 		
-		String uploadFolder = "C:\\temp";
+		//String uploadFolder = "C:\\temp";
+		String uploadFolder = "C:\\Users\\LYG\\Desktop\\Git\\mvplay-on\\mvplay_on\\src\\main\\webapp\\resources\\img";
 		
 		/* 폴더 생성 */
 		File uploadPath = new File(uploadFolder);
