@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
-<link rel="stylesheet" href="resources/css/includes/header.css">
+<link rel="stylesheet" href="/resources/css/includes/header.css">
 		<header>
 			<div class="top_content">
 				<form action="searchc.do" class="sc">
@@ -41,6 +41,9 @@
 			<input type="hidden" name="userId" value="${cri.userId}">
 		</form>
 <script>
+
+var moveForm = $("#moveForm");
+
 /*로그아웃 버튼 적용 */
 $("#logout_button").click(function() {
 	//alert("버튼작동");
@@ -54,8 +57,11 @@ $("#logout_button").click(function() {
 	}); //ajax 
 });
 /*마이페이지 이동*/
-$("#myinfo").on("click",function(e){
-	e.preventDefault();
-	$("#moveForm").submit();
+$("#myinfo").click(function(){
+   
+   location.href="/member/myPage"
+   
 });
+
+
 </script>

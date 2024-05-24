@@ -22,7 +22,7 @@ public class BoardController {
 	@Autowired
 	private AskBoardService askbservice;
 	
-	/*게시판 등록 페이지 접속*/
+	/*게시판 목록 페이지 접속*/
 	@GetMapping("/list")
 	public void AsksboardListGET(Model model) {
 		log.info("게시판 목록 페이지 진입");
@@ -31,7 +31,7 @@ public class BoardController {
 	
 	/*게시판 등록 페이지 접속*/
 	@GetMapping("/enroll")
-	public void boardEnrollGET() {
+	public void AskboardEnrollGET() {
 		log.info("게시판 등록 페이지 진입");
 	}
 	
