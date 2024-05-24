@@ -301,22 +301,22 @@
 		let moveForm = $("#moveForm");
 		let m_Update = $("#m_Update");
 		
-		// 수정 버튼
+		// 수정 버튼 클릭 시
 		$("#updateBtn").on("click", function(e){
-			e.preventDefault();
-			m_Update.find("input type='hidden'").remove();
-			m_Update.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">');
-			m_Update.submit();
+		    e.preventDefault();
+		    m_Update.find("input[name='movieId']").remove(); // movieId input 제거
+		    m_Update.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">'); // movieId input 재추가
+		    m_Update.submit(); // 폼 전송
 		});
-		
-		// 삭제 버튼
+
+		// 삭제 버튼 클릭 시
 		$("#deleteBtn").on("click", function(e){
-			e.preventDefault();
-			moveForm.find("input type='hidden'").remove();
-			moveForm.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">');
-			moveForm.attr("action", "/admin/movieDelete");
-			moveForm.attr("method", "post");
-			moveForm.submit();
+		    e.preventDefault();
+		    moveForm.find("input[name='movieId']").remove(); // movieId input 제거
+		    moveForm.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">'); // movieId input 재추가
+		    moveForm.attr("action", "/admin/movieDelete"); // 액션 지정
+		    moveForm.attr("method", "post"); // 메서드 지정
+		    moveForm.submit(); // 폼 전송
 		});
 		
 		/* 삭제 결과 경고창 */
