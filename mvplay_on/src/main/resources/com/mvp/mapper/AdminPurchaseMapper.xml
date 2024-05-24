@@ -61,6 +61,23 @@
 		</if>
 	</select>
 	
+	<!-- 관리자 환불 전단계 1.영화 구매 정보 불러오기 -->
+	<select id="adminSelectPurchaseDetail" resultType="com.mvp.model.PurchaseViewVO">
+		<![CDATA[
+			SELECT /*+ INDEX_DESC(purchase SYS_C008544)*/ ROWNUM AS rn, id, userId, movieId,
+				(SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieName,
+			startDate, expiredDate,rentalPrice, buyPrice
+			FROM purchase where id=#{id}
+		]]>         
+	
+	</select>
+	
+	<!-- 관리자 환불 2. 환불 신청에 insert -->
+	<insert id="adminRefundInsert">
+		INSERT INTO refund (id, refundPrice, userId, refundStatus) 
+		values(#{id}, #{refundPrice}, #{userId}, '환불신청')
+	
+	</insert>
 	
 	
 	

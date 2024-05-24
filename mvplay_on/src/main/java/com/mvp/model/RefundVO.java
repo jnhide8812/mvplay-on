@@ -2,33 +2,22 @@ package com.mvp.model;
 
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class RefundVO {
+	//환불 주문번호
+	private int refundId;
+	//개별 구매주문번호
+	private int id;
+	//환불 금액
+	private int refundPrice;
+	//유저 아이디
 	private String userId;
-	private Date refundDay;
-	private Date refundClear;
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public Date getRefundDay() {
-		return refundDay;
-	}
-	public void setRefundDay(Date refundDay) {
-		this.refundDay = refundDay;
-	}
-	public Date getRefundClear() {
-		return refundClear;
-	}
-	public void setRefundClear(Date refundClear) {
-		this.refundClear = refundClear;
-	}
-	@Override
-	public String toString() {
-		return "RefundVO [userId=" + userId + ", refundDay=" + refundDay + ", refundClear=" + refundClear + "]";
-	}
-	
+	//환불 신청일
+	private Date refundDate;
+	//환불 상태
+	private String refundStatus;
 	
 	
 }

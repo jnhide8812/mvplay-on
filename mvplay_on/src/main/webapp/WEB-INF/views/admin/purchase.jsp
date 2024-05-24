@@ -134,7 +134,15 @@
 						<td>${list.buyPrice }</td>
 						<td><fmt:formatDate value="${list.startDate}" pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${list.expiredDate}" pattern="yyyy-MM-dd" /></td>
-						<td><a href="admin/refund">환불하기</a></td>
+						<td>
+							<c:if test="${list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
+							<c:if test="${list.buyPrice ==0}">-</c:if>
+							
+							<%-- 만료일 없는 기준으로 할지 소장가가 0 아닌 걸로 할지 
+							<c:if test="${empty list.expiredDate}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
+							<c:if test="${!empty list.expiredDate}">-</c:if> --%>
+							
+						</td>
 
 					</tr>
 				</c:forEach>

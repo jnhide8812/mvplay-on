@@ -35,4 +35,9 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 		return apMapper.subscribeGetTotal(cri);
 	}
 
+	@Override
+	public PurchaseViewVO adminSelectPurchaseDetail(int id) {
+		return apMapper.adminSelectPurchaseDetail(id);
+	}
+
 }

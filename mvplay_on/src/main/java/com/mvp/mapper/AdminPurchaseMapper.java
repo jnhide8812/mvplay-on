@@ -19,4 +19,8 @@ public interface AdminPurchaseMapper {
 	//관리자 구독 내역 cri 토탈 계산 
 	public int subscribeGetTotal(Criteria cri);
 	
+	//관리자 환불 전단계 1.영화 구매 정보 불러오기 --id:개별구매 주문번호
+	public PurchaseViewVO adminSelectPurchaseDetail(int id);
+	
+	
 }
