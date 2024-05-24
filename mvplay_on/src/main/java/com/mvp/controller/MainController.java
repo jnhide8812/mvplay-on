@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,12 +60,20 @@ public class MainController {
 		
 	}
 	
+	/*
 	@GetMapping("/movie/movieDetail")
 	public void movieGetInfoGET(int movieId, Model model) throws JsonProcessingException {
 		logger.info("영화 정보를 보는 페이지에 접속 중..."+movieId);
 		model.addAttribute("movieInfo", movieService.movieGetDetail(movieId));
-	}
+	}*/
 	
+	@GetMapping("/movie/movieDetail")
+	public void movieGetInfoGET(int movieId,Model model) {
+		logger.info("movie Id: " + movieId);
+		MovieVO vo = movieService.movieGetDetail(movieId);
+		model.addAttribute("movieInfo", vo);
+		
+	}
 	
 	/*영화 디테일 페이지 접속
 	@RequestMapping(value = "/movie/movieDetail", method = RequestMethod.GET)
