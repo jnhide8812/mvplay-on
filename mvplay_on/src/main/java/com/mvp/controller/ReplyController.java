@@ -30,7 +30,7 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 		
 		rttr.addAttribute("movieId",vo.getMovieId());
 		
-		return "redirect:/movie/movieDetail";	
+		return "redirect:/movie/movieDetail?movieId="+vo.getMovieId();	
 	}
 	
 	// 댓글 수정 POST

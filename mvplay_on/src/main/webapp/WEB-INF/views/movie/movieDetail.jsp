@@ -119,6 +119,7 @@
 						        
 						$(".repSubmit").click(function(){
 						 formObj.attr("action", "replyWrite");
+						 //formObj.attr("action", "movieDetail");
 						 formObj.submit();
 						});
 					</script>
