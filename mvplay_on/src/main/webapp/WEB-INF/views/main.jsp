@@ -41,7 +41,8 @@
 					</a>
 					<c:out value="${movieList.movieTitle}"></c:out><br>
 					<c:out value="${movieList.cate1}"></c:out>, <c:out value="${movieList.cate2}"></c:out><br>
-					<!--평점 구간 <c:out value="${movieRating}"></c:out><br>-->
+					<!--평점 구간 -->
+					<c:out value="${movieList.rating}"></c:out><br>
 					</li>
 					
 				</ul>

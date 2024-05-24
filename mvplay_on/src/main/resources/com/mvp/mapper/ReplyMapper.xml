@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글 수정 -->
 	<update id="replyUpdate">
 	   update reply
-	       set replyContent = #{replyContent}
+	       set replyContent = #{content}
 	       where replyNum = #{replyNum}
 	</update>
 	
