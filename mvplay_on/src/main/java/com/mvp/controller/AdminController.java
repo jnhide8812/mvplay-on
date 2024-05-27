@@ -61,14 +61,19 @@ public class AdminController {
 		
 		
 	}
-	//관리자 문의 게시글 상세 조회 GET
+
+	// 관리자 문의 게시글 상세 조회 GET
 	@GetMapping("/qnaDetail")
-	public void getAdminQnaDetail(int ano, Model model) {
+	public void getAdminQnaDetail(int ano, Criteria cri, Model model) {
 		logger.info("qna admin Detail get");
 		AskBoardVO vo = askService.select(ano);
 		model.addAttribute("vo", vo);
+
+		// 페이지 이동 인터페이스 데이터
+		model.addAttribute("pageMaker", new PageVO(cri, askService.boardGetTotal(cri)));
+
 	}
-	
+
    //관리자-문의 게시판 답변 달기
    @PostMapping("/qnaDetail")
    public String postAnswerBoard(AskBoardVO avo, Model model,RedirectAttributes rttr) {

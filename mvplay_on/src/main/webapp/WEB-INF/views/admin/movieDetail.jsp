@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>mvplay_on</title>
-<!-- <link rel="stylesheet" href="/resources/css/admin/movieDetail.css"> -->
+<link rel="stylesheet" href="/resources/css/admin/movieDetail.css">
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 </head>

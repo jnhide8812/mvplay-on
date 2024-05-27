@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
-.admin_content_wrap {
-	width: 80%;
-	float: left;
-	min-height:700px;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.admin_content_subject > span {
+a {
+	text-decoration: none;
+}
+
+.admin_content_wrap {
+	width: 50%;
+	float: left;
+	height: 80%;
+}
+
+.admin_content_subject>span {
 	margin-left: 30px;
 	display: inline-block;
 	color: black;
@@ -14,8 +23,8 @@
 	font-weight: bolder;
 }
 
-.ck-content {						/* ckeditor 높이 */
-    height: 170px;
+.ck-content { /* ckeditor 높이 */
+	height: 150px;
 }
 
 .form_section_content span {
