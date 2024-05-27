@@ -7,6 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="container">
@@ -30,9 +34,27 @@
 				</div>
 				<button class="sbtn">등록</button>
 			</form>
-			
 		</div>
 	</div>
 </div>
+<script>
+    $(document).ready(function(){
+    
+ 		let result = '<c:out value="${result}"/>';
+    	
+ 		checkAlert(result);
+ 		
+ 		function checkAlert(result){
+ 			if(result === ''){
+ 				return;
+ 			}
+ 			
+ 			if(result === "enroll success"){
+ 				alert("등록이 완료되었습니다.");
+ 			}
+ 		}
+    });
+ 
+</script>
 </body>
 </html>

@@ -56,6 +56,8 @@ $("#logout_button").click(function() {
 		}
 	}); //ajax 
 });
+
+
 /*마이페이지 이동*/
 $("#myinfo").click(function(){
    

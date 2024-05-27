@@ -106,16 +106,22 @@ button.pbtn{
 	color: #E92F62;
 	cursor: pointer;
 }
-button.abtn{
+
+.ask_button_wrap {
+	margin-top: 20px;
+}
+.ack_btn {
 	width: 250px;
 	height: 50px;
 	background-color: #F82F62;
 	border: 1px solid #F82F62;
 	border-radius: 5px;
+	cursor: pointer;
+}
+.ask_btn a{
 	color: #ffffff;
 	text-align: center;
 	font-size: 22px;
 	font-weight: 500;
-	margin-top: 20px;
-	cursor: pointer;
+
 }
