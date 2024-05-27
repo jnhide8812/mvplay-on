@@ -103,6 +103,7 @@
   </style>
 </head>
 <body>
+
 <div class="wrapper_div">
 		<div class="subject_div">
 			리뷰 등록
@@ -135,7 +136,6 @@
 			<a class="cancel_btn">취소</a><a class="enroll_btn">등록</a>
 		</div>
 		
-		
 	</div>
 	
 	<script>
@@ -151,7 +151,6 @@
 		const userId = '${userId}';
 		//const rating = $("select").val();
 		const content = $("textarea").val();
-
 		const data = {
 				movieId : movieId,
 				userId : userId,

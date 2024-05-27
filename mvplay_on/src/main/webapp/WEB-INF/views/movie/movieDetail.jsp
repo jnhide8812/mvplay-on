@@ -167,6 +167,10 @@ $(".reply_button_wrap").on("click", function(e){
 	
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
+	
+	console.log("userId : "+${member.userId});
+	console.log("movieId : "+${movieInfo.movieId});
+	
 /*
 	$.ajax({
 		data : {
