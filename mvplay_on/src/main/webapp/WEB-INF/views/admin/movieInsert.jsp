@@ -53,7 +53,7 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-						<textarea name="movieContent" id="movieContext_textarea"></textarea>
+						<textarea name="movieContent" id="movieContent_textarea"></textarea>
 					</div>
 				</div>
 				<br>
@@ -143,13 +143,18 @@
 	</footer>
 	<script>
 	
+	    ClassicEditor
+		.create(document.querySelector('#movieContent_textarea'))
+		.catch(error=>{
+			console.error(error);
+	    });
+	
 		// insertBtn 버튼 요소를 가져오기
 	    var insertBtn = document.getElementById("insertBtn");
 	
 	    // 버튼에 클릭 이벤트를 추가
 	    insertBtn.addEventListener("click", function(event) {
 	        var a1 = document.getElementById("m_Insert");
-			alert(a1.movieDate);
 	        a1.submit();
 	    });
 
@@ -195,13 +200,9 @@
             input.readOnly = true;
         };
 		
-		ClassicEditor
-			.create(document.querySelector('#movieContent_textarea'))
-			.catch(error=>{
-				console.error(error);
-		});
+
 		
-		$(function() {
+        $(function() {
 			
 			$("input[name='movieDate']").datepicker(config);
 			

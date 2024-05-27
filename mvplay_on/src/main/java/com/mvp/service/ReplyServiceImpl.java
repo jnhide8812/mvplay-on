@@ -24,7 +24,7 @@ public class ReplyServiceImpl implements ReplyService {
 	
 	//댓글 작성
 	@Override
-	public void writeReply(ReplyVO vo) {
+	public void replyWrite(ReplyVO vo) {
 		mapper.writeReply(vo);
 	}
 	
