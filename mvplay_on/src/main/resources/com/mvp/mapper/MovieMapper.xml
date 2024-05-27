@@ -9,7 +9,6 @@
 	<select id="movieBuyDetail" resultType="com.mvp.model.MovieVO">
 		 select movieId, poster, movieTitle, movieDate, cate1, cate2, buyPrice, rentalPrice from movie where movieId = #{movieId} 
 	</select> 
-  
   	
   	<!-- 영화 리스트 -->
   	<select id="getMovieList" resultType="com.mvp.model.MovieVO">
@@ -29,5 +28,9 @@
         WHERE m.movieId = #{movieId}
 	</select>  
 	
+	<select id="getMovieIdTitle" resultType="com.mvp.model.MovieVO">
+		select movieId, movieTitle from movie
+		where movieId = #{movieId}
+	</select>
 	
   </mapper>

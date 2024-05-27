@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
-<link rel="stylesheet" href="../resources/css/maintest.css">
+<link rel="stylesheet" href="../resources/css/movietest.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -167,7 +167,7 @@ $(".reply_button_wrap").on("click", function(e){
 	
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
-
+/*
 	$.ajax({
 		data : {
 			userId : userId,
@@ -179,16 +179,16 @@ $(".reply_button_wrap").on("click", function(e){
 
 			if(result === '1'){
 				alert("이미 등록된 리뷰가 존재 합니다.")
-			} else if(result === '0'){
-				let popUrl = "/replyWrite/" + userId + "?movieId=" + movieId;
+			} else if(result === '0'){ */
+				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
 				console.log(popUrl);
 				let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
 				
 				window.open(popUrl,"리뷰 쓰기",popOption);							
-			}				
+			/*}				
 			
 		}
-	});			
+	});	*/		
 
 	
 });

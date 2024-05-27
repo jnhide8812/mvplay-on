@@ -37,15 +37,13 @@ h1 {
   	padding : 10px;
   }
   .reply_button_wrap button{
-	background-color: #365fdd;
+	background-color: #f82f62;
     color: white;
     font-weight: bold;
     font-size: 15px;
     padding: 5px 12px;
     cursor: pointer;  
-  }
-  .reply_button_wrap button:hover{
-  	background-color: #1347e7;
+    border-radius: 40px;
   }
   
   /* 리뷰 영역 */
@@ -132,14 +130,14 @@ h1 {
   /* 리뷰 수정 삭제 버튼 */
   .update_reply_btn{
  	font-weight: bold;
-    background-color: #b7b399;
+    background-color: #f82f62;
     display: inline-block;
     width: 40px;
     text-align: center;
     height: 20px;
     line-height: 20px;
     margin: 0 5px 0 30px;
-    border-radius: 6px;
+    border-radius: 40px;
     color: white; 
     cursor: pointer;
   }
