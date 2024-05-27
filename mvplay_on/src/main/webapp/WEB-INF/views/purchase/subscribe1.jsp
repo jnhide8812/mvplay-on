@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h2>구독권을 선택해 주세요</h2>
-	<form id="subscribe_choice"  action="${pageContext.request.contextPath}/movie/subscribeDetail" method="post">
+	<form id="subscribe_choice"  action="/movie/subscribeMain" method="post">
 	 <input type="hidden" name="action" value="step1">		
 	
       <div class="form_section_effect">
@@ -39,19 +39,20 @@
             <ul>
                 <li><input type="radio" name="period" value="1개월"> 1개월</li>
                
-                <li>${priceMonthly}원</li>
+             
                 
                 <li><input type="radio" name="period" value="12개월"> 12개월 16% 절약</li>
                
-                <li>월 ${priceMonthlyDiscounted}원 꼴</li>
-                <li>${priceYearly}원</li>
+               
             </ul>
         </div>
-        
+        <div id="selectedPrice"></div>
         <ul>
+        
+        
 	<li>결제방법을 등록해주세요</li>
 	<li>결제 정보만 입력하면 바로 감상할 수 있어요</li>
-	
+		
 	 <c:choose>
         <c:when test="${period == '1개월'}">
             <li><input type="radio" name="payment" value="card"> 카드결제</li>

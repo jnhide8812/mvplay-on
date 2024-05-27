@@ -117,14 +117,16 @@ public class PurchaseController {
        logger.info("purchase");
     }
     
-    @PostMapping("/movie/subscribeDetail")
+    @PostMapping("/purchase/subscribe1")
     public String handleSubscription(HttpServletRequest request, SubscribtionVO svo, Model model) {
         HttpSession session = request.getSession();
         String action = request.getParameter("action");
-        logger.info("POST movie/purchaseDetail - Action: " + action);
+        logger.info("POST movie/subscribeMain - Action: " + action);
 
         String goods = request.getParameter("goods");
         String period = request.getParameter("period");
+        
+        System.out.println("goods"+goods+" : " + period);
 
         if (goods != null && period != null) {
             session.setAttribute("goods", goods);
@@ -167,11 +169,28 @@ public class PurchaseController {
             newSubscription.setUserId(userId);
             purchaseService.enrollSubscription(newSubscription);
             System.out.println("enroll");
-            return "redirect:/movie/subscribeDetail.jsp";
+            return "redirect:/movie/subscribeMain";
+            
         } else {
-            return "redirect:/purchase/payfail.jsp";
+        	
+            return "redirect:/purchase/payfail";
         }
     }
+    @GetMapping("/movie/subscribeMain")
+    public void GetsubscribeMainPage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String userId = "daewoo"; // 임시 로그인
+        session.setAttribute("userId", userId);
+           logger.info("매핑 되랏");
+        }
+    
+	@PostMapping("/movie/subscribeMain")
+	public String PostsubscribeMainPage(HttpServletRequest request, Model model) {
+		String goods = (String) request.getSession().getAttribute("goods");
+		model.addAttribute("goods", goods);
+		return "redirect:/movie/subscribeMain"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
+	}
+    
    
     /* 2번째 구독 옵션 선택 페이지 매핑
    
