@@ -12,13 +12,37 @@ import com.mvp.model.Criteria;
 public class AskBoardServiceImpl implements AskBoardService{
 
 	@Autowired
-	AskBoardMapper askMapper;
+	private AskBoardMapper askMapper;
 	
+	/*게시글 등록*/
+	@Override
+	public void enroll(AskBoardVO board) {
+		askMapper.enroll(board);	
+	}
+	
+	/*게시판 목록*/
+	@Override
+	public List<AskBoardVO> getList() {
+		return askMapper.getList();
+	}
+	
+	/*게시판 조회*/
 	@Override
 	public AskBoardVO select(int ano) {
 		return askMapper.select(ano);
 	}
-
+	
+	/*게시글 수정*/
+	@Override
+	public int modify(AskBoardVO askboard) {
+		return askMapper.modify(askboard);
+	}
+	/*게시글 삭제*/
+	@Override
+	public int delete(int ano) {
+		return askMapper.delete(ano);
+	}
+	/*게시판 페이징*/
 	@Override
 	public List<AskBoardVO> selectList(Criteria cri) {
 		return askMapper.selectList(cri);
@@ -41,17 +65,9 @@ public class AskBoardServiceImpl implements AskBoardService{
 		
 	}
 
-	/*게시글 등록*/
-	@Override
-	public void enroll(AskBoardVO board) {
-		askMapper.enroll(board);
-		
-	}
+
 	
-	@Override
-	public List<AskBoardVO> getList() {
-		return askMapper.getList();
-	}
+
 	
 	
 }

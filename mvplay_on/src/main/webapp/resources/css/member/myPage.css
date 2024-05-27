@@ -46,24 +46,35 @@ ul, li {
 	font-weight: 500;
 	color: #ffffff;
 }
-fieldset {
-	width: 780px;
-	height: 170px;
-	background-color: #121314;
-	border: 1px solid #1B1B1C;
+.inf_wrap {
+	
 	border-radius: 4px;
 	margin-bottom: 10px;
+	width: 780px;
+}
+fieldset.buy{
+	border: 1px solid #1B1B1C;
+	background-color: #121314;
+	width: 780px;
+	height: 150px;
+	padding: 0 6px;
+}
+fieldset.own{
+	border: 1px solid #1B1B1C;
+	background-color: #121314;
+	width: 780px;
+	height: 100px;
+	padding: 0 6px;
 }
 legend{
-	width: 100%;
-	height: 45px;
 	background-color: #1B1B1C;
+	width: 780px;
+	height: 40px;
 	color: #A4A4A4;
 	font-size: 16px;
 	display: flex;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
-	padding-left: 10px;
 }
 nav.ticket {
 	display: flex;
@@ -108,20 +119,16 @@ button.pbtn{
 }
 
 .ask_button_wrap {
-	margin-top: 20px;
+	margin-top: 30px;
 }
-.ack_btn {
-	width: 250px;
-	height: 50px;
-	background-color: #F82F62;
-	border: 1px solid #F82F62;
-	border-radius: 5px;
-	cursor: pointer;
-}
-.ask_btn a{
+a.ask_btn{
 	color: #ffffff;
 	text-align: center;
 	font-size: 22px;
 	font-weight: 500;
-
+	background-color: #F82F62;
+	border: 1px solid #F82F62;
+	border-radius: 5px;
+	cursor: pointer;
+	padding: 10px 100px;
 }
