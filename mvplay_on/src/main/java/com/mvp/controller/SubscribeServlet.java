@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,10 +22,14 @@ public class SubscribeServlet extends HttpServlet {
     @Autowired
     private PurchaseService purchaseService;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+    protected void doPost(HttpServletRequest request, HttpServletResponse response,SubscribtionVO svo) throws IOException {
+    	HttpSession session = request.getSession();
+    	SubscribtionVO sub = purchaseService.getSubscriptionInfo(0);
         
         String action = request.getParameter("action");
+        System.out.println("dopost");
+        
+        session.setAttribute("action", action);
         //세션 값 물고다니게 하기
         if ("step1".equals(action)) {
             handleStep1(request, response, session);

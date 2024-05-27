@@ -1,6 +1,8 @@
 package com.mvp.controller;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -107,12 +109,71 @@ public class PurchaseController {
 //======구독=====
     // 첫 번째 구독 선택 페이지 매핑
     @GetMapping("/purchase/subscribe1")
+   
     public void subscribe1Page(HttpServletRequest request) {
     HttpSession session = request.getSession();
+    String userId = "daewoo"; // 임시 로그인
+    session.setAttribute("userId", userId);
        logger.info("purchase");
     }
+    
+    @PostMapping("/movie/subscribeDetail")
+    public String handleSubscription(HttpServletRequest request, SubscribtionVO svo, Model model) {
+        HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+        logger.info("POST movie/purchaseDetail - Action: " + action);
+
+        String goods = request.getParameter("goods");
+        String period = request.getParameter("period");
+
+        if (goods != null && period != null) {
+            session.setAttribute("goods", goods);
+            session.setAttribute("period", period);
+
+            int priceMonthly = 0;
+            int priceYearly = 0;
+            int priceMonthlyDiscounted = 0;
+
+            if ("b".equals(goods)) {
+                priceMonthly = 7900;
+                priceYearly = 79900;
+                priceMonthlyDiscounted = 6660;
+            } else if ("p".equals(goods)) {
+                priceMonthly = 8900;
+                priceYearly = 89900;
+                priceMonthlyDiscounted = 7490;
+            }
+
+            session.setAttribute("priceMonthly", priceMonthly);
+            session.setAttribute("priceYearly", priceYearly);
+            session.setAttribute("priceMonthlyDiscounted", priceMonthlyDiscounted);
+
+            int SubscribePrice = "1개월".equals(period) ? priceMonthly : priceYearly;
+
+            SubscribtionVO newSubscription = new SubscribtionVO();
+            newSubscription.setSubscribePrice(SubscribePrice);
+            newSubscription.setGoods(goods);
+            newSubscription.setStartDate(new Date());
+
+            Calendar calendar = Calendar.getInstance();
+            if ("1개월".equals(period)) {
+                calendar.add(Calendar.MONTH, 1);
+            } else if ("12개월".equals(period)) {
+                calendar.add(Calendar.YEAR, 1);
+            }
+            newSubscription.setExpiredDate(calendar.getTime());
+
+            String userId = (String) session.getAttribute("userId");
+            newSubscription.setUserId(userId);
+            purchaseService.enrollSubscription(newSubscription);
+            System.out.println("enroll");
+            return "redirect:/movie/subscribeDetail.jsp";
+        } else {
+            return "redirect:/purchase/payfail.jsp";
+        }
+    }
    
-    // 2번째 구독 옵션 선택 페이지 매핑
+    /* 2번째 구독 옵션 선택 페이지 매핑
    
     @GetMapping("/purchase/subscribe2")
     public void subscribe2Page(HttpServletRequest request,Model model) {
@@ -139,7 +200,8 @@ public class PurchaseController {
     	
     	
     	
-    }
+    }시간 나면 페이지 쪼개보겠음(로그인에서 id,pw와 같이 계속 같은 값을 물고 다니면 session으로 처리하면 되지만, 나처럼 한페이지마다 정보가 
+    추가 업데이트되는 값을 넣을려면 매번 servlet을 만들어 줄 수 없어서 actionFactory로 처리해야하는데 처리를 못하겠음 ㅠ*/
 
 
 
