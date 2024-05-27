@@ -39,6 +39,7 @@
 	  <div class="btn_section_effect">
 	  	
             <button id="finallSubscribeBtn" type="button" class="btn">결제 방법 등록</button>
+        	<button type="submit">다음</button>
         </div>  
         
 <script>

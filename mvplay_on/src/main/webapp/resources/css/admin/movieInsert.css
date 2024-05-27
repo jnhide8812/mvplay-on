@@ -17,3 +17,11 @@
 .ck-content {						/* ckeditor 높이 */
     height: 170px;
 }
+
+.form_section_content span {
+	display: none;
+	padding-top: 10px;
+	/* text-align: center; */
+	color: #e05757;
+	font-weight: 300;
+}

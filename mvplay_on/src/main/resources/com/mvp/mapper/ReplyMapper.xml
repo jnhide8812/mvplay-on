@@ -13,11 +13,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 댓글 작성 -->
-	<insert id="replyWrite" parameterType="com.mvp.model.ReplyVO">
+	<insert id="writeReply" parameterType="com.mvp.model.ReplyVO">
 	 insert into
 	  reply(movieId, replyContent, userId)
 	    values(#{movieId}, #{content}, #{userId})
 	</insert>
+	
+	<select id="checkReply" resultType="integer">
+		select replyNum from reply
+		where userId = #{userId} and movieId = #{movieId}
+	</select>
 	
 	<!-- 댓글 수정 -->
 	<update id="replyUpdate">
@@ -25,6 +30,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	       set replyContent = #{content}
 	       where replyNum = #{replyNum}
 	</update>
+	
+	<select id="getUpdateReply" resultType="com.mvp.model.ReplyVO">
+		select * from reply
+		where replyNum = #{replyNum}
+	</select>
+	
 	
 	<!-- 댓글 삭제 -->
 	<delete id="replyDelete">

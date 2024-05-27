@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 @Data
 public class SubscribtionVO {
-	private int id; //pk
+	private int id; //구독 id
 	private String userId; //유저id
 	private String goods;  //구독상품(베이직, 프리미엄)
 	private int SubscribePrice;	//구독가격

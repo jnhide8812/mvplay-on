@@ -26,8 +26,8 @@
     </select>
 	<!-- 구독 정보 디비 저장  -->
     <insert id="enrollSubscription" parameterType="com.mvp.model.SubscribtionVO">
-        INSERT INTO subscription (startDate, expiredDate, price, userId)
-        VALUES (#{startDate}, #{expiredDate}, #{price}, #{userId})
+        INSERT INTO subscribePayment (startDate, expiredDate, SubscribePrice, userId, goods)
+        VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId}, #{goods})
     </insert>
 	
   </mapper>

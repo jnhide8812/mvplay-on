@@ -1,6 +1,7 @@
 package com.mvp.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class ReplyVO {
 	
@@ -19,7 +20,6 @@ public class ReplyVO {
 	//작성 일자
 	private Date regDate;
 
-	
 	public int getReplyNum() {
 		return replyNum;
 	}
@@ -65,6 +65,5 @@ public class ReplyVO {
 		return "ReplyVO [replyNum=" + replyNum + ", userId=" + userId + ", movieId=" + movieId + ", replyContent="
 				+ replyContent + ", regDate=" + regDate + "]";
 	}
-	
 	
 }

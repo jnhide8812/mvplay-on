@@ -9,6 +9,10 @@
 <title>마이 페이지</title>
 <link rel="stylesheet" href="/resources/css/member/myPage.css">
 <link rel="stylesheet" href="/resources/css/basic/style.css">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="container">
@@ -74,7 +78,7 @@
 				</ul>
 			</fieldset>
 			<div class="ask_button_wrap">
-				<button id="boardBtn" class="abtn">문의하기</button>
+				<div class="ask_btn"><a href="/board/list">문의하기</a></div>
 			</div>
 		</div> 
 		<%@include file="../includes/footer.jsp" %>

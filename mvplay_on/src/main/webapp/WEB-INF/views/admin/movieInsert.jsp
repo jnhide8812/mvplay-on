@@ -34,6 +34,7 @@
 					<br>
 					<div class="form_section_content">
 						<input name="movieTitle">
+						<span id="warn_movieTitle">영화 제목을 입력해주세요.</span>
 					</div>
 				</div>
 				<br>
@@ -44,6 +45,7 @@
 					<br>
 					<div class="form_section_content">
 						<input type="file" id ="fileItem" name='poster' style="height: 30px;">
+					    <span id="warn_poster"></span>
 					</div>
 				</div>
 				<br>
@@ -52,8 +54,9 @@
 						<label>영화 소개</label>
 					</div>
 					<br>
-					<div class="form_section_content">
+					<div class="form_section_content ct">
 						<textarea name="movieContent" id="movieContent_textarea"></textarea>
+					    <span id="warn_movieContent">영화 소개를 입력해주세요</span>
 					</div>
 				</div>
 				<br>
@@ -64,6 +67,7 @@
 					<br>
 					<div class="form_section_content">
 						<input name="movieUrl">
+						<span id="warn_movieUrl">영화URL을 입력해주세요</span>
 					</div>
 				</div>
 				<br>
@@ -78,6 +82,7 @@
 						<input type="radio" name="cate1" value="로맨스" onclick="cateReadOnly()"/>로맨스
 						<input type="radio" name="cate1" value="액션" onclick="cateReadOnly()"/>액션
 						<input type="radio" name="cate1" value="미스터리" onclick="cateReadOnly()"/>미스터리
+					    <span id="warn_cate1">영화 장르1을 선택해주세요</span>
 					</div>
 					<br>
 					<div class="form_section_title">
@@ -86,6 +91,7 @@
 					<br>
 					<div class="form_section_content">
 						<input name="cate2" id="cate2" readonly="readonly">
+						<span id="warn_cate2">영화 장르2를 입력해주세요</span>
 					</div>
 				</div>
 				<br>
@@ -99,6 +105,7 @@
 						<input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능
 						<input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여만 가능
 						<input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여
+						<span id="warn_movieCheck">영화 이용등급을 선택해주세요</span>
 					</div>
 				</div>
 				<br>
@@ -109,6 +116,7 @@
 					<br>
 					<div class="form_section_content">
 						<input name="buyPrice" id="buyPrice" value="0" readonly="readonly">
+						<span id="warn_buyPrice">영화 구매가격은 숫자 형식이어야 합니다</span>	
 					</div>
 				</div>
 				<br>
@@ -119,6 +127,7 @@
 					<br>
 					<div class="form_section_content">
 						<input name="rentalPrice" id="rentalPrice" value="0" readonly="readonly">
+					    <span id="warn_rentalPrice">영화 대여가격은 숫자 형식이어야 합니다</span>
 					</div>
 				</div>
 				<br>
@@ -129,6 +138,7 @@
 					<br>
 					<div class="form_section_content">
 					    <input name="movieDate" autocomplete="off" readonly="readonly"/>
+					    <span id="warn_movieDate">영화 개봉일을 선택해주세요</span>
 					</div>
 				</div>						
 			</form>
@@ -154,8 +164,123 @@
 	
 	    // 버튼에 클릭 이벤트를 추가
 	    insertBtn.addEventListener("click", function(event) {
-	        var a1 = document.getElementById("m_Insert");
-	        a1.submit();
+	    	
+	    	let titleCheck = false;
+		    let contentCheck = false;
+		    let urlCheck = false;
+		    let cate1Check = false;
+		    let cate2Check = false;
+		    let checkCheck = false;
+		    let buyCheck = false;
+		    let rentalCheck = false;
+		    let dateCheck = false;
+		    
+		    let movieTitle = $('input[name=movieTitle]').val();
+		    let movieContent = $(".ct p").html();
+		    let movieUrl = $('input[name=movieUrl]').val();
+		    let cate2 = $('input[name=cate2]').val();
+		    let buyPrice = $('input[name=buyPrice]').val();
+		    let rentalPrice = $('input[name=rentalPrice]').val();
+		    let movieDate = $('input[name=movieDate]').val();
+
+		    let wMovieTitle = $('#warn_movieTitle');
+		    let wMovieContent = $('#warn_movieContent');
+		    let wMovieUrl = $('#warn_movieUrl');
+		    let wCate1 = $('#warn_cate1');
+		    let wCate2 = $('#warn_cate2');
+		    let wMovieCheck = $('#warn_movieCheck');
+		    let wBuyPrice = $('#warn_buyPrice');
+		    let wRentalPrice = $('#warn_rentalPrice');
+		    let wMovieDate = $('#warn_movieDate');
+		    
+		    if(movieTitle ===''){
+		    	wMovieTitle.css('display', 'block');
+		    	titleCheck = false;
+		    } else{
+		    	wMovieTitle.css('display', 'none');
+		    	titleCheck = true;
+		    }
+
+		    if(movieContent != '<br data-cke-filler="true">'){
+		    	
+		    	wMovieContent.css('display', 'none');
+		    	contentCheck = true;
+		    	
+		    } else{
+
+		    	wMovieContent.css('display', 'block');
+		    	contentCheck = false;
+		    }
+		    
+		    if(movieUrl ===''){
+		        wMovieUrl.css('display', 'block');
+		        urlCheck = false;
+		    } else{
+		    	wMovieUrl.css('display', 'none');
+		    	urlCheck = true;
+		    }
+
+		    
+		    if(!document.querySelector('input[name="cate1"]:checked')){
+		        wCate1.css('display', 'block');
+		        cate1Check = false;
+		    } else{
+		    	wCate1.css('display', 'none');
+		    	cate1Check = true;
+		    }
+		    
+		    if(cate2 ===''){
+		        wCate2.css('display', 'block');
+		        cate2Check = false;
+		    } else{
+		    	wCate2.css('display', 'none');
+		    	cate2Check = true;
+		    }
+		    
+		    if(!document.querySelector('input[name="movieCheck"]:checked')){
+		        wMovieCheck.css('display', 'block');
+		        checkCheck = false;
+		    } else{
+		    	wMovieCheck.css('display', 'none');
+		    	checkCheck = true;
+		    }
+		    
+		    if(buyPrice === '' || isNaN(buyPrice)){
+		        wBuyPrice.css('display', 'block');
+		        buyCheck = false;
+		    } else{
+		    	wBuyPrice.css('display', 'none');
+		    	buyCheck = true;
+		    }
+		    
+		    if(rentalPrice === '' || isNaN(rentalPrice)){
+		    	wRentalPrice.css('display', 'block');
+		        rentalCheck = false;
+		    } else{
+		    	wRentalPrice.css('display', 'none');
+		    	rentalCheck = true;
+		    }
+		    
+		    if(movieDate ===''){
+		        wMovieDate.css('display', 'block');
+		        dateCheck = false;
+		    } else{
+		    	wMovieDate.css('display', 'none');
+		    	dateCheck = true;
+		    }
+		    
+		    if(titleCheck && contentCheck && urlCheck && cate1Check
+		    		&& cate2Check && checkCheck && buyCheck
+		    		&& rentalCheck && dateCheck){
+		    	
+		    	var a1 = document.getElementById("m_Insert");
+		        a1.submit();   
+		        
+		    } else{
+		        return;
+		    }
+		    
+	        
 	    });
 
 	
@@ -171,15 +296,19 @@
 	                if (selectedValue === '1') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = true;
+	                    rentalPriceInput.value = '0';
 	                } else if (selectedValue === '2') {
 	                    buyPriceInput.readOnly = true;
 	                    rentalPriceInput.readOnly = false;
+	                    buyPriceInput.value = '0';
 	                } else if (selectedValue === '3') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = false;
 	                } else {
 	                    buyPriceInput.readOnly = true;
 	                    rentalPriceInput.readOnly = true;
+	                    buyPriceInput.value = '0';
+	                    rentalPriceInput.value = '0';
 	                }
 	                return; // 종료
 	            }
