@@ -3,7 +3,8 @@
 .admin_content_wrap {
 	width: 80%;
 	float: left;
-	min-height: 700px;
+	height: 100%;
+	min-height: 800px;
 }
 
 .movie_table_wrap {
