@@ -145,7 +145,7 @@
 		window.close();
 	});	
 	
-	/* 등록 버튼 */
+	/* 등록 버튼 */ 
 	$(".enroll_btn").on("click", function(e){
 		const movieId = '${movieInfo.movieId}';
 		const userId = '${userId}';

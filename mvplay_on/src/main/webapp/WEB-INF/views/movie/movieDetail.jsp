@@ -43,7 +43,7 @@
 						<!-- 영화 제목 -->
 						<h1><input type="text" id="movieTitle" name="movieTitle" value="${movieInfo.movieTitle}" disabled="disabled" /></h1>
 					</div>
-					<div>
+					<div> 
 					<ul>
 						<!-- 영화 평점 -->
 						<li>
