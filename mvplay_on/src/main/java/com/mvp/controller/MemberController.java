@@ -104,5 +104,6 @@ public class MemberController {
 	public void myPageGET() {
 		logger.info("myPageGET()");
 	}
+	
 
 }
