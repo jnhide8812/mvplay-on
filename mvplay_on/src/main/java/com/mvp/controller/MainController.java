@@ -68,7 +68,7 @@ public class MainController {
 	}*/
 	
 	@GetMapping("/movie/movieDetail")
-	public void movieGetInfoGET(int movieId,Model model) {
+	public void movieGetInfoGET(int movieId, Model model) {
 		logger.info("movie Id: " + movieId);
 		MovieVO vo = movieService.movieGetDetail(movieId);
 		model.addAttribute("movieInfo", vo);
