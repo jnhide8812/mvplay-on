@@ -129,6 +129,8 @@
 		
 		if(delete_result == 1){
 			alert("삭제 완료");
+		} else if(delete_result == 2){
+			alert("영화 데이터를 사용하고 있는 요소가 있어서 삭제 할 수 없습니다.")
 		}
 		
 		/* 수정 결과 경고창 */
