@@ -100,6 +100,10 @@
     background-color: #f7f7f7;
 }
 
+/*링크 짙은 파랑색*/
+.qboard_area a:link{color: #3065ac;}
+.qboard_area a:visited{color: #3065ac;}
+
 </style>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -110,7 +114,6 @@
 <header>
 	<%@ include file="../includes/admin/header.jsp"%>
 </header>
-
 
 <div class="admin_content_wrap">
 
@@ -135,8 +138,14 @@
 						<td><fmt:formatDate value="${list.startDate}" pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${list.expiredDate}" pattern="yyyy-MM-dd" /></td>
 						<td>
-							<c:if test="${list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
+							
+
+							 
+							<!-- 잠시 --> 
+							<c:if test="${empty list.refundStatus && list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
+							<c:if test="${!empty list.refundStatus}"><a href="/admin/refund?id=${list.id }">진행사항 보기</a></c:if>
 							<c:if test="${list.buyPrice ==0}">-</c:if>
+							
 							
 							<%-- 만료일 없는 기준으로 할지 소장가가 0 아닌 걸로 할지 
 							<c:if test="${empty list.expiredDate}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
@@ -216,8 +225,25 @@
 
 
 <script>
+$(document).ready(function(){
+
+let rResult = '<c:out value="${refund_result}" />';
+/* let nResult = '<c:out value="${refund_result_num}" />'; */
+
+	checkResult(rResult);
+	
+	function checkResult(result){
+		
+		if(result === ''){
+			return;
+		}
+		alert("주문번호 '" + rResult +"'의 환불이 신청되었습니다.\n");
+	}
+});
+
+
 let moveForm = $('#moveForm');
-//let searchForm = $('#searchForm');
+let searchForm = $('#searchForm');
 
 
 //페이지 이동 버튼
@@ -228,6 +254,26 @@ $(".pageMaker_btn a").on("click", function(e){
 	moveForm.submit();
 	
 });
+
+/* 검색 버튼 동작 */
+$("#searchForm button").on("click", function(e){
+	
+	e.preventDefault();
+	
+	/* 검색 키워드 유효성 검사 */
+	if(!searchForm.find("input[name='keyword']").val()){
+		alert("키워드를 입력하십시오");
+		return false;
+	}
+	
+	searchForm.find("input[name='pageNum']").val("1");
+	searchForm.submit();
+	
+});
+
+
+
+
 
 </script>
 </body>

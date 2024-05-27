@@ -21,5 +21,9 @@ public class PurchaseViewVO {
 	private String goods;		//구독권 종류'b', 'p'
 	private int subscribePrice; //
 	
+	//환불신청
+	private Date refundDate;	//환불 신청날짜
+	private String refundStatus; //환불 진행사항
+	
 	
 }

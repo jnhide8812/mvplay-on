@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mvp.model.Criteria;
+import com.mvp.model.RefundVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -24,7 +25,7 @@ private static final Logger logger = LoggerFactory.getLogger(AdminPurchaseMapper
 		logger.info("테스트");
 		Criteria cri = new Criteria();
 		
-		//mapper.adminSelectPurchaseList(cri);
+		mapper.adminSelectPurchaseList(cri);
 		
 		//mapper.boardGetTotal(cri);
 		//logger.info("....:  "+mapper.boardGetTotal(cri));
@@ -32,12 +33,26 @@ private static final Logger logger = LoggerFactory.getLogger(AdminPurchaseMapper
 		//mapper.adminSelectSubscribeList(cri);
 		//logger.info("....:  "+mapper.subscribeGetTotal(cri));
 		
-		int id= 30;
-		logger.info("디테일 "+mapper.adminSelectPurchaseDetail(id));
+		//int id= 382;
+		//logger.info("디테일 "+mapper.adminSelectPurchaseDetail(id));
 		
+		//	INSERT INTO refund (id, refundPrice, userId, refundStatus) 
+		//	values(#{id}, #{refundPrice}, #{userId}, '환불신청')
+	
+	
+		//refundId=0, id=376, refundPrice=20000, userId=1, refundDate=null, refundStatus=null)
 		
+		/*
+		RefundVO rvo = new RefundVO();
 		
+		rvo.setId(376);
+		rvo.setUserId("1");
+		rvo.setRefundPrice(20000);
+		mapper.adminRefundInsert(rvo);
 		
+		logger.info("rvo"+rvo);
+		
+		*/
 		
 	}
 	

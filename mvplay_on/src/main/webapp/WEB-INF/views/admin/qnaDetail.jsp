@@ -104,6 +104,9 @@
 	</div><!-- 문의 게시글 영역 qna_detail_area -->
 	<br>
 	
+	
+	
+	
 	<!-- 답변 댓글영역 -->
 	<div class="qna_answer_area">
 	
@@ -131,9 +134,17 @@
 			<input type="hidden" name="ano" value='<c:out value="${vo.ano }" />'>
 			<textarea name="answer" id="answer_editor">${vo.answer }</textarea>
 			<button id="addAnserBtn">답변 달기/수정하기</button>
-			<button id="deleteAnser">삭제하기</button>		
+			<button id="deleteAnser">삭제하기</button>	
+			<button id="listBtn">목록으로</button>	
+			
 		</form>
 		
+	<form id="moveForm" action="/admin/qna" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
+	</form>
+
 		
 		
 		
@@ -144,7 +155,7 @@
 	
 	
 	
-	
+
 	
 	
 
@@ -181,6 +192,18 @@ $("#deleteAnser").on("click", function(e){
 	answerForm.attr("action", "/admin/deleteAnswer");
 	answerForm.attr("method", "post");
 	answerForm.submit();
+});
+
+let moveForm = $("#moveForm");
+
+//목록 페이지로 돌아가기
+$("#listBtn").on("click", function(e){
+	
+	e.preventDefault();
+
+	moveForm.attr("action", "/admin/qna")
+	moveForm.submit();
+	
 });
 
 

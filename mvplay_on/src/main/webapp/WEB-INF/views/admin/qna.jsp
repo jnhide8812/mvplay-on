@@ -99,6 +99,10 @@
     background-color: #f7f7f7;
 }
 
+/*링크 짙은 파랑색*/
+.qboard_area a:link{color: #3065ac;}
+.qboard_area a:visited{color: #3065ac;}
+
 </style>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -217,6 +221,25 @@ $(".pageMaker_btn a").on("click", function(e){
 	moveForm.submit();
 	
 });
+
+let searchForm = $('#searchForm');
+
+/* 검색 버튼 동작 */
+$("#searchForm button").on("click", function(e){
+	
+	e.preventDefault();
+	
+	/* 검색 키워드 유효성 검사 */
+	if(!searchForm.find("input[name='keyword']").val()){
+		alert("키워드를 입력하십시오");
+		return false;
+	}
+	
+	searchForm.find("input[name='pageNum']").val("1");
+	searchForm.submit();
+	
+});
+
 
 </script>
 </body>

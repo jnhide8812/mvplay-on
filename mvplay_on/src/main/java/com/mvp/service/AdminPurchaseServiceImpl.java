@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mvp.mapper.AdminPurchaseMapper;
 import com.mvp.model.Criteria;
 import com.mvp.model.PurchaseViewVO;
+import com.mvp.model.RefundVO;
 @Service
 public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 	//관리자 구매 관리 매퍼
@@ -21,8 +22,8 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 	}
 
 	@Override
-	public int boardGetTotal(Criteria cri) {
-		return apMapper.boardGetTotal(cri);
+	public int purchaseGetTotal(Criteria cri) {
+		return apMapper.purchaseGetTotal(cri);
 	}
 
 	@Override
@@ -38,6 +39,12 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 	@Override
 	public PurchaseViewVO adminSelectPurchaseDetail(int id) {
 		return apMapper.adminSelectPurchaseDetail(id);
+	}
+
+	@Override
+	public int adminRefundInsert(RefundVO rvo) {
+		return apMapper.adminRefundInsert(rvo);
+		
 	}
 
 }

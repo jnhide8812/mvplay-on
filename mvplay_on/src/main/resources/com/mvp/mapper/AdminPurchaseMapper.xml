@@ -10,7 +10,8 @@
 			SELECT * FROM(
 			    SELECT /*+ INDEX_DESC(purchase SYS_C008544)*/ ROWNUM AS rn, id, userId, movieId,
 			    (SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieName,
-			    startDate, expiredDate,rentalPrice, buyPrice
+			    startDate, expiredDate,rentalPrice, buyPrice,
+            	(SELECT refundStatus FROM refund where refund.id=purchase.id)refundStatus
 			    FROM purchase
 			    WHERE 
 			]]>         
@@ -26,7 +27,7 @@
 	</select>
 	
 	<!-- 구매 내역 cri 토탈 계산 -->
-	<select id="boardGetTotal" resultType="int">
+	<select id="purchaseGetTotal" resultType="int">
 		SELECT COUNT(*) FROM purchase
 		<if test="keyword !=null">
 			WHERE userId LIKE '%'|| #{keyword} || '%' 
@@ -66,7 +67,9 @@
 		<![CDATA[
 			SELECT /*+ INDEX_DESC(purchase SYS_C008544)*/ ROWNUM AS rn, id, userId, movieId,
 				(SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieName,
-			startDate, expiredDate,rentalPrice, buyPrice
+			startDate, expiredDate,rentalPrice, buyPrice,
+            	(SELECT refundStatus FROM refund where refund.id=purchase.id)refundStatus,
+            	(SELECT refundDate FROM refund where refund.id=purchase.id)refundDate
 			FROM purchase where id=#{id}
 		]]>         
 	
@@ -79,7 +82,9 @@
 	
 	</insert>
 	
-	
-	
+	<!-- 개별 환불 사항 출력 -->
+	<select id="adminRefundSelect" resultType="com.mvp.model.RefundVO">
+		SELECT * FROM refund where id=#{id}
+	</select>
 	
   </mapper>

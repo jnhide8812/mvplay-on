@@ -67,13 +67,20 @@
 	<!-- 영화 구매 정보 영역 -->
 	<div class="purchase_table_area">
 	<form action="/admin/refund" method="post">		
-		<input type="hidden" name="refundPrice" value="${purchaseInfo.buyPrice}">
+		
+		
+		
+		<input type="hidden" name="id" value='<c:out value="${purchaseInfo.id}"/>' >
+		<input type="hidden" name="refundPrice" value='<c:out value="${purchaseInfo.buyPrice}"/>' >
+		<input type="hidden" name="userId" value='<c:out value="${purchaseInfo.userId}"/>' >
+		
 		<table class="table_purchase">
 			<tr>
 				<th>구매자</th><td><c:out value="${purchaseInfo.id}"/></td>
 			</tr>		
 			<tr>
-				<th>영화 제목</th><td><c:out value="${purchaseInfo.movieName}"/></td>
+				<th>영화 제목</th>
+				<td><c:out value="${purchaseInfo.movieName}"/></td>
 			</tr>
 			<tr>
 				<th>구매일</th><td><fmt:formatDate value="${purchaseInfo.startDate}" pattern="yyyy-MM-dd" /></td>
@@ -81,9 +88,25 @@
 			<tr>
 				<th>구매 금액</th><td><c:out value="${purchaseInfo.buyPrice}"/></td>
 			</tr>
+			<c:if test="${!empty purchaseInfo.refundStatus}">
+				<tr>
+					<th>환불 진행 사항</th><td><c:out value="${purchaseInfo.refundStatus}"/></td>
+				</tr>
+				<tr>
+					<th>환불 신청일</th><td><fmt:formatDate value="${purchaseInfo.refundDate}" pattern="yyyy-MM-dd" /></td>
+				</tr>
+			
 			<tr>
-				<td colspan="2"><input type="submit" value="환불하기"></td>
+				<td colspan="2"><a href="javascript:history.back();">뒤로가기</a></td>
 			</tr>
+			</c:if>
+			<c:if test="${empty purchaseInfo.refundStatus}">
+				<tr>
+					<td colspan="2"><input type="submit" value="환불하기">
+						<a href="javascript:history.back();">뒤로가기</a>
+					</td>
+				</tr>
+			</c:if>	
 		
 		</table>
 	</form>	
@@ -117,10 +140,11 @@ let moveForm = $('#moveForm');
 $(".pageMaker_btn a").on("click", function(e){
 	e.preventDefault();
 	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	
 	moveForm.submit();
 	
 });
+
+
 
 </script>
 </body>
