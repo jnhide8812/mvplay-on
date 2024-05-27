@@ -12,6 +12,12 @@ public interface AskBoardService {
 	//게시글 목록 조회
 	public List<AskBoardVO> selectList(Criteria cri);
 	
+	//게시글 수정
+	public int modify(AskBoardVO askboard);
+	
+	//게시글 삭제
+	public int delete(int ano);
+	
 	//게시글 개수
 	public int boardGetTotal(Criteria cri);
 	

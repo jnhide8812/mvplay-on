@@ -6,7 +6,7 @@
 	
 	<!-- 게시글 등록 -->
 	<insert id="enroll">
-		insert into askBoard(title, content, writer) values=(#{title}, #{content}, #{writer})
+		insert into askBoard(title, content, userId) values=(#{title}, #{content}, #{userId})
 	</insert>
 	
 	<!-- 게시글 조회 -->
@@ -21,7 +21,7 @@
 		select * from askBoard
 	</select>
 	
-	<!-- 게시글 목록 조회 -->
+	<!-- 게시글 목록 조회 페이징 -->
 	<select id="selectList" resultType="com.mvp.model.AskBoardVO">
 		<![CDATA[
 		SELECT * FROM(
@@ -38,6 +38,17 @@
 	        where rn > (#{pageNum} - 1) * #{amount}
 	      ]]>
 	</select>
+	
+	
+	<!-- 게시글 수정 -->
+	<update id="modify">
+		update askBoard set title = #{title}, content = #{content}, updateDate = now() where ano = #{ano}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete">
+		delete from askBoard where ano = #{ano}
+	</delete>
 	
 	<!-- 게시글 개수 -->
 	<select id="boardGetTotal" resultType="int">
