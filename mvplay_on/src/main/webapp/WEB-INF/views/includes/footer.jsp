@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="resources/css/includes/footer.css">
+<link rel="stylesheet" href="/resources/css/includes/footer.css">
 <footer>
 	<div class="footer_wrap">
 		<div class="r_wrap">
@@ -35,13 +35,13 @@
 			<div class="f_right">
 				<nav class="ft_nv">
 					<ul class="sns_wrap">
-						<li><a href="#"> <img src="resources/icon/f_icon.png"
+						<li><a href="#"> <img src="/resources/icon/f_icon.png"
 								class="ft_sns">
 						</a></li>
-						<li><a href="#"> <img src="resources/icon/t_icon.png"
+						<li><a href="#"> <img src="/resources/icon/t_icon.png"
 								class="ft_sns">
 						</a></li>
-						<li><a href="#"> <img src="resources/icon/i_icon.png"
+						<li><a href="#"> <img src="/resources/icon/i_icon.png"
 								class="ft_sns">
 						</a></li>
 					</ul>

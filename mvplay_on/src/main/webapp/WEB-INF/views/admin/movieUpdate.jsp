@@ -1,23 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>mvplay_on</title>
-
-<link rel="stylesheet" href="/resources/css/admin/movieInsert.css">
+<link rel="stylesheet" href="/resources/css/admin/movieUpdate.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
 </head>
 <body>
-	<header>
+    <header>
 	   <%@ include file="../includes/admin/header.jsp"%>
 	</header>
 	<div class="admin_content_wrap">
@@ -26,14 +23,14 @@
 		</div>
 		<br>
 		<div class="admin_content_main">
-			<form action="/admin/movieInsert" method="post" id="m_Insert">
+			<form action="/admin/movieUpdate" method="post" id="m_Update">
 				<div class="form_section">
 					<div class="form_section_title">
 						<label>영화 제목</label>
 					</div>
 					<br>
 					<div class="form_section_content">
-						<input name="movieTitle">
+						<input name="movieTitle" value="${movieInfo.movieTitle}">
 					</div>
 				</div>
 				<br>
@@ -53,7 +50,7 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-						<textarea name="movieContent" id="movieContent_textarea"></textarea>
+						<textarea name="movieContent" id="movieContent_textarea">${movieInfo.movieContent}</textarea>
 					</div>
 				</div>
 				<br>
@@ -63,7 +60,7 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-						<input name="movieUrl">
+						<input name="movieUrl" value="${movieInfo.movieUrl}">
 					</div>
 				</div>
 				<br>
@@ -85,7 +82,7 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-						<input name="cate2" id="cate2" readonly="readonly">
+						<input name="cate2" id="cate2" value="${movieInfo.cate2}" readonly="readonly">
 					</div>
 				</div>
 				<br>
@@ -108,7 +105,7 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-						<input name="buyPrice" id="buyPrice" value="0" readonly="readonly">
+						<input name="buyPrice" id="buyPrice" value="${movieInfo.buyPrice}" readonly="readonly">
 					</div>
 				</div>
 				<br>
@@ -118,7 +115,7 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-						<input name="rentalPrice" id="rentalPrice" value="0" readonly="readonly">
+						<input name="rentalPrice" id="rentalPrice" value="${movieInfo.rentalPrice}" readonly="readonly">
 					</div>
 				</div>
 				<br>
@@ -128,13 +125,20 @@
 					</div>
 					<br>
 					<div class="form_section_content">
-					    <input name="movieDate" autocomplete="off" readonly="readonly"/>
+					    <input name="movieDate" autocomplete="off" value="${movieInfo.movieDate}" readonly="readonly"/>
 					</div>
 				</div>						
 			</form>
+			<form id="moveForm" method="get">
+			    <input type="hidden" name="movieId" value='<c:out value="${movieInfo.movieId}"/>'>
+			    <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+				<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
+			</form>
 			<br>
-			<div class="btn_section">
-				<button id="insertBtn">등 록</button>
+			<div class="btn_Area">
+				<button id="updateBtn">수정확정</button>
+				<button id="deleteBtn">삭제</button>
 			</div>
 		</div>
 	</div>
@@ -142,23 +146,12 @@
 	   <%@ include file="../includes/admin/footer.jsp"%>
 	</footer>
 	<script>
-	
-	    ClassicEditor
-		.create(document.querySelector('#movieContent_textarea'))
-		.catch(error=>{
-			console.error(error);
-	    });
-	
-		// insertBtn 버튼 요소를 가져오기
-	    var insertBtn = document.getElementById("insertBtn");
-	
-	    // 버튼에 클릭 이벤트를 추가
-	    insertBtn.addEventListener("click", function(event) {
-	        var a1 = document.getElementById("m_Insert");
-	        a1.submit();
-	    });
-
-	
+		ClassicEditor
+			.create(document.querySelector('#movieContent_textarea'))
+			.catch(error=>{
+				console.error(error);
+		});
+		
 		function priceReadOnly() {
 	        var movieCheckRadios = document.getElementsByName('movieCheck');
 	        var buyPriceInput = document.getElementById('buyPrice');
@@ -171,15 +164,19 @@
 	                if (selectedValue === '1') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = true;
+	                    rentalPriceInput.value = '0';
 	                } else if (selectedValue === '2') {
 	                    buyPriceInput.readOnly = true;
 	                    rentalPriceInput.readOnly = false;
+	                    buyPriceInput.value = '0';
 	                } else if (selectedValue === '3') {
 	                    buyPriceInput.readOnly = false;
 	                    rentalPriceInput.readOnly = false;
 	                } else {
 	                    buyPriceInput.readOnly = true;
 	                    rentalPriceInput.readOnly = true;
+	                    buyPriceInput.value = '0';
+	                    rentalPriceInput.value = '0';
 	                }
 	                return; // 종료
 	            }
@@ -200,7 +197,35 @@
             input.readOnly = true;
         };
 		
+		function selectCateRadioButton(value) {
+		    var radioButtons = document.getElementsByName('cate1');
+		    for (var i = 0; i < radioButtons.length; i++) {
+		        if (radioButtons[i].value === value) {
+		            radioButtons[i].checked = true;
+		            break;
+		        }
+		    }
+		}
+		function selectPriceRadioButton(value) {
+		    var radioButtons = document.getElementsByName('movieCheck');
+		    for (var i = 0; i < radioButtons.length; i++) {
+		        if (radioButtons[i].value === value) {
+		            radioButtons[i].checked = true;
+		            break;
+		        }
+		    }
+		}
 
+		// 페이지 로드시 실행되어야 할 코드
+		window.onload = function() {
+		    // 이전 페이지에서 넘어온 값 가져오기
+		    var selectedCateValue = "${movieInfo.cate1}";
+		    var selectedPriceValue = "${movieInfo.movieCheck}";
+
+		    // 해당 값에 따라 라디오 버튼 선택
+		    selectCateRadioButton(selectedCateValue);
+		    selectPriceRadioButton(selectedPriceValue);
+		};
 		
         $(function() {
 			
@@ -273,7 +298,42 @@
 			return true;		
 			
 		}
+		let moveForm = $("#moveForm");
+		let m_Update = $("#m_Update");
+		
+		// 수정 버튼 클릭 시
+		$("#updateBtn").on("click", function(e){
+		    e.preventDefault();
+		    m_Update.find("input[name='movieId']").remove(); // movieId input 제거
+		    m_Update.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">'); // movieId input 재추가
+		    m_Update.submit(); // 폼 전송
+		});
 
+		// 삭제 버튼 클릭 시
+		$("#deleteBtn").on("click", function(e){
+		    e.preventDefault();
+		    moveForm.find("input[name='movieId']").remove(); // movieId input 제거
+		    moveForm.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">'); // movieId input 재추가
+		    moveForm.attr("action", "/admin/movieDelete"); // 액션 지정
+		    moveForm.attr("method", "post"); // 메서드 지정
+		    moveForm.submit(); // 폼 전송
+		});
+		
+		/* 삭제 결과 경고창 */
+		let delete_result = '${delete_result}';
+		
+		if(delete_result == -1){
+			alert("삭제 실패");
+		}
+		
+		/* 수정 결과 경고창 */
+		let update_result = '${update_result}';
+		
+		if(update_result == -1){
+			alert("수정 실패");
+		}
+		
+		
 	</script>
 </body>
 </html>

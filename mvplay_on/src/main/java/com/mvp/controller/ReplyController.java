@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mvp.model.ReplyVO; 
 import com.mvp.service.ReplyService;
 
+@Controller
+@RequestMapping("/movie/*")
 public class ReplyController {
 
 private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
@@ -26,11 +29,11 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 	public String replyWrite(ReplyVO vo, RedirectAttributes rttr) throws Exception {
 		logger.info("reply write");
 		
-		RepService.writeReply(vo);
+		RepService.replyWrite(vo);
 		
 		rttr.addAttribute("movieId",vo.getMovieId());
 		
-		return "redirect:/movie/subscribeDetail";	
+		return "redirect:/movie/movieDetail?movieId="+vo.getMovieId();	
 	}
 	
 	// 댓글 수정 POST

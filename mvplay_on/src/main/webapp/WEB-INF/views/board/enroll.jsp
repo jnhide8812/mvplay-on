@@ -15,7 +15,7 @@
 		<%@include file="../includes/nav.jsp" %>
 		<div class="main_board">
 			<h1>게시판 등록</h1>
-			<form action="/board/enroll" method="post">
+			<form action="/askboard/enroll" method="post">
 				<div class="input_wrap">
 					<label>Title</label> 
 					<input name="title">

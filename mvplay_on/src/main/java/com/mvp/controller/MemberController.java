@@ -99,12 +99,10 @@ public class MemberController {
 	}
 	
 	
-	/*마이페이지*/
+	//마이페이지 페이지 이동 GET
 	@GetMapping("/myPage")
-	public void memberGetInfoGET(int userId, Criteria cri, Model model) throws Exception {
-		logger.info("myPage....." + userId);
-		model.addAttribute("cri",cri);
-		model.addAttribute("memberInfo", memberservice.memberGetDetail(userId));
+	public void myPageGET() {
+		logger.info("myPageGET()");
 	}
 
 }

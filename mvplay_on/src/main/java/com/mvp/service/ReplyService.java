@@ -10,7 +10,7 @@ public interface ReplyService {
 	public List<ReplyVO> readReply(int bno);
 	
 	//댓글 작성
-	public void writeReply(ReplyVO vo);
+	public void replyWrite(ReplyVO vo);
 	
 	//특정 댓글 조회
 	public ReplyVO readReplySelect(int rno);

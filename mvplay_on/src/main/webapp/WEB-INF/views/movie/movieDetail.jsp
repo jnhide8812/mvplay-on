@@ -20,12 +20,15 @@
 <body>
 <div id = "container">
 	<!-- 헤더 -->
+	<header>
 	<%@include file="../includes/header.jsp" %>
+	</header>
 		<!-- 네비 (왼쪽 사이드 메뉴) -->
+		<nav>
 		<%@include file="../includes/nav.jsp" %>
+		</nav>
 		<!-- 메인 content -->
 		<div class="main_content">
-		<!-- 영화 신작 -->
 			<div class="">
 				<div class="">
 					<img alt="" src="${movieInfo.poster}">
@@ -62,10 +65,7 @@
 						<button id="subscribeBtn" class="btn">구독하기</button>
 						<button id="buyBtn" class="btn buy_btn">구매하기</button>
 					</div>
-			</div>
-		</div>
-	</div>
-		<div id="reply">
+					<div id="reply">
 				 <ol class="replyList">
 				  <c:forEach items="${repList}" var="repList">
 				   <li>
@@ -78,8 +78,8 @@
 				    <p>${repList.content}</p>
 				    
 				    <p>                
-					   <button type="button" class="replyUpdate btn btn-warning btn-xs" data-rno="${repList.rno}">수정</button>
-					   <button type="button" class="replyDelete btn btn-danger btn-xs" data-rno="${repList.rno}">삭제</button>
+					   <button type="button" class="replyUpdate btn btn-warning btn-xs" data-rno="${repList.replyNum}">수정</button>
+					   <button type="button" class="replyDelete btn btn-danger btn-xs" data-rno="${repList.replyNum}">삭제</button>
 					   
 					   <script>					    
 					    $(".replyDelete").click(function(){
@@ -96,7 +96,7 @@
 				<section class="replyForm">
 				<form role="form" method="post" autocomplete="off" class="form-horizontal">
 			
-				<input type="hidden" id="replyNum" name="replyNum" value="${read.replyNum}" readonly="readonly" />
+				<input type="hidden" id="replyNum" name="replyNum" value="${repList.replyNum}" readonly="readonly" />
 				
 				<div class="form-group">
 					<label for="writer" class="col-sm-2 control-label">작성자</label>
@@ -119,12 +119,17 @@
 						        
 						$(".repSubmit").click(function(){
 						 formObj.attr("action", "replyWrite");
+						 //formObj.attr("action", "movieDetail");
 						 formObj.submit();
 						});
 					</script>
 				</div>
 			</form>
 		</section>
+			</div>
+		</div>
+	</div>
+		
 		</div>
 		<!-- 푸터 -->
 		<%@include file="../includes/footer.jsp" %>

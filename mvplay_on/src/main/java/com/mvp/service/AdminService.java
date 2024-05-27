@@ -14,5 +14,9 @@ public interface AdminService {
 	public int getMovieTotal(Criteria cri) throws Exception;
 	
 	public MovieVO getMovieDetail(int movieId) throws Exception;
+	
+    public int movieUpdate(MovieVO mvo) throws Exception;
+	
+	public int movieDelete(int movieId) throws Exception;
 
 }

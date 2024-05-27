@@ -6,7 +6,6 @@
 
       <insert id="movieInsert" parameterType="com.mvp.model.MovieVO">
           insert into movie(movieTitle, poster, movieContent, movieUrl, cate1, cate2, movieCheck, buyPrice, rentalPrice, movieDate) values(#{movieTitle}, #{poster}, #{movieContent}, #{movieUrl}, #{cate1}, #{cate2}, #{movieCheck}, #{buyPrice}, #{rentalPrice}, #{movieDate})
-          
       </insert>
       
       <!-- 영화 목록 -->
@@ -52,6 +51,20 @@
 		      from movie where movieId = #{movieId}
 
 	  </select>
+	  
+	  <!-- 영화 수정 페이지 -->
+	  <update id="movieUpdate" parameterType="com.mvp.model.MovieVO">
+	      update movie set movieTitle = #{movieTitle}, poster = #{poster}, movieContent = #{movieContent},
+	                    movieUrl = #{movieUrl}, cate1 = #{cate1}, cate2 = #{cate2},
+	                    movieCheck = #{movieCheck}, buyPrice = #{buyPrice}, rentalPrice = #{rentalPrice},
+	                    movieDate = #{movieDate} where movieId = #{movieId}
+
+	  </update>
+	  
+	  <!-- 영화 삭제 -->
+	  <delete id="movieDelete" parameterType="com.mvp.model.MovieVO">
+	      delete movie where movieId = #{movieId}
+	  </delete>
 
 
 </mapper>

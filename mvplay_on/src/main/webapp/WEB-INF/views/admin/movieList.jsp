@@ -62,7 +62,7 @@
 				</c:if>
 				<!-- 페이지 번호 -->
 				<c:forEach begin="${page.pageStart}" end="${page.pageEnd}" var="num">
-					<li class="page_btn ${page.cri.pageNum == num ? "active":""}">
+					<li class="page_btn ${page.cri.pageNum == num ? 'active':''}">
 						<a href="${num}">${num}</a>
 					</li>
 				</c:forEach>
@@ -123,6 +123,20 @@
 			moveForm.submit();
 			
 		});
+		
+		/* 삭제 결과 경고창 */
+		let delete_result = '${delete_result}';
+		
+		if(delete_result == 1){
+			alert("삭제 완료");
+		}
+		
+		/* 수정 결과 경고창 */
+		let update_result = '${update_result}';
+		
+		if(update_result == 1){
+			alert("수정 완료");
+		}
 	</script>
 </body>
 </html>
