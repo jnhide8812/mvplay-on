@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="/resources/css/includes/header.css">
 		<header>
 			<div class="top_content">
-				<form action="search.do" class="sc">
+				<form action="search.do" class="sc" method="get">
 				<div class="search">
                 	<input type="text" placeholder="작품명을 입력해주세요" name="searchText" class="main_search">
                 	<input type ="button" onclick="location.href='search.do'" class="search_icon">
