@@ -33,7 +33,7 @@ public class MovieController {
 	@GetMapping("/movie/replyWrite/{userId}")
 	public String replyWriteWindowGET(@PathVariable("userId")int userId, int movieId, Model model) {
 		MovieVO vo = movieService.getMovieIdTitle(movieId);
-		model.addAttribute("movieInfo", movieId);
+		model.addAttribute("movieId", movieId);
 		model.addAttribute("userId",userId);
 		
 		return "/movie/replyWrite";
