@@ -43,4 +43,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    where replyNum = #{replyNum}
 	</delete>
 
+
+	<!-- 댓글 리스트 뽑기 -->
+	<select id="getReplyList" resultType="com.mvp.model.ReplyVO">
+		select ra.rating, ra.userId, ra.movieId, re.replyNum, re.regDate, re.replyContent
+		from rating ra
+		inner join reply re
+		on ra.userId = re.userId
+		and ra.movieId = #{movieId}
+		order by regDate desc
+	</select>
+	
+	<!-- 
+	select ra.rating, ra.userId, ra.movieId, re.replyNum, re.regDate, re.replyContent
+	from rating ra
+	inner join reply re
+	on ra.userId = re.userId
+	and ra.movieId = #{movieId}
+	order by regDate desc
+	
+	select userId, movieId, regDate, replyContent
+	from reply
+	where movieId = #{movieId}
+	order by regDate desc
+	 -->
+	
+	<select id="getReplyTotal" resultType="int">
+  		select count(*)
+  		from reply
+  		where movieId = #{movieId}  	
+  	</select>
+	
 </mapper>

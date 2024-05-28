@@ -207,7 +207,7 @@ $(".reply_button_wrap").on("click", function(e){
 				
 				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
 				console.log(popUrl);
-				let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
+				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
 				
 				window.open(popUrl,"리뷰 쓰기",popOption);					
 			/*}				
@@ -219,14 +219,13 @@ $(".reply_button_wrap").on("click", function(e){
 });
 
 
-/* 댓글 데이터 서버 요청 및 댓글 동적 생성 메서드 */
-let replyListInit = function(){
-	$.getJSON("/reply/list", cri , function(obj){
+//리뷰 리스트
+const movieId = '${movieInfo.movieId}';	
+	$.getJSON("/movie/list", {movieId : movieId}, function(obj){
 		
 		makeReplyContent(obj);
 		
-	});		
-}	
+	});
 
 /* 리뷰 수정 버튼 */
 $(document).on('click', '.update_reply_btn', function(e){
@@ -251,7 +250,7 @@ $(document).on('click', '.delete_reply_btn', function(e){
 			replyNum : replyNum,
 			movieId : '${movieInfo.movieId}'
 		},
-		url : '/reply/delete',
+		url : '/movie/delete',
 		type : 'POST',
 		success : function(result){
 			replyListInit();
@@ -261,49 +260,60 @@ $(document).on('click', '.delete_reply_btn', function(e){
 		
 });	
 
+/* 댓글 데이터 서버 요청 및 댓글 동적 생성 메서드 */
+let replyListInit = function(){
+	$.getJSON("/movie/list", cri , function(obj){
+		
+		makeReplyContent(obj);
+		
+	});		
+}	
+
 /* 댓글(리뷰) 동적 생성 메서드 */
 function makeReplyContent(obj){
-	
-	if(obj.list.length === 0){
-		$(".reply_not_div").html('<span>리뷰가 없습니다.</span>');
-		$(".reply_content_ul").html('');
-		$(".pageMaker").html('');
-	} else{
-		
-		$(".reply_not_div").html('');
-		
-		const list = obj.list;
-		const pf = obj.pageInfo;
-		const userId = '${member.userId}';		
-		
-		/* list */
-		
-		let reply_list = '';			
-		
-		$(list).each(function(i,obj){
-			reply_list += '<li>';
-			reply_list += '<div class="comment_wrap">';
-			reply_list += '<div class="reply_top">';
-			/* 아이디 */
-			reply_list += '<span class="id_span">'+ obj.movieId+'</span>';
-			/* 날짜 */
-			reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
-			/* 평점 */
-			reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
-			if(obj.movieId === userId){
-				reply_list += '<a class="update_reply_btn" href="'+ obj.replyNum +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyNum +'">삭제</a>';
-			}
-			reply_list += '</div>'; //<div class="reply_top">
-			reply_list += '<div class="reply_bottom">';
-			reply_list += '<div class="reply_bottom_txt">'+ obj.content +'</div>';
-			reply_list += '</div>';//<div class="reply_bottom">
-			reply_list += '</div>';//<div class="comment_wrap">
-			reply_list += '</li>';
-		});		
-		
-		$(".reply_content_ul").html(reply_list);				
-	}
+		if(obj.list.length === 0){
+			$(".reply_not_div").html('<span>리뷰가 없습니다.</span>');
+			$(".reply_content_ul").html('');
+		} else {
+			$(".reply_not_div").html('');
+			
+			const list = obj.list;
+			const pf = obj.pageInfo;
+			const userId = '${member.userId}';
+			
+			console.log("댓글 정보들 : "+obj.regDate);
+			
+			/* list */
+			
+			let reply_list = '';			
+			
+			$(list).each(function(i,obj){
+				reply_list += '<li>';
+				reply_list += '<div class="comment_wrap">';
+				reply_list += '<div class="reply_top">';
+				/* 아이디 */
+				reply_list += '<span class="id_span">'+ obj.userId+'</span>';
+				/* 날짜 */
+				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
+				/* 평점 */
+				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
+				if(obj.movieId === userId){
+					reply_list += '<a class="update_reply_btn" href="'+ obj.replyNum +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyNum +'">삭제</a>';
+				}
+				reply_list += '</div>'; //<div class="reply_top">
+				reply_list += '<div class="reply_bottom">';
+				reply_list += '<div class="reply_bottom_txt">'+ obj.replyContent +'</div>';
+				reply_list += '</div>';//<div class="reply_bottom">
+				reply_list += '</div>';//<div class="comment_wrap">
+				reply_list += '</li>';
+				console.log("댓글 정보들 : "+obj.regDate);
+				console.log("댓글 번호들 : "+obj.replyNum);
+			});
+			
+			$(".reply_content_ul").html(reply_list);
+		}
 }
+
 </script>
 </body>
 </html>

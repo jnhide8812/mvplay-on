@@ -126,7 +126,7 @@
 			</div>-->
 			<div class="content_div">
 				<h4>리뷰</h4>
-				<textarea name="content"></textarea>
+				<textarea name="replyContent"></textarea>
 			</div>
 		</div>
 		
@@ -165,6 +165,10 @@
 			type : 'POST',
 			url : '/movie/replyWrite',
 			success : function(result){
+				
+				/* 댓글 초기화 */
+				$(opener.location).attr("href", "javascript:replyListInit();");
+				
 				window.close();
 			}
 			

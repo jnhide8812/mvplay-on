@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.mvp.mapper.ReplyMapper;
+import com.mvp.model.Criteria;
+import com.mvp.model.PageVO;
+import com.mvp.model.ReplyPageVO;
 import com.mvp.model.ReplyVO;
 
 @Service
@@ -53,6 +56,15 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public ReplyVO getUpdateReply(int replyNum) {
 		return replyMapper.getUpdateReply(replyNum);
+	}
+
+	//댓글 리스트
+	@Override
+	public ReplyPageVO replyList(Criteria cri) {
+		ReplyPageVO vo = new ReplyPageVO();
+		vo.setList(replyMapper.getReplyList(cri));
+		vo.setPageInfo(new PageVO(cri, replyMapper.getReplyTotal(cri.getMovieId())));
+		return vo;
 	}
 	
 	

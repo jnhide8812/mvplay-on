@@ -22,6 +22,9 @@ public class Criteria {
 	/*개인*/
 	private String userId;
 	
+	 /* 영화 ID(댓글용) */
+    private int movieId;
+	
     /* Criteria 생성자 */
     public Criteria(int pageNum, int amount) {
         this.pageNum = pageNum;
@@ -78,11 +81,19 @@ public class Criteria {
 	public void setCateCode(String cateCode) {
 		this.cateCode = cateCode;
 	}
+	
+	public int getMovieId() {
+		return movieId;
+	}
+
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
 
 	@Override
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", type=" + type + ", keyword=" + keyword
-				+ ", cateCode=" + cateCode + ", userId=" + userId + "]";
+				+ ", cateCode=" + cateCode + ", userId=" + userId + movieId + "]";
 	}
    
 }

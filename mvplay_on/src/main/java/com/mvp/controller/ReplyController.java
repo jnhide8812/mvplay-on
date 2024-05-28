@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
+import com.mvp.model.ReplyPageVO;
 import com.mvp.model.ReplyVO; 
 import com.mvp.service.ReplyService;
 
@@ -60,6 +63,13 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 	@PostMapping("/delete")
 	public void replyDeletePOST(ReplyVO vo) {
 		RepService.replyDelete(vo);
+	}
+	
+	//댓글 리스트
+	@GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ReplyPageVO replyListPOST(Criteria cri) {
+		logger.info("reply list");
+		return RepService.replyList(cri);
 	}
 	
 	/* 댓글 작성

@@ -3,6 +3,8 @@ package com.mvp.model;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReplyVO {
 	
 	//댓글 번호
@@ -18,6 +20,7 @@ public class ReplyVO {
 	private String replyContent;
 	
 	//작성 일자
+	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 	private Date regDate;
 
 	public int getReplyNum() {

@@ -3,6 +3,7 @@ package com.mvp.service;
 import java.util.List;
 
 import com.mvp.model.Criteria;
+import com.mvp.model.ReplyPageVO;
 import com.mvp.model.ReplyVO;
 
 
@@ -22,4 +23,7 @@ public interface ReplyService {
 		
 	//댓글 삭제
 	public int replyDelete(ReplyVO vo);
+	
+	//댓글 리스트
+	public ReplyPageVO replyList(Criteria cri);
 }

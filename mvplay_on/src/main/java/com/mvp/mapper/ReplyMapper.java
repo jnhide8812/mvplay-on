@@ -7,8 +7,8 @@ import com.mvp.model.ReplyVO;
 
 public interface ReplyMapper {
 
-	//댓글 페이징
-	public List<ReplyVO> readReply(Criteria cri);
+	//댓글 리스트
+	public List<ReplyVO> getReplyList(Criteria cri);
 	
 	//댓글 작성
 	public int writeReply(ReplyVO vo);
@@ -24,4 +24,8 @@ public interface ReplyMapper {
 	
 	//댓글 삭제
 	public int replyDelete(int replyNum);
+	
+	//댓글 총 갯수
+	public int getReplyTotal(int movieId);
+	
 }
