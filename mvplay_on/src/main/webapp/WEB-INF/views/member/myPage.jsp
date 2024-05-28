@@ -53,7 +53,7 @@
 								</div>
 							</li>
 							<li>
-								<button id="sub_btn" class="pbtn">이용권 변경></button>
+								<button type="button" onclick="location.href='/purchase/subscribe1'" class="pbtn">이용권 변경 ></button>
 							</li>
 						</ul>
 						<ul class="final_date">
@@ -74,7 +74,7 @@
 							</li>
 							<li>
 								<div class="pw_change">
-									<button id="pw_btn" class="pbtn">비밀번호 변경></button>
+									<button id="pw_btn" class="pbtn">비밀번호 변경 ></button>
 								</div>
 							</li>
 						</ul>
