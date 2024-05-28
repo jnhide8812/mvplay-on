@@ -27,4 +27,7 @@ public interface MovieService {
 	//지정 영화 이미지 정보 얻기
 	/*public List<> getPosterInfo(int movieId); */
 	
+	//영화 제목 검색
+	public MovieVO searchMovie(Criteria cri);
+	
 }

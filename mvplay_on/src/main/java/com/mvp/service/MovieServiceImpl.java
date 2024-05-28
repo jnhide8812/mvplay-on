@@ -60,6 +60,11 @@ public class MovieServiceImpl implements MovieService {
 		return mapper.movieGetRating();
 	}*/
 	
+	@Override
+	public MovieVO searchMovie(Criteria cri) {
+		return mapper.searchMovie(cri);
+	}
+	
 	
 	
 }
