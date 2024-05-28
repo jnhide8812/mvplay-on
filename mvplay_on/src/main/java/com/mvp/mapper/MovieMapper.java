@@ -23,4 +23,6 @@ public interface MovieMapper {
 	
 	/*영화 평점
 	public int movieGetRating();*/
+	
+	//영화 검색
 }

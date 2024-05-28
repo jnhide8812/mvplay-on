@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="/resources/css/includes/header.css">
 		<header>
 			<div class="top_content">
-				<form action="search.do" class="sc" method="get">
+				<form action="/movie/movieSearch" class="sc" method="get" id="movieSearch">
 				<div class="search">
                 	<input type="text" placeholder="작품명을 입력해주세요" name="searchText" class="main_search">
-                	<input type ="button" onclick="location.href='search.do'" class="search_icon">
+                	<input type ="button" class="search_icon">
                 </div>
                 </form>
                 <c:if test="${member == null}">     <!-- 로그인 X -->
@@ -63,6 +63,24 @@ $("#myinfo").click(function(){
    
    location.href="/member/myPage"
    
+});
+
+let movieSearch = $('#movieSearch');
+
+/* 영화 검색 버튼 동작 */
+$("#movieSearch input[type='button']").on("click", function(e){
+	
+	e.preventDefault();
+	
+	/* 검색 키워드 유효성 검사 */
+	if(!movieSearch.find("input[name='searchText']").val()){
+		alert("제목을 입력하십시오");
+		return false;
+	}
+	
+	//movieSearch.find("input[name='pageNum']").val("1");
+	movieSearch.submit();
+	
 });
 
 

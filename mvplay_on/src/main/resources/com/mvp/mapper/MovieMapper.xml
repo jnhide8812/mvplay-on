@@ -33,4 +33,7 @@
 		where movieId = #{movieId}
 	</select>
 	
+	<select id="searchMovie" resultType="com.mvp.model.MovieVO">
+	</select>
+	
   </mapper>
