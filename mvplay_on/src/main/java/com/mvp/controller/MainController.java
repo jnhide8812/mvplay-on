@@ -52,6 +52,19 @@ public class MainController {
 		
 	}*/
 	
+	/*
+	@RequestMapping(value="/main", method = RequestMethod.GET)
+	public void mainPageGET(Model model) {
+		
+		logger.info("메인 페이지 진입");
+		
+		model.addAttribute("");
+		model.addAttribute();
+		model.addAttribute();		
+		
+	}*/
+	
+	//기존 매핑
 	@RequestMapping("/main")
 	public String list(HttpServletRequest request) {
 		List<MovieVO> movieList = movieService.movieList();

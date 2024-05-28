@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.mvp.model.MovieVO;
 import com.mvp.model.ReplyVO; 
 import com.mvp.service.ReplyService;
 
 @RestController
-@RequestMapping("/reply")
+@RequestMapping("/movie")
 public class ReplyController {
 
 private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
@@ -30,7 +32,16 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 	//댓글 등록
 	@PostMapping("/replyWrite")
 	public void replyWritePOST(ReplyVO vo) {
+		logger.info("replyWritePOST");
 		RepService.writeReply(vo);
+	}
+	
+	@GetMapping(value = "/replyWrite")
+	public void replyWrite() throws Exception {
+		logger.info("reply write");
+		
+		//rttr.addAttribute("movieId",vo.getMovieId());
+		
 	}
 	
 	//댓글 체크

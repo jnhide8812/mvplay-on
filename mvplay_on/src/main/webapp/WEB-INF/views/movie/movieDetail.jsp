@@ -19,6 +19,7 @@
 </head>
 <body>
 <div id = "container">
+<input type="hidden" value="${movieInfo.movieId}" name="movieId">
 	<!-- 헤더 -->
 	<header>
 	<%@include file="../includes/header.jsp" %>
@@ -75,6 +76,7 @@
 					<c:if test="${member != null}">
 						<div class="reply_button_wrap">
 							<button>리뷰 쓰기</button>
+							<!-- <button onclick="replyWrite()">리뷰 쓰기</button> -->
 						</div>
 					</c:if>		
 					
@@ -161,6 +163,24 @@
 	</div>  <!-- id="container" -->
 <script>
 /* 리뷰쓰기 */
+//온클릭 버전 (차후 불필요하게 될 시 삭제)
+/*
+ function replyWrite() {
+	const userId = '${member.userId}';
+	const movieId = '${movieInfo.movieId}';
+		
+	console.log("userId : "+${member.userId});
+	console.log("movieId 2 : "+${movieInfo.movieId});
+	
+	let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
+	console.log(popUrl);
+	let popOption = "width = 490px, height=400px, top=300px, left=300px, scrollbars=yes";
+	
+	window.open(popUrl,"리뷰 쓰기",popOption);
+}
+*/
+
+//버튼 눌러서 연결
 $(".reply_button_wrap").on("click", function(e){
 	
 	e.preventDefault();
@@ -169,7 +189,7 @@ $(".reply_button_wrap").on("click", function(e){
 	const movieId = '${movieInfo.movieId}';
 	
 	console.log("userId : "+${member.userId});
-	console.log("movieId : "+${movieInfo.movieId});
+	console.log("movieId 2 : "+${movieInfo.movieId});
 	
 /*
 	$.ajax({
@@ -184,11 +204,12 @@ $(".reply_button_wrap").on("click", function(e){
 			if(result === '1'){
 				alert("이미 등록된 리뷰가 존재 합니다.")
 			} else if(result === '0'){ */
+				
 				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
 				console.log(popUrl);
 				let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes";
 				
-				window.open(popUrl,"리뷰 쓰기",popOption);							
+				window.open(popUrl,"리뷰 쓰기",popOption);					
 			/*}				
 			
 		}

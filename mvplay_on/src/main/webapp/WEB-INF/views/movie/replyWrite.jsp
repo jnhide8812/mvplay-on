@@ -103,15 +103,13 @@
   </style>
 </head>
 <body>
+<input type="hidden" value="${movieInfo.movieId}" name="movieId">
 
 <div class="wrapper_div">
 		<div class="subject_div">
 			리뷰 등록
 		</div>
-		<div class="input_wrap">			
-			<div class="bookName_div">
-				<h2>${bookInfo.bookName}</h2>
-			</div>
+		<div class="input_wrap">
 			
 			<!-- <div class="rating_div">
 				<h4>평점</h4>
@@ -138,7 +136,11 @@
 		
 	</div>
 	
+	
 	<script>
+	$(document).ready(function(){
+		console.log(${movieInfo.movieId});
+	});
 	
 	/* 취소 버튼 */
 	$(".cancel_btn").on("click", function(e){
@@ -147,21 +149,21 @@
 	
 	/* 등록 버튼 */ 
 	$(".enroll_btn").on("click", function(e){
-		const movieId = '${movieInfo.movieId}';
+		const movieId = '${movieId}';
 		const userId = '${userId}';
 		//const rating = $("select").val();
-		const content = $("textarea").val();
+		const replyContent = $("textarea").val();
 		const data = {
 				movieId : movieId,
 				userId : userId,
 				//rating : rating,
-				content : content
+				replyContent : replyContent
 		}
-		
+		console.log("movieId 2 : "+ movieId);
 		$.ajax({
 			data : data,
 			type : 'POST',
-			url : '/reply/replyWrite',
+			url : '/movie/replyWrite',
 			success : function(result){
 				window.close();
 			}
