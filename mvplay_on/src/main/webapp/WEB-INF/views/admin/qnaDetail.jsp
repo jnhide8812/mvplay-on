@@ -9,6 +9,15 @@
 <title>관리자 - 문의 게시글</title>
 
 <style>
+/* 컨텐츠 영역 */
+.admin_content_wrap{
+   width: 70%;
+    float:left;
+    height: 100%;
+    min-height: 700px;
+    margin-left: 50px;
+}
+
 /* 문의 게시판 전체 테이블 */
 .table_qna{ 
 	border-collapse: collapse;
@@ -63,7 +72,7 @@
 }
 /* ck 에디터 -div */
 .ckeditor{
-	width: 700px;
+	width: 600px;
 	height: 500px;
 	font-size: 14px;
 }

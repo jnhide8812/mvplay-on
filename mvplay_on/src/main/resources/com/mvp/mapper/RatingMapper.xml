@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.mvp.mapper.RatingMapper">
+	<insert id="insertRating">
+		INSERT INTO rating(userId, movieId, rating) values(#{userId}, #{movieId}, #{rating})
+	</insert>
+	<update id="updateRating">
+		
+  
+  
+	</update>
+	
+	<select id="selectRating" resultType="com.mvp.model.RatingVO">
+		SELECT ratingId, userId, movieId, rating 
+		FROM rating 
+		WHERE userId = #{userId} and movieId = #{movieId} 
+	
+	</select>
+
+  
+  
+  </mapper>

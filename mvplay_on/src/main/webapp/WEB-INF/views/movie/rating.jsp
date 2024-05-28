@@ -1,19 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+
 <style>
+/*
+.wrap {
+    height: 100vh;
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 32px;
+}
+*/
+
 
 .rating {
     float: none;
-    width: 200px;
+    width: 100px;
+/*    width: 200px; */
     display: flex;
 }
 .rating__input {
@@ -21,19 +26,19 @@
 }
 
 .rating__label {
-   width: 20px;
+   width: 10px;
    overflow: hidden;
    cursor: pointer;
 }
 .star-icon {
-   width: 20px;
-   height: 40px;
+   width: 10px;
+   height: 20px;
    display: block;
    position: relative;
    left: 0;
    background-image: url("/resources/icon/star-empty.svg");
    background-repeat: no-repeat;
-   background-size: 40px;
+   background-size: 20px;
 }
          
 .star-icon.filled {
@@ -50,14 +55,16 @@
 
 
 </style>
-
-
-</head>
-<body>
-
+안녕하세요 
+<c:out value="${ratingInfo.rating }" />
 
 <div class="wrap">
     <form action="/movie/rating" method="post" id="ratingForm">
+    <!-- 샘플 변경 예정 -->
+    <input type="hidden" name="userId" value="${member.userId }">
+    <input type="hidden" name="movieId" value="${movieInfo.movieId }">
+    
+    
     <div class="rating">
         <label class="rating__label rating__label--half" for="starhalf">
             <input type="radio" id="starhalf" class="rating__input" name="rating" value="0.5">
@@ -105,9 +112,50 @@
 </div>
 
 
-
-
 <script>
+//페이지가 로드될 때 실행되는 부분
+$(document).ready(function() {
+    // 별점 값 파싱
+    let ratingValue = parseFloat(getRatingValueFromURL()); // URL에서 별점 값 가져오기
+
+    // 별점 값이 유효한지 확인 후 설정
+    if (!isNaN(ratingValue) && ratingValue >= 0 && ratingValue <= 5) {
+        setRating(ratingValue);
+    }
+});
+
+// URL에서 별점 값을 가져오는 함수
+function getRatingValueFromURL() {
+    let url = window.location.href;
+    let regex = /[?&]rating=([^&#]*)/g;
+    let matches = regex.exec(url);
+    return matches ? matches[1] : null;
+}
+
+// 별점을 설정하는 함수
+function setRating(value) {
+    let ratingIcons = document.querySelectorAll('.rating .star-icon');
+    let ratingInputs = document.querySelectorAll('.rating .rating__input');
+
+    // 선택된 별점 제거
+    ratingIcons.forEach(icon => {
+        icon.classList.remove('filled');
+    });
+
+    // 주어진 값에 해당하는 별점 선택
+    let selectedRating = Math.round(value * 2) / 2; // 반올림하여 0.5 단위로 설정
+    for (let i = 0; i < ratingInputs.length; i++) {
+        let inputValue = parseFloat(ratingInputs[i].value);
+        if (inputValue <= selectedRating) {
+            ratingIcons[i].classList.add('filled');
+        }
+    }
+}
+
+//별점 선택 유지하는 부분 나중에 수정 예정
+
+
+
 
 let ratingForm = $('#ratingForm');
 
@@ -136,8 +184,6 @@ wrap.addEventListener('mouseenter', () => {
                 for (let i = 0; i < stars.length; i++) {
                     if (stars[i].classList.contains('filled')) {
                         stars[i].style.opacity = opacityHover;
-                        
-                        console.log("1111");
                     }
                 }
             }
@@ -148,31 +194,6 @@ wrap.addEventListener('mouseenter', () => {
                 starIcon.style.opacity = '1';
                 checkedRate(); // 체크된 라디오 버튼 만큼 별점 active
                 
-                console.log("22");
-                /*ajax로 처리해야하는 듯*/
-                
-                /*예시::: 
-					$.ajax({
-							url: '/movie/rating',
-							type : 'POST',
-							dataType : 'json',
-							success : function(result){
-								console.log(result);
-								showUploadImage(result);
-							},
-							error : function(result){
-								alert("이미지 파일이 아닙니다.");
-							}
-						});
-                
-                */
-                
-                
-                
-                
-                ratingForm.submit();
-                
-                
             }
         });
 
@@ -180,8 +201,6 @@ wrap.addEventListener('mouseenter', () => {
         wrap.addEventListener('mouseleave', () => {
             if (wrap.classList.contains('readonly') == false) {
                 starIcon.style.opacity = '1';
-                
-                console.log("33");
             }
         });
 
@@ -189,10 +208,7 @@ wrap.addEventListener('mouseenter', () => {
         wrap.addEventListener('click', (e) => {
             if (wrap.classList.contains('readonly')) {
                 e.preventDefault();
-                
                
-                console.log("44");
-                
             }
         });
     });
@@ -204,8 +220,6 @@ function filledRate(index, length) {
     if (index <= length) {
         for (let i = 0; i <= index; i++) {
             stars[i].classList.add('filled');
-            
-            console.log("5");
         }
     }
 }
@@ -215,15 +229,13 @@ function checkedRate() {
     let checkedRadio = document.querySelectorAll('.rating input[type="radio"]:checked');
 
 
-    initStars();
+    //initStars();
     checkedRadio.forEach(radio => {
         let previousSiblings = prevAll(radio);
 
         for (let i = 0; i < previousSiblings.length; i++) {
             previousSiblings[i].querySelector('.star-icon').classList.add('filled');
-            
-            console.log("6");
-        }
+         }
 
         radio.nextElementSibling.classList.add('filled');
 
@@ -234,8 +246,6 @@ function checkedRate() {
             while (prevSibling) {
                 radioSiblings.push(prevSibling);
                 prevSibling = prevSibling.previousElementSibling;
-                
-                console.log("7");
             }
             return radioSiblings;
         }
@@ -249,6 +259,19 @@ function initStars() {
     }
 }
 
+
+stars.forEach((starIcon, idx) => {
+    starIcon.addEventListener('click', () => {
+        // 클릭된 별의 값
+        const ratingValue = input[idx].value;
+        
+        // 폼에 별점 값 채우기
+        document.getElementById("ratingForm").rating.value = ratingValue;
+        
+        // 폼 제출
+        document.getElementById("ratingForm").submit();
+    });
+});
+
 </script>
-</body>
-</html>
+
