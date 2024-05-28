@@ -85,5 +85,7 @@ public class MovieController {
 	@GetMapping("/movie/movieSearch")
 	public void movieSearchGET() throws Exception {
 		logger.info("영화 검색 페이지");
+		
+		
 	}
 }

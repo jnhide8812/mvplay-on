@@ -34,6 +34,24 @@
 	</select>
 	
 	<select id="searchMovie" resultType="com.mvp.model.MovieVO">
+	
+	    <![CDATA[
+	          select * from (
+	              select /*+INDEX_DESC(movie SYS_C008625) */ 
+	                  rownum as rn, movieId, movieTitle, cate1, movieDate, movieCheck
+	              from movie 
+	              where
+	             
+	    ]]>         
+	            <if test="searchText != null">
+	                movieTitle like '%'||#{searchText}||'%' and
+	            </if>
+	            
+	    <![CDATA[        
+	             rownum <= #{pageNum}*#{amount}
+	            )
+	        where rn > (#{pageNum} - 1) * #{amount}
+	    ]]>
 	</select>
 	
   </mapper>
