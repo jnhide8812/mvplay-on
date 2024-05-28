@@ -12,84 +12,97 @@
 <title>mvplayon-구독권을 선택해주세요</title>
 </head>
 <body>
-	<!-- 헤더 
-	<%@include file="../includes/header.jsp" %>
+<div id="container">
+	<%@include file="/includes/header.jsp" %>
+	<div class="sub_wrap">
+		<div class="top">
+			<div class="tit_wrap">
+				<h1 class="main_tit">구독권을 선택해 주세요</h1>
+				<h2 class="sub_tit">원할 때 언제든지 해지할 수 있어요</h2>
+			</div>
+			<form id="subscribe_choice" action="/purchase/subscribe1" method="post">
+			<input type="hidden" name="action" value="step1">
+				<%-- <input type="hidden" name="userId" value="${memberInfo.userId}">	 --%>
 	
-	<%@include file="../includes/nav.jsp" %> -->
-	<h1>구독권을 선택해 주세요</h1>
-	<h2>원할 때 언제든지 해지할 수 있어요</h2>
-	<form id="subscribe_choice"  action="/purchase/subscribe1" method="post">
-	 <input type="hidden" name="action" value="step1">		
-	 <%-- <input type="hidden" name="userId" value="${memberInfo.userId}">	 --%>
-	
-      <div class="form_section_effect">
-         
-            <ul>
-                <li><input type="radio" name="goods" value="b"> 베이직</li>
-             
-                <li>월 7900원</li>
-                <li>Ultra HD 4K 지원</li>
-                <li>실감나는 화질</li>
-                <li>HDR 10+ 지원</li>
-                <li>더 입체감있는 색상</li>
-                
-                <li><input type="radio" name="goods" value="p"> 프리미엄</li>
-                
-                <li>월 8900원</li>
-                <li>Full HD 지원</li>
-                <li>선명한 화질</li>
-                <li>HDR 10+ 미지원</li>
-                <li>안정적인 색상</li>
-            </ul>
-        </div>
-        
-        <div class="form_section_effect">
-            <ul>
-                <li><input type="radio" name="period" value="1개월"> 1개월</li>
-               
-             
-                
-                <li><input type="radio" name="period" value="12개월"> 12개월 16% 절약</li>
-               
-               
-            </ul>
-        </div>
-        <div id="selectedPrice"></div>
-        <ul>
-        
-        
-	<li>결제방법을 등록해주세요</li>
-	<li>결제 정보만 입력하면 바로 감상할 수 있어요</li>
-		
-	 <c:choose>
-        <c:when test="${period == '1개월'}">
-            <li><input type="radio" name="payment" value="card"> 카드결제</li>
-            <li>${priceMonthly}원</li>
-                    
-            <li><input type="radio" name="payment" value="카카오페이"> 카카오페이</li>
-            <li>${priceMonthly}원</li>
-        </c:when>
-        <c:when test="${period == '12개월'}">
-            <li><input type="radio" name="payment" value="card"> 카드결제</li>          
-            <li><input type="radio" name="payment" value="카카오페이"> 카카오페이</li>           
-        </c:when>
-    </c:choose>
-	<!-- 체크박스 disable기능 추후 추가 예정 -->
-	<li>(필수)언제든 해지 가능하며, 구독이 끝날 때까지 이용할 수 있어요</li>
-	<li>결제 후 3일 이내이고, 이용 내역이 없다면 환불 받을 수 있어요</li>
-	
-</ul>
-        
-        
-         <div class="btn_section_effect">
-        
-            <button id="subscribeBtn111" type="button" class="btn">구독 시작하기</button>
-        	<button type="submit">결제하기</button>
-        </div>  
-        <p>유저 아이디${userId}</p>
-        
-      </form>
-      <%@include file="../includes/footer.jsp" %>
+				<div class="main_content">
+					<ul class="basic">
+						<li>
+							<input type="radio" name="goods" value="b"> 베이직
+							<span class="price">월 7900원</span>
+						</li>
+						<li>
+							<img class="hd" src="resources/icon/hd_icon.png">
+							<span class="hd">Full HD 지원</span>
+							<p class="explain">선명한 화질</p>
+						</li>
+						<li>
+							<img class="hd" src="resources/icon/x_icon.png">
+							<span class="hd">HDR 10+ 미지원</span>
+							<p class="explain">안정적인 색상</p>
+						</li>
+					</ul>
+					<ul class="premium">
+						<li>
+							<input type="radio" name="goods" value="p"> 프리미엄
+							<span class="price">월 8900원</span>
+						</li>
+						<li>
+							<img class="hd" src="resources/icon/4k_icon.png">
+							<span class="hd">Ultra HD 4K 지원</span>
+							<p class="explain">실감나는 화질</p>
+						</li>
+						<li>
+							<img class="hd" src="resources/icon/hrd_icon.png">
+							<span class="hd">HDR 10+ 지원</span>
+							<p class="explain">더 입체감있는 색상</p>
+						</li>
+					</ul>
+				</div>
+				<div class="month_wrap">
+					<ul>
+						<li><input type="radio" name="period" value="1개월">1개월</li>
+						<li><input type="radio" name="period" value="12개월">12개월 16% 절약</li>
+					</ul>
+				</div>
+				<div id="selectedPrice"></div>
+			</div>
+			<div class="pay_wrap">
+				<div class="pay_tit">
+					<h1 class="main_tit">결제방법을 등록해주세요</h1>
+					<h2 class="sub_tit">결제 정보만 입력하면 바로 감상할 수 있어요</h2>
+				</div>
+				<ul>
+					<c:choose>
+						<c:when test="${period == '1개월'}">
+							<li><input type="radio" name="payment" value="card">
+								카드결제</li>
+							<li>${priceMonthly}원</li>
+
+							<li><input type="radio" name="payment" value="카카오페이">
+								카카오페이</li>
+							<li>${priceMonthly}원</li>
+						</c:when>
+						<c:when test="${period == '12개월'}">
+							<li><input type="radio" name="payment" value="card">
+								카드결제</li>
+							<li><input type="radio" name="payment" value="카카오페이">
+								카카오페이</li>
+						</c:when>
+					</c:choose>
+				<!-- 체크박스 disable기능 추후 추가 예정 -->
+					<li>(필수)언제든 해지 가능하며, 구독이 끝날 때까지 이용할 수 있어요</li>
+					<li>결제 후 3일 이내이고, 이용 내역이 없다면 환불 받을 수 있어요</li>
+				</ul>
+			</div>  <!-- pay_wrap -->
+			<div class="paybtn_wrap">
+				<button id="subscribeBtn111" type="button" class="sub_btn">구독 시작하기</button>
+				<button type="submit" class="pay">결제하기</button>
+			</div>
+			<p>유저 아이디${userId}</p>
+		</form>
+	</div> <!-- sub_wrap -->
+</div> <!-- container -->
+
 
 <script>
 $(document).ready(function() {
@@ -144,7 +157,7 @@ $(document).ready(function() {
 
 
 
-      
-     
+
+
 </body>
 </html>
