@@ -6,15 +6,18 @@
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="/resources/css/purchase/subscribe1.css">
+<link rel="stylesheet" href="/resources/css/basic/style.css">
 <meta charset="UTF-8">
 <title>mvplayon-구독권을 선택해주세요</title>
 </head>
 <body>
-	<!-- 헤더 -->
+	<!-- 헤더 
 	<%@include file="../includes/header.jsp" %>
-	<!-- 네비 -->
-	<%@include file="../includes/nav.jsp" %>
-	<h2>구독권을 선택해 주세요</h2>
+	
+	<%@include file="../includes/nav.jsp" %> -->
+	<h1>구독권을 선택해 주세요</h1>
+	<h2>원할 때 언제든지 해지할 수 있어요</h2>
 	<form id="subscribe_choice"  action="/purchase/subscribe1" method="post">
 	 <input type="hidden" name="action" value="step1">		
 	 <%-- <input type="hidden" name="userId" value="${memberInfo.userId}">	 --%>
