@@ -74,7 +74,7 @@
 	
 	$("#list_btn").on("click", function(e){
 		form.find("#bno").remove();
-		form.attr("action", "/board/list");
+		form.attr("action", "/board/ownList");
 		form.submit();
 	});
 	

@@ -16,11 +16,9 @@
 <body>
 <div id="container">
 	<div class="eboard">
-		<%@include file="../includes/header.jsp" %>
-		<%@include file="../includes/nav.jsp" %>
 		<div class="main_board">
 			<h1>게시판 등록</h1>
-			<form action="/askboard/enroll" method="post">
+			<form id="eboard" action="/askboard/enroll" method="post">
 				<div class="input_wrap">
 					<label>Title</label> 
 					<input name="title">
@@ -38,6 +36,14 @@
 		</div>
 	</div>
 </div>
-
+<script>
+//회원가입 버튼 (회원가입 기능 적용)
+$(document).ready(function(){
+	$(".sbtn").click(function(){
+		$("#eboard").attr("action","/askboard/enroll");
+		$("#eboard").submit();
+	});
+});
+</script>
 </body>
 </html>

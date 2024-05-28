@@ -2,12 +2,16 @@ package com.mvp.controller;
 
 
 
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
+import com.mvp.model.MemberVO;
 import com.mvp.model.PageVO;
 import com.mvp.service.AskBoardService;
 
@@ -28,8 +33,29 @@ public class BoardController {
 	@Autowired
 	private AskBoardService askbservice;
 	
+
+	/*개인게시판 목록 페이지 접속(페이징)*/
+	@GetMapping("/ownList")
+	public void AsksboardownListGET(HttpServletRequest request, MemberVO member, Model model, Criteria cri) {
 	
-	/*게시판 목록 페이지 접속(페이징)*/
+	  
+		HttpSession session = request.getSession();
+	    MemberVO mvo = (MemberVO)session.getAttribute("member");
+	    System.out.println("mvo: "+mvo);
+		
+	    String userId = (String) session.getAttribute("userId");
+	    System.out.println("userId33333: "+userId);
+	    
+	    log.info("askboardListGET");
+		model.addAttribute("ownList", askbservice.ownList(cri));
+		session.setAttribute("userId", userId);
+		
+		int total = askbservice.askboardGetTotal(cri);
+		PageVO pageMake = new PageVO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
+		
+	}
+	/*게시판 목록 페이지 접속(페이징)
 	@GetMapping("/list")
 	public void AsksboardListGET(Model model, Criteria cri) {
 		log.info("askboardListGET");
@@ -39,7 +65,7 @@ public class BoardController {
 		PageVO pageMake = new PageVO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 	}
-
+	*/
 
 	/*게시판 등록 페이지 접속*/
 	@GetMapping("/enroll")
@@ -57,7 +83,7 @@ public class BoardController {
         
         rttr.addFlashAttribute("result", "enroll success");
         
-        return "redirect:/AskBoard/list";
+        return "redirect:/AskBoard/ownList";
         
     }
     
@@ -80,7 +106,7 @@ public class BoardController {
     public String askboardModifyPOST(AskBoardVO board, RedirectAttributes rttr) {
     	askbservice.modify(board);
     	rttr.addFlashAttribute("result", "modify success");
-    	return "redirect:/board/list";
+    	return "redirect:/board/ownList";
     }
     
     /*페이지 삭제*/
@@ -88,7 +114,7 @@ public class BoardController {
     public String askboardDeletePOST(int ano, RedirectAttributes rttr) {
     	askbservice.delete(ano);
     	rttr.addFlashAttribute("result","delete success");
-    	return "redirect:/board/list";
+    	return "redirect:/board/ownList";
     }
     
     /**/

@@ -64,7 +64,17 @@ public class AskBoardServiceImpl implements AskBoardService{
 		askMapper.deleteAnswer(avo);
 		
 	}
+	/*개인 게시글 목록*/
+	@Override
+	public List<AskBoardVO> ownList(Criteria cri) {
+		return askMapper.ownList(cri);
+	}
 
+	/*개인 게시글 개수*/
+	@Override
+	public int askboardGetTotal(Criteria cri) {
+		return askMapper.askboardGetTotal(cri);
+	}
 
 	
 

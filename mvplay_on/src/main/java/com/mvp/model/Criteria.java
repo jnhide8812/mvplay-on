@@ -18,7 +18,10 @@ public class Criteria {
 	
 	/* 카테고리 코드 */
 	private String cateCode;
-    
+	
+	/*개인*/
+	private String userId;
+	
     /* Criteria 생성자 */
     public Criteria(int pageNum, int amount) {
         this.pageNum = pageNum;
@@ -29,6 +32,7 @@ public class Criteria {
     public Criteria(){
         this(1,10);
     }
+    
     
     /* 검색 타입 데이터 배열 변환 */
     public String[] getTypeArr() {
@@ -78,7 +82,7 @@ public class Criteria {
 	@Override
 	public String toString() {
 		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", type=" + type + ", keyword=" + keyword
-				+ ", cateCode=" + cateCode + "]";
+				+ ", cateCode=" + cateCode + ", userId=" + userId + "]";
 	}
-
+   
 }

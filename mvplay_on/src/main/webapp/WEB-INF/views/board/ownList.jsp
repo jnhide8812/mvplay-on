@@ -32,23 +32,23 @@
 						<th class="answerCk">답변 여부</th>
 					</tr>
 				</thead>
-				<c:forEach items="${list }" var="list">
+				<c:forEach items="${ownList }" var="ownList">
 					<tr>
-						<td><c:out value="${list.ano}"></c:out></td>
+						<td><c:out value="${ownList.ano}"></c:out></td>
 						<td>
-							<a class="move" href='/board/get?ano=<c:out value="${list.ano}"/>'>
-                        		<c:out value="${list.title}"/>
+							<a class="move" href='/board/get?ano=<c:out value="${ownList.ano}"/>'>
+                        		<c:out value="${ownList.title}"/>
                     		</a>
 							</td>
-						<td><c:out value="${list.userId}"></c:out></td>
-						<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.regDate}"/></td>
-						<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.updateDate}"/></td>
-						<td>${list.answerCk}</td>
+						<td><c:out value="${ownList.userId}"></c:out></td>
+						<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ownList.regDate}"/></td>
+						<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ownList.updateDate}"/></td>
+						<td>${ownList.answerCk}</td>
 					</tr>
 				</c:forEach>
 			
 				<!-- 게시글 없음 -->
-				<c:if test="${listCheck =='empty' }">
+				<c:if test="${ownListCheck =='empty' }">
 					<div class="table_empty">
 						등록된 내용이 없습니다. 
 					</div>
@@ -59,7 +59,7 @@
 	</div>
 	<!-- 검색 영역 시작 search_wrap -->
 	<div class="search_wrap">
-		<form id="searchForm" action="/board/list" method="get">
+		<form id="searchForm" action="/board/ownList" method="get">
 			<div class="search_input">
 				제목 검색 : <input type="text" name="keyword" value="<c:out value='${pageMaker.cri.keyword }'/>">
 				<input type="hidden" name="pageNum" value="<c:out value='${pageMaker.cri.pageNum}'/>">
@@ -96,7 +96,7 @@
 	</div>
 	<!-- 페이지 메이커 끝 -->
 	
-	<form id="moveForm" action="/board/list" method="get">
+	<form id="moveForm" action="/board/ownList" method="get">
 		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
 		<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
 		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
@@ -148,7 +148,7 @@ let moveForm = $('#moveForm');
 $(".pageMaker_btn a").on("click", function(e){
 	e.preventDefault();
 	moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-	moveForm.attr("action", "/board/list");
+	moveForm.attr("action", "/board/ownList");
 	moveForm.submit();
 	
 });

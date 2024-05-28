@@ -78,7 +78,7 @@
 	/* 목록 페이지 이동 버튼 */
 	$("#list_btn").on("click", function(e){
 	    form.find("#ano").remove();
-	    form.attr("action", "/board/list");
+	    form.attr("action", "/board/ownList");
 	    form.submit();
 	});
 	

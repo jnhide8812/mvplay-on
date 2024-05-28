@@ -10,6 +10,9 @@ public interface AskBoardMapper {
 	//게시글 등록
 	public void enroll(AskBoardVO avo);
 	
+	//게시글 목록
+	public List<AskBoardVO> getList();
+	
 	//게시글 조회
 	public AskBoardVO select(int ano);
 	
@@ -30,8 +33,12 @@ public interface AskBoardMapper {
 	
 	//관리자 답변 삭제
 	public void deleteAnswer(AskBoardVO avo);
-	
-	//게시글 목록
-	public List<AskBoardVO> getList();
 
+	
+	//개인 개시글 개수
+	public int askboardGetTotal(Criteria cri);
+
+	
+	//게시판 개인목록
+	public List<AskBoardVO> ownList(Criteria cri);
 }

@@ -12,6 +12,12 @@ public interface AskBoardService {
 	//게시글 목록 조회
 	public List<AskBoardVO> selectList(Criteria cri);
 	
+	//게시글 등록
+	public void enroll(AskBoardVO board);
+	
+	/*게시판 목록*/
+	public List<AskBoardVO> getList();
+	
 	//게시글 수정
 	public int modify(AskBoardVO askboard);
 	
@@ -27,9 +33,10 @@ public interface AskBoardService {
 	//관리자 답변 삭제
 	public void deleteAnswer(AskBoardVO avo);
 	
-	//게시글 등록
-	public void enroll(AskBoardVO board);
+
+	//게시판 개인목록
+	public List<AskBoardVO> ownList(Criteria cri);
 	
-	/*게시판 목록*/
-	public List<AskBoardVO> getList();
+	//개인 개시글 개수
+	public int askboardGetTotal(Criteria cri);
 }

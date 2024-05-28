@@ -67,6 +67,7 @@ public class MainController {
 	//기존 매핑
 	@RequestMapping("/main")
 	public String list(HttpServletRequest request) {
+		System.out.println("test");
 		List<MovieVO> movieList = movieService.movieList();
 		request.setAttribute("movieList", movieList);
 		return "main";
