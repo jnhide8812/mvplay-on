@@ -67,7 +67,7 @@ form.l_box ul li {
 	position: relative;
 }
 li.login_top {
-	margin-bottom: 14px;
+	margin-bottom: 8px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -115,9 +115,10 @@ input.login_button {
 
 /*로그인 실패시 경고글*/
 .login_warn{
-	margin-top: 30px;
+	margin-top: 10px;
 	text-align: center;
 	color: red;
+	width:300px;
 }
 /*footer*/
 .s_footer{

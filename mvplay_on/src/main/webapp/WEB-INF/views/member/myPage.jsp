@@ -25,11 +25,11 @@
 			</div>
 			<div class="inf_wrap">
 				<fieldset class="buy">
-					<legend>이용권</legend>
-					<nav class="ticket">
+					<legend><span class="mtit">이용권</span></legend>
+					<nav class="mine">
 						<ul class="p_info">
 							<li>
-								<label>상세 정보</label>
+								<label><span class="sub_tt">상세 정보</span></label>
 							</li>
 							<li>
 								<div class="receipt">
@@ -58,29 +58,31 @@
 						</ul>
 						<ul class="final_date">
 							<li>
-								<label>결제 예정일</label>
+								<label><span class="sub_tt">결제 예정일</span></label>
 							</li>
 							<li><input type="text" class="expired" name="expired" value="${subscribePayment.expiredDate}" readonly="readonly"></li>
 						</ul>
 					</nav>
 				</fieldset>
 				<fieldset class="own">
-					<legend>계정</legend>
-					<ul class="p_info">
-						<li>
-							<label>이메일</label>
-							<input type="text" name="memberemail" value="${member.userId}" readonly="readonly">
-						</li>
-						<li>
-							<div class="pw_change">
-								<button id="pw_btn" class="pbtn">비밀번호 변경></button>
-							</div>
-						</li>
-					</ul>
+					<legend><span class="mtit">계정</span></legend>
+					<nav class="mine">
+						<ul class="p_info">
+							<li class="mm">
+								<label><span class="sub_tt">이메일</span></label>
+								<input type="text" name="memberemail" value="${member.userId}" readonly="readonly" class="mail">
+							</li>
+							<li>
+								<div class="pw_change">
+									<button id="pw_btn" class="pbtn">비밀번호 변경></button>
+								</div>
+							</li>
+						</ul>
+					</nav>
 				</fieldset>
 			</div>
 			<div class="ask_button_wrap">
-				<a href="/board/list" class="ask_btn">문의하기</a>
+				<a href="/board/ownList" class="ask_btn">문의하기</a>
 			</div>
 		</div> 
 		<%@include file="../includes/footer.jsp" %>

@@ -44,7 +44,7 @@
 						name="upw" class="login_input">
 					</li>
 					<c:if test="${result == 0}">
-						<div class = "login_warn">이메일 또는 비밀번호를 잘못 입력하셨습니다.</div>
+						<div class = "login_warn">이메일 또는 비밀번호를<br> 잘못 입력하셨습니다.</div>
 					</c:if>
 					<li>
 						<input type="button" value="로그인" class="login_button">
