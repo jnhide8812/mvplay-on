@@ -19,4 +19,9 @@
 		select * from member where userId = #{userId}
 	</select>
 	
+	  <!-- 구독권 구매시 회원 등급 업데이트 -->
+    <update id="updateMemberGrade" parameterType="com.mvp.model.MemberVO" >
+        UPDATE member SET ugrade = #{ugrade} WHERE userId = #{userId}
+    </update>
+	
   </mapper>

@@ -10,9 +10,14 @@
 <title>mvplayon-구독권을 선택해주세요</title>
 </head>
 <body>
+	<!-- 헤더 -->
+	<%@include file="../includes/header.jsp" %>
+	<!-- 네비 -->
+	<%@include file="../includes/nav.jsp" %>
 	<h2>구독권을 선택해 주세요</h2>
-	<form id="subscribe_choice"  action="/movie/subscribeMain" method="post">
+	<form id="subscribe_choice"  action="/purchase/subscribe1" method="post">
 	 <input type="hidden" name="action" value="step1">		
+	 <%-- <input type="hidden" name="userId" value="${memberInfo.userId}">	 --%>
 	
       <div class="form_section_effect">
          
@@ -78,12 +83,12 @@
             <button id="subscribeBtn111" type="button" class="btn">구독 시작하기</button>
         	<button type="submit">결제하기</button>
         </div>  
-        
+        <p>유저 아이디${userId}</p>
         
       </form>
-      
+      <%@include file="../includes/footer.jsp" %>
+
 <script>
-alert("스크립트")
 $(document).ready(function() {
     // 라디오 버튼 클릭 시 가격 정보를 업데이트하는 함수
     function updatePrice() {
@@ -116,17 +121,26 @@ $(document).ready(function() {
         updatePrice();
         
     });
-});
-
-// 구독하기 버튼 클릭 시
-$("#subscribeBtn111").click(function() {
-    $("#subscribe_choice").submit();
     
-});
+    // 구독하기 버튼 클릭 시
+    $("#subscribeBtn111").click(function() {
+    	
+		var goods = $('input[name="goods"]:checked').val();
+        
+        // 구독 상품 값을 hidden input에 추가하여 서버로 전송
+        $('#subscribe_choice').append('<input type="hidden" name="ugrade" value="' + (goods === 'b' ? '2' : '3') + '">');
+        
+    	
+        $("#subscribe_choice").submit();
+    });
 
-// 초기 상태 업데이트
-updatePrice();
-</script>  
+    // 초기 상태 업데이트
+    updatePrice();
+});
+</script>
+
+
+
       
      
 </body>

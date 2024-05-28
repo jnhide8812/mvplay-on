@@ -24,10 +24,16 @@
     <select id="getSubscriptionInfo" parameterType="int" resultType="com.mvp.model.SubscribtionVO">
         SELECT * FROM subscription WHERE Id = #{Id}
     </select>
+	
 	<!-- 구독 정보 디비 저장  -->
     <insert id="enrollSubscription" parameterType="com.mvp.model.SubscribtionVO">
         INSERT INTO subscribePayment (startDate, expiredDate, SubscribePrice, userId, goods)
         VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId}, #{goods})
     </insert>
+	
+	 
+	
+	
+	
 	
   </mapper>

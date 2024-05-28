@@ -55,7 +55,7 @@ public class MemberController {
 	
 	/*로그인*/
 	@PostMapping(value = "login")
-	public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr) throws Exception{
+	public String loginPOST(HttpServletRequest request, MemberVO member, RedirectAttributes rttr,Model model) throws Exception{
 		
 		//System.out.println("login 메서드 진입");
 		//System.out.println("전달된 데이터 : " + member);

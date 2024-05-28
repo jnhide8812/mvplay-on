@@ -1,6 +1,8 @@
 package com.mvp.mapper;
 
 import com.mvp.model.MemberVO;
+import com.mvp.model.PurchaseVO;
+import com.mvp.model.SubscribtionVO;
 
 public interface MemberMapper {
 
@@ -12,4 +14,8 @@ public interface MemberMapper {
 	
 	//마이페이지
 	public MemberVO memberGetDetail(int userId);
+	
+	//구독권-등급 변경
+	public void updateMemberGrade(MemberVO member);
+	
 }

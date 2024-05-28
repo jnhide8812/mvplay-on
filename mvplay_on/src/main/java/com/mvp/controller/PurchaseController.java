@@ -3,6 +3,8 @@ package com.mvp.controller;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +28,10 @@ import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
+import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
+
 
 import lombok.RequiredArgsConstructor;
 
@@ -43,8 +47,6 @@ public class PurchaseController {
     private PurchaseService purchaseService;
     @Autowired
     private MemberService memberService;
-    
-    
     @Autowired
     private MovieService movieservice;
 
@@ -56,40 +58,36 @@ public class PurchaseController {
 
     @PostConstruct
     public void init() {
-        this.iamportClient = new IamportClient();
+        this.iamportClient = new IamportClient(apiKey, secretKey);
     }
 
     // 개별 구매 페이지 이동
     @GetMapping("/purchase/vod")
     public String purchasePageGET(int movieId, Model model) {
-    	
-    	System.out.println("movieId" + movieId);
-    	logger.info("vod");
+        System.out.println("movieId" + movieId);
+        logger.info("vod");
         logger.info("purchasePageGET()........." + movieId);
 
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
-       
         return "redirect:/movie/purchaseDetail"; 
     }
-    //소장
+
+    // 소장
     @PostMapping("/purchase/vod")
-    public String purchasePagePost(PurchaseVO pvo,MemberVO member, HttpServletRequest request) {
+    public String purchasePagePost(PurchaseVO pvo, MemberVO member, HttpServletRequest request) {
         System.out.println("구매 상세페이지 이동" + pvo);
-        
         purchaseService.getBuyInfo(pvo);
-       
-       HttpSession session = request.getSession();
-       
-       try {
-    	   MemberVO memberLogin = memberService.memberLogin(member);
-			memberLogin.setUpw("");
-			session.setAttribute("member", memberLogin);
-			
-		} catch (Exception e) {
-			 logger.error("Error during member login", e);
-		
-	}
-       
+
+        HttpSession session = request.getSession();
+
+        try {
+            MemberVO memberLogin = memberService.memberLogin(member);
+            memberLogin.setUpw("");
+            session.setAttribute("member", memberLogin);
+        } catch (Exception e) {
+            logger.error("Error during member login", e);
+        }
+
         return "redirect:/movie/purchaseDetail"; 
     }
 
@@ -97,36 +95,46 @@ public class PurchaseController {
     @ResponseBody
     public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException {
         IamportResponse<Payment> payment = null;
-		payment = iamportClient.paymentByImpUid(imp_uid);
-       System.out.println("payment"+payment);
+        //payment = iamportClient.paymentByImpUid(imp_uid);
+        System.out.println("payment" + payment);
         return payment;
     }
 
     @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
-    public void payFail() {
-      
-    }
-//======구독=====
-    // 첫 번째 구독 선택 페이지 매핑
+    public void payFail() {}
+
+    // 구독
     @GetMapping("/purchase/subscribe1")
-   
     public void subscribe1Page(HttpServletRequest request) {
-    HttpSession session = request.getSession();
-    String userId = "daewoo"; // 임시 로그인
-    session.setAttribute("userId", userId);
-       logger.info("purchase");
-    }
-    
-    @PostMapping("/purchase/subscribe1")
-    public String handleSubscription(HttpServletRequest request, SubscribtionVO svo, Model model) {
         HttpSession session = request.getSession();
+        String userId = "daewoo"; // 임시 로그인
+        session.setAttribute("userId", userId);
+        logger.info("purchase");
+    }
+
+    @PostMapping("/purchase/subscribe1")
+    public String postSubscribe1(HttpServletRequest request, MemberVO member, SubscribtionVO svo, Model model) {
+        HttpSession session = request.getSession();
+        
+        String userId = (String) session.getAttribute("userId");
+        String upw = request.getParameter("upw");
+        String ubirth = request.getParameter("ubirth");
+        
+        System.out.println("포스트 구독");
+        
         String action = request.getParameter("action");
         logger.info("POST movie/subscribeMain - Action: " + action);
 
         String goods = request.getParameter("goods");
         String period = request.getParameter("period");
         
-        System.out.println("goods"+goods+" : " + period);
+        String ugrade = "1"; // Default 값 (일반회원)
+        session.setAttribute("ugrade", ugrade);
+        session.setAttribute("userId", userId);
+        session.setAttribute("upw", upw);
+        session.setAttribute("ubirth", ubirth);
+
+        System.out.println("goods: " + goods + " : " + period);
 
         if (goods != null && period != null) {
             session.setAttribute("goods", goods);
@@ -150,10 +158,10 @@ public class PurchaseController {
             session.setAttribute("priceYearly", priceYearly);
             session.setAttribute("priceMonthlyDiscounted", priceMonthlyDiscounted);
 
-            int SubscribePrice = "1개월".equals(period) ? priceMonthly : priceYearly;
+            int subscribePrice = "1개월".equals(period) ? priceMonthly : priceYearly;
 
             SubscribtionVO newSubscription = new SubscribtionVO();
-            newSubscription.setSubscribePrice(SubscribePrice);
+            newSubscription.setSubscribePrice(subscribePrice);
             newSubscription.setGoods(goods);
             newSubscription.setStartDate(new Date());
 
@@ -165,69 +173,52 @@ public class PurchaseController {
             }
             newSubscription.setExpiredDate(calendar.getTime());
 
-            String userId = (String) session.getAttribute("userId");
             newSubscription.setUserId(userId);
             purchaseService.enrollSubscription(newSubscription);
             System.out.println("enroll");
+
+            if (goods.equals("b")) {
+                ugrade = "2";
+            } else if (goods.equals("p")) {
+                ugrade = "3";
+            }
+            System.out.println("ugrade :" + ugrade);
+
+            member.setUserId(userId);  // 설정된 userId를 member 객체에 설정
+            member.setUpw(upw);        // 설정된 upw를 member 객체에 설정
+            member.setUbirth(null);// 설정된 ubirth를 member 객체에 설정
+            member.setUgrade(ugrade);  // 설정된 ugrade를 member 객체에 설정
+
+            System.out.println("memberId" + member);
+
+            try {
+                memberService.updateMemberGrade(member);
+                System.out.println("member(purchaseController)" + member);
+                System.out.println("ugrade(purchaseController) :" + ugrade);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             return "redirect:/movie/subscribeMain";
-            
         } else {
-        	
             return "redirect:/purchase/payfail";
         }
     }
+
+
     @GetMapping("/movie/subscribeMain")
     public void GetsubscribeMainPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String userId = "daewoo"; // 임시 로그인
         session.setAttribute("userId", userId);
-           logger.info("매핑 되랏");
-        }
-    
-	@PostMapping("/movie/subscribeMain")
-	public String PostsubscribeMainPage(HttpServletRequest request, Model model) {
-		String goods = (String) request.getSession().getAttribute("goods");
-		model.addAttribute("goods", goods);
-		return "redirect:/movie/subscribeMain"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
-	}
-    
-   
-    /* 2번째 구독 옵션 선택 페이지 매핑
-   
-    @GetMapping("/purchase/subscribe2")
-    public void subscribe2Page(HttpServletRequest request,Model model) {
-    	 HttpSession session = request.getSession();
-    	logger.info("get purchase2");	
+        logger.info("subscribeMain");
     }
-   
-    @PostMapping("/purchase/subscribe2")
-    public void postSubscribe2Page(SubscribtionVO svo){
-    	logger.info("post purchase2");
-    	logger.info("svo :"+svo);	
+
+    @PostMapping("/movie/subscribeMain")
+    public String PostsubscribeMainPage(HttpServletRequest request, Model model) {
+        String goods = (String) request.getSession().getAttribute("goods");
+        model.addAttribute("goods", goods);
+        System.out.println("포스트 subscribeMain");
+        return "redirect:/movie/subscribeMain"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
     }
-   
-    // 3번째 결제 완료 페이지 매핑
-    @GetMapping("/purchase/subscribe3")
-    public void subscribe3Page(HttpServletRequest request) {
-    	HttpSession session = request.getSession();
-    }
-    @PostMapping("/purchase/subscribe3")
-    public void postSubscribe3Page(SubscribtionVO svo){
-    	
-    	logger.info("post purchase3");
-    	logger.info("svo :"+svo);	
-    	
-    	
-    	
-    }시간 나면 페이지 쪼개보겠음(로그인에서 id,pw와 같이 계속 같은 값을 물고 다니면 session으로 처리하면 되지만, 나처럼 한페이지마다 정보가 
-    추가 업데이트되는 값을 넣을려면 매번 servlet을 만들어 줄 수 없어서 actionFactory로 처리해야하는데 처리를 못하겠음 ㅠ*/
-
-
-
-
 }
-
-
-
-
-
