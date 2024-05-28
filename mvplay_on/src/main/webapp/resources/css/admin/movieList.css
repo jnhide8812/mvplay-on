@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
 .admin_content_wrap {
-	width: 80%;
+	width: 55%;
 	float: left;
-	height: 100%;
-	min-height: 800px;
+	margin: 0 auto;
+	align: center;
 }
 
 .movie_table_wrap {

@@ -20,131 +20,133 @@
 	<header>
 	   <%@ include file="../includes/admin/header.jsp"%>
 	</header>
-	<div class="admin_content_wrap">
-		<div class="admin_content_title">
-			<span>영화등록</span>
-		</div>
-		<br>
-		<div class="admin_content_main">
-			<form action="/admin/movieInsert" method="post" id="m_Insert">
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 제목</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input name="movieTitle">
-						<span id="warn_movieTitle">영화 제목을 입력해주세요.</span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>포스터</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input type="file" id ="fileItem" name='poster' style="height: 30px;">
-					    <span id="warn_poster"></span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 소개</label>
-					</div>
-					<br>
-					<div class="form_section_content ct">
-						<textarea name="movieContent" id="movieContent_textarea"></textarea>
-					    <span id="warn_movieContent">영화 소개를 입력해주세요</span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 URL</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input name="movieUrl">
-						<span id="warn_movieUrl">영화URL을 입력해주세요</span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 장르 1</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input type="radio" name="cate1" value="코믹" onclick="cateReadOnly()"/>코미디
-						<input type="radio" name="cate1" value="호러" onclick="cateReadOnly()"/>호러
-						<input type="radio" name="cate1" value="로맨스" onclick="cateReadOnly()"/>로맨스
-						<input type="radio" name="cate1" value="액션" onclick="cateReadOnly()"/>액션
-						<input type="radio" name="cate1" value="미스터리" onclick="cateReadOnly()"/>미스터리
-					    <span id="warn_cate1">영화 장르1을 선택해주세요</span>
-					</div>
-					<br>
-					<div class="form_section_title">
-						<label>영화 장르 2</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input name="cate2" id="cate2" readonly="readonly">
-						<span id="warn_cate2">영화 장르2를 입력해주세요</span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 이용등급 설정</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input type="radio" name="movieCheck" value="0" onclick="priceReadOnly()"/>구독전용
-						<input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능
-						<input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여만 가능
-						<input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여
-						<span id="warn_movieCheck">영화 이용등급을 선택해주세요</span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 구매가격(구매,구매대여시에만)</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input name="buyPrice" id="buyPrice" value="0" readonly="readonly">
-						<span id="warn_buyPrice">영화 구매가격은 숫자 형식이어야 합니다</span>	
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>영화 대여가격(대여,구매대여시에만)</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-						<input name="rentalPrice" id="rentalPrice" value="0" readonly="readonly">
-					    <span id="warn_rentalPrice">영화 대여가격은 숫자 형식이어야 합니다</span>
-					</div>
-				</div>
-				<br>
-				<div class="form_section">
-					<div class="form_section_title">
-						<label>개봉일</label>
-					</div>
-					<br>
-					<div class="form_section_content">
-					    <input name="movieDate" autocomplete="off" readonly="readonly"/>
-					    <span id="warn_movieDate">영화 개봉일을 선택해주세요</span>
-					</div>
-				</div>						
-			</form>
+	<div class="wrapper">
+		<div class="admin_content_wrap">
+			<div class="admin_content_title">
+				<span>영화등록</span>
+			</div>
 			<br>
-			<div class="btn_section">
-				<button id="insertBtn">등 록</button>
+			<div class="admin_content_main">
+				<form action="/admin/movieInsert" method="post" id="m_Insert">
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 제목</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input name="movieTitle">
+							<span id="warn_movieTitle">영화 제목을 입력해주세요.</span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>포스터</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input type="file" id ="fileItem" name='poster' style="height: 30px;">
+						    <span id="warn_poster"></span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 소개</label>
+						</div>
+						<br>
+						<div class="form_section_content ct">
+							<textarea name="movieContent" id="movieContent_textarea"></textarea>
+						    <span id="warn_movieContent">영화 소개를 입력해주세요</span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 URL</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input name="movieUrl">
+							<span id="warn_movieUrl">영화URL을 입력해주세요</span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 장르 1</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input type="radio" name="cate1" value="코믹" onclick="cateReadOnly()"/>코미디
+							<input type="radio" name="cate1" value="호러" onclick="cateReadOnly()"/>호러
+							<input type="radio" name="cate1" value="로맨스" onclick="cateReadOnly()"/>로맨스
+							<input type="radio" name="cate1" value="액션" onclick="cateReadOnly()"/>액션
+							<input type="radio" name="cate1" value="미스터리" onclick="cateReadOnly()"/>미스터리
+						    <span id="warn_cate1">영화 장르1을 선택해주세요</span>
+						</div>
+						<br>
+						<div class="form_section_title">
+							<label>영화 장르 2</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input name="cate2" id="cate2" readonly="readonly">
+							<span id="warn_cate2">영화 장르2를 입력해주세요</span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 이용등급 설정</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input type="radio" name="movieCheck" value="0" onclick="priceReadOnly()"/>구독전용
+							<input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능
+							<input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여만 가능
+							<input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여
+							<span id="warn_movieCheck">영화 이용등급을 선택해주세요</span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 구매가격(구매,구매대여시에만)</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input name="buyPrice" id="buyPrice" value="0" readonly="readonly">
+							<span id="warn_buyPrice">영화 구매가격은 숫자 형식이어야 합니다</span>	
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>영화 대여가격(대여,구매대여시에만)</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+							<input name="rentalPrice" id="rentalPrice" value="0" readonly="readonly">
+						    <span id="warn_rentalPrice">영화 대여가격은 숫자 형식이어야 합니다</span>
+						</div>
+					</div>
+					<br>
+					<div class="form_section">
+						<div class="form_section_title">
+							<label>개봉일</label>
+						</div>
+						<br>
+						<div class="form_section_content">
+						    <input name="movieDate" autocomplete="off" readonly="readonly"/>
+						    <span id="warn_movieDate">영화 개봉일을 선택해주세요</span>
+						</div>
+					</div>						
+				</form>
+				<br>
+				<div class="btn_section">
+					<button id="insertBtn">등 록</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -193,7 +195,7 @@
 		    let wRentalPrice = $('#warn_rentalPrice');
 		    let wMovieDate = $('#warn_movieDate');
 		    
-		    if(movieTitle ===''){
+		    if(movieTitle === ''){
 		    	wMovieTitle.css('display', 'block');
 		    	titleCheck = false;
 		    } else{
@@ -212,7 +214,7 @@
 		    	contentCheck = false;
 		    }
 		    
-		    if(movieUrl ===''){
+		    if(movieUrl === ''){
 		        wMovieUrl.css('display', 'block');
 		        urlCheck = false;
 		    } else{
@@ -229,7 +231,7 @@
 		    	cate1Check = true;
 		    }
 		    
-		    if(cate2 ===''){
+		    if(cate2 === ''){
 		        wCate2.css('display', 'block');
 		        cate2Check = false;
 		    } else{
@@ -261,7 +263,7 @@
 		    	rentalCheck = true;
 		    }
 		    
-		    if(movieDate ===''){
+		    if(movieDate === ''){
 		        wMovieDate.css('display', 'block');
 		        dateCheck = false;
 		    } else{

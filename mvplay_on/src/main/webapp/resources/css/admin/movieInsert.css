@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
-* {
-	margin: 0;
-	padding: 0;
+body {
+	height: 1440px;
 }
 
 a {
@@ -10,7 +9,7 @@ a {
 }
 
 .admin_content_wrap {
-	width: 50%;
+	width: 60%;
 	float: left;
 	height: 80%;
 }
