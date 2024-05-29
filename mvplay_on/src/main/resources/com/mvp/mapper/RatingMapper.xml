@@ -3,15 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mvp.mapper.RatingMapper">
+	<!-- 별점 주기 -->
 	<insert id="insertRating">
 		INSERT INTO rating(userId, movieId, rating) values(#{userId}, #{movieId}, #{rating})
 	</insert>
-	<update id="updateRating">
-		
-  
-  
-	</update>
 	
+	<!-- 별점 수정 -->
+	<update id="updateRating">
+		UPDATE rating 
+		SET rating = #{rating}
+		WHERE ratingId = #{ratingId}
+    </update>
+	
+	<!-- 별점 가져오기 -->
 	<select id="selectRating" resultType="com.mvp.model.RatingVO">
 		SELECT ratingId, userId, movieId, rating 
 		FROM rating 

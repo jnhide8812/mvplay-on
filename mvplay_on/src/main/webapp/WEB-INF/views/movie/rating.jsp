@@ -55,12 +55,11 @@
 
 
 </style>
-안녕하세요 
-<c:out value="${ratingInfo.rating }" />
 
 <div class="wrap">
     <form action="/movie/rating" method="post" id="ratingForm">
     <!-- 샘플 변경 예정 -->
+    <input type="hidden" name="rating" value='<c:out value="${ratingInfo.rating }" />'>
     <input type="hidden" name="userId" value="${member.userId }">
     <input type="hidden" name="movieId" value="${movieInfo.movieId }">
     
@@ -116,21 +115,13 @@
 //페이지가 로드될 때 실행되는 부분
 $(document).ready(function() {
     // 별점 값 파싱
-    let ratingValue = parseFloat(getRatingValueFromURL()); // URL에서 별점 값 가져오기
+    let ratingValue = parseFloat('<c:out value="${ratingInfo.rating }" />'); // URL에서 별점 값 가져오기
 
     // 별점 값이 유효한지 확인 후 설정
     if (!isNaN(ratingValue) && ratingValue >= 0 && ratingValue <= 5) {
         setRating(ratingValue);
     }
 });
-
-// URL에서 별점 값을 가져오는 함수
-function getRatingValueFromURL() {
-    let url = window.location.href;
-    let regex = /[?&]rating=([^&#]*)/g;
-    let matches = regex.exec(url);
-    return matches ? matches[1] : null;
-}
 
 // 별점을 설정하는 함수
 function setRating(value) {
@@ -268,8 +259,39 @@ stars.forEach((starIcon, idx) => {
         // 폼에 별점 값 채우기
         document.getElementById("ratingForm").rating.value = ratingValue;
         
-        // 폼 제출
-        document.getElementById("ratingForm").submit();
+        // AJAX 요청 보내기
+        let formData = new FormData();
+		formData.append('rating', ratingValue); // 별점 값 추가
+		//formData.append('userId', document.querySelector('[name="userId"]').value); // userId 추가
+		//formData.append('movieId', document.querySelector('[name="movieId"]').value); // movieId 추가
+        
+		formData.append('userId', '${member.userId}'); // userId 추가
+		formData.append('movieId','${movieInfo.movieId}' ); //movieId  
+        
+        
+        //formData.append('#ratingForm').value  ////
+        
+        
+        //ratingForm
+        $.ajax({
+            url: '/movie/rating', // 현재 페이지 유지
+            processData: false,
+            contentType: false,
+            data: formData,
+            type: 'POST',
+            dataType: 'json',
+            success: function(response) {
+                console.log("평가가 성공적으로 전송되었습니다.");
+                console.log("formdata", formData);
+            },
+            error: function (request, status, error) {
+                console.log("code: " + request.status)
+                console.log("message: " + request.responseText)
+                console.log("error: " + error);
+                //alert("로그인 해주세요.");
+            
+            }
+        });
     });
 });
 
