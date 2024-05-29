@@ -4,22 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mvp.mapper.PurchaseMapper">
   	
-  	<!-- 구매 영화 정보 -->
-  	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
-		select userId, movieId, buyPrice,rentalPrice from purchase where movieId = #{movieId}
-	</select>
-	
 	<!-- 개별 구매(소장용) purchase 테이블에 등록 -->
 	
 	<insert id="enrollPurchase_1">	
-		insert into purchase(userId, movieId, buyPrice) values(#{userId}, #{movieId}, #{buyPrice})
+		insert into purchase(userId, movieId, buyPrice, startDate, expiredDate) values(#{userId}, #{movieId}, #{buyPrice}, sysdate, sysdate+3650)
 	</insert>
 	
 	<!-- 개별 구매(대여용) purchase 테이블에 등록 -->
 	<insert id="enrollPurchase_2">
-		insert into purchase(userId, movieId, rentalPrice, expiredDate) values(#{userId}, #{movieId}, #{rentalPrice}, sysdate +7)
+		insert into purchase(userId, movieId, rentalPrice, startDate, expiredDate) values(#{userId}, #{movieId}, #{rentalPrice}, sysdate, sysdate + 7)
 	</insert>
 	
+	<!-- (대여)결제완료 시, 만료일 update +7일  -->
+	<update id="updateRental">
+		update purchase set expiredDate = startDate+7 where Id = #{Id} and rentalPrice > 0;  
+	</update>
+	
+	<!-- 구매 영화 정보 갖고 오기-->
+  	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
+		select userId, movieId, buyPrice,rentalPrice,startDate, expiredDate from purchase where movieId = #{movieId}
+	</select>
+	  
 	  <!-- 구독 정보  -->
     <select id="getSubscriptionInfo" parameterType="int" resultType="com.mvp.model.SubscribtionVO">
         SELECT * FROM subscription WHERE Id = #{Id}
@@ -31,7 +36,6 @@
         VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId}, #{goods})
     </insert>
 	
-	 
 	
 	
 	

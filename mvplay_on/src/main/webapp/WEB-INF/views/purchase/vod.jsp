@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>구매 컨텐츠</h2>
-<form id="movie_move">
+<form id="movie_move" action="/purchase/vod" method="post">
 <div class="content_wrap">
     <div class="content_subject"></div>
 
@@ -78,18 +78,20 @@
 </form>
 
 <script>
+
+
 $(document).ready(function() {
     // 결제 정보 업데이트 함수
     function updatePaymentInfo(price) {
         console.log("Updating payment info with price: " + price);
         var paymentMethod = $('input[name="buymethod"]:checked').val();
         console.log("Selected payment method: " + paymentMethod);
-        var discount = 0; // 할인 정보 (실제 로직에 따라 할인 정보를 가져와야 함)
-        var totalAmount = parseFloat(price) - parseFloat(discount); // 총 결제 금액 계산
+        //var discount = 0; // 할인 정보 (실제 로직에 따라 할인 정보를 가져와야 함)
+        var contentPrice = parseFloat(price); // 총 결제 금액 계산
 
         $('#contentPrice').text("콘텐츠 가격: " + price);
-        $('#discount').text("할인: " + discount);
-        $('#totalAmount').text("총 결제 금액: " + totalAmount);
+       // $('#discount').text("할인: " + discount);
+       // $('#totalAmount').text("총 결제 금액: " + totalAmount);
     }
 
     // 페이지 로드 시 updatePaymentInfo 호출하기
@@ -164,7 +166,7 @@ function requestPay(itemName) {
                             name: 'merchant_uid',
                             value: rsp.merchant_uid
                         }).appendTo('#movie_move');
-                        $('#movie_move').attr('action', '/movie/purchaseDetail').submit();
+                        $('#movie_move').attr('action', '/purchase/purchaseMain').submit();
                     } else {
                         // 결제 취소 처리
                         alert('결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.');
