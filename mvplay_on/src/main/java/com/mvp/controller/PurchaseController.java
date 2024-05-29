@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +32,12 @@ import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
 import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
 import lombok.RequiredArgsConstructor;
-
+@Component
 @Controller
 @RequestMapping
 @RequiredArgsConstructor
@@ -64,13 +66,13 @@ public class PurchaseController {
 
     // 개별 구매 페이지 이동
     @GetMapping("/purchase/vod")
-    public String purchasePageGET(int movieId, Model model) {
+    public void purchasePageGET(int movieId, Model model) {
         System.out.println("movieId" + movieId);
         logger.info("vod");
         logger.info("purchasePageGET()........." + movieId);
 
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
-        return "redirect:/movie/purchaseDetail"; 
+        
     }
 
     // 대여,소장
@@ -96,6 +98,8 @@ public class PurchaseController {
         System.out.println("controller/pvo 트라이"+pvo);
         purchaseService.updateRental(0);
         System.out.println("controller/updaterental");
+        System.out.println("apiKey"+apiKey);
+        System.out.println("secretKey"+secretKey);
               
         
         return "redirect:/movie/purchaseDetail"; 
@@ -103,9 +107,9 @@ public class PurchaseController {
 
     @PostMapping("/purchase/validation/{imp_uid}")
     @ResponseBody
-    public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException {
+    public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException, IamportResponseException {
         IamportResponse<Payment> payment = null;
-        //payment = iamportClient.paymentByImpUid(imp_uid);
+        payment = iamportClient.paymentByImpUid(imp_uid);
         System.out.println("controller + imp payment" + payment);
         return payment;
     }
@@ -115,16 +119,32 @@ public class PurchaseController {
     public ResponseEntity<String> validatePayment(@RequestBody PaymentValidationRequest request) {
         boolean validationResult = purchaseService.validatePayment(request);
         if (validationResult) {
+        	
+        	System.out.println("결제 검증 컨트롤러" + validationResult);
             return new ResponseEntity<>("Payment validation successful", HttpStatus.OK);
+            
         } else {
             return new ResponseEntity<>("Payment validation failed", HttpStatus.BAD_REQUEST);
         }
-    }
+        
+    }	  
+    
 
     @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
-    public void payFail() {
-    	
+    public void GetpayFailPage(HttpServletRequest request) {
+    	 HttpSession session = request.getSession();
+         String userId = "daewoo"; // 임시 로그인
+         session.setAttribute("userId", userId);
+         logger.info("payFail");
     }
+    
+    @PostMapping("/purchase/payFail")
+    public String PostpayFailPage(HttpServletRequest request, Model model) {
+        System.out.println("포스트 payFail");
+        return "redirect:/purchase/payFail"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
+    }
+    
+    
 
     // 구독----------------------------------------------------------------------------------------------
     @GetMapping("/purchase/subscribe1")
