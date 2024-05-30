@@ -9,6 +9,7 @@
 				<div class="search">
                 	<input type="text" placeholder="작품명을 입력해주세요" name="keyword" class="main_search">
                 	<input type ="button" class="search_icon">
+                	<!-- <input type="hidden" name="pageNum"> -->
                 </div>
                 </form>
                 <c:if test="${member == null}">     <!-- 로그인 X -->
@@ -78,7 +79,7 @@ $("#movieSearch input[type='button']").on("click", function(e){
 		return false;
 	}
 	
-	movieSearch.find("input[name='pageNum']").val("1");
+	//movieSearch.find("input[name='pageNum']").val("1");
 	movieSearch.submit();
 	
 });

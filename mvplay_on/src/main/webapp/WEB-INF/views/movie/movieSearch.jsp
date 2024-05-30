@@ -38,7 +38,7 @@
 		    </div>
 		</div>
 		<!-- 페이지이동 -->
-		<div class="page_wrap">
+		<%-- <div class="page_wrap">
 			<ul class="page">
 				<!-- 이전 버튼 -->
 				<c:if test="${page.prev}">
@@ -57,7 +57,7 @@
 					</li>
 				</c:if>
 			</ul>
-		</div>
+		</div> --%>
 		<form id="moveForm" action="/movie/movieSearch" method="get">
 			<input type="hidden" name="pageNum" value="${page.cri.pageNum}">
 			<input type="hidden" name="amount" value="${page.cri.amount}">
@@ -68,9 +68,9 @@
     </div>
     <script>
     
-	    let moveForm = $('#moveForm');
+	    /* let moveForm = $('#moveForm');
 		 
-		/* 페이지 이동 버튼 */
+		
 		$(".page_btn a").on("click", function(e){
 		    
 		    e.preventDefault();
@@ -78,7 +78,7 @@
 		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
 		    
 		    moveForm.submit();
-		});
+		}); */
     
     </script>
 </body>
