@@ -62,7 +62,24 @@
 		
 	<!-- 개인 게시판 목록 -->
 	<select id="ownList" resultType="com.mvp.model.AskBoardVO">
-		select * from askBoard where userId = #{userId}
+		
+		<![CDATA[
+		SELECT * FROM(
+			SELECT /*+INDEX_DESC(askBoard SYS_C008540)*/ ROWNUM AS rn, ano, userId, title, content, answerCk,regDate, updateDate, viewCnt 
+			FROM askBoard
+			WHERE userId = #{userId} 
+	      ]]>         
+            <if test="keyword !=null">
+			AND title LIKE '%'|| #{cri.keyword} || '%' 
+		</if>
+            
+	      <![CDATA[        
+	             rownum <= #{cri.pageNum} * #{cri.amount}
+	            )
+	        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
+	      ]]>
+		
+		
 	</select>
 		
 	<!-- 개인 게시글 개수 -->

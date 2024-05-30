@@ -36,7 +36,7 @@ public class BoardController {
 
 	/*개인게시판 목록 페이지 접속(페이징)*/
 	@GetMapping("/ownList")
-	public void AsksboardownListGET(HttpServletRequest request, MemberVO member, Model model, Criteria cri) {
+	public void AsksboardownListGET(HttpServletRequest request, Model model, Criteria cri) {
 	
 	  
 		HttpSession session = request.getSession();
@@ -45,7 +45,7 @@ public class BoardController {
 		
 	    String userId = (String) session.getAttribute("userId");
 	    System.out.println("userId33333: "+userId);
-	    
+	    /*
 	    log.info("askboardListGET");
 		model.addAttribute("ownList", askbservice.ownList(cri));
 		session.setAttribute("userId", userId);
@@ -53,7 +53,8 @@ public class BoardController {
 		int total = askbservice.askboardGetTotal(cri);
 		PageVO pageMake = new PageVO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
-		
+		*/
+	    
 	}
 	/*게시판 목록 페이지 접속(페이징)
 	@GetMapping("/list")

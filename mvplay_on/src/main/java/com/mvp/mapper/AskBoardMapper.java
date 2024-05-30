@@ -2,8 +2,11 @@ package com.mvp.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
+import com.mvp.model.MemberVO;
 
 public interface AskBoardMapper {
 	
@@ -40,5 +43,5 @@ public interface AskBoardMapper {
 
 	
 	//게시판 개인목록
-	public List<AskBoardVO> ownList(Criteria cri);
+	public List<AskBoardVO> ownList(@Param("userId")String userId, @Param("cri")Criteria cri);
 }

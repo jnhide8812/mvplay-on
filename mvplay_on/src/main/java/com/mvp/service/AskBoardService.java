@@ -35,7 +35,7 @@ public interface AskBoardService {
 	
 
 	//게시판 개인목록
-	public List<AskBoardVO> ownList(Criteria cri);
+	//public List<AskBoardVO> ownList(Criteria cri);
 	
 	//개인 개시글 개수
 	public int askboardGetTotal(Criteria cri);
