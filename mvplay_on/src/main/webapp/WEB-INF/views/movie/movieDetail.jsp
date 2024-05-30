@@ -35,7 +35,7 @@
 					<img alt="" src="${movieInfo.poster}">
 					<div>
 						<button id="likeBtn" class="btn like_btn">보고싶어요</button>
-						<button id="ratingBtn" class="btn rating_btn">평가하기</button>
+						<%@include file="rating.jsp" %>
 					</div>
 				</div>
 				

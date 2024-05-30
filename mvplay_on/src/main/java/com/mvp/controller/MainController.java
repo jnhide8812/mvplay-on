@@ -3,6 +3,7 @@ package com.mvp.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvp.model.Criteria;
+import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
+import com.mvp.model.RatingVO;
 import com.mvp.service.MovieService;
+import com.mvp.service.RatingService;
 
 @Controller
 public class MainController {
@@ -28,6 +32,10 @@ public class MainController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	@Autowired
+	private RatingService ratingService;
+	
 	
 	/*메인 페이지 이동
 	@GetMapping("/main")
@@ -82,7 +90,27 @@ public class MainController {
 	}*/
 	
 	@GetMapping("/movie/movieDetail")
-	public void movieGetInfoGET(int movieId, Model model) {
+	public void movieGetInfoGET(HttpServletRequest request, int movieId, Model model) {
+		//세션 가져오기!!
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		
+		if(mvo != null) { //세션이 있는 경우
+			logger.info("mvo:::"+mvo);
+			
+			RatingVO rvo = new RatingVO();
+			
+			//세션이 있는 경우 고객이 선택한 별점을 ratingInfo에 넣음
+			rvo.setUserId(mvo.getUserId());
+			rvo.setMovieId(movieId);
+			RatingVO myRatingVO =ratingService.selectRating(rvo);
+			
+			logger.info("myRatingVO:::"+myRatingVO);
+			model.addAttribute("ratingInfo", myRatingVO);
+			
+		}
+		///여기까지 수정 
+		
 		logger.info("movie Id: " + movieId);
 		MovieVO vo = movieService.movieGetDetail(movieId);
 		model.addAttribute("movieInfo", vo);
