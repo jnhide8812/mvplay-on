@@ -7,7 +7,7 @@
 			<div class="top_content">
 				<form action="/movie/movieSearch" class="sc" method="get" id="movieSearch">
 				<div class="search">
-                	<input type="text" placeholder="작품명을 입력해주세요" name="searchText" class="main_search">
+                	<input type="text" placeholder="작품명을 입력해주세요" name="keyword" class="main_search">
                 	<input type ="button" class="search_icon">
                 </div>
                 </form>
@@ -73,12 +73,12 @@ $("#movieSearch input[type='button']").on("click", function(e){
 	e.preventDefault();
 	
 	/* 검색 키워드 유효성 검사 */
-	if(!movieSearch.find("input[name='searchText']").val()){
+	if(!movieSearch.find("input[name='keyword']").val()){
 		alert("제목을 입력하십시오");
 		return false;
 	}
 	
-	//movieSearch.find("input[name='pageNum']").val("1");
+	movieSearch.find("input[name='pageNum']").val("1");
 	movieSearch.submit();
 	
 });

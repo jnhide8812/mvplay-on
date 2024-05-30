@@ -133,6 +133,7 @@ public class AdminController {
 		logger.info("postUploadAjax");
 		
 		//String uploadFolder = "C:\\temp";
+		//경로 설정 통일 필요함
 		String uploadFolder = "C:\\Users\\koas\\git\\mvplay-on\\mvplay_on\\src\\main\\webapp\\resources\\img";
 		
 		/* 폴더 생성 */

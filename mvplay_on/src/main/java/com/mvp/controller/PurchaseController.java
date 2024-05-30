@@ -3,8 +3,6 @@ package com.mvp.controller;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
@@ -14,27 +12,32 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvp.model.MemberVO;
+import com.mvp.model.PaymentValidationRequest;
 import com.mvp.model.PurchaseVO;
 import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
 import com.siot.IamportRestClient.IamportClient;
+import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
 
-
 import lombok.RequiredArgsConstructor;
-
+@Component
 @Controller
 @RequestMapping
 @RequiredArgsConstructor
@@ -63,16 +66,16 @@ public class PurchaseController {
 
     // 개별 구매 페이지 이동
     @GetMapping("/purchase/vod")
-    public String purchasePageGET(int movieId, Model model) {
+    public void purchasePageGET(int movieId, Model model) {
         System.out.println("movieId" + movieId);
         logger.info("vod");
         logger.info("purchasePageGET()........." + movieId);
 
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
-        return "redirect:/movie/purchaseDetail"; 
+        
     }
 
-    // 소장
+    // 대여,소장
     @PostMapping("/purchase/vod")
     public String purchasePagePost(PurchaseVO pvo, MemberVO member, HttpServletRequest request) {
         System.out.println("구매 상세페이지 이동" + pvo);
@@ -84,26 +87,66 @@ public class PurchaseController {
             MemberVO memberLogin = memberService.memberLogin(member);
             memberLogin.setUpw("");
             session.setAttribute("member", memberLogin);
+            System.out.println("controller/멤버 트라이"+member);
         } catch (Exception e) {
             logger.error("Error during member login", e);
         }
-
+        
+        String userId = (String)session.getAttribute("userId");
+        
+        purchaseService.getBuyInfo(pvo);
+        System.out.println("controller/pvo 트라이"+pvo);
+        purchaseService.updateRental(0);
+        System.out.println("controller/updaterental");
+        System.out.println("apiKey"+apiKey);
+        System.out.println("secretKey"+secretKey);
+              
+        
         return "redirect:/movie/purchaseDetail"; 
     }
 
-    @PostMapping("purchase/validation/{imp_uid}")
+    @PostMapping("/purchase/validation/{imp_uid}")
     @ResponseBody
-    public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException {
+    public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException, IamportResponseException {
         IamportResponse<Payment> payment = null;
-        //payment = iamportClient.paymentByImpUid(imp_uid);
-        System.out.println("payment" + payment);
+        payment = iamportClient.paymentByImpUid(imp_uid);
+        System.out.println("controller + imp payment" + payment);
         return payment;
     }
+    
+ // 결제 검증 컨트롤러
+    @PostMapping("/validation")
+    public ResponseEntity<String> validatePayment(@RequestBody PaymentValidationRequest request) {
+        boolean validationResult = purchaseService.validatePayment(request);
+        if (validationResult) {
+        	
+        	System.out.println("결제 검증 컨트롤러" + validationResult);
+            return new ResponseEntity<>("Payment validation successful", HttpStatus.OK);
+            
+        } else {
+            return new ResponseEntity<>("Payment validation failed", HttpStatus.BAD_REQUEST);
+        }
+        
+    }	  
+    
 
     @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
-    public void payFail() {}
+    public void GetpayFailPage(HttpServletRequest request) {
+    	 HttpSession session = request.getSession();
+         String userId = "daewoo"; // 임시 로그인
+         session.setAttribute("userId", userId);
+         logger.info("payFail");
+    }
+    
+    @PostMapping("/purchase/payFail")
+    public String PostpayFailPage(HttpServletRequest request, Model model) {
+        System.out.println("포스트 payFail");
+        return "redirect:/purchase/payFail"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
+    }
+    
+    
 
-    // 구독
+    // 구독----------------------------------------------------------------------------------------------
     @GetMapping("/purchase/subscribe1")
     public void subscribe1Page(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -221,4 +264,21 @@ public class PurchaseController {
         System.out.println("포스트 subscribeMain");
         return "redirect:/movie/subscribeMain"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
     }
+    
+    @GetMapping("/movie/PurchaseMain")
+    public void GetsPurchaseMainPage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String userId = "daewoo"; // 임시 로그인
+        session.setAttribute("userId", userId);
+        logger.info("PurchaseMain");
+    }
+
+    @PostMapping("/movie/PurchaseMain")
+    public String PostPurchaseMainPage(HttpServletRequest request, Model model) {
+        String expiredDate = (String) request.getSession().getAttribute("expiredDate");
+        model.addAttribute("expiredDate", expiredDate);
+        System.out.println("포스트 PurchaseMain");
+        return "redirect:/movie/PurchaseMain"; // 구독 완료 후 리다이렉트할 페이지 경로를 지정합니다.
+    }
+    
 }

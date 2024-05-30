@@ -28,6 +28,9 @@ public interface MovieService {
 	/*public List<> getPosterInfo(int movieId); */
 	
 	//영화 제목 검색
-	public MovieVO searchMovie(Criteria cri);
+	public List<MovieVO> searchMovie(Criteria cri);
+	
+	//영화 검색 페이징용
+	public int getMovieTotal(Criteria cri) throws Exception;
 	
 }

@@ -23,7 +23,14 @@ private static final Logger logger = LoggerFactory.getLogger(RatingMapperTest.cl
 	public void ratingMapperTest() {
 		RatingVO rvo = new RatingVO();
 		
+		rvo.setRating(2.5);
+		rvo.setRatingId(40);
 		
+		mapper.updateRating(rvo);
+		
+		//mapper.selectRating(rvo);
+		
+		/*
 		MemberVO member = new MemberVO();
 		
 		
@@ -38,7 +45,7 @@ private static final Logger logger = LoggerFactory.getLogger(RatingMapperTest.cl
 		
 		
 		rvo = mapper.selectRating(rvo);
-		
+		*/
 		
 		//insert into rating (userId, movieId, rating) values('admin', 14, 3);
 		

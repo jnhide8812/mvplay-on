@@ -38,7 +38,7 @@
 				</div>
 				<br>
 				<div class="form_section_content">
-
+                    <img src="/resources/img/${movieInfo.poster}" width="300px">
 				</div>
 			</div>
 			<br>
