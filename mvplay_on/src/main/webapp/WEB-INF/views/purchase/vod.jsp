@@ -135,6 +135,7 @@ function requestPay(itemName) {
         buyer_tel: '010-000-0000',
     }, function(rsp) {
         if (rsp.success) {
+        	alert("결제 uid")
             $.ajax({
                 url: '/purchase/validation/' + rsp.imp_uid, // 서버 측에서 결제를 검증하는 URL
                 type: 'POST',
