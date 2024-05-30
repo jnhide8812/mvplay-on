@@ -1,50 +1,36 @@
 package com.mvp.controller;
 
-import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvp.model.MemberVO;
-import com.mvp.model.PaymentValidationRequest;
 import com.mvp.model.PurchaseVO;
 import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
-import com.siot.IamportRestClient.IamportClient;
-import com.siot.IamportRestClient.exception.IamportResponseException;
-import com.siot.IamportRestClient.response.IamportResponse;
-import com.siot.IamportRestClient.response.Payment;
-
-import lombok.RequiredArgsConstructor;
 @Component
 @Controller
 @RequestMapping
-@RequiredArgsConstructor
+
 public class PurchaseController {
     private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
 
-    private IamportClient iamportClient;
+	/* private IamportClient iamportClient; */
     
     @Autowired
     private PurchaseService purchaseService;
@@ -53,83 +39,111 @@ public class PurchaseController {
     @Autowired
     private MovieService movieservice;
 
-    @Value("${imp.api.key}")
-    private String apiKey;
-
-    @Value("${imp.api.secretkey}")
-    private String secretKey;
-
-    @PostConstruct
-    public void init() {
-        this.iamportClient = new IamportClient(apiKey, secretKey);
-    }
+	/*
+	 * @Value("${imp.api.key}") private String apiKey;
+	 * 
+	 * @Value("${imp.api.secretkey}") private String secretKey;
+	 * 
+	 * @PostConstruct public void init() { this.iamportClient = new
+	 * IamportClient(apiKey, secretKey); }
+	 */
 
     // 개별 구매 페이지 이동
     @GetMapping("/purchase/vod")
-    public void purchasePageGET(int movieId, Model model) {
+    public void purchasePageGET(@RequestParam("movieId") int movieId, HttpServletRequest request, Model model) {
         System.out.println("movieId" + movieId);
         logger.info("vod");
         logger.info("purchasePageGET()........." + movieId);
 
-        model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
+        HttpSession session = request.getSession();
+        String userId = "daewoo"; // 임시 로그인
+        session.setAttribute("userId", userId);
+        //String userId = (String) session.getAttribute("userId");
+
         
+       
+
+        model.addAttribute("memberInfo", userId);
+        model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
+        logger.info(" getmapping vod" +movieId );
+
+         
     }
 
     // 대여,소장
     @PostMapping("/purchase/vod")
-    public String purchasePagePost(PurchaseVO pvo, MemberVO member, HttpServletRequest request) {
-        System.out.println("구매 상세페이지 이동" + pvo);
-        purchaseService.getBuyInfo(pvo);
-
+    public String purchasePagePost(PurchaseVO pvo, MemberVO member, HttpServletRequest request, Model model) {
+        logger.info("purchasePagePost()........."+pvo);
+        
         HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
+        session.setAttribute("userId", userId);
+        if (userId == null) {
+           
+            return "redirect:/member/login";
+        }
+
+        String selectedMethod = request.getParameter("selectedMethod");
+        System.out.println("selectedMethod: "+selectedMethod);
+        pvo.setUserId(userId);
 
         try {
             MemberVO memberLogin = memberService.memberLogin(member);
             memberLogin.setUpw("");
             session.setAttribute("member", memberLogin);
-            System.out.println("controller/멤버 트라이"+member);
         } catch (Exception e) {
-            logger.error("Error during member login", e);
+            logger.error("Error member login", e);
         }
-        
-        String userId = (String)session.getAttribute("userId");
-        
-        purchaseService.getBuyInfo(pvo);
-        System.out.println("controller/pvo 트라이"+pvo);
-        purchaseService.updateRental(0);
-        System.out.println("controller/updaterental");
-        System.out.println("apiKey"+apiKey);
-        System.out.println("secretKey"+secretKey);
-              
-        
+
+        if ("rent".equals(selectedMethod)) {
+            purchaseService.enrollPurchase_2(pvo);
+            logger.info("enrollPurchase_2");
+
+            
+           
+        } else {
+            purchaseService.enrollPurchase_1(pvo);
+            logger.info("enrollPurchase_1");
+        }
+
         return "redirect:/movie/purchaseDetail"; 
     }
-
-    @PostMapping("/purchase/validation/{imp_uid}")
-    @ResponseBody
-    public IamportResponse<Payment> validateIamport(@PathVariable String imp_uid) throws IOException, IamportResponseException {
-        IamportResponse<Payment> payment = null;
-        payment = iamportClient.paymentByImpUid(imp_uid);
-        System.out.println("controller + imp payment" + payment);
-        return payment;
-    }
     
- // 결제 검증 컨트롤러
-    @PostMapping("/validation")
-    public ResponseEntity<String> validatePayment(@RequestBody PaymentValidationRequest request) {
-        boolean validationResult = purchaseService.validatePayment(request);
-        if (validationResult) {
-        	
-        	System.out.println("결제 검증 컨트롤러" + validationResult);
-            return new ResponseEntity<>("Payment validation successful", HttpStatus.OK);
-            
-        } else {
-            return new ResponseEntity<>("Payment validation failed", HttpStatus.BAD_REQUEST);
-        }
+    @GetMapping("/movie/purchaseDetail")
+    public String purchaseDetailPage(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String userId = "daewoo"; // 임시 로그인
+        session.setAttribute("userId", userId);
+        logger.info("purchaseDetail로 이동");
         
-    }	  
-    
+        return "redirect:/movie/purchaseMain"; 
+    }
 
+	 /* 
+	 * @PostMapping("/purchase/validation/{impUid}")
+	 * 
+	 * @ResponseBody public ResponseEntity<IamportResponse<Payment>>
+	 * validateIamport(@PathVariable String impUid) { try {
+	 * logger.info("Validation request received for imp_uid: " + impUid);
+	 * IamportResponse<Payment> payment = iamportClient.paymentByImpUid(impUid);
+	 * logger.info("Payment validation successful for imp_uid: " + impUid); return
+	 * new ResponseEntity<>(payment, HttpStatus.OK); } catch
+	 * (IamportResponseException | IOException e) {
+	 * logger.error("Error occurred during payment validation for imp_uid: " +
+	 * impUid, e); return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); }
+	 * }
+	 * 
+	 * // 결제 검증 컨트롤러(결과 반환)
+	 * 
+	 * @PostMapping("/purchase/validation") public ResponseEntity<String>
+	 * validatePayment(@RequestBody PaymentValidationRequest request) { boolean
+	 * validationResult = purchaseService.validatePayment(request); if
+	 * (validationResult) { System.out.println("결제 검증 컨트롤러: 결제 유효성 검증 성공"); return
+	 * new ResponseEntity<>("Payment validation successful", HttpStatus.OK); } else
+	 * { System.out.println("결제 검증 컨트롤러: 결제 유효성 검증 실패"); return new
+	 * ResponseEntity<>("Payment validation failed", HttpStatus.BAD_REQUEST); } }
+	 */
+//-----------결제 실패 매핑
     @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
     public void GetpayFailPage(HttpServletRequest request) {
     	 HttpSession session = request.getSession();

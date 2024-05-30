@@ -41,5 +41,5 @@
 	
 	<!-- config 파일 자동 로드 -->
 	<context:property-placeholder location="/config/*.properties" /> 
-	<context:property-placeholder location="/config/application.properties" /> 
+	
 </beans>

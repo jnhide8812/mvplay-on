@@ -20,7 +20,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private PurchaseMapper purchasemapper;
 	
 	//구매
-	@SuppressWarnings("unused")
 	@Override
 	@Transactional
 	public void getBuyInfo(PurchaseVO pvo) {
@@ -32,13 +31,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 		purchasemapper.enrollPurchase_2(pvo); //대여
 		
 	}
-	  @Override
-	    public boolean validatePayment(PaymentValidationRequest request) {
-	      // 여기에 결제 검증 로직을 구현합니다.
-	      // 필요한 경우 결제 정보를 데이터베이스에서 조회하여 검증합니다.
-	      // 예시로는 간단히 성공적으로 받은 요청만을 검증하도록 하겠습니다.
-	        return request != null && request.getImpUid() != null && !request.getImpUid().isEmpty();
-	    }
+	/*
+	 * @Override public boolean validatePayment(PaymentValidationRequest request) {
+	 * // 여기에 결제 검증 로직을 구현합니다. // 필요한 경우 결제 정보를 데이터베이스에서 조회하여 검증합니다. // 예시로는 간단히
+	 * 성공적으로 받은 요청만을 검증하도록 하겠습니다. return request != null && request.getImpUid() !=
+	 * null && !request.getImpUid().isEmpty(); }
+	 */
 	
 	
 	@Override
@@ -60,10 +58,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 	 public int enrollSubscription(SubscribtionVO svo) {
 		 return purchasemapper.enrollSubscription(svo);
 	    }
-	 @Override
-	public int updateRental(int id) {
-		return purchasemapper.updateRental(id);
-	}
 	
 	
 	

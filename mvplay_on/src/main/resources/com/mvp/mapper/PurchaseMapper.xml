@@ -15,10 +15,6 @@
 		insert into purchase(userId, movieId, rentalPrice, startDate, expiredDate) values(#{userId}, #{movieId}, #{rentalPrice}, sysdate, sysdate + 7)
 	</insert>
 	
-	<!-- (대여)결제완료 시, 만료일 update +7일  -->
-	<update id="updateRental">
-		update purchase set expiredDate = startDate+7 where Id = #{Id} and rentalPrice > 0;  
-	</update>
 	
 	<!-- 구매 영화 정보 갖고 오기-->
   	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
