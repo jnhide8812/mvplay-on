@@ -58,11 +58,11 @@
 				</c:if>
 			</ul>
 		</div> --%>
-		<form id="moveForm" action="/movie/movieSearch" method="get">
+		<%-- <form id="moveForm" action="/movie/movieSearch" method="get">
 			<input type="hidden" name="pageNum" value="${page.cri.pageNum}">
 			<input type="hidden" name="amount" value="${page.cri.amount}">
 			<input type="hidden" name="keyword" value="${page.cri.keyword}">
-		</form>	
+		</form>	 --%>
 		<!-- 하단 -->
 		<%@include file="../includes/footer.jsp"%>	
     </div>
