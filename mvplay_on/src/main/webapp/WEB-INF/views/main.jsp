@@ -18,38 +18,42 @@
 <body>
 <div id = "container">
 	<!-- 헤더 -->
-	<%@include file="includes/header.jsp" %>
-		<!-- 네비 (왼쪽 사이드 메뉴) -->
-		<%@include file="includes/nav.jsp" %>
-		<!-- 메인 content -->
+	<%@include file="includes/header.jsp" %> 	
+		<%@include file="includes/nav.jsp" %>   
 		<div class="main_content">
-		<!-- 영화 신작 -->
-			<div class="mnew">
-			 <c:if test="${listcheck != 'empty'}">
-				<h1>new</h1>
-				<img src="resources/icon/f_icon.png">
-				<c:forEach items="${movieList}" var="movieList">
-				<ul>
-				
-					<li>
-					<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
-						<!--<c:out value="${movieList.poster}"></c:out>-->
-						<c:out value="${movieList.movieTitle}"></c:out> <!-- 임시 앵커 -->
-						<img alt="" src="${movieList.poster}">
-					</a>
-					<c:out value="${movieList.movieTitle}"></c:out><br>
-					<c:out value="${movieList.cate1}"></c:out>, <c:out value="${movieList.cate2}"></c:out><br>
-					<!--평점 구간 -->
-					<c:out value="${movieList.rating}"></c:out><br>
-					</li>
-					
-				</ul>
-				</c:forEach>
-			</c:if>
-			</div>
-		<!-- 영화 랭킹 -->
-			<div class="mranking">
-				<h1>ranking</h1>
+			<div class="show_list">
+				<section class="list">   <!-- 영화 신작 -->
+				 <c:if test="${listcheck != 'empty'}">
+					<h1 class="list_name">New</h1>
+					<div class="minfo">
+					<c:forEach items="${movieList}" var="movieList">
+						<ul>
+							<li>
+								<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
+									<!--<c:out value="${movieList.poster}"></c:out>-->
+									<!--<c:out value="${movieList.movieTitle}"></c:out>  임시 앵커 -->
+									<img src="/resources/img/${movieList.poster}" class="poster">
+								</a>
+							</li>
+							<li class="subject">
+								<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
+									<c:out value="${movieList.movieTitle}"></c:out><br>
+								</a>
+							</li>
+							<li class="iinn">
+								<img class="star_rate" src="/resources/icon/star-fill.svg">
+								<span class="r"><c:out value="${movieList.rating}"></c:out></span>
+								<span class="c"><c:out value="${movieList.cate1}"></c:out></span>
+							</li>		
+						</ul>
+					</c:forEach>
+					</div>
+				</c:if>
+				</section>
+			<!-- 영화 랭킹 -->
+				<section class="list">
+					<h1>ranking</h1>
+				</section>
 			</div>
 		</div>
 		<!-- FOOTER -->

@@ -7,10 +7,25 @@
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
-<link rel="stylesheet" href="../resources/css/main.css">
+<style>
+/*li {
+	list-style: none;
+}
+#container{
+	width: 1900px;
+	background-color: #000000;
+}
+.main_content{
+	width: 1900px;
+	height: 100%;
+	display:flex;
+	flex-direction:column;
+	padding:86px 240px 0 330px;
+}*/
+</style>
 </head>
 <body>
-    <div id="container">
+<div id="container">
         <!-- 헤더 -->
 		<%@include file="../includes/header.jsp"%>
 		<!-- 네비 (왼쪽 사이드 메뉴) -->
@@ -65,7 +80,7 @@
 		</form>	 --%>
 		<!-- 하단 -->
 		<%@include file="../includes/footer.jsp"%>	
-    </div>
+</div>
     <script>
     
 	    /* let moveForm = $('#moveForm');
