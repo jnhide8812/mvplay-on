@@ -34,6 +34,8 @@
 				<div class="">
 					<img alt="" src="${movieInfo.poster}">
 					<div>
+				<!-- <div style="display:flex;"> 정렬 -->
+					
 						<%@include file="rating.jsp" %>
 						
 						<button id="likeBtn" class="btn like_btn">보고싶어요</button>
@@ -190,8 +192,8 @@ $(".reply_button_wrap").on("click", function(e){
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
 	
-	console.log("userId : "+${member.userId});
-	console.log("movieId 2 : "+${movieInfo.movieId});
+	//console.log("userId : "+${member.userId});
+	//console.log("movieId 2 : "+${movieInfo.movieId});
 	
 /*
 	$.ajax({

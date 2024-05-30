@@ -23,10 +23,16 @@ private static final Logger logger = LoggerFactory.getLogger(RatingMapperTest.cl
 	public void ratingMapperTest() {
 		RatingVO rvo = new RatingVO();
 		
-		rvo.setRating(2.5);
-		rvo.setRatingId(40);
+		rvo.setRatingId(49);
 		
-		mapper.updateRating(rvo);
+		mapper.deleteRating(rvo);
+		
+		
+		
+		//rvo.setRating(2.5);
+		//rvo.setRatingId(49);
+		
+		//mapper.updateRating(rvo);
 		
 		//mapper.selectRating(rvo);
 		

@@ -5,20 +5,24 @@
 /*
 .wrap {
     height: 100vh;
-    min-height: 400px;
+    min-height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row; 기존 column
     gap: 32px;
 }
 */
 
+.wrap{
+display: flex;
+flex-direction: row;
+
+}
 
 .rating {
     float: none;
     width: 100px;
-/*    width: 200px; */
     display: flex;
 }
 .rating__input {
@@ -53,6 +57,11 @@
    background-position: left;
 }
 
+/*적용 안됨*/
+.cancel{
+	display: block;
+	position: relative;
+}
 
 </style>
 
@@ -62,8 +71,7 @@
     <input type="hidden" name="rating" value='<c:out value="${ratingInfo.rating }" />'>
     <input type="hidden" name="userId" value="${member.userId }">
     <input type="hidden" name="movieId" value="${movieInfo.movieId }">
-    
-    
+
     <div class="rating">
         <label class="rating__label rating__label--half" for="starhalf">
             <input type="radio" id="starhalf" class="rating__input" name="rating" value="0.5">
@@ -105,8 +113,10 @@
             <input type="radio" id="star5" class="rating__input" name="rating" value="5">
             <span class="star-icon"></span>
         </label>
+    </div><!-- rating 끝 -->
+    <div class="cancel">
+    	<button type="button" id="ratingCancelBtn">별점 취소</button>
     </div>
-    <span>취소</span>
     </form>
 </div>
 
@@ -142,10 +152,7 @@ function setRating(value) {
         }
     }
 }
-
-//별점 선택 유지하는 부분 나중에 수정 예정
-
-
+//별점 선택 유지하는 부분
 
 
 let ratingForm = $('#ratingForm');
@@ -160,7 +167,7 @@ let stars = document.querySelectorAll('.rating .star-icon');
 
 checkedRate();
 
-
+//별점 호버 효과
 rateWrap.forEach(wrap => {
 wrap.addEventListener('mouseenter', () => {
     stars = wrap.querySelectorAll('.star-icon');
@@ -262,16 +269,9 @@ stars.forEach((starIcon, idx) => {
         // AJAX 요청 보내기
         let formData = new FormData();
 		formData.append('rating', ratingValue); // 별점 값 추가
-		//formData.append('userId', document.querySelector('[name="userId"]').value); // userId 추가
-		//formData.append('movieId', document.querySelector('[name="movieId"]').value); // movieId 추가
-        
 		formData.append('userId', '${member.userId}'); // userId 추가
 		formData.append('movieId','${movieInfo.movieId}' ); //movieId  
-        
-        
-        //formData.append('#ratingForm').value  ////
-        
-        
+         
         //ratingForm
         $.ajax({
             url: '/movie/rating', // 현재 페이지 유지
@@ -279,21 +279,56 @@ stars.forEach((starIcon, idx) => {
             contentType: false,
             data: formData,
             type: 'POST',
-            dataType: 'json',
-            success: function(response) {
-                console.log("평가가 성공적으로 전송되었습니다.");
-                console.log("formdata", formData);
+            /* dataType: 'json', */
+            success: function(ok) {
+            	alert("별점이 등록되었습니다.");
+               /*  console.log("평가가 성공적으로 전송되었습니다."); */
             },
             error: function (request, status, error) {
-                console.log("code: " + request.status)
+               /*  console.log("code: " + request.status)
                 console.log("message: " + request.responseText)
-                console.log("error: " + error);
-                //alert("로그인 해주세요.");
+                console.log("error: " + error); */
+                alert("로그인 해주세요.");
             
             }
         });
     });
 });
+
+
+/* 별점 취소 버튼 누르면 */
+let ratingCancelBtn = $("#ratingCancelBtn");
+
+ratingCancelBtn.on("click",function(e){
+	e.preventDefault();
+	
+	// AJAX 요청 보내기
+    let formData = new FormData();
+	formData.append('userId', '${member.userId}'); // userId 추가
+	formData.append('movieId','${movieInfo.movieId}' ); //movieId  
+	
+	//별점 삭제로 연결
+	$.ajax({
+        url: '/movie/deleteRating', // 현재 페이지 유지
+        processData: false,
+        contentType: false,
+        data: formData,
+        type: 'POST',
+        /* dataType: 'json', */
+        success: function(response) {
+        	alert("별점이 취소되었습니다");
+        },
+        error: function (request, status, error) {
+            console.log("code: " + request.status)
+            console.log("message: " + request.responseText)
+            console.log("error: " + error);
+            alert("별점 취소에 실패했습니다.");
+        }
+    });
+	initStars(); //별점 초기화
+	
+});
+
 
 </script>
 
