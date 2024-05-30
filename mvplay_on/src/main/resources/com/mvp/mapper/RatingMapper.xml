@@ -22,6 +22,12 @@
 		WHERE userId = #{userId} and movieId = #{movieId} 
 	
 	</select>
+	
+	<!-- 별점 삭제 -->
+	<delete id="deleteRating">
+		DELETE FROM rating WHERE ratingId=#{ratingId}
+	
+	</delete>
 
   
   

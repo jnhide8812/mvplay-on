@@ -34,6 +34,12 @@ public class RatingServiceImpl implements RatingService {
 		// TODO Auto-generated method stub
 		return ratingMapper.selectRating(rvo);
 	}
+	//별점 삭제
+	@Override
+	public void deleteRating(RatingVO rvo) {
+		ratingMapper.deleteRating(rvo);
+		
+	}
 	
 
 
