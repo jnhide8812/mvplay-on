@@ -15,6 +15,7 @@
 		<%@ include file="../includes/admin/header.jsp"%>
 	</header>
 	<div class="admin_content_wrap">
+	    <h2>영화 관리</h2><br>
 		<div class="movie_table_wrap">
 			<table class="movie_table">
 				<thead>
