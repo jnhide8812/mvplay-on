@@ -61,8 +61,13 @@ public class MovieServiceImpl implements MovieService {
 	}*/
 	
 	@Override
-	public MovieVO searchMovie(Criteria cri) {
+	public List<MovieVO> searchMovie(Criteria cri) {
 		return mapper.searchMovie(cri);
+	}
+	
+	@Override
+	public int getMovieTotal(Criteria cri) throws Exception {
+		return mapper.getMovieTotal(cri);
 	}
 	
 	

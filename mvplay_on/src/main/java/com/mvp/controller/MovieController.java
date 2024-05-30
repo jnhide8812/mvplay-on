@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
+import com.mvp.model.PageVO;
 import com.mvp.service.MovieService;
 
 @Controller
@@ -83,9 +84,19 @@ public class MovieController {
 	}
 	*/
 	@GetMapping("/movie/movieSearch")
-	public void movieSearchGET() throws Exception {
+	public void movieSearchGET(Criteria cri, Model model) throws Exception {
 		logger.info("영화 검색 페이지");
 		
+		List searchList = movieService.searchMovie(cri);
+		
+		model.addAttribute("movieList",searchList);
+		
+        int total = movieService.getMovieTotal(cri);
+		
+		PageVO page = new PageVO(cri, total);
+		
+		model.addAttribute("page", page);
+
 		
 	}
 }

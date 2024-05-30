@@ -33,18 +33,19 @@
 		where movieId = #{movieId}
 	</select>
 	
+	<!-- 영화검색 -->
 	<select id="searchMovie" resultType="com.mvp.model.MovieVO">
 	
 	    <![CDATA[
 	          select * from (
 	              select /*+INDEX_DESC(movie SYS_C008625) */ 
-	                  rownum as rn, movieId, movieTitle, cate1, movieDate, movieCheck
+	                  rownum as rn, movieId, movieTitle, cate1, movieDate, movieCheck, poster
 	              from movie 
 	              where
 	             
 	    ]]>         
-	            <if test="searchText != null">
-	                movieTitle like '%'||#{searchText}||'%' and
+	            <if test="keyword != null">
+	                movieTitle like '%'||#{keyword}||'%' and
 	            </if>
 	            
 	    <![CDATA[        
@@ -53,5 +54,18 @@
 	        where rn > (#{pageNum} - 1) * #{amount}
 	    ]]>
 	</select>
+	
+	<!-- 영화페이징 -->
+	<select id="getMovieTotal" resultType="int">
+      
+          select count(*) from movie
+          
+          <if test="keyword != null">
+          
+             where movieTitle like '%' || #{keyword} || '%'
+          
+          </if>
+          
+      </select>
 	
   </mapper>
