@@ -153,3 +153,43 @@ h1 {
     color: white; 
   	cursor: pointer;
   }
+
+  
+  /* 포스터 영역 
+  .posterFrame{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    @media screen and (max-width: 48em) {
+        margin-top:40px;
+        margin-top:0}
+  }
+  
+  .poster{
+   aspect-ratio: 16/9;
+   position: absolute;
+   width: 100%
+  }
+  
+  .moviePoster{
+    height: 300px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%
+  }*/
+  
+  /*링크 짙은 파랑색*/
+  .qboard_area a:link{color: #3065ac;}
+  .qboard_area a:visited{color: #3065ac;}
+  
+  
+  /* iframe 영역*/
+  
+  /* ul li 영역 */
+  .lavel{
+  	display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    }
