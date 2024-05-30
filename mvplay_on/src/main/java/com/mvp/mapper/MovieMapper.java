@@ -29,4 +29,7 @@ public interface MovieMapper {
 	
 	//영화 검색 페이징용
 	public int getMovieTotal(Criteria cri) throws Exception;
+	
+	//영화 랭킹용
+	public List<MovieVO> getMovieRank();
 }

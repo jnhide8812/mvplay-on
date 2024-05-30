@@ -70,6 +70,11 @@ public class MovieServiceImpl implements MovieService {
 		return mapper.getMovieTotal(cri);
 	}
 	
+	//영화 랭킹용
+	@Override
+	public List<MovieVO> movieRank() {
+		return mapper.getMovieRank();
+	}
 	
 	
 }

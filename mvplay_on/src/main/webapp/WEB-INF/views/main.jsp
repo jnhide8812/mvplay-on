@@ -52,7 +52,30 @@
 				</section>
 			<!-- 영화 랭킹 -->
 				<section class="list">
-					<h1>ranking</h1>
+					<c:if test="${listcheck != 'empty'}">
+					<h1 class="list_name">Ranking</h1>
+					<div class="minfo">
+					<c:forEach items="${movieRank}" var="movieRank">
+						<ul>
+							<li>
+								<a class="move" href="/movie/movieDetail?movieId=${movieRank.movieId}">
+									<img src="/resources/img/${movieRank.poster}" class="poster">
+								</a>
+							</li>
+							<li class="subject">
+								<a class="move" href="/movie/movieDetail?movieId=${movieRank.movieId}">
+									<c:out value="${movieRank.movieTitle}"></c:out><br>
+								</a>
+							</li>
+							<li class="iinn">
+								<img class="star_rate" src="/resources/icon/star-fill.svg">
+								<span class="r"><c:out value="${movieRank.rating}"></c:out></span>
+								<span class="c"><c:out value="${movieRank.cate1}"></c:out></span>
+							</li>		
+						</ul>
+					</c:forEach>
+					</div>
+				</c:if>
 				</section>
 			</div>
 		</div>

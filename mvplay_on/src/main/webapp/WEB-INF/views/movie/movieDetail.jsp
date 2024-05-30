@@ -30,12 +30,14 @@
 		</nav>
 		<!-- 메인 content -->
 		<div class="main_content">
-			<div class="">
-				<div class="">
-					<img alt="" src="${movieInfo.poster}">
-					<div>
+			<div class="posterFrame">
+				<div class="poster">
+					<!-- <img src="/resources/img/${movieInfo.poster}" width="300px"> -->
+					<img class="moviePoster" alt="임시 포스터 입니당" src="/resources/img/듄.png" width="300px">
+					<div id="iframe">
 						<button id="likeBtn" class="btn like_btn">보고싶어요</button>
 						<%@include file="rating.jsp" %>
+					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/4xnsmyI5KMQ?si=_oi5Mhmnp7wnfJeB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
 					</div>
 				</div>
 				
