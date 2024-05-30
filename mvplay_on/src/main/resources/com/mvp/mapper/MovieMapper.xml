@@ -22,7 +22,7 @@
 		)avg_rating ON m.movieId = avg_rating.movieId
 		order by movieId asc
   	</select>
-  	
+  	 
   	<!-- 영화 조회 -->
 	<select id="movieGetDetail" resultType="com.mvp.model.MovieVO">
 		SELECT m.movieId, m.movieTitle, m.poster, m.movieContent,
