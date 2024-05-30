@@ -44,25 +44,29 @@
 				<div>
 					<div>
 						<!-- 영화 제목 -->
-						<h1><input type="text" id="movieTitle" name="movieTitle" value="${movieInfo.movieTitle}" disabled="disabled" /></h1>
+						<h1 class="movieTitle">${movieInfo.movieTitle}</h1>
 					</div>
 					<div> 
 					<ul>
 						<!-- 영화 평점 -->
-						<li>
-						<label>평균 </label>
-						<c:out value="${movieInfo.rating}"></c:out>
-						<label>점</label>
+						<li class="lavel">
+						<label>평균 <c:out value="${movieInfo.rating}"></c:out>점</label>
+						</li>
 						<!-- 영화 개봉일 -->
+						<li class="lavel">
 						<fmt:formatDate value="${movieInfo.movieDate}" pattern="yyyy년"></fmt:formatDate>
+						</li>
 						<!-- 영화 장르 -->
+						<li class="lavel">
 						<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>
 						</li>
 					</ul>
 					</div>
 					<div>
 						<!-- 영화 줄거리 -->
-						<input name="movieContent" value='<c:out value="${movieInfo.movieContent}"></c:out>' disabled="disabled" />
+						<div class="movieContent">
+						${movieInfo.movieContent}
+						</div>
 					</div>
 					<div>
 						<button id="subscribeBtn" class="btn">구독하기</button>

@@ -187,9 +187,21 @@ h1 {
   /* iframe 영역*/
   
   /* ul li 영역 */
-  .lavel{
-  	display: flex;
+ .lavel{
+  	display: inline;
     flex-direction: column;
     gap: 20px;
     width: 100%;
+    color: gray;
     }
+    
+/* 제목 */
+.movieTitle{
+	
+}    
+
+/* 영화 줄거리 */
+.movieContent{
+	height : 30%;
+	width: 50%;
+}
