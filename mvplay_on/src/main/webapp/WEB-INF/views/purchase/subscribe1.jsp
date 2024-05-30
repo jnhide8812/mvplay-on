@@ -13,6 +13,9 @@
 </head>
 <body>
 <div id="container">
+	<header class="logo">
+		<img src="/resources/icon/logo_m.png">
+	</header>
 	<div class="sub_wrap">
 	<div class="middle_wrap">
 		<div class="top">
@@ -26,10 +29,15 @@
 	
 				<div class="main_content">
 					<div class="bp">
-						<label class="pink">
-							<input type="radio" name="goods" value="b" class="grade"> 베이직
-							<span class="price">월 7900원</span>
-						</label>
+						<ul class="pink">
+							<li class="up">
+								<img class="ck" src="/resources/icon/ck_b.png">
+								<input type="radio" name="goods" value="b" class="grade"> 베이직
+							</li>
+							<li>
+								<span class="price">월 7900원</span>							
+							</li>
+						</ul>
 						<ul class="grade">
 							<li>
 								<div class="hd" ><img src="/resources/icon/hd_icon.png"></div>
@@ -37,25 +45,30 @@
 								<p class="explain">선명한 화질</p>
 							</li>
 							<li>
-								<div class="hd"><img src="/resources/icon/x_icon.png"></div>
+								<div class="hd"><img src="/resources/icon/x_icon.png" class="x"></div>
 								<span class="hd">HDR 10+ 미지원</span>
 								<p class="explain">안정적인 색상</p>
 							</li>
 						</ul>
 					</div>
 					<div class="bp">
-						<label class="pink">
-							<input type="radio" name="goods" value="p" class="grade"> 프리미엄
-							<span class="price">월 8900원</span>
-						</label>
+						<ul class="pink">
+							<li class="up">
+								<img class="ck" src="/resources/icon/ck_b.png">
+								<input type="radio" name="goods" value="p" class="grade"> 프리미엄
+							</li>
+							<li>
+								<span class="price">월 8900원</span>							
+							</li>
+						</ul>
 						<ul class="grade">
 							<li>
-								<div class="hd"><img src="/resources/icon/4k_icon.png"></div>
+								<div class="hd"><img src="/resources/icon/4k_b.png"></div>
 								<span class="hd">Ultra HD 4K 지원</span>
 								<p class="explain">실감나는 화질</p>
 							</li>
 							<li>
-								<div class="hd"><img src="/resources/icon/hrd_icon.png"></div>
+								<div class="hd"><img src="/resources/icon/hdr_b.png"></div>
 								<span class="hd">HDR 10+ 지원</span>
 								<p class="explain">더 입체감있는 색상</p>
 							</li>
