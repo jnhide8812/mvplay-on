@@ -51,7 +51,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="mail_num_check">
-							    <span class="mail_check_input_warn">인증번호가 일치하지 않습니다.</span>
+							    <span class="warn_mail_check">인증번호가 일치하지 않습니다.</span>
 							</div>
 						</div>
 					</li>
@@ -65,7 +65,7 @@
 								<div class="pwck_input">
 									<input class="sinput" name="upwck" placeholder="비밀번호 확인">
 								</div>
-								<span class="warn_pwck">비밀번호 확인을 입력하지않았거나 일치하지 않습니다.</span>
+								<span class="warn_pwck">비밀번호 확인을 입력하지 않았거나 일치하지 않습니다.</span>
 							</div>
 						</div>
 					</li>
@@ -78,8 +78,8 @@
 						</div>
 					</li>
 					<li>
-						<div class="sign_button_wrap">
-							<input type="submit" class="sign_button" value="가입하기" />
+						<div class="sign_button">
+							<span>가입하기</span>
 						</div>
 					</li>
 					<li>
@@ -140,14 +140,10 @@
 	    var wMailType = $('.mail_type_ck');
 
 	    
-	    if (re.test(userId)) {
+	    if (re.test(userId) || userId === '') {
 	        wMailType.css('display', 'none');
-	        typetest = true;
-	        return typetest;
 	    } else {
 	        wMailType.css('display', 'block');
-	        typetest = false;
-	        return typetest;
 	    }
 	});
     
@@ -158,17 +154,20 @@
 	$(document).ready(function() {
 		$(".sign_button").click(function() {
 			let userIdCheck = false;
+			let codeCheck = false;
 			let upwCheck = false;
 			let upwckCheck = false;
 			let ubirthCheck = false;
 
 			let userId = $('input[name=userId]').val();
+			let mailck = $('input[name=mailck]').val();
 			let upw = $('input[name=upw]').val();
 			let upwck = $('input[name=upwck]').val();
 			let ubirth = $('input[name=ubirth]').val();
 
 			let wUserId = $('.warn_mail');
 			let wUpw = $('.warn_pw');
+			let wMailCk = $('.warn_mail_check');
 			let wUpwck = $('.warn_pwck');
 			let wUbirth = $('.warn_ubirth');
 
@@ -181,6 +180,14 @@
 			} else {
 				wUserId.css('display', 'none');
 				userIdCheck = true;
+			}
+			
+			if (mailck === '' || mailck != code) {
+				wMailCk.css('display', 'block');
+				codeCheck = false;
+			} else {
+				wMailCk.css('display', 'none');
+				codeCheck = true;
 			}
 
 			if (upw === '') {
@@ -207,10 +214,9 @@
 				ubirthCheck = true;
 			}
 
-			if (userIdCheck && upwCheck && upwckCheck && ubirthCheck) {
+			if (userIdCheck && codeCheck && upwCheck && upwckCheck && ubirthCheck ) {
 				//$("#sign_form").attr("action", "/member/signUp");
 				//$("#sign_form").submit();
-				alert("회원가입되지말라고");
 			} else {
 				return;
 			}

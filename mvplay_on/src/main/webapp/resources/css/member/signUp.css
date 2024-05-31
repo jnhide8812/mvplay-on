@@ -124,7 +124,7 @@ input.mail_ckinput {
 	margin-left: 5px;
 	text-align: center;
 }
-input.sign_button{
+.sign_button {
 	background-color: #505155;
 	color:#999CA1;
 	width: 310px;
@@ -186,7 +186,7 @@ span.e2{
 	display: none;
 }
 
-.mail_check_input_warn {
+.warn_mail_check {
 	color: red;
 	display: none;
 }
