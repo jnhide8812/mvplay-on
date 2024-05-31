@@ -26,13 +26,13 @@
    <!-- 업로드 관련 빈 -->
    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>   
 
-   <!-- <interceptors>
+   <interceptors>
       <interceptor>
          <mapping path="/admin/**" />
          <beans:bean id="AdminInterceptor"
                class="com.mvp.interceptor.AdminInterceptor"/>
       </interceptor>
-   </interceptors> -->
+   </interceptors>
 
    
 </beans:beans>

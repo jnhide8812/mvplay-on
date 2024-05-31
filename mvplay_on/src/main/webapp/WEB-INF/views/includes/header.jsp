@@ -21,6 +21,8 @@
 					</div>
 				</c:if>
 				<c:if test="${member != null}">		<!-- 로그인 O -->
+				<input type="hidden" name="userId" value="${member.userId }">
+				<input type="hidden" name="ugrade" value="${member.ugrade}">
 					<ul class="after_login">
 					<c:if test="${member.ugrade == 0}">
 					<!-- 관리자 계정 -->
@@ -39,7 +41,7 @@
 			</div>
 		</header>
 		<form id="moveForm" action="/member/myPage" method="get">
-			<input type="hidden" name="userId" value="${cri.userId}">
+			<input type="hidden" name="userId" value="${member.userId}">
 		</form>
 <script>
 

@@ -17,11 +17,11 @@ public class AdminInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("member");
 
-		if (member == null || member.getUgrade() != "0") {
+		if (member == null || !("0").equals(member.getUgrade())) {
 			response.sendRedirect("/main");
 			return false;
-		} else {
-			return true;
-		}
+		} 
+		return true;
+		
 	}
 }

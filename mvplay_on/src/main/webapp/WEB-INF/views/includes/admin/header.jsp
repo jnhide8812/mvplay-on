@@ -7,7 +7,7 @@
     <input type="hidden" name="userId" value="${member.userId }">
     <input type="hidden" name="ugrade" value="${member.ugrade}">
     	<ul class="list">
-			<li><a href="/main">로고-일반 메인페이지</a></li>
+			<li><a href="/main"><img src="/resources/icon/logo_m.png" class="title_icon"></a></li>
 			<li><a href="/admin/main">관리자 메인 페이지</a></li>
 			<li><a href="/member/logout.do">로그아웃</a></li>
 		</ul>
