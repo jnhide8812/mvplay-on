@@ -40,18 +40,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 댓글 삭제 -->
 	<delete id="replyDelete">
 	   delete from reply
-	    where replyNum = #{replyNum}
+	   where replyNum = #{replyNum}
 	</delete>
 
 
 	<!-- 댓글 리스트 뽑기 -->
 	<select id="getReplyList" resultType="com.mvp.model.ReplyVO">
-		select ra.rating, ra.userId, ra.movieId, re.replyNum, re.regDate, re.replyContent
-		from rating ra
-		inner join reply re
-		on ra.userId = re.userId
-		and ra.movieId = #{movieId}
-		order by regDate desc
+		SELECT ra.rating, ra.userId, ra.movieId, re.replyNum, re.regDate, re.replyContent
+		FROM rating ra
+		LEFT JOIN reply re ON ra.movieId = re.movieId AND ra.userId = re.userId
+		WHERE ra.movieId = #{movieId}
+		ORDER BY re.regDate DESC
 	</select>
 	
 	<!-- 

@@ -140,29 +140,28 @@ $(".reply_button_wrap").on("click", function(e){
 	console.log("userId : "+${member.userId});
 	console.log("movieId 2 : "+${movieInfo.movieId});
 	
-/*
 	$.ajax({
 		data : {
 			userId : userId,
 			movieId : movieId
 		},
-		url : '/reply/check',
+		url : '/movie/check',
 		type : 'POST',
 		success : function(result){
 
 			if(result === '1'){
 				alert("이미 등록된 리뷰가 존재 합니다.")
-			} else if(result === '0'){ */
+			} else if(result === '0'){
 				
 				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
 				console.log(popUrl);
 				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
 				
 				window.open(popUrl,"리뷰 쓰기",popOption);					
-			/*}				
+			}				
 			
 		}
-	});	*/		
+	});
 
 	
 });
@@ -246,7 +245,7 @@ function makeReplyContent(obj){
 				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
 				/* 평점 */
 				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
-				if(obj.movieId === userId){
+				if(obj.userId === userId){
 					reply_list += '<a class="update_reply_btn" href="'+ obj.replyNum +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyNum +'">삭제</a>';
 				}
 				reply_list += '</div>'; //<div class="reply_top">

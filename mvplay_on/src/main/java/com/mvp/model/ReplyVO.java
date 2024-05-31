@@ -19,6 +19,9 @@ public class ReplyVO {
 	//내용
 	private String replyContent;
 	
+	//별점
+	private double rating;
+	
 	//작성 일자
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Asia/Seoul")
 	private Date regDate;
@@ -63,10 +66,18 @@ public class ReplyVO {
 		this.regDate = regDate;
 	}
 
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
 	@Override
 	public String toString() {
 		return "ReplyVO [replyNum=" + replyNum + ", userId=" + userId + ", movieId=" + movieId + ", replyContent="
-				+ replyContent + ", regDate=" + regDate + "]";
+				+ replyContent + ", rating=" + rating + ", regDate=" + regDate + "]";
 	}
 	
 }
