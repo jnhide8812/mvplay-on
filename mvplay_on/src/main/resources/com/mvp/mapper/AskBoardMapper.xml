@@ -43,7 +43,7 @@
 	
 	<!-- 게시글 수정 -->
 	<update id="modify">
-		update askBoard set title = #{title}, content = #{content}, updateDate = now() where ano = #{ano}
+		update askBoard set title = #{title}, content = #{content}, updateDate=sysdate where ano = #{ano}
 	</update>
 	
 	<!-- 게시글 삭제 -->
