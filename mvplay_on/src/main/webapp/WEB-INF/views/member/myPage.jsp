@@ -54,18 +54,18 @@
 							</li>
 							<li>
 								<button type="button" onclick="location.href='/purchase/subscribe1'" class="pbtn">이용권 변경 ></button>
-								
 							</li>
-							<li>
-			
-								<button type="button" onclick="location.href='/purchase/pList'" class="pbtn">구매한 영화 확인하기 ></button>
-							</li>
+							
 						</ul>
 						<ul class="final_date">
 							<li>
 								<label><span class="sub_tt">결제 예정일</span></label>
 							</li>
 							<li><input type="text" class="expired" name="expired" value="${subscribePayment.expiredDate}" readonly="readonly"></li>
+							<li>
+			
+								<button type="button" onclick="location.href='/purchase/pList'" class="pbtn">구매한 영화 확인하기 ></button>
+							</li>						
 						</ul>
 					</nav>
 				</fieldset>
