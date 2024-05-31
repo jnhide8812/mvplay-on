@@ -86,7 +86,7 @@ ul.p_info, ul.final_date{
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	padding-bottom: 5px;	
+	margin-bottom: 10px;	
 }
 li.mm {
 	width: 450px;
@@ -129,7 +129,9 @@ button.pbtn{
 	color: #E92F62;
 	cursor: pointer;
 }
-
+input.mail {
+	font-size: 16px;
+}
 .ask_button_wrap {
 	margin-top: 30px;
 }
