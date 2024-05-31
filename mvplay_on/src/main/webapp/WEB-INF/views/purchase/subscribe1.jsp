@@ -118,7 +118,7 @@
 			</div>  <!-- pay_wrap -->
 			<div class="paybtn_wrap">
 				<button id="subscribeBtn111" type="button" class="sbtn">구독 시작하기</button>
-				<button type="submit" class="sbtn">결제하기</button>
+				<!-- <button type="submit" class="sbtn">결제하기</button> -->
 			</div>
 			<p>유저 아이디${userId}</p>
 		</form>

@@ -108,13 +108,12 @@ public class PurchaseController {
     }
     
     @GetMapping("/movie/purchaseDetail")
-    public String purchaseDetailPage(HttpServletRequest request) {
+    public void purchaseDetailPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
         String userId = "daewoo"; // 임시 로그인
         session.setAttribute("userId", userId);
         logger.info("purchaseDetail로 이동");
         
-        return "redirect:/movie/purchaseMain"; 
     }
 
 	 /* 

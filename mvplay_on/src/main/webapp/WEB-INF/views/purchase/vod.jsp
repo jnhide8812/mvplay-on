@@ -107,7 +107,7 @@ $(document).ready(function() {
 	    });
 
 	    $("#purchaseBtn").click(function() {
-	    	alert("버튼 클릭")
+	    	
 	        var selectedMethod = $('input[name="buymethod"]:checked').val();
 	    	console.log("selectedMethod : "+selectedMethod);
 	        if (!selectedMethod) {
@@ -120,6 +120,7 @@ $(document).ready(function() {
 	            alert("결제 방법을 선택해주세요.");
 	            return;
 	        }
+	        alert("결제가 완료되었습니다.")
 	        submitForm();
 	    });
 
@@ -137,17 +138,6 @@ $(document).ready(function() {
 	</script>
 	</body>
 	</html>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <%-- function requestPay(itemName) {

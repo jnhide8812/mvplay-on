@@ -11,7 +11,7 @@
 
 	<!-- 로그인 -->
 	<select id="memberLogin" resultType="com.mvp.model.MemberVO">
-		 select userId, upw, ubirth, ugrade from member where userId = #{userId} and upw = #{upw}
+		 select userId, upw, ubirth, ugrade from member where userId = #{userId} 
 	</select>
 	
 	<!-- 마이페이지 -->
