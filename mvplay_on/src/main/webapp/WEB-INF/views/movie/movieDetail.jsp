@@ -33,48 +33,57 @@
 			<div class="posterFrame">
 				<div class="poster">
 					<!-- <img src="/resources/img/${movieInfo.poster}" width="300px"> -->
-					<img class="moviePoster" alt="임시 포스터 입니당" src="/resources/img/듄.png" width="300px">
-					<div id="iframe">
-						<button id="likeBtn" class="btn like_btn">보고싶어요</button>
-						<%@include file="rating.jsp" %>
-					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/4xnsmyI5KMQ?si=_oi5Mhmnp7wnfJeB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-					</div>
+					<img class="moviePoster" alt="임시 포스터 입니당" src="/resources/img/듄.png" width="300px">	
 				</div>
 				
-				<div>
-					<div>
+				<div class="textArea_movieInfo">
+					<div class="inlineBlock">
 						<!-- 영화 제목 -->
 						<h1 class="movieTitle">${movieInfo.movieTitle}</h1>
 					</div>
 					<div> 
-					<ul>
-						<!-- 영화 평점 -->
-						<li class="lavel">
-						<label>평균 <c:out value="${movieInfo.rating}"></c:out>점</label>
-						</li>
-						<!-- 영화 개봉일 -->
-						<li class="lavel">
-						<fmt:formatDate value="${movieInfo.movieDate}" pattern="yyyy년"></fmt:formatDate>
-						</li>
-						<!-- 영화 장르 -->
-						<li class="lavel">
-						<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>
-						</li>
-					</ul>
+						<ul>
+							<!-- 영화 평점 -->
+							<li class="lavel">
+							<label>평균 <c:out value="${movieInfo.rating}"></c:out>점</label>
+							</li>
+							<!-- 영화 개봉일 -->
+							<li class="lavel">
+							<fmt:formatDate value="${movieInfo.movieDate}" pattern="yyyy년"></fmt:formatDate>
+							</li>
+							<!-- 영화 장르 -->
+							<li class="lavel">
+							<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>
+							</li>
+						</ul>
 					</div>
-					<div>
-						<!-- 영화 줄거리 -->
-						<div class="movieContent">
-						${movieInfo.movieContent}
+						<div class="inlineBlock">
+							<!-- 영화 줄거리 -->
+							<div class="movieContent">
+							${movieInfo.movieContent}
+							</div>
+						</div>
+					<div class="buttons">
+						<div class="inlineBlock">
+							<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구독하기</button>
+							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/subscribe${member.ugrade}?movieId=${movieInfo.movieId}'">구매하기</button>
+							<c:if test="${member.ugrade == 0}">
+							<p>관리자 전용 각 단계 이동 버튼</p>
+							<button id="buyBtn_1" class="btn_buy_btn" onclick="location.href='../purchase/subscribe1?movieId=${movieInfo.movieId}'">구매하기(일반회원)</button>
+							<button id="buyBtn_2" class="btn_buy_btn" onclick="location.href='../purchase/subscribe2?movieId=${movieInfo.movieId}'">구매하기(베이직)</button>
+							<button id="buyBtn_3" class="btn_buy_btn" onclick="location.href='../purchase/subscribe3?movieId=${movieInfo.movieId}'">구매하기(프리미엄)</button>
+							</c:if>
 						</div>
 					</div>
-					<div>
-						<button id="subscribeBtn" class="btn">구독하기</button>
-						<button id="buyBtn" class="btn buy_btn">구매하기</button>
-					</div>
-					
-					
+					<div class="buttons">
+						<%@include file="rating.jsp" %>
+						<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
+					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/4xnsmyI5KMQ?si=_oi5Mhmnp7wnfJeB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+					</div>					
+				</div>
+			</div>	
 					<!-- 댓글 영역 -->
+				<div class="replyArea">	
 					<div class="reply_subject">
 						<h2>리뷰</h2>
 					</div>
@@ -82,7 +91,6 @@
 					<c:if test="${member != null}">
 						<div class="reply_button_wrap">
 							<button>리뷰 쓰기</button>
-							<!-- <button onclick="replyWrite()">리뷰 쓰기</button> -->
 						</div>
 					</c:if>		
 					
@@ -96,73 +104,8 @@
 						<ul class="pageMaker">
 						</ul>
 					</div>
-					
-					
-			<!--<div id="reply">
-				 <ol class="replyList">
-				  <c:forEach items="${repList}" var="repList">
-				   <li>
-				    <p>
-				    <span class="glyphicon glyphicon-user"></span>
-				     ${repList.writer}
-				     (<fmt:formatDate value="${repList.regDate}" pattern="yyyy-MM-dd" />)
-				    </p>
-				    
-				    <p>${repList.content}</p>
-				    
-				    <p>                
-					   <button type="button" class="replyUpdate btn btn-warning btn-xs" data-rno="${repList.replyNum}">수정</button>
-					   <button type="button" class="replyDelete btn btn-danger btn-xs" data-rno="${repList.replyNum}">삭제</button>
-					   
-					   <script>					    
-					    $(".replyDelete").click(function(){
-					     self.location = "/movie/replyDelete?movieId=${read.movieId}"
-					      + "&replyNum=" + $(this).attr("data-replyNum");   
-					    });         
-					   </script>
-					</p>
-				    
-				  </li>
-				 </c:forEach>     
-				</ol>
-				
-				<section class="replyForm">
-				<form role="form" method="post" autocomplete="off" class="form-horizontal">
-			
-				<input type="hidden" id="replyNum" name="replyNum" value="${repList.replyNum}" readonly="readonly" />
-				
-				<div class="form-group">
-					<label for="writer" class="col-sm-2 control-label">작성자</label>
-					<input type="text" id="userId" name="userId" value="${member.userId}" readonly="readonly">
-				</div>
-				 
-				<div class="form-group">
-					<label for="content" class="col-sm-2 control-label">댓글 내용</label>
-					<div class="col-sm-10">
-						<textarea id="content" name="replyContent" class="form-control"></textarea>
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="button" class="repSubmit btn btn-success">작성</button>
-					</div>
-					<script>
-						var formObj = $(".replyForm form[role='form']");
-						        
-						$(".repSubmit").click(function(){
-						 formObj.attr("action", "replyWrite");
-						 //formObj.attr("action", "movieDetail");
-						 formObj.submit();
-						});
-					</script>
-				</div>
-			</form>
-		</section>
-	</div> -->
-		</div>
+				</div>	
 	</div>
-		
 		</div>
 		<!-- 푸터 -->
 		<%@include file="../includes/footer.jsp" %>
@@ -320,6 +263,104 @@ function makeReplyContent(obj){
 		}
 }
 
+/*보고 싶어요
+$(".btn_like_btn").on('click', function(e){
+	
+	e.preventDefault();
+	
+	const userId = '${member.userId}';
+	const movieId = '${movieInfo.movieId}';
+	
+	console.log("userId for like : "+${member.userId});
+	console.log("movieId  for like : "+${movieInfo.movieId});
+	
+	if(userId === ""){
+		alert("로그인 후 이용하실 수 있습니다.");
+	}	
+});
+
+//구매
+$(".btn_buy_btn").on('click', function(e){
+	
+	e.preventDefault();
+	
+	const userId = '${member.userId}';
+	const movieId = '${movieInfo.movieId}';
+	
+	console.log("userId for buy : "+${member.userId});
+	console.log("movieId for buy : "+${movieInfo.movieId});
+	
+	if(userId === ""){
+		alert("로그인 후 이용하실 수 있습니다.");
+	} else {
+		$.ajax({
+			data : {
+				userId : userId,
+				movieId : movieId
+			},
+			url : '/purchase/vod',
+			type : 'POST',
+			success : function(result){
+				if(result === '1'){
+				alert("이미 등록된 리뷰가 존재 합니다.")
+				} else if(result === '0'){ 
+						
+				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
+				console.log(popUrl);
+				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
+							
+				window.open(popUrl,"리뷰 쓰기",popOption);					
+					}				
+					
+				}
+			});
+		}
+	
+});
+
+//구독
+$(".btn").on('click', function(e){
+	e.preventDefault();
+	
+	const userId = '${member.userId}';
+	const movieId = '${movieInfo.movieId}';
+	
+	console.log("userId for subscribe : "+${member.userId});
+	console.log("movieId for subscribe : "+${movieInfo.movieId});
+	
+	if(userId === ""){
+		alert("로그인 후 이용하실 수 있습니다.");
+	}
+	
+});
+
+/*
+	$.ajax({
+		data : {
+			userId : userId,
+			movieId : movieId
+		},
+		url : '/reply/check',
+		type : 'POST',
+		success : function(result){
+
+			if(result === '1'){
+				alert("이미 등록된 리뷰가 존재 합니다.")
+			} else if(result === '0'){ 
+				
+				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
+				console.log(popUrl);
+				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
+				
+				window.open(popUrl,"리뷰 쓰기",popOption);					
+			/*}				
+			
+		}
+	});		
+
+	
+});
+*/
 </script>
 </body>
 </html>

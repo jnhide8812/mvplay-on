@@ -21,15 +21,20 @@ h1 {
 	background-color: #000000;
 }
 
+.inlineBlock {
+	display: inline-block;
+}
+
 
 /*메인*/
 .main_content{
 	width: 1900px;
-	height: 800px;
-	background-color: yellow;
+	height: 100%;
 	display:flex;
 	flex-direction:column;
-	padding:56px 0 0 240px;
+	padding:86px 0 0 240px;
+	margin: 0 auto;
+	color: white;
 }
 
 /* 리뷰쓰기 버튼 */
@@ -155,23 +160,22 @@ h1 {
   }
 
   
-  /* 포스터 영역 
+  /* 포스터 영역 */
   .posterFrame{
-    align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: relative;
+    margin-right: 20px;
     @media screen and (max-width: 48em) {
         margin-top:40px;
         margin-top:0}
   }
-  
+
   .poster{
-   aspect-ratio: 16/9;
-   position: absolute;
-   width: 100%
+   padding-left: 15px;
+   padding-bottom: 10px;
   }
-  
+  /*  
   .moviePoster{
     height: 300px;
     -o-object-fit: cover;
@@ -193,15 +197,48 @@ h1 {
     gap: 20px;
     width: 100%;
     color: gray;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    font: bold;
     }
+    
     
 /* 제목 */
 .movieTitle{
-	
+	margin-left : 5px;
+	vertical-align: top;
+	padding-bottom: 15px;
 }    
 
 /* 영화 줄거리 */
 .movieContent{
-	height : 30%;
-	width: 50%;
+	width : max-content;
+	max-width : 25%;
+	word-break : keep-all;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	letter-spacing: 0.1em;
+	word-spacing: 0.1em;
+	line-height: 1.2em;
+}
+
+/* 영화 정보 */
+.textArea_movieInfo {
+	padding-left: 10px;
+	padding-bottom: 10px;
+	position: absolute;
+	left : 19.5%;
+	top: 35%;
+}
+
+/* 버튼 */
+.buttons {
+	padding-left: 5px;
+	padding-bottom: 10px;
+}
+
+/* 리뷰 영역 */
+.replyArea {
+	padding-left: 15px;
 }
