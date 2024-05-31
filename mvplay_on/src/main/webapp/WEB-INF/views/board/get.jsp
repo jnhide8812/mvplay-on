@@ -55,18 +55,42 @@
 						<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
 					</div>
 				</li>
+				
+				<!-- 답변이 있으면 보임 -->
+				<c:if test="${pageInfo.answerCk =='O'}">
+				
+				<li>
+					<div class="input_wrap">
+						<label>관리자 답변</label>
+						<div><pre>${pageInfo.answer }</pre></div>
+					</div>
+				</li>
+				<li>
+					<div class="input_wrap">
+						<label>답변일</label>
+						<span><c:out value="${pageInfo.answerDate }"/></span>
+					</div>
+				</li>
+				</c:if>
+				
 			</ul>
+			
+			
+				
+			
 			<div class="btn_wrap">
 				<a class="btn" id="list_btn">목록 페이지</a> 
 				<a class="btn" id="modify_btn">수정 하기</a>
 			</div>
 		</div> <!-- view -->
+		
 		<form id="infoForm" action="/board/modify" method="get">
-			<input type="hidden" id="ano" name="ano" value='<c:out value="${pageInfo.ano}"/>'>
-			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+		<input type="hidden" id="ano" name="ano" value='<c:out value="${pageInfo.ano}"/>'>
+		<!-- <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="keyword" value="${cri.keyword}">
+			<input type="hidden" name="keyword" value="${cri.keyword}"> -->
 		</form>
+		
 	</div> <!-- view_wrap -->
 </div> <!-- container -->
 <script>

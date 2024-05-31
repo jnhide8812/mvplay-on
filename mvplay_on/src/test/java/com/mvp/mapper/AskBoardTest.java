@@ -1,7 +1,5 @@
 package com.mvp.mapper;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -11,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mvp.model.AskBoardVO;
-import com.mvp.model.Criteria;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -23,15 +20,24 @@ private static final Logger logger = LoggerFactory.getLogger(AskBoardTest.class)
 	
 	@Test
 	public void addTest() {
+		AskBoardVO avo = new AskBoardVO();
+		avo.setTitle("수정---451");
+		avo.setContent("수정 내용");
+		avo.setAno(451);
+		
+		mapper.modify(avo);
+		
+		
+		
 		//@Param("userId")String userId, @Param("cri")Criteria cri
 		//AskBoardVO vo = new AskBoardVO();
-		String keyword = "문의";
-		Criteria cri = new Criteria();
+		//String keyword = "문의";
+		//Criteria cri = new Criteria();
 		
 		
-		String userId = "1";
+		//String userId = "1";
 		
-		List<AskBoardVO> list = mapper.ownList(userId);
+		//List<AskBoardVO> list = mapper.ownList(userId);
 		
 		
 		//vo.setAno(424);

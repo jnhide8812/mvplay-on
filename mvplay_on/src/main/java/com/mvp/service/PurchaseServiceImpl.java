@@ -67,37 +67,27 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 	
 	@Override
-	@Transactional
-	public int refund(PurchaseVO pvo) {
-	    // 회원 정보 가져오기
-	    MemberVO member = membermapper.memberGetDetail(0);
-	    if (member == null) {
-	        // 회원 정보가 없을 경우 예외 처리
-	        throw new IllegalArgumentException("회원 정보를 가져올 수 없습니다.");
-	    }
-	    
-	    // 구매 정보 가져오기
-	    pvo = purchasemapper.getBuyInfo(0);
-	    RefundVO rvo = new RefundVO(0);
-	    if (pvo == null) {
-	        // 구매 정보가 없을 경우 예외 처리
-	        throw new IllegalArgumentException("구매 정보를 가져올 수 없습니다.");
-	    }
-	    
-	    // 구매 취소에 따른 환불 금액 설정
-	    if (pvo.getBuyPrice() != null) {
-	        // 소장 
-	    	rvo.setRefundPrice(pvo.getBuyPrice());
-	    } else if (pvo.getRentalPrice() != null) {
-	        // 대여 
-	    	rvo.setRefundPrice(pvo.getRentalPrice());
-	    } else {
-	        // 환불할 가격이 없는 경우 예외 처리
-	        throw new IllegalArgumentException("환불 기한이 지나 환불이 불가합니다.");
-	    }
-	    
-		return purchasemapper.refund(rvo.getId());
-		
+	public int refund(RefundVO rvo) {
+		return purchasemapper.refund(0);
 	}
+
+	/*
+	 * @Transactional public int refund(PurchaseVO pvo) { // 회원 정보 가져오기 MemberVO
+	 * member = membermapper.memberGetDetail(0); if (member == null) { // 회원 정보가 없을
+	 * 경우 예외 처리 throw new IllegalArgumentException("회원 정보를 가져올 수 없습니다."); }
+	 * 
+	 * // 구매 정보 가져오기 pvo = purchasemapper.getBuyInfo(0); RefundVO rvo = new
+	 * RefundVO(0); if (pvo == null) { // 구매 정보가 없을 경우 예외 처리 throw new
+	 * IllegalArgumentException("구매 정보를 가져올 수 없습니다."); }
+	 * 
+	 * // 구매 취소에 따른 환불 금액 설정 if (pvo.getBuyPrice() != null) { // 소장
+	 * rvo.setRefundPrice(pvo.getBuyPrice()); } else if (pvo.getRentalPrice() !=
+	 * null) { // 대여 rvo.setRefundPrice(pvo.getRentalPrice()); } else { // 환불할 가격이
+	 * 없는 경우 예외 처리 throw new IllegalArgumentException("환불 기한이 지나 환불이 불가합니다."); }
+	 * 
+	 * return purchasemapper.refund(rvo.getId());
+	 * 
+	 * }
+	 */
 	
 }

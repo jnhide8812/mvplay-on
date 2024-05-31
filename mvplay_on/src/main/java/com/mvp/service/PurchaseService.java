@@ -3,6 +3,7 @@ package com.mvp.service;
 
 import com.mvp.model.PaymentValidationRequest;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 
 public interface PurchaseService {
@@ -23,10 +24,9 @@ public interface PurchaseService {
     public int enrollSubscription(SubscribtionVO svo);
     
     //구매(소장,대여) 취소
-    public int refund(PurchaseVO pvo);
+    public int refund(RefundVO rvo);
     
-    /* 주문 정보(주문취소) */
-	public PurchaseVO getOrder(int id);
+    
     
     
     

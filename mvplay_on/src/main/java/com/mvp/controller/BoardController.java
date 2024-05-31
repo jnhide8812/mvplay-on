@@ -37,11 +37,10 @@ public class BoardController {
 
 	/*개인게시판 목록 페이지 접속(페이징)*/
 	@GetMapping("/ownList")
-	public void AsksboardownListGET(HttpServletRequest request, Model model, Criteria cri) {
+	public void AsksboardownListGET(HttpServletRequest request, Model model) {
 
 		HttpSession session = request.getSession();
 	    MemberVO mvo = (MemberVO)session.getAttribute("member");
-	    System.out.println("mvo: "+mvo);
 	    String userId = mvo.getUserId();
 	    
 	    List<AskBoardVO> boardList = askbservice.ownList(userId);
@@ -95,10 +94,10 @@ public class BoardController {
     
     /*게시판 조회*/
     @GetMapping("/get")
-    public void askboardGetPageGET(int ano, Model model, Criteria cri) {
+    public void askboardGetPageGET(int ano, Model model) {
     	model.addAttribute("pageInfo", askbservice.select(ano));
     	
-    	model.addAttribute("cri", cri);
+    	//model.addAttribute("cri", cri);
     }
     
     /*게시판 수정 페이지 이동*/
@@ -110,6 +109,8 @@ public class BoardController {
     /*게시글 수정*/
     @PostMapping("/modify")
     public String askboardModifyPOST(AskBoardVO board, RedirectAttributes rttr) {
+    	log.info("board"+ board);
+    	
     	askbservice.modify(board);
     	rttr.addFlashAttribute("result", "modify success");
     	return "redirect:/board/ownList";

@@ -46,13 +46,13 @@
 				<li>
 					<div class="input_wrap">
 						<label>게시판 등록일</label>
-						<input name="regdater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regDate}"/>' >
+						<input name="regDater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regDate}"/>' >
 					</div>
 				</li>
 				<li>
 					<div class="input_wrap">
 						<label>게시판 수정일</label>
-						<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
+						<input name="updateDater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
 					</div>
 				</li>
 			</ul>
@@ -63,12 +63,15 @@
 				<a class="btn" id="cancel_btn">수정 취소</a>
 			</div>
 		</form>
+	 
 		<form id="infoForm" action="/board/modify" method="get">
 			<input type="hidden" id="ano" name="ano" value='<c:out value="${pageInfo.ano}"/>'>
-			<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+	<!--	<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
 			<input type="hidden" name="keyword" value="${cri.keyword}">
+	 -->
 		</form>
+	
 	</div> <!-- view_wrap -->
 </div> <!-- container -->
 <script>
