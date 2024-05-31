@@ -39,9 +39,10 @@ public interface AskBoardMapper {
 
 	
 	//개인 개시글 개수
-	public int askboardGetTotal(Criteria cri);
-
+	//public int askboardGetTotal(Criteria cri);
 	
 	//게시판 개인목록
-	public List<AskBoardVO> ownList(@Param("userId")String userId, @Param("cri")Criteria cri);
+	//public List<AskBoardVO> ownList(@Param("userId")String userId, @Param("cri")Criteria cri);
+	public List<AskBoardVO> ownList(String userId);
+	
 }

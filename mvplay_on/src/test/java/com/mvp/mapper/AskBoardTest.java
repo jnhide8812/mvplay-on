@@ -2,7 +2,6 @@ package com.mvp.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,14 +22,16 @@ private static final Logger logger = LoggerFactory.getLogger(AskBoardTest.class)
 	private AskBoardMapper mapper;
 	
 	@Test
-	public void addTest(@Param("userId")String userId, @Param("cri")Criteria cri) {
-		AskBoardVO vo = new AskBoardVO();
+	public void addTest() {
+		//@Param("userId")String userId, @Param("cri")Criteria cri
+		//AskBoardVO vo = new AskBoardVO();
 		String keyword = "문의";
-		cri.setKeyword(keyword);
+		Criteria cri = new Criteria();
 		
-		userId = "1";
 		
-		List<AskBoardVO> list = mapper.ownList(userId, cri);
+		String userId = "1";
+		
+		List<AskBoardVO> list = mapper.ownList(userId);
 		
 		
 		//vo.setAno(424);

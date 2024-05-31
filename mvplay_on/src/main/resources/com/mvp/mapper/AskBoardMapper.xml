@@ -6,7 +6,7 @@
 	
 	<!-- 게시글 등록 -->
 	<insert id="enroll">
-		insert into askBoard(title, content, userId) values=(#{title}, #{content}, #{userId}) 
+		insert into askBoard(title, content, userId) values(#{title}, #{content}, #{userId}) 
 	</insert>
 
 	
@@ -60,10 +60,17 @@
 		</if>
 	</select>
 		
-	<!-- 개인 게시판 목록 -->
+	<!-- 개인 게시판 목록 //90일 전까지만 조회 가능 cri 기능 안됨 -->
 	<select id="ownList" resultType="com.mvp.model.AskBoardVO">
+		 SELECT * FROM(
+			SELECT /*+INDEX_DESC(askBoard SYS_C008540)*/ ROWNUM AS rn, ano, userId, title, content, answerCk,regDate, updateDate, viewCnt 
+			FROM askBoard
+			WHERE userId = #{userId} and regDate> (sysdate-90)
+            ORDER by ano DESC
+			)		
 		
-		<![CDATA[
+		<!--
+		 <![CDATA[
 		SELECT * FROM(
 			SELECT /*+INDEX_DESC(askBoard SYS_C008540)*/ ROWNUM AS rn, ano, userId, title, content, answerCk,regDate, updateDate, viewCnt 
 			FROM askBoard
@@ -78,11 +85,11 @@
 	            )
 	        where rn > (#{cri.pageNum} - 1) * #{cri.amount}
 	      ]]>
-		
-		
+		 
+		-->
 	</select>
 		
-	<!-- 개인 게시글 개수 -->
+	<!-- 개인 게시글 개수 // 사용 X :키워드 매핑 안됨-->
 	<select id="askboardGetTotal" resultType="int">
 		SELECT COUNT(*) FROM askBoard where userId = #{userId}
 		<if test="keyword !=null">

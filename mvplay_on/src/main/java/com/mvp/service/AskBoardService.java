@@ -6,25 +6,25 @@ import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
 
 public interface AskBoardService {
-	//게시글 조회
+	//관리자 게시글 조회
 	public AskBoardVO select(int ano);
 	
-	//게시글 목록 조회
+	//관리자 게시글 목록 조회
 	public List<AskBoardVO> selectList(Criteria cri);
 	
-	//게시글 등록
+	//사용자 - 게시글 등록
 	public void enroll(AskBoardVO board);
 	
 	/*게시판 목록*/
 	public List<AskBoardVO> getList();
 	
-	//게시글 수정
+	//관리자 게시글 수정
 	public int modify(AskBoardVO askboard);
 	
 	//게시글 삭제
 	public int delete(int ano);
 	
-	//게시글 개수
+	//관리자 - 게시글 개수
 	public int boardGetTotal(Criteria cri);
 	
 	//관리자 답변 달기
@@ -34,9 +34,9 @@ public interface AskBoardService {
 	public void deleteAnswer(AskBoardVO avo);
 	
 
-	//게시판 개인목록
-	//public List<AskBoardVO> ownList(Criteria cri);
+	//개인 - 게시판 개인목록
+	public List<AskBoardVO> ownList(String userId);
 	
 	//개인 개시글 개수
-	public int askboardGetTotal(Criteria cri);
+	//public int askboardGetTotal(Criteria cri);
 }

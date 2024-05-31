@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/board/enroll.css">
+<title>문의하기</title>
+<link rel="stylesheet" href="/resources/css/member/myPage.css">
+<link rel="stylesheet" href="/resources/css/basic/style.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -15,35 +16,45 @@
 </head>
 <body>
 <div id="container">
-	<div class="eboard">
-		<div class="main_board">
-			<h1>게시판 등록</h1>
-			<form id="eboard" action="/askboard/enroll" method="post">
+	<div class="my">
+		<%@include file="../includes/header.jsp" %>
+		<%@include file="../includes/nav.jsp" %>
+		
+		<div class="eboard my_wrap">
+			<div class="sub">
+				<h1>문의하기</h1>
+			</div>
+			
+			<div class="main_board">
+			<form id="eboard" action="/board/enroll" method="post">
+				<input type="hidden" name="userId" value="${member.userId }">
 				<div class="input_wrap">
-					<label>Title</label> 
-					<input name="title">
+					<legend><span class="mtit">Title</span></legend>
+					<span class="sub_type"><input type="text" name="title"></span>
 				</div>
 				<div class="input_wrap">
-					<label>Content</label>
+					<legend><span class="mtit">Content</span></legend>
 					<textarea rows="3" name="content"></textarea>
 				</div>
-				<div class="input_wrap">
-					<label>Writer</label>
-					<input name="writer">
-				</div>
+				
 				<button class="sbtn">등록</button>
 			</form>
-		</div>
+			</div>
+
+		</div> 
+		<%@include file="../includes/footer.jsp" %>
 	</div>
 </div>
+
 <script>
-//회원가입 버튼 (회원가입 기능 적용)
+//문의하기 버튼
 $(document).ready(function(){
 	$(".sbtn").click(function(){
-		$("#eboard").attr("action","/askboard/enroll");
+		$("#eboard").attr("action","/board/enroll");
 		$("#eboard").submit();
 	});
 });
 </script>
+
 </body>
 </html>

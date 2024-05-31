@@ -4,6 +4,8 @@ package com.mvp.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mvp.model.AskBoardVO;
 import com.mvp.model.Criteria;
 import com.mvp.model.MemberVO;
-import com.mvp.model.PageVO;
 import com.mvp.service.AskBoardService;
 
 
@@ -37,23 +38,27 @@ public class BoardController {
 	/*개인게시판 목록 페이지 접속(페이징)*/
 	@GetMapping("/ownList")
 	public void AsksboardownListGET(HttpServletRequest request, Model model, Criteria cri) {
-	
-	  
+
 		HttpSession session = request.getSession();
 	    MemberVO mvo = (MemberVO)session.getAttribute("member");
 	    System.out.println("mvo: "+mvo);
-		
-	    String userId = (String) session.getAttribute("userId");
-	    System.out.println("userId33333: "+userId);
-	    /*
-	    log.info("askboardListGET");
-		model.addAttribute("ownList", askbservice.ownList(cri));
-		session.setAttribute("userId", userId);
-		
-		int total = askbservice.askboardGetTotal(cri);
-		PageVO pageMake = new PageVO(cri, total);
-		model.addAttribute("pageMaker", pageMake);
-		*/
+	    String userId = mvo.getUserId();
+	    
+	    List<AskBoardVO> boardList = askbservice.ownList(userId);
+	    
+	    if(!boardList.isEmpty()) {
+			model.addAttribute("ownList", boardList);	
+		}else {
+			model.addAttribute("listCheck", "empty");
+		}
+	    
+	    
+
+		/*
+		 * int total = askbservice.askboardGetTotal(cri); PageVO pageMake = new
+		 * PageVO(cri, total); model.addAttribute("pageMaker", pageMake)
+		 */;
+
 	    
 	}
 	/*게시판 목록 페이지 접속(페이징)
@@ -84,7 +89,7 @@ public class BoardController {
         
         rttr.addFlashAttribute("result", "enroll success");
         
-        return "redirect:/AskBoard/ownList";
+        return "redirect:/board/ownList";
         
     }
     
