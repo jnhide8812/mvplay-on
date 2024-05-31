@@ -45,15 +45,15 @@ h1 {
 	background-color: #f82f62;
     color: white;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 10px;
     padding: 5px 12px;
     cursor: pointer;  
-    border-radius: 40px;
+    border-radius: 6px;
   }
   
   /* 리뷰 영역 */
   	.content_bottom{
-  		width: 80%;
+  		width: 40%;
   		margin : auto;
   	}
 	.reply_content_ul{
@@ -61,7 +61,7 @@ h1 {
 	}
 	.comment_wrap{
 		position: relative;
-    	border-bottom: 1px dotted #d4d4d4;
+    	border-bottom: 1px solid #d4d4d4;
     	padding: 14px 0 10px 0;	
     	font-size: 12px;
 	}
@@ -84,7 +84,7 @@ h1 {
 	
 	/* 리뷰 선 */
 	.reply_line{
-		width : 80%;
+		width : 20%;
 		margin : auto;
 		border-top:1px solid #c6c6cf;  	
 	}
@@ -142,7 +142,7 @@ h1 {
     height: 20px;
     line-height: 20px;
     margin: 0 5px 0 30px;
-    border-radius: 40px;
+    border-radius: 6px;
     color: white; 
     cursor: pointer;
   }

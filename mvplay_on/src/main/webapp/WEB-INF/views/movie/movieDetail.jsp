@@ -175,39 +175,14 @@ const movieId = '${movieInfo.movieId}';
 		
 	});
 
-/* 리뷰 수정 버튼 */
-$(document).on('click', '.update_reply_btn', function(e){
-		
-		e.preventDefault();
-		let replyNum = $(this).attr("href");		 
-		let popUrl = "/replyUpdate?replyNum=" + replyNum + "&movieId=" + '${movieInfo.movieId}' + "&userId=" + '${member.userId}';	
-		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"	
-		
-		window.open(popUrl,"리뷰 수정",popOption);			
-	 
-});	
-
-/* 리뷰 삭제 버튼 */
-$(document).on('click', '.delete_reply_btn', function(e){
-
-	e.preventDefault();
-	let replyNum = $(this).attr("href");	
+/* 댓글 페이지 정보 */
+ const cri = {
+	movieId : '${movieInfo.movieId}',
+	pageNum : 1,
+	amount : 10
+}
 	
-	$.ajax({
-		data : {
-			replyNum : replyNum,
-			movieId : '${movieInfo.movieId}'
-		},
-		url : '/movie/delete',
-		type : 'POST',
-		success : function(result){
-			replyListInit();
-			alert('삭제가 완료되엇습니다.');
-		}
-	});		
-		
-});	
-
+	
 /* 댓글 데이터 서버 요청 및 댓글 동적 생성 메서드 */
 let replyListInit = function(){
 	$.getJSON("/movie/list", cri , function(obj){
@@ -261,6 +236,39 @@ function makeReplyContent(obj){
 			$(".reply_content_ul").html(reply_list);
 		}
 }
+
+/* 리뷰 수정 버튼 */
+$(document).on('click', '.update_reply_btn', function(e){
+		
+		e.preventDefault();
+		let replyNum = $(this).attr("href");		 
+		let popUrl = "/replyUpdate?replyNum=" + replyNum + "&movieId=" + '${movieInfo.movieId}' + "&userId=" + '${member.userId}';	
+		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"	
+		
+		window.open(popUrl,"리뷰 수정",popOption);			
+	 
+});	
+
+/* 리뷰 삭제 버튼 */
+$(document).on('click', '.delete_reply_btn', function(e){
+
+	e.preventDefault();
+	let replyNum = $(this).attr("href");	
+	
+	$.ajax({
+		data : {
+			replyNum : replyNum,
+			movieId : '${movieInfo.movieId}'
+		},
+		url : '/movie/delete',
+		type : 'POST',
+		success : function(result){
+			replyListInit();
+			alert('삭제가 완료되엇습니다.');
+		}
+	});		
+		
+});	
 
 /*보고 싶어요
 $(".btn_like_btn").on('click', function(e){
