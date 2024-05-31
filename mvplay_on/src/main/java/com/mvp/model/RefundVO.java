@@ -19,5 +19,9 @@ public class RefundVO {
 	//환불 상태
 	private String refundStatus;
 	
+	 // 생성자
+    public RefundVO(int id) {
+        this.id = id;
+    }
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvp.model.MemberVO;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
@@ -51,8 +52,7 @@ public class PurchaseController {
     // 개별 구매 페이지 이동
     @GetMapping("/purchase/vod")
     public void purchasePageGET(@RequestParam("movieId") int movieId, HttpServletRequest request, Model model) {
-        System.out.println("movieId" + movieId);
-        logger.info("vod");
+        
         logger.info("purchasePageGET()........." + movieId);
 
         HttpSession session = request.getSession();
@@ -114,6 +114,14 @@ public class PurchaseController {
         session.setAttribute("userId", userId);
         logger.info("purchaseDetail로 이동");
         
+    }
+    
+    // 구매 취소(환불)
+    @PostMapping("/refund")
+    public String refundPost(RefundVO rvo) {
+    	
+    	
+    	return "redirect:/purchase/refund" ;
     }
 
 	 /* 

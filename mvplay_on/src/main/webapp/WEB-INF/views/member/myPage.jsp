@@ -54,6 +54,11 @@
 							</li>
 							<li>
 								<button type="button" onclick="location.href='/purchase/subscribe1'" class="pbtn">이용권 변경 ></button>
+								
+							</li>
+							<li>
+			
+								<button type="button" onclick="location.href='/purchase/pList'" class="pbtn">구매한 영화 확인하기 ></button>
 							</li>
 						</ul>
 						<ul class="final_date">

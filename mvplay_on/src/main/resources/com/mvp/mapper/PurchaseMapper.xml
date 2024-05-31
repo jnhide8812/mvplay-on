@@ -31,8 +31,17 @@
         INSERT INTO subscribePayment (startDate, expiredDate, SubscribePrice, userId, goods)
         VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId}, #{goods})
     </insert>
-	
-	
+    
+    <!-- 구매 취소/ -->
+	<update id="refund">
+     <![CDATA[
+            UPDATE purchase 
+            SET expiredDate = #{startDate} - 1
+            WHERE sysdate <= #{startDate} + 3
+              AND Id =#{Id};
+        ]]>
+	</update>
+	<!--   WHERE sysdate <= TO_DATE(#{startDate}, 'YYYY-MM-DD') + 3  둘중에 뭐가 맞는지 정확히 모르겠음 -->
 	
 	
 	

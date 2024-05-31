@@ -22,6 +22,14 @@ public interface PurchaseService {
     // 구독 정보 등록
     public int enrollSubscription(SubscribtionVO svo);
     
+    //구매(소장,대여) 취소
+    public int refund(PurchaseVO pvo);
+    
+    /* 주문 정보(주문취소) */
+	public PurchaseVO getOrder(int id);
+    
+    
+    
  // 결제 검증 서비스 메서드
     //boolean validatePayment(PaymentValidationRequest request);
 }

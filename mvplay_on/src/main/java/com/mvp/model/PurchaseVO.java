@@ -10,8 +10,8 @@ public class PurchaseVO {
 	private String userId;	//유저id
 	private int movieId;	//영화id
 	//db에서 받아올 값
-	private int buyPrice; //소장가
-	private int rentalPrice; //대여가
+	private Integer  buyPrice; //소장가
+	private Integer  rentalPrice; //대여가
 	//만들어낼 값
 	private Date startDate; //구매일
 	private Date expiredDate;	//만료일

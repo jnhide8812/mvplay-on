@@ -20,5 +20,11 @@ public interface PurchaseMapper {
 	    
 	    // 구독 정보 등록
 	    public int enrollSubscription(SubscribtionVO svo);
-		
+	    
+	    //구매(소장,대여) 취소
+	    public int refund(int id);
+	    
+	
+	    
+	    
 }
