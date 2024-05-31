@@ -15,137 +15,139 @@
 	<header>
 		<%@ include file="../includes/admin/header.jsp"%>
 	</header>
-	<div class="admin_content_wrap">
-		<div class="admin_content_subject">
-			<span>영화상세</span>
-		</div>
-		<br>
-		<div class="admin_content_main">
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 제목</label>
-				</div>
-				<br>
-				<div class="form_section_content">
-					<input name="movieTitle"
-						value="<c:out value="${movieInfo.movieTitle}"/>" readonly>
-				</div>
+	<div class="wrapper">
+		<div class="admin_content_wrap">
+			<div class="admin_content_subject">
+				<span>영화상세</span>
 			</div>
 			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>포스터</label>
+			<div class="admin_content_main">
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 제목</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="movieTitle"
+							value="<c:out value="${movieInfo.movieTitle}"/>" readonly>
+					</div>
 				</div>
 				<br>
-				<div class="form_section_content">
-                    <img src="/resources/img/${movieInfo.poster}" width="300px">
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 소개</label>
-				</div>
-				<br>
-				<div class="form_section_content">
-					<textarea name="movieContent" id="movieContent_textarea" readonly>${movieInfo.movieContent}</textarea>
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 URL</label>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>포스터</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+	                    <img src="/resources/img/${movieInfo.poster}" width="300px">
+					</div>
 				</div>
 				<br>
-				<div class="form_section_content">
-					<input name="movieUrl"
-						value="<c:out value="${movieInfo.movieUrl}"/>" readonly>
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 장르 1</label>
-				</div>
-				<br>
-				<div class="form_section_content">
-					<input name="cate1"
-						value="<c:out value="${movieInfo.cate1}"/>" readonly>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 소개</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<textarea name="movieContent" id="movieContent_textarea" readonly>${movieInfo.movieContent}</textarea>
+					</div>
 				</div>
 				<br>
-				<div class="form_section_title">
-					<label>영화 장르 2</label>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 URL</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="movieUrl"
+							value="<c:out value="${movieInfo.movieUrl}"/>" readonly>
+					</div>
 				</div>
 				<br>
-				<div class="form_section_content">
-					<input name="cate2"
-						value="<c:out value="${movieInfo.cate2}"/>" readonly>
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 이용등급 설정</label>
-				</div>
-				<br>
-				<div class="form_section_content">
-					<c:if test="${movieInfo.movieCheck == '0'}">
-					    <h2>구독</h2>
-					</c:if>
-					<c:if test="${movieInfo.movieCheck == '1'}">
-					    <h2>구매</h2>
-					</c:if>
-					<c:if test="${movieInfo.movieCheck == '2'}">
-					    <h2>대여</h2>
-					</c:if>
-					<c:if test="${movieInfo.movieCheck == '3'}">
-					    <h2>구매+대여</h2>
-					</c:if>
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 구매가격</label>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 장르 1</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="cate1"
+							value="<c:out value="${movieInfo.cate1}"/>" readonly>
+					</div>
+					<br>
+					<div class="form_section_title">
+						<label>영화 장르 2</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="cate2"
+							value="<c:out value="${movieInfo.cate2}"/>" readonly>
+					</div>
 				</div>
 				<br>
-				<div class="form_section_content">
-					<input name="buyPrice"
-						value="<c:out value="${movieInfo.buyPrice}"/>" readonly>
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>영화 대여가격</label>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 이용등급 설정</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<c:if test="${movieInfo.movieCheck == '0'}">
+						    <h2>구독</h2>
+						</c:if>
+						<c:if test="${movieInfo.movieCheck == '1'}">
+						    <h2>구매</h2>
+						</c:if>
+						<c:if test="${movieInfo.movieCheck == '2'}">
+						    <h2>대여</h2>
+						</c:if>
+						<c:if test="${movieInfo.movieCheck == '3'}">
+						    <h2>구매+대여</h2>
+						</c:if>
+					</div>
 				</div>
 				<br>
-				<div class="form_section_content">
-					<input name="rentalPrice"
-						value="<c:out value="${movieInfo.rentalPrice}"/>" readonly>
-				</div>
-			</div>
-			<br>
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>개봉일</label>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 구매가격</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="buyPrice"
+							value="<c:out value="${movieInfo.buyPrice}"/>" readonly>
+					</div>
 				</div>
 				<br>
-				<div class="form_section_content">
-					<input name="movieDate"
-						value="<fmt:formatDate value='${movieInfo.movieDate}' pattern='yyyy-MM-dd'/>" readonly>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>영화 대여가격</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="rentalPrice"
+							value="<c:out value="${movieInfo.rentalPrice}"/>" readonly>
+					</div>
 				</div>
-			</div>
-			<form id="moveForm" method="get">
-				<input type="hidden" name="movieId" value='<c:out value="${movieInfo.movieId}"/>'>
-			    <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-				<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-				<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
-			</form>
-			<br>
-			<div class="btn_section">
-				<button id="updateBtn">수정</button>
-				<button id="listBtn">목록</button>
+				<br>
+				<div class="form_section">
+					<div class="form_section_title">
+						<label>개봉일</label>
+					</div>
+					<br>
+					<div class="form_section_content">
+						<input type="text" name="movieDate"
+							value="<fmt:formatDate value='${movieInfo.movieDate}' pattern='yyyy-MM-dd'/>" readonly>
+					</div>
+				</div>
+				<form id="moveForm" method="get">
+					<input type="hidden" name="movieId" value='<c:out value="${movieInfo.movieId}"/>'>
+				    <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+					<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+					<input type="hidden" name="keyword" value='<c:out value="${cri.keyword}"/>'>
+				</form>
+				<br>
+				<div class="btn_section">
+					<button id="updateBtn">수정</button>
+					<button id="listBtn">목록</button>
+				</div>
 			</div>
 		</div>
 	</div>

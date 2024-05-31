@@ -38,16 +38,20 @@
 						<div class="mail_wrap">
 							<div class="mail_input">
 								<input class="sinput" name="userId" placeholder="이메일(example@gmail.com)">
+								<span class="warn_mail">이메일을 올바르게 입력하지 않았습니다.</span>
+								<span class="mail_type_ck">이메일 형식이 아닙니다.</span>
 							</div>
 							<div class="mail_check">
 								<div class="mail_check_input" id="mail_cehck_input_false">
-									<input class="mail_ckinput" disabled="disabled" placeholder="인증번호">
+									<input class="mail_ckinput" name="mailck" disabled="disabled" placeholder="인증번호">
 								</div>
 								<div class="mail_button">
 									<span>인증번호 전송</span>
 								</div>
 								<div class="clearfix"></div>
-								<span id="mail_check_input_warn"></span>
+							</div>
+							<div class="mail_num_check">
+							    <span class="mail_check_input_warn">인증번호가 일치하지 않습니다.</span>
 							</div>
 						</div>
 					</li>
@@ -55,13 +59,13 @@
 						<div class="pw_wrap">
 							<div class="pw_input">
 								<input class="sinput" name="upw" placeholder="비밀번호">
+								<span class="warn_pw">비밀번호를 입력해주세요.</span>
 							</div>
 							<div class="pwck_wrap">
 								<div class="pwck_input">
-									<input class="sinput" placeholder="비밀번호 확인">
+									<input class="sinput" name="upwck" placeholder="비밀번호 확인">
 								</div>
-								<span class="pwck_input_re1">비밀번호가 일치합니다.</span>
-								<span class="pwck_input_re2">비밀번호가 일치하지 않습니다.</span>
+								<span class="warn_pwck">비밀번호 확인을 입력하지않았거나 일치하지 않습니다.</span>
 							</div>
 						</div>
 					</li>
@@ -69,6 +73,7 @@
 						<div class="birth_wrap">
 							<div class="form_section_content">
 								<input name="ubirth" autocomplete="off" readonly="readonly" class="sinput" placeholder="생년월일">
+								<span class="warn_ubirth">생년월일을 선택해주세요.</span>
 							</div>
 						</div>
 					</li>
@@ -101,33 +106,136 @@
 	</div>
 </div>
 <script>
-//회원가입 버튼 (회원가입 기능 적용)
-$(document).ready(function(){
-	$(".sign_button").click(function(){
-		$("#sign_form").attr("action","/member/signUp");
-		$("#sign_form").submit();
+
+    // 이메일 인증번호 전송
+    
+    var code = "";
+
+	$(".mail_button").click(function() {
+		
+		var userId = $(".sinput").val(); // 입력한 이메일
+		var ckBox = $(".mail_ckinput");
+		
+		
+
+		$.ajax({
+
+			type : "GET",
+			url : "/member/mailCheck?userId=" + userId,
+			success:function(data){		
+				ckBox.attr("disabled",false);
+				code = data;
+	        }
+
+		});
+
 	});
-});
+    
+	var test = false;
+	
+	//이메일 형식 검사
+	$('.sinput').on("propertychange change keyup paste input", function(){
+	    var userId = $('input[name=userId]').val();
+	    var re = /\S+@\S+\.\S+/;
+	    var wMailType = $('.mail_type_ck');
 
- 
+	    
+	    if (re.test(userId)) {
+	        wMailType.css('display', 'none');
+	        typetest = true;
+	        return typetest;
+	    } else {
+	        wMailType.css('display', 'block');
+	        typetest = false;
+	        return typetest;
+	    }
+	});
+    
+    
 
-/* 캘린더 위젯 적용 */
+	//회원가입 버튼 (회원가입 기능 적용)
+	
+	$(document).ready(function() {
+		$(".sign_button").click(function() {
+			let userIdCheck = false;
+			let upwCheck = false;
+			let upwckCheck = false;
+			let ubirthCheck = false;
+
+			let userId = $('input[name=userId]').val();
+			let upw = $('input[name=upw]').val();
+			let upwck = $('input[name=upwck]').val();
+			let ubirth = $('input[name=ubirth]').val();
+
+			let wUserId = $('.warn_mail');
+			let wUpw = $('.warn_pw');
+			let wUpwck = $('.warn_pwck');
+			let wUbirth = $('.warn_ubirth');
+
+			// 이메일 형식 체크
+			let re = /\S+@\S+\.\S+/;
+
+			if (userId === '' || !re.test(userId)) {
+				wUserId.css('display', 'block');
+				userIdCheck = false;
+			} else {
+				wUserId.css('display', 'none');
+				userIdCheck = true;
+			}
+
+			if (upw === '') {
+				wUpw.css('display', 'block');
+				upwCheck = false;
+			} else {
+				wUpw.css('display', 'none');
+				upwCheck = true;
+			}
+
+			if (upwck === '' || upwck !== upw) {
+				wUpwck.css('display', 'block');
+				upwckCheck = false;
+			} else {
+				wUpwck.css('display', 'none');
+				upwckCheck = true;
+			}
+
+			if (ubirth === '') {
+				wUbirth.css('display', 'block');
+				ubirthCheck = false;
+			} else {
+				wUbirth.css('display', 'none');
+				ubirthCheck = true;
+			}
+
+			if (userIdCheck && upwCheck && upwckCheck && ubirthCheck) {
+				//$("#sign_form").attr("action", "/member/signUp");
+				//$("#sign_form").submit();
+				alert("회원가입되지말라고");
+			} else {
+				return;
+			}
+		});
+	});
+
+	/* 캘린더 위젯 적용 */
 
 	/* 설정 */
 	const config = {
-		dateFormat: 'yy-mm-dd',
-		 prevText: '이전 달',
-		    nextText: '다음 달',
-		    monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-		    dayNames: ['일','월','화','수','목','금','토'],
-		    dayNamesShort: ['일','월','화','수','목','금','토'],
-		    dayNamesMin: ['일','월','화','수','목','금','토'],
-		    yearSuffix: '년',
-	        changeMonth: true,
-	        changeYear: true
-		
-}
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월',
+				'10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		yearSuffix : '년',
+		changeMonth : true,
+		changeYear : true
+
+	}
 
 	/*캘린더*/
 	$(function() {

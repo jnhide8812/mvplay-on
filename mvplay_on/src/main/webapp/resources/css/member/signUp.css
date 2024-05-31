@@ -181,3 +181,32 @@ span.e2{
 	font-weight: 500;
 	text-decoration: underline;
 }
+.warn_mail {
+    color: red;
+	display: none;
+}
+
+.mail_check_input_warn {
+	color: red;
+	display: none;
+}
+
+.warn_pw {
+	color: red;
+	display: none;
+}
+
+.warn_pwck {
+	color: red;
+	display: none;
+}
+
+.warn_ubirth {
+	color: red;
+	display: none;
+}
+
+.mail_type_ck {
+	color: red;
+	display: none;
+}

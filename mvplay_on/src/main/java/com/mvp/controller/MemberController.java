@@ -1,5 +1,7 @@
 package com.mvp.controller;
 
+import java.util.Random;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -55,6 +57,23 @@ public class MemberController {
 		logger.info("join Service 성공");
 		return "redirect:/main";
 	}
+	
+	/* 이메일 인증 */
+    @GetMapping("/mailCheck")
+    @ResponseBody
+    public String getMailCheck(String userId) throws Exception {
+        
+        // 인증번호 생성
+        Random random = new Random();
+        int checkNum = random.nextInt(888888) + 111111;
+        
+        String num = Integer.toString(checkNum);
+        
+        logger.info("인증번호 : " + num);
+        
+        return num;
+        
+    }
 
 	// 로그인 페이지 이동 GET
 	@GetMapping("/login")
