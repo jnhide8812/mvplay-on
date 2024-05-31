@@ -56,7 +56,7 @@ public class PurchaseController {
         logger.info("purchasePageGET()........." + movieId);
 
         HttpSession session = request.getSession();
-        String userId = "daewoo"; // 임시 로그인
+        String userId = "cccc"; // 임시 로그인
         session.setAttribute("userId", userId);
         //String userId = (String) session.getAttribute("userId");
 
@@ -110,18 +110,22 @@ public class PurchaseController {
     @GetMapping("/movie/purchaseDetail")
     public void purchaseDetailPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String userId = "daewoo"; // 임시 로그인
+        String userId = "cccc"; // 임시 로그인
         session.setAttribute("userId", userId);
         logger.info("purchaseDetail로 이동");
         
     }
     
     // 구매 취소(환불)
-    @PostMapping("/refund")
-    public String refundPost(RefundVO rvo) {
+    @GetMapping("/purchase/refund")
+    public void refundPost(RefundVO rvo,HttpServletRequest request) {
+    	HttpSession session = request.getSession();
+    	String userId = "cccc"; // 임시 로그인
+    	System.out.println(rvo);
+    	rvo.getRefundId();
     	
+    	purchaseService.refund(rvo);
     	
-    	return "redirect:/purchase/refund" ;
     }
 
 	 /* 
@@ -152,7 +156,7 @@ public class PurchaseController {
     @GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
     public void GetpayFailPage(HttpServletRequest request) {
     	 HttpSession session = request.getSession();
-         String userId = "daewoo"; // 임시 로그인
+         String userId = "cccc"; // 임시 로그인
          session.setAttribute("userId", userId);
          logger.info("payFail");
     }
@@ -169,7 +173,7 @@ public class PurchaseController {
     @GetMapping("/purchase/subscribe1")
     public void subscribe1Page(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String userId = "daewoo"; // 임시 로그인
+        String userId = "cccc"; // 임시 로그인
         session.setAttribute("userId", userId);
         logger.info("purchase");
     }
@@ -271,7 +275,7 @@ public class PurchaseController {
     @GetMapping("/movie/subscribeMain")
     public void GetsubscribeMainPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String userId = "daewoo"; // 임시 로그인
+        String userId = "cccc"; // 임시 로그인
         session.setAttribute("userId", userId);
         logger.info("subscribeMain");
     }
@@ -287,7 +291,7 @@ public class PurchaseController {
     @GetMapping("/movie/PurchaseMain")
     public void GetsPurchaseMainPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String userId = "daewoo"; // 임시 로그인
+        String userId = "cccc"; // 임시 로그인
         session.setAttribute("userId", userId);
         logger.info("PurchaseMain");
     }
