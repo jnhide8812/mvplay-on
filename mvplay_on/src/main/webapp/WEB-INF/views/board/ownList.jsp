@@ -15,54 +15,53 @@
 </head>
 <body>
 <div id="container">
-
-	<div class="askboard">
-		<h1 class="ask">문의 게시판</h1>
-		<div class="table_wrap">
-		
-			<a href="/board/enroll" class="top_btn">문의하기</a>
-			<c:if test="${listCheck != 'empty' }">
-			
-			<table>
-				<thead>
-					<tr>
-						<th class="ano">번호</th>
-						<th class="title">제목</th>
-						<th class="userId">작성자</th>
-						<th class="regDate">작성일</th>
-						<th class="updateDate">수정일</th>
-						<th class="answerCk">답변 여부</th>
-					</tr>
-				</thead>
-				<c:forEach items="${ownList }" var="ownList">
-					<tr>
-						<td><c:out value="${ownList.ano}"></c:out></td>
-						<td>
-							<a class="move" href='/board/get?ano=<c:out value="${ownList.ano}"/>'>
-                        		<c:out value="${ownList.title}"/>
-                    		</a>
-							</td>
-						<td><c:out value="${ownList.userId}"></c:out></td>
-						<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ownList.regDate}"/></td>
-						<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ownList.updateDate}"/></td>
-						<td>${ownList.answerCk}</td>
-					</tr>
-				</c:forEach>
-			</c:if>
-			</table>
-			
-				<!-- 게시글 없음 -->
-				<c:if test="${ownListCheck =='empty' }">
-					<div class="table_empty">
-						등록된 내용이 없습니다. 
-					</div>
+ 	<%@include file="../includes/header.jsp" %>
+ 	<div class="middle">
+		<div class="askboard">
+			<h1 class="ask">문의 게시판</h1>
+			<div class="table_wrap">
+				<div class="mv_en">
+					<a href="/board/enroll" class="top_btn">문의하기</a>
+				</div>
+				<c:if test="${listCheck != 'empty' }">
+				<table>
+					<thead>
+						<tr>
+							<th class="ano">번호</th>
+							<th class="title">제목</th>
+							<th class="userId">작성자</th>
+							<th class="regDate">작성일</th>
+							<th class="updateDate">수정일</th>
+							<th class="answerCk">답변 여부</th>
+						</tr>
+					</thead>
+					<c:forEach items="${ownList }" var="ownList">
+						<tr>
+							<td><c:out value="${ownList.ano}"></c:out></td>
+							<td>
+								<a class="move" href='/board/get?ano=<c:out value="${ownList.ano}"/>'>
+	                        		<c:out value="${ownList.title}"/>
+	                    		</a>
+								</td>
+							<td><c:out value="${ownList.userId}"></c:out></td>
+							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ownList.regDate}"/></td>
+							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${ownList.updateDate}"/></td>
+							<td>${ownList.answerCk}</td>
+						</tr>
+					</c:forEach>
 				</c:if>
-			
-		
+				</table>
+					<!-- 게시글 없음 -->
+					<c:if test="${ownListCheck =='empty' }">
+						<div class="table_empty">
+							등록된 내용이 없습니다. 
+						</div>
+					</c:if>
+			</div>
 		</div>
-	</div>
-	
-</div>
+	</div>  <!-- middle -->
+	<%@include file="../includes/footer.jsp" %>
+</div>  <!-- container -->
 
 <script>
 $(document).ready(function(){
