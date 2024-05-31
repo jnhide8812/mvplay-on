@@ -87,13 +87,11 @@ public class PurchaseController {
         System.out.println("selectedMethod: "+selectedMethod);
         pvo.setUserId(userId);
 
-        try {
-            MemberVO memberLogin = memberService.memberLogin(member);
-            memberLogin.setUpw("");
-            session.setAttribute("member", memberLogin);
-        } catch (Exception e) {
-            logger.error("Error member login", e);
-        }
+		/*
+		 * try { MemberVO memberLogin = memberService.memberLogin(member);
+		 * memberLogin.setUpw(""); session.setAttribute("member", memberLogin); } catch
+		 * (Exception e) { logger.error("Error member login", e); }
+		 */
 
         if ("rent".equals(selectedMethod)) {
             purchaseService.enrollPurchase_2(pvo);

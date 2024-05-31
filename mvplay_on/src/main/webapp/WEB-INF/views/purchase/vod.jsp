@@ -15,9 +15,9 @@
 <h2>구매 컨텐츠</h2>
 <form id="movie_move" action="/purchase/vod" method="post">
     <input type="hidden" name="userId" value="${memberInfo}">
-       <input type="hidden" name="movieId" value="${movieInfo.movieId}">
-       <input type="hidden" name="buyPrice" value="${movieInfo.buyPrice}">
-       <input type="hidden" name="rentalPrice" value="${movieInfo.rentalPrice}">
+    <input type="hidden" name="movieId" value="${movieInfo.movieId}">
+    <input type="hidden" name="buyPrice" value="${movieInfo.buyPrice}">
+    <input type="hidden" name="rentalPrice" value="${movieInfo.rentalPrice}">
     <div class="content_wrap">
         <div class="content_subject"></div>
         <div class="content_main">
@@ -85,7 +85,7 @@
 
 
 $(document).ready(function() {
-    alert("일단 api 빠이");
+    alert("vod script");
 	<%-- var apiKey = '<%= ApiUtil.getProperty("imp.api.key") %>';
 	var secretKey = '<%= ApiUtil.getProperty("imp.api.secretkey") %>';
 	var impCode = '<%= ApiUtil.getProperty("imp.code") %>'; --%>
@@ -101,7 +101,7 @@ $(document).ready(function() {
 	    }
 
 	    updatePaymentInfo(getSelectedPrice()); // 초기 콘텐츠 가격 설정
-	    alert("왜 안돼지?");
+	    
 	    $('input[name="buymethod"]').change(function() {
 	        updatePaymentInfo(getSelectedPrice());
 	    });
@@ -127,7 +127,6 @@ $(document).ready(function() {
 	    	  var selectedMethod = $('input[name="buymethod"]:checked').val();
 	    	    var selectedPrice = getSelectedPrice();
 	    	    
-	    	    $('#movie_move').append('<input type="hidden" name="selectedMethod" value="' + selectedMethod + '">');
 	    	    $('#movie_move').append('<input type="hidden" name="selectedPrice" value="' + selectedPrice + '">');
 	    	 
 	    	    $('#movie_move').submit();
