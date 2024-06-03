@@ -7,8 +7,10 @@
 	<!-- 개별 구매(소장용) purchase 테이블에 등록 -->
 
 	<insert id="enrollPurchase_1">
-		insert into purchase(userId, movieId, buyPrice, startDate, expiredDate)
-		values(#{userId}, #{movieId}, #{buyPrice}, sysdate, sysdate+3650)
+		insert into purchase(userId, movieId, buyPrice,
+		startDate, expiredDate)
+		values(#{userId}, #{movieId}, #{buyPrice},
+		sysdate, sysdate+3650)
 	</insert>
 
 	<!-- 개별 구매(대여용) purchase 테이블에 등록 -->
@@ -35,9 +37,11 @@
 	<!-- 구독 정보 디비 저장 -->
 	<insert id="enrollSubscription"
 		parameterType="com.mvp.model.SubscribtionVO">
-		INSERT INTO subscribePayment (startDate, expiredDate, SubscribePrice,
+		INSERT INTO subscribePayment (startDate, expiredDate,
+		SubscribePrice,
 		userId, goods)
-		VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId},
+		VALUES (#{startDate}, #{expiredDate},
+		#{SubscribePrice}, #{userId},
 		#{goods})
 	</insert>
 
@@ -57,6 +61,15 @@
 		refundDate,refundStatus) values( #{id}, #{refundPrice}, #{userId},
 		sysdate, #{refundStatus} )
 	</insert>
+
+	<!-- 구매한 영화 목록보기(pList) -->
+	<select id="getPList" resultType="com.mvp.model.PurchaseViewVO">
+		SELECT m.movieId, m.movieTitle, m.poster, p.buyPrice, p.rentalPrice, p.startDate
+		FROM
+		movie m
+		JOIN purchase p ON m.movieId = p.movieId
+		WHERE p.userId = #{userId}
+	</select>
 
 
 

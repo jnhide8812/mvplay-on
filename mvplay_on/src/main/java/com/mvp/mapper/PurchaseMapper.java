@@ -1,6 +1,9 @@
 package com.mvp.mapper;
 
+import java.util.List;
+
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.PurchaseViewVO;
 import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 
@@ -8,7 +11,6 @@ public interface PurchaseMapper {
 		 
 		//구매 영화 정보
 		public PurchaseVO getBuyInfo(int movieId);
-		
 		
 		//개별 구매(소장) 영화 purchase table에 등록
 		public int enrollPurchase_1(PurchaseVO pvo);
@@ -27,6 +29,9 @@ public interface PurchaseMapper {
 	    
 	    //구매 테이블 등록
 	    public int enrollRefund(RefundVO rvo);
+	    
+	    //구매 목록 가져오기
+	    List<PurchaseViewVO> getPList(String userId);
 	  
 	    
 	    
