@@ -13,7 +13,7 @@
       
 	      <![CDATA[
 	          select * from (
-	              select /*+INDEX_DESC(movie SYS_C008625) */ 
+	              select /*+INDEX_DESC(movie SYS_C008503) */ 
 	                  rownum as rn, movieId, movieTitle, cate1, movieDate, movieCheck
 	            from movie 
 	            where
