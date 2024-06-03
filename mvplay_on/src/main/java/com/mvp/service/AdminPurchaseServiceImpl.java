@@ -47,4 +47,11 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 		
 	}
 
+	//환불 완료 업데이트
+	@Override
+	public int adminRefundUpdate(RefundVO rvo) {
+		return apMapper.adminRefundUpdate(rvo);
+		
+	}
+
 }

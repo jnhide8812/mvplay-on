@@ -68,6 +68,7 @@
 			SELECT /*+ INDEX_DESC(purchase SYS_C008544)*/ ROWNUM AS rn, id, userId, movieId,
 				(SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieName,
 			startDate, expiredDate,rentalPrice, buyPrice,
+				(SELECT refundId FROM refund where refund.id=purchase.id)refundId,
             	(SELECT refundStatus FROM refund where refund.id=purchase.id)refundStatus,
             	(SELECT refundDate FROM refund where refund.id=purchase.id)refundDate
 			FROM purchase where id=#{id}
@@ -81,10 +82,16 @@
 		values(#{id}, #{refundPrice}, #{userId}, '환불신청')
 	
 	</insert>
+	<!-- 관리자 환불 완료 업데이트 -->
+	<update id="adminRefundUpdate">
+		UPDATE refund 
+		SET refundStatus = '환불완료' 
+		WHERE refundId=#{refundId}
+	</update>
 	
 	<!-- 개별 환불 사항 출력 -->
 	<select id="adminRefundSelect" resultType="com.mvp.model.RefundVO">
-		SELECT * FROM refund where id=#{id}
+		SELECT * FROM refund where refundId=#{refundId}
 	</select>
 	
   </mapper>

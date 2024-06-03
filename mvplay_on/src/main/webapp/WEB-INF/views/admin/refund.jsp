@@ -66,10 +66,8 @@
 	
 	<!-- 영화 구매 정보 영역 -->
 	<div class="purchase_table_area">
-	<form action="/admin/refund" method="post">		
-		
-		
-		
+	<form action="/admin/refund" method="post" id="refundForm">		
+	
 		<input type="hidden" name="id" value='<c:out value="${purchaseInfo.id}"/>' >
 		<input type="hidden" name="refundPrice" value='<c:out value="${purchaseInfo.buyPrice}"/>' >
 		<input type="hidden" name="userId" value='<c:out value="${purchaseInfo.userId}"/>' >
@@ -89,8 +87,9 @@
 				<th>구매 금액</th><td><c:out value="${purchaseInfo.buyPrice}"/></td>
 			</tr>
 			<c:if test="${!empty purchaseInfo.refundStatus}">
+				<input type="hidden" name="refundId" value="${purchaseInfo.refundId }">
 				<tr>
-					<th>환불 진행 사항</th><td><c:out value="${purchaseInfo.refundStatus}"/></td>
+					<th>환불 진행 사항</th><td><c:out value="${purchaseInfo.refundStatus}"/><button type="button" id="refundConfirmBtn">환불 완료</button></td>
 				</tr>
 				<tr>
 					<th>환불 신청일</th><td><fmt:formatDate value="${purchaseInfo.refundDate}" pattern="yyyy-MM-dd" /></td>
@@ -133,8 +132,11 @@
 
 <script>
 let moveForm = $('#moveForm');
-//let searchForm = $('#searchForm');
 
+//환불 요청 폼
+let refundForm = $('#refundForm');
+//환불 요청 버튼
+let refundConfirm = $('#refundConfirmBtn');
 
 //페이지 이동 버튼
 $(".pageMaker_btn a").on("click", function(e){
@@ -144,6 +146,17 @@ $(".pageMaker_btn a").on("click", function(e){
 	
 });
 
+//환불 완료 버튼
+refundConfirm.on("click", function(e){
+	e.preventDefault();
+	
+	
+	//refundForm.append("<input type='hidden' name='refundId' value='"+$(this).attr('href') + "'>");
+	refundForm.attr("method", "post");
+	refundForm.attr("action", "/admin/refundUpdate");
+	refundForm.submit();
+	
+});
 
 
 </script>

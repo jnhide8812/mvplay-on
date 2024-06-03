@@ -83,6 +83,22 @@ public class AdminPurchaseController {
 		return "redirect:/admin/purchase";
 		
 	}
+	//환불진행 사항 업데이트
+	@PostMapping("/refundUpdate")
+	public String postAdminRefundUpdate(RefundVO rvo, RedirectAttributes rttr) {
+		logger.info("post admin refund rvo update==>"+rvo);
+		int result = apService.adminRefundUpdate(rvo);
+		
+		if(result==1) {
+			//환불 신청한 주문번호 반환
+			rttr.addFlashAttribute("refund_confirm", rvo.getId());
+		}
+		
+		//개별 구매 페이지로 이동(또는 환불 게시판 만들어서 관리 예정)
+		return "redirect:/admin/purchase";
+		
+		
+	}
 	
 	
 	

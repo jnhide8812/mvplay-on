@@ -26,4 +26,6 @@ public interface AdminPurchaseService {
 	//환불 신청하기
 	public int adminRefundInsert(RefundVO rvo);
 	
+	//관리자 환불 완료 업데이트
+	public int adminRefundUpdate(RefundVO rvo);
 }

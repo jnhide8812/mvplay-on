@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.mvp.model.Criteria;
 import com.mvp.model.RefundVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,10 +21,16 @@ private static final Logger logger = LoggerFactory.getLogger(AdminPurchaseMapper
 	
 	@Test
 	public void apmTest() {
-		logger.info("테스트");
-		Criteria cri = new Criteria();
+		RefundVO rvo = new RefundVO();
+		rvo.setRefundId(83);
 		
-		mapper.adminSelectPurchaseList(cri);
+		mapper.adminRefundUpdate(rvo);
+		
+		
+		//logger.info("테스트"); m  
+		//Criteria cri = new Criteria();
+		
+		//mapper.adminSelectPurchaseList(cri);
 		
 		//mapper.boardGetTotal(cri);
 		//logger.info("....:  "+mapper.boardGetTotal(cri));

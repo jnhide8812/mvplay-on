@@ -227,19 +227,32 @@
 <script>
 $(document).ready(function(){
 
+	console.log('<c:out value="${refund_result_confirm}" />');
+	
+	
 let rResult = '<c:out value="${refund_result}" />';
-/* let nResult = '<c:out value="${refund_result_num}" />'; */
-
 	checkResult(rResult);
 	
 	function checkResult(result){
-		
 		if(result === ''){
 			return;
 		}
 		alert("주문번호 '" + rResult +"'의 환불이 신청되었습니다.\n");
 	}
-});
+
+
+//환불 완료 알림
+let rcResult = '<c:out value="${refund_confirm}" />';
+	checkComResult(rcResult);
+	function checkComResult(result){
+		if(result === ''){
+			return;
+		}
+		alert("주문번호 '" + rcResult +"'의 환불이 완료되었습니다.\n");
+	}
+}); //$(document).ready(function)
+
+
 
 
 let moveForm = $('#moveForm');
