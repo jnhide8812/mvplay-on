@@ -250,7 +250,7 @@ function makeReplyContent(obj){
 				reply_list += '</li>';
 				console.log("댓글 정보들 : "+obj.regDate);
 				console.log("댓글 번호들 : "+obj.replyNum);
-			});
+			}); 
 			
 			$(".reply_content_ul").html(reply_list);
 		}
