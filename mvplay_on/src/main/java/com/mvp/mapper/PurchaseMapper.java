@@ -1,6 +1,7 @@
 package com.mvp.mapper;
 
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 
 public interface PurchaseMapper {
@@ -22,9 +23,11 @@ public interface PurchaseMapper {
 	    public int enrollSubscription(SubscribtionVO svo);
 	    
 	    //구매(소장,대여) 취소
-	    public int refund(int id);
+	    public void refund(RefundVO rvo);
 	    
-	
+	    //구매 테이블 등록
+	    public int enrollRefund(RefundVO rvo);
+	  
 	    
 	    
 }

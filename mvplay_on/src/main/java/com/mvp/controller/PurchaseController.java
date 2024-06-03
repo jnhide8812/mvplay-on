@@ -24,10 +24,10 @@ import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
+
 @Component
 @Controller
 @RequestMapping
-
 public class PurchaseController {
     private static final Logger logger = LoggerFactory.getLogger(PurchaseController.class);
 
@@ -56,12 +56,9 @@ public class PurchaseController {
         logger.info("purchasePageGET()........." + movieId);
 
         HttpSession session = request.getSession();
-        String userId = "cccc"; // 임시 로그인
+        String userId = (String) session.getAttribute("userId");
         session.setAttribute("userId", userId);
         //String userId = (String) session.getAttribute("userId");
-
-        
-       
 
         model.addAttribute("memberInfo", userId);
         model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
@@ -110,22 +107,51 @@ public class PurchaseController {
     @GetMapping("/movie/purchaseDetail")
     public void purchaseDetailPage(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String userId = "cccc"; // 임시 로그인
+        String userId = (String) session.getAttribute("userId");
         session.setAttribute("userId", userId);
         logger.info("purchaseDetail로 이동");
         
     }
     
     // 구매 취소(환불)
-    @GetMapping("/purchase/refund")
-    public void refundPost(RefundVO rvo,HttpServletRequest request) {
+    @GetMapping("/purchase/pList")
+    public void refundPage(RefundVO rvo,HttpServletRequest request) {
     	HttpSession session = request.getSession();
-    	String userId = "cccc"; // 임시 로그인
-    	System.out.println(rvo);
-    	rvo.getRefundId();
+    	String userId = (String) session.getAttribute("userId");
     	
-    	purchaseService.refund(rvo);
+    	System.out.println("pList : "+rvo);
+    	rvo.setUserId(userId);
     	
+    	
+    	logger.info("구매 refundPage");
+       
+    	
+    }
+    
+ // 구매 취소(환불)
+    @PostMapping("/purchase/refund")
+    public String refundPost(@RequestParam("movieId") int movieId,Model model, HttpServletRequest request) {
+        System.out.println("postmapping-refund.........");
+    	HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
+        session.setAttribute("userId", userId);
+        
+        System.out.println("pList :"+movieId);
+        
+        if (userId == null) {
+            return "redirect:/member/login";
+        }
+
+        // 환불 처리를 위한 RefundVO 생성
+        RefundVO rvo = new RefundVO();
+        rvo.setUserId(userId);
+        rvo.setId(movieId);
+        
+        purchaseService.refund(rvo);
+        purchaseService.enrollRefund(rvo);
+        
+        return "redirect:/purchase/pList";
+      
     }
 
 	 /* 

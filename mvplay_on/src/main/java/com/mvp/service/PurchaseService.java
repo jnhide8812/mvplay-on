@@ -24,9 +24,10 @@ public interface PurchaseService {
     public int enrollSubscription(SubscribtionVO svo);
     
     //구매(소장,대여) 취소
-    public int refund(RefundVO rvo);
+    public void refund(RefundVO rvo);
     
-    
+    //구매 테이블 등록
+    public int enrollRefund(RefundVO rvo);
     
     
     

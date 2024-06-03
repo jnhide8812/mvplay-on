@@ -2,47 +2,63 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.mvp.mapper.PurchaseMapper">
-  	
+<mapper namespace="com.mvp.mapper.PurchaseMapper">
+
 	<!-- 개별 구매(소장용) purchase 테이블에 등록 -->
-	
-	<insert id="enrollPurchase_1">	
-		insert into purchase(userId, movieId, buyPrice, startDate, expiredDate) values(#{userId}, #{movieId}, #{buyPrice}, sysdate, sysdate+3650)
+
+	<insert id="enrollPurchase_1">
+		insert into purchase(userId, movieId, buyPrice, startDate, expiredDate)
+		values(#{userId}, #{movieId}, #{buyPrice}, sysdate, sysdate+3650)
 	</insert>
-	
+
 	<!-- 개별 구매(대여용) purchase 테이블에 등록 -->
 	<insert id="enrollPurchase_2">
-		insert into purchase(userId, movieId, rentalPrice, startDate, expiredDate) values(#{userId}, #{movieId}, #{rentalPrice}, sysdate, sysdate + 7)
+		insert into purchase(userId, movieId, rentalPrice,
+		startDate, expiredDate) values(#{userId}, #{movieId}, #{rentalPrice},
+		sysdate, sysdate + 7)
 	</insert>
-	
-	
-	<!-- 구매 영화 정보 갖고 오기-->
-  	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
-		select userId, movieId, buyPrice,rentalPrice,startDate, expiredDate from purchase where movieId = #{movieId}
+
+
+	<!-- 구매 영화 정보 갖고 오기 -->
+	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
+		select userId, movieId,
+		buyPrice,rentalPrice,startDate, expiredDate from purchase where
+		movieId = #{movieId}
 	</select>
-	  
-	  <!-- 구독 정보  -->
-    <select id="getSubscriptionInfo" parameterType="int" resultType="com.mvp.model.SubscribtionVO">
-        SELECT * FROM subscription WHERE Id = #{Id}
-    </select>
-	
-	<!-- 구독 정보 디비 저장  -->
-    <insert id="enrollSubscription" parameterType="com.mvp.model.SubscribtionVO">
-        INSERT INTO subscribePayment (startDate, expiredDate, SubscribePrice, userId, goods)
-        VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId}, #{goods})
-    </insert>
-    
-    <!-- 구매 취소/ -->
+
+	<!-- 구독 정보 -->
+	<select id="getSubscriptionInfo" parameterType="int"
+		resultType="com.mvp.model.SubscribtionVO">
+		SELECT * FROM subscription WHERE Id = #{Id}
+	</select>
+
+	<!-- 구독 정보 디비 저장 -->
+	<insert id="enrollSubscription"
+		parameterType="com.mvp.model.SubscribtionVO">
+		INSERT INTO subscribePayment (startDate, expiredDate, SubscribePrice,
+		userId, goods)
+		VALUES (#{startDate}, #{expiredDate}, #{SubscribePrice}, #{userId},
+		#{goods})
+	</insert>
+
+	<!-- 구매 취소/ -->
 	<update id="refund">
      <![CDATA[
             UPDATE purchase 
-            SET expiredDate = #{startDate} - 1
-            WHERE sysdate <= #{startDate} + 3
-              AND Id =#{Id};
+            SET expiredDate = startDate - INTERVAL '1' DAY
+            WHERE sysdate <= startDate + INTERVAL '3' DAY
+            AND Id = #{Id}
         ]]>
 	</update>
-	<!--   WHERE sysdate <= TO_DATE(#{startDate}, 'YYYY-MM-DD') + 3  둘중에 뭐가 맞는지 정확히 모르겠음 -->
-	
-	
-	
-  </mapper>
+
+	<!-- 환불 테이블 등록 -->
+	<insert id="enrollRefund">
+		insert into refund( id, refundPrice, userId,
+		refundDate,refundStatus) values( #{id}, #{refundPrice}, #{userId},
+		sysdate, #{refundStatus} )
+	</insert>
+
+
+
+
+</mapper>
