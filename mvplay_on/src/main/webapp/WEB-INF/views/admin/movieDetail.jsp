@@ -60,7 +60,8 @@
 					<br>
 					<div class="form_section_content">
 						<input type="text" name="movieUrl"
-							value="<c:out value="${movieInfo.movieUrl}"/>" readonly>
+							value="<c:out value='${movieInfo.movieUrl}'/>" readonly>
+						<pre>${movieInfo.movieUrl}</pre>					
 					</div>
 				</div>
 				<br>

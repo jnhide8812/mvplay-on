@@ -63,7 +63,7 @@
 						</div>
 						<br>
 						<div class="form_section_content">
-							<input type="text" name="movieUrl" value="${movieInfo.movieUrl}">
+							<input type="text" name="movieUrl" value='${movieInfo.movieUrl}'>
 							<span id="warn_movieUrl">영화URL을 입력해주세요</span>
 						</div>
 					</div>
