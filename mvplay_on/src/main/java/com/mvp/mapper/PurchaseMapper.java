@@ -31,7 +31,7 @@ public interface PurchaseMapper {
 	    public int enrollRefund(RefundVO rvo);
 	    
 	    //구매 목록 가져오기
-	    List<PurchaseViewVO> getPList(String userId);
+	    public List<PurchaseViewVO> getPList(String userId);
 	  
 	    
 	    

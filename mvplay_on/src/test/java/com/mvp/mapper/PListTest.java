@@ -23,6 +23,7 @@ public class PListTest {
     @Test
     public void pListMapperTest() {
         String userId = "1";
+        PurchaseViewVO pview = new PurchaseViewVO();
         List<PurchaseViewVO> movieList = mapper.getPList(userId);
         	System.out.println(movieList);
             

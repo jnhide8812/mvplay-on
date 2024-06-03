@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.PurchaseViewVO;
 import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 import com.mvp.service.MemberService;
@@ -127,12 +128,16 @@ public class PurchaseController {
 	}
 
 	// 구매 취소(환불)
-	@PostMapping("/purchase/refund")
-	public String refundPost(@RequestParam("movieId") int movieId,MemberVO member, Model model, HttpServletRequest request) {
+	@PostMapping("/purchase/pList")
+	public String refundPost(@RequestParam("movieId") int movieId,MemberVO member,PurchaseViewVO pview, Model model, HttpServletRequest request) {
+		logger.info("POST purchase/refund........... ");
 		System.out.println("postmapping-refund.........");
 		HttpSession session = request.getSession();
+		
 		String userId = (String) session.getAttribute("userId");
+		
 		session.setAttribute("userId", userId);
+		
 
 		System.out.println("pList :" + movieId);
 
@@ -150,7 +155,8 @@ public class PurchaseController {
 		model.addAttribute("memberInfo", userId);
 		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
 		model.addAttribute("refundInfo", refundPirce);
-	
+		
+		purchaseService.getPList(userId);
 		purchaseService.refund(rvo);
 		purchaseService.enrollRefund(rvo);
 

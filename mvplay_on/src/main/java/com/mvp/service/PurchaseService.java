@@ -1,8 +1,11 @@
 package com.mvp.service;
 
 
+import java.util.List;
+
 import com.mvp.model.PaymentValidationRequest;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.PurchaseViewVO;
 import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 
@@ -29,7 +32,8 @@ public interface PurchaseService {
     //구매 테이블 등록
     public int enrollRefund(RefundVO rvo);
     
-    
+    //구매 목록 가져오기
+    List<PurchaseViewVO> getPList(String userId);
     
  // 결제 검증 서비스 메서드
     //boolean validatePayment(PaymentValidationRequest request);

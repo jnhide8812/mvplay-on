@@ -1,5 +1,7 @@
 package com.mvp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mvp.mapper.MemberMapper;
 import com.mvp.mapper.MovieMapper;
 import com.mvp.mapper.PurchaseMapper;
-import com.mvp.model.MemberVO;
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.PurchaseViewVO;
 import com.mvp.model.RefundVO;
 import com.mvp.model.SubscribtionVO;
 
@@ -74,6 +76,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int enrollRefund(RefundVO rvo) {
 		return purchasemapper.enrollRefund(rvo);
+	}
+	
+	@Override
+	public List<PurchaseViewVO> getPList(String userId){
+		return purchasemapper.getPList(userId);
 	}
 
 	

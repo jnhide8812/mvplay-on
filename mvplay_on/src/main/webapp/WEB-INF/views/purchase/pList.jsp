@@ -7,16 +7,15 @@
     <title>영화 구매 목록</title>
 </head>
 <body>
-    <h1>대여/소장 중인 영화 </h1>
-	
+    <h1>대여/소장 중인 영화</h1>
+
     <!-- 헤더 -->
    <%--  <%@include file="../includes/header.jsp"%>
     <%@include file="../includes/nav.jsp"%> --%>
     <div class="main_content">
-        <form id="deleteForm" action="/purchase/refund" method="post"></form>
+        <form id="deleteForm" action="/purchase/pList" method="post"></form>
          <input type="hidden" name="userId" value="${memberInfo}">
-   		 <input type="hidden" name="movieId" value="${movieInfo.movieId}">
-    	 <input type="hidden" name="refundPrice" value="${purchaseInfo}">
+  		 <input type="hidden" name="movieId" value="${movieInfo.movieId}">
         <div class="show_list">
             <section class="list">
                 <c:if test="${not empty movieList}">
@@ -45,15 +44,18 @@
 
     <!-- FOOTER -->
     <%-- <%@include file="../includes/footer.jsp"%> --%>
-    
-    
- <script>
+</body>
+</html>
+
+
+
+<script>
 alert("영화리스트")
 $(document).ready(function() {
     $(".delete_btn").on("click", function(e){
         e.preventDefault();
         
-        
+        console.log("userId : "+${member.userId});
        
         let movieId = $(this).data("movieid");
         $.get("/purchase/refund", {movieId: movieId}, function(data) {
@@ -63,13 +65,5 @@ $(document).ready(function() {
     });
 });
 </script>
-    
-    
-</body>
-</html>
-
-
-
-
 
 
