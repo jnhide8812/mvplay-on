@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -197,9 +199,16 @@ public class AdminController {
 	@PostMapping("/movieUpdate")
 	public String postMovieUpdate(MovieVO mvo, RedirectAttributes rttr, String movieTitle) throws Exception {
 		
-		logger.info("postMovieUpdate");
+		logger.info("postMovieUpdate"+mvo);
 		
-		System.out.println("movieTitle : " + movieTitle);
+		
+		if (mvo.getPoster()==null || mvo.getPoster()=="") {
+			MovieVO origin = adService.getMovieDetail(mvo.getMovieId());
+			mvo.setPoster(origin.getPoster());
+			
+				
+			
+		}
 		
 		int result = adService.movieUpdate(mvo);
 		
