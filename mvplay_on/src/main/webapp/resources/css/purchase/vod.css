@@ -6,16 +6,211 @@
 	margin:0;
 	padding:0;
 }   
-가장 큰 div나 id에
-/*내용 가운데로 */ 
-.class {
-	margin: 0 auto;
-	background-color: #000000;       /*배경색 검정*/
-}
 /*스타일 변형 제거*/
 a {
 	text-decoration: none;
 }
 ul, li {
 	list-style:none;
+}
+#container {
+	background-color: #000000;
+	width: 1900px;
+}
+.pur_wrap {
+	width: 700px;
+	height: 900px;
+	margin: 0 auto;
+}
+#movie_move {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding-top: 80px;
+}
+.subh {
+	width: 100%;
+	display:flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 10px;
+}
+h1.contents {
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 30px;
+}
+h2 {
+	text-align: left;
+	color: #ffffff;
+	font-weight: 700;
+	font-size: 28px;
+	padding-bottom: 10px;
+}
+.content_main {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.pst_img img {
+	width: 200px;
+	height: 280px;
+}
+dl {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding-left: 6px;
+	height: 280px;
+}
+dd.alone {
+	border: 1px solid #38393D;
+	border-radius: 5px;
+	background-color: #303133;
+	color: #605F70;
+	font-size: 16px;
+	padding: 2px 3px;
+	font-weight: 500;
+}
+dt {
+	font-size: 22px;
+	font-weight: 700;
+	padding-top: 140px;
+	padding-bottom: 10px;
+	color: #ffffff;
+}
+dd{
+	font-size: 16px;
+	color: #605F70;
+	padding-bottom: 4px;
+}
+.price_section {
+	border: 1px solid #1B1C1D;
+	border-radius: 8px;
+	padding: 4px 2px;
+	width: 700px;
+	margin-bottom: 20px;
+}
+.price_section ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	padding-button: 2px;
+}
+.price_section ul li{
+	font-size: 15px;
+	color: #ffffff;
+	padding-left: 15px;
+	padding-top: 8px;
+	font-weight: 500;
+}
+p.explain {
+	font-size: 13px;
+	color: #BABAC1;
+	font-weight: 300;
+	padding: 6px 0 8px 15px; 
+}
+li.j {
+	padding-right: 1px;
+}
+.way_buy {
+	border: 1px solid #1B1C1D;
+	border-radius: 8px;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	margin-bottom: 20px;
+	width: 700px;
+}
+.way_buy ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 6px 0 6px 15px;
+}
+ul.how {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+ul.how li {
+	padding-bottom: 3px;
+	font-size: 18px;
+}
+.way_buy ul li {
+	font-size: 16px;
+	color: #84868D;
+	font-weight: 600;
+}
+.way_buy ul:active {
+	color:#ffffff;
+}
+.pway_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+.way_buy {
+	font-size: 18px;
+	color: #84868D;
+	font-weight: 600;
+}
+.way_buy input:active {
+	color:#ffffff;
+}
+.price_info {
+	margin: 15px 0;
+	border: 1px solid #1B1C1D;
+	border-radius: 8px;
+	padding: 5px;
+	width: 700px;
+}
+.price_info ul {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+.price_info ul li {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+label.contentPrice {
+	font-size: 16px;
+	color:#ffffff;
+	font-weight: 400;
+}
+label.totalAmount {
+	font-size: 24px;
+	font-weight: 600;
+	color: #ffffff;
+}
+button.sbtn {
+	font-size: 14px;
+	font-weight: 500;
+	color: #84868D;
+	border: 1px solid #505155;
+	color: #999CA1;
+	border-radius: 6px;
+	background-color: #505155;
+	text-align: center;
+	align-items: center;
+}
+button.sbtn:hover{
+	color:#ffffff;
+	background-color: #F82F62;
+	border: 1px solid #F82F62;
 }
