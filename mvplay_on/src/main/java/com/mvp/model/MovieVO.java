@@ -41,7 +41,7 @@ public class MovieVO {
 	private String movieUrl;
 	
 	//영화 평점(rating)
-	private int rating;
+	private double rating;
 
 	//Getter-Setters
 	public String getMovieTitle() {
@@ -140,7 +140,7 @@ public class MovieVO {
 		this.movieUrl = movieUrl;
 	}
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 

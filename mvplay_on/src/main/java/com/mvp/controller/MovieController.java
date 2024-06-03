@@ -19,13 +19,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 import com.mvp.model.PageVO;
+import com.mvp.model.ReplyVO;
 import com.mvp.service.MovieService;
+import com.mvp.service.ReplyService;
 
 @Controller
 public class MovieController {
 	
 	@Autowired
-	MovieService movieService;
+	private MovieService movieService;
+	
+	@Autowired
+	private ReplyService replyService;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
@@ -38,6 +44,19 @@ public class MovieController {
 		model.addAttribute("userId",userId);
 		
 		return "/movie/replyWrite";
+	}
+	
+	
+	//리뷰 수정
+	@GetMapping(value = "/movie/replyUpdate")
+	public String replyWriteGET(ReplyVO vo, Model model) throws Exception {
+		MovieVO mvo = movieService.getMovieIdTitle(vo.getMovieId());
+		model.addAttribute("movieInfo", mvo);
+		model.addAttribute("replyInfo", replyService.getUpdateReply(vo.getReplyNum()));
+		model.addAttribute("userId", vo.getUserId());
+		
+		return "/movie/replyUpdate";
+		
 	}
 	
 	

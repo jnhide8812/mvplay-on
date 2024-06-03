@@ -20,7 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.mvp.model.Criteria;
 import com.mvp.model.MovieVO;
 import com.mvp.model.ReplyPageVO;
-import com.mvp.model.ReplyVO; 
+import com.mvp.model.ReplyVO;
+import com.mvp.service.MovieService;
 import com.mvp.service.ReplyService;
 
 @RestController
@@ -31,6 +32,9 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 	
 	@Autowired
 	private ReplyService RepService;
+	
+	@Autowired
+	private MovieService movieService;
 	
 	//댓글 등록
 	@PostMapping("/replyWrite")
@@ -45,7 +49,7 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 		
 		//rttr.addAttribute("movieId",vo.getMovieId());
 		
-	}
+	}	
 	
 	//댓글 체크
 	@PostMapping("/check")

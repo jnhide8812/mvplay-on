@@ -84,7 +84,7 @@ h1 {
 	
 	/* 리뷰 선 */
 	.reply_line{
-		width : 20%;
+		width : 10px;
 		margin : auto;
 		border-top:1px solid #c6c6cf;  	
 	}
@@ -241,4 +241,5 @@ h1 {
 /* 리뷰 영역 */
 .replyArea {
 	padding-left: 15px;
+	padding-right: 15px;
 }

@@ -19,6 +19,11 @@
 </head>
 <body>
 <div id = "container">
+<form id="moveForm" action="/admin/movieDetail" method="get">
+   <input type="hidden" name="pageNum" value="${page.cri.pageNum}">
+   <input type="hidden" name="amount" value="${page.cri.amount}">
+   <input type="hidden" name="keyword" value="${page.cri.keyword}">
+</form>
 <input type="hidden" value="${movieInfo.movieId}" name="movieId">
 	<!-- 헤더 -->
 	<header>
@@ -45,7 +50,7 @@
 						<ul>
 							<!-- 영화 평점 -->
 							<li class="lavel">
-							<label>평균 <c:out value="${movieInfo.rating}"></c:out>점</label>
+							<label>평균 <fmt:formatNumber value="${movieInfo.rating}" pattern="0.00"></fmt:formatNumber>점</label>
 							</li>
 							<!-- 영화 개봉일 -->
 							<li class="lavel">
@@ -128,6 +133,20 @@
 	window.open(popUrl,"리뷰 쓰기",popOption);
 }
 */
+
+let moveForm = $('#moveForm');
+
+//영화 상세 페이지 이동
+$(".move").on("click", function(e){
+
+	e.preventDefault();
+	
+	moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr('href') + "'>");
+	moveForm.submit();
+
+});
+
+
 
 //버튼 눌러서 연결
 $(".reply_button_wrap").on("click", function(e){
@@ -218,7 +237,7 @@ function makeReplyContent(obj){
 				reply_list += '<span class="id_span">'+ obj.userId+'</span>';
 				/* 날짜 */
 				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
-				/* 평점 */
+				/* 평점 <fmt:formatNumber value="obj.rating" pattern="0.00"></fmt:formatNumber> */
 				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
 				if(obj.userId === userId){
 					reply_list += '<a class="update_reply_btn" href="'+ obj.replyNum +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyNum +'">삭제</a>';
@@ -242,7 +261,7 @@ $(document).on('click', '.update_reply_btn', function(e){
 		
 		e.preventDefault();
 		let replyNum = $(this).attr("href");		 
-		let popUrl = "/replyUpdate?replyNum=" + replyNum + "&movieId=" + '${movieInfo.movieId}' + "&userId=" + '${member.userId}';	
+		let popUrl = "/movie/replyUpdate?replyNum=" + replyNum + "&movieId=" + '${movieInfo.movieId}' + "&userId=" + '${member.userId}';	
 		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"	
 		
 		window.open(popUrl,"리뷰 수정",popOption);			
