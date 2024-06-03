@@ -7,19 +7,20 @@
     <title>영화 구매 목록</title>
 </head>
 <body>
-    <h1>대여/소장 중인 영화</h1>
-
+    <h1>대여/소장 중인 영화 </h1>
+	
     <!-- 헤더 -->
    <%--  <%@include file="../includes/header.jsp"%>
     <%@include file="../includes/nav.jsp"%> --%>
     <div class="main_content">
         <form id="deleteForm" action="/purchase/refund" method="post"></form>
          <input type="hidden" name="userId" value="${memberInfo}">
-  		 <input type="hidden" name="movieId" value="${movieInfo.movieId}">
+   		 <input type="hidden" name="movieId" value="${movieInfo.movieId}">
+    	 <input type="hidden" name="refundPrice" value="${purchaseInfo}">
         <div class="show_list">
             <section class="list">
                 <c:if test="${not empty movieList}">
-                    <h1 class="list_name">"${memberInfo.userId}"님이 대여 소장 중인 영화</h1>
+                    <h1 class="list_name">"${memberInfo}"님이 대여 소장 중인 영화</h1>
 
                     <c:forEach items="${movieList}" var="movie">
                         <!-- 각 영화 정보 표시 -->
@@ -52,7 +53,7 @@ $(document).ready(function() {
     $(".delete_btn").on("click", function(e){
         e.preventDefault();
         
-        console.log("userId : "+${member.userId});
+        
        
         let movieId = $(this).data("movieid");
         $.get("/purchase/refund", {movieId: movieId}, function(data) {

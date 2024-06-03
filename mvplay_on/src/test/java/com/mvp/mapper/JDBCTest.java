@@ -20,7 +20,7 @@ public class JDBCTest {
 	
 	@Test
 	public void testConnection() {
-		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","spring","spring")){
+		try(Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","mvplayon","1234")){
 			System.out.println(con);
 		}catch(Exception e) {
 			fail(e.getMessage());

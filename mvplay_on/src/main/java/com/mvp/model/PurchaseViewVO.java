@@ -16,6 +16,8 @@ public class PurchaseViewVO {
 	private int rentalPrice; 	//대여가
 	private Date startDate; 	//구매일
 	private Date expiredDate;	//만료일
+	private String movieTitle;	//영화제목02
+	private String poster; //포스터
 	
 	//구독권
 	private String goods;		//구독권 종류'b', 'p'
@@ -24,6 +26,7 @@ public class PurchaseViewVO {
 	//환불신청
 	private Date refundDate;	//환불 신청날짜
 	private String refundStatus; //환불 진행사항
+	private int refundId; //환불 아이디
 	
 	
 }
