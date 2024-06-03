@@ -27,7 +27,7 @@
 					<c:if test="${member.ugrade == 0}">
 					<!-- 관리자 계정 -->
 						<li class="manager">
-							<a href="/admin/main">관리자 페이지</a>
+							<a href="/admin/movieList">관리자 페이지</a>
 						</li>
 					</c:if>
 						<li>
