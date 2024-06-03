@@ -45,6 +45,11 @@ public class ReplyServiceImpl implements ReplyService {
 		int result = replyMapper.replyUpdate(vo);
 		return result;
 	}
+
+	@Override
+	public ReplyVO getUpdateReply(int replyNum) {
+		return replyMapper.getUpdateReply(replyNum);
+	}
 	
 	//댓글 삭제
 	@Override
@@ -53,10 +58,6 @@ public class ReplyServiceImpl implements ReplyService {
 		return result;
 	}
 
-	@Override
-	public ReplyVO getUpdateReply(int replyNum) {
-		return replyMapper.getUpdateReply(replyNum);
-	}
 
 	//댓글 리스트
 	@Override

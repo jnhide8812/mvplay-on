@@ -62,7 +62,7 @@
 						<ul>
 							<!-- 영화 평점 -->
 							<li class="lavel">
-							<label>평균 <fmt:formatNumber value="${movieInfo.rating}" pattern="0.00"></fmt:formatNumber>점</label>
+							<label>평균 <fmt:formatNumber value="${movieInfo.rating}" pattern="0.0"></fmt:formatNumber>점</label>
 							</li>
 							<!-- 영화 개봉일 -->
 							<li class="lavel">
@@ -243,7 +243,9 @@ function makeReplyContent(obj){
 			const list = obj.list;
 			const pf = obj.pageInfo;
 			const userId = '${member.userId}';
+			const rating = '${movieInfo.rating}';
 			
+			console.log("현재 받는 평점 : "+rating);
 			console.log("댓글 정보들 : "+obj.regDate);
 			
 			/* list */
@@ -364,7 +366,7 @@ $(document).on('click', '.delete_reply_btn', function(e){
 			replyNum : replyNum,
 			movieId : '${movieInfo.movieId}'
 		},
-		url : '/movie/delete',
+		url : '/movie/replyDelete',
 		type : 'POST',
 		success : function(result){
 			replyListInit();

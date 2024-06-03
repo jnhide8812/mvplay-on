@@ -27,7 +27,7 @@
 	<select id="movieGetDetail" resultType="com.mvp.model.MovieVO">
 		SELECT m.movieId, m.movieTitle, m.poster, m.movieContent,
 		m.movieDate, m.movieCheck, m.cate1, m.cate2, m.buyPrice, m.rentalPrice,
-		m.movieUrl, NVL(avg_rating.average_rating, 0) AS rating
+		m.movieUrl, ROUND(NVL(avg_rating.average_rating, 0), 2) AS rating
         FROM movie m LEFT JOIN (
         SELECT movieId, AVG(rating) AS average_rating
         FROM rating

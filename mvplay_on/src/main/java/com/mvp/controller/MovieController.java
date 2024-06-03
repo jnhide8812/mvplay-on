@@ -48,7 +48,7 @@ public class MovieController {
 	
 	
 	//리뷰 수정
-	@GetMapping(value = "/movie/replyUpdate")
+	@GetMapping("/movie/replyUpdate")
 	public String replyWriteGET(ReplyVO vo, Model model) throws Exception {
 		MovieVO mvo = movieService.getMovieIdTitle(vo.getMovieId());
 		model.addAttribute("movieInfo", mvo);
