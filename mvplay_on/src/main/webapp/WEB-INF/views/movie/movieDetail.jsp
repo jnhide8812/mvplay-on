@@ -48,25 +48,13 @@
 						<h1 class="movieTitle">${movieInfo.movieTitle}</h1>
 					</div>
 					<!-- 권한 체크 용도 -->
-					<div style="padding-bottom:10px; color: #CCC;">
+					<div style="padding-bottom:10px; color: #f82f62;">
 					<c:choose>
-								<c:when test="${movieInfo.movieCheck == 9 }">
-								* 판권 만료된 영화입니다.
-								</c:when>
-								<c:when test="${movieInfo.movieCheck == 8 }">
-								* 개봉되지 않은 영화입니다.
-								</c:when>
 								<c:when test="${movieInfo.movieCheck == 1 }">
-								* 대여만 가능한 영화입니다.
-								</c:when>
-								<c:when test="${movieInfo.movieCheck == 2 }">
 								* 구매만 가능한 영화입니다.
 								</c:when>
-								<c:when test="${movieInfo.movieCheck == 3 }">
-								* 대여와 구매 모두 가능한 영화입니다.
-								</c:when>
-								<c:when test="${movieInfo.movieCheck == 0 }">
-								* 멤버십만 열람 가능한 영화입니다.
+								<c:when test="${movieInfo.movieCheck == 2 }">
+								* 대여만 가능한 영화입니다.
 								</c:when>
 							</c:choose>
 					</div>
@@ -94,8 +82,10 @@
 						</div>
 					<div class="buttons">
 						<div class="inlineBlock">
-							<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe${member.ugrade}?movieId=${movieInfo.movieId}'">구독하기</button>
+							<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
+							<c:if test="${member.ugrade != 0 }">
 							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
+							</c:if>
 							<c:if test="${member.ugrade == 0}">
 							<p>관리자 전용 각 단계 이동 버튼</p>
 							<button id="buyBtn_1" class="btn_buy_btn" onclick="location.href='../purchase/subscribe1?movieId=${movieInfo.movieId}'">구독하기(일반회원)</button>
