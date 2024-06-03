@@ -113,7 +113,7 @@
 							<label class="radio"><input type="radio" name="movieCheck" value="8" onclick="priceReadOnly()"/>임시</label>
 							<br>
 							<br>
-							<label class="radio"><input type="radio" name="movieCheck" value="9" onclick="priceReadOnly()"/>신규이용 불가</label>
+							<label class="radio"><input type="radio" name="movieCheck" value="9" onclick="priceReadOnly()"/>판권만료</label>
 						    <span id="warn_movieCheck">영화 이용등급을 선택해주세요</span>
 						</div>
 					</div>

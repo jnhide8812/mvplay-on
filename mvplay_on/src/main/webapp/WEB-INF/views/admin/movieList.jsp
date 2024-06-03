@@ -51,7 +51,7 @@
 						    <td>임시</td>
 						</c:if>
 						<c:if test="${mvList.movieCheck == '9'}">
-						    <td>신규이용 불가</td>
+						    <td>판권만료</td>
 						</c:if>
 					</tr>
 				</c:forEach>

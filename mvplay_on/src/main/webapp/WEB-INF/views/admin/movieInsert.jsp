@@ -395,9 +395,9 @@
 	
 		});
 		
-		/* var, method related with attachFile */
+		//이미지 형식인지 확인
 		let regex = new RegExp("(.*?)\.(jpg|png)$");
-		let maxSize = 1048576; //1MB	
+		let maxSize = 5242880; //5MB	
 		
 		function fileCheck(fileName, fileSize){
 
