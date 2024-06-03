@@ -237,7 +237,7 @@ function makeReplyContent(obj){
 				reply_list += '<span class="id_span">'+ obj.userId+'</span>';
 				/* 날짜 */
 				reply_list += '<span class="date_span">'+ obj.regDate +'</span>';
-				/* 평점 <fmt:formatNumber value="obj.rating" pattern="0.00"></fmt:formatNumber> */
+				/* 평점 */
 				reply_list += '<span class="rating_span">평점 : <span class="rating_value_span">'+ obj.rating +'</span>점</span>';
 				if(obj.userId === userId){
 					reply_list += '<a class="update_reply_btn" href="'+ obj.replyNum +'">수정</a><a class="delete_reply_btn" href="'+ obj.replyNum +'">삭제</a>';
@@ -250,8 +250,8 @@ function makeReplyContent(obj){
 				reply_list += '</li>';
 				console.log("댓글 정보들 : "+obj.regDate);
 				console.log("댓글 번호들 : "+obj.replyNum);
-			});
-			
+			}); 
+			 
 			$(".reply_content_ul").html(reply_list);
 		}
 }
