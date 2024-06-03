@@ -199,15 +199,13 @@ public class AdminController {
 	@PostMapping("/movieUpdate")
 	public String postMovieUpdate(MovieVO mvo, RedirectAttributes rttr, String movieTitle) throws Exception {
 		
-		logger.info("postMovieUpdate"+mvo);
+		logger.info("postMovieUpdate");
 		
 		
-		if (mvo.getPoster()==null || mvo.getPoster()=="") {
+		if (mvo.getPoster() == null || mvo.getPoster() == "") {
 			MovieVO origin = adService.getMovieDetail(mvo.getMovieId());
 			mvo.setPoster(origin.getPoster());
-			
-				
-			
+
 		}
 		
 		int result = adService.movieUpdate(mvo);
