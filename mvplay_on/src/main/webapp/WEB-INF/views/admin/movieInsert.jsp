@@ -115,6 +115,7 @@
 							<label class="radio"><input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능</label>
 							<label class="radio"><input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여만 가능</label>
 							<label class="radio"><input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여</label>
+							<label class="radio"><input type="radio" name="movieCheck" value="8" onclick="priceReadOnly()"/>임시</label>
 							<span id="warn_movieCheck">영화 이용등급을 선택해주세요</span>
 						</div>
 					</div>

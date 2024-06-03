@@ -35,7 +35,24 @@
 						<td><c:out value="${mvList.cate1}"></c:out></td>
 						<td><fmt:formatDate value="${mvList.movieDate}"
 								pattern="yyyy-MM-dd" /></td>
-						<td><c:out value="${mvList.movieCheck}"></c:out></td>
+						<c:if test="${mvList.movieCheck == '0'}">
+						    <td>구독</td>
+						</c:if>
+						<c:if test="${mvList.movieCheck == '1'}">
+						    <td>구매</td>
+						</c:if>
+						<c:if test="${mvList.movieCheck == '2'}">
+						    <td>대여</td>
+						</c:if>
+						<c:if test="${mvList.movieCheck == '3'}">
+						    <td>구매대여</td>
+						</c:if>
+						<c:if test="${mvList.movieCheck == '8'}">
+						    <td>임시</td>
+						</c:if>
+						<c:if test="${mvList.movieCheck == '9'}">
+						    <td>신규이용 불가</td>
+						</c:if>
 					</tr>
 				</c:forEach>
 			</table>

@@ -7,21 +7,28 @@
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <style>
-/*li {
+li {
 	list-style: none;
 }
-#container{
+
+#container {
 	width: 1900px;
 	background-color: #000000;
 }
-.main_content{
+
+.main_content {
 	width: 1900px;
 	height: 100%;
-	display:flex;
-	flex-direction:column;
-	padding:86px 240px 0 330px;
-}*/
+	display: flex;
+	flex-direction: column;
+	padding: 86px 240px 0 330px;
+}
+
+p {
+	color: white;
+}
 </style>
 </head>
 <body>
