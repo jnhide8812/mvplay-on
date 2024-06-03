@@ -25,6 +25,7 @@
    <input type="hidden" name="keyword" value="${page.cri.keyword}">
 </form>
 <input type="hidden" value="${movieInfo.movieId}" name="movieId">
+<input type="hidden" value="${movieInfo.movieCheck}" name="movieCheck">
 	<!-- 헤더 -->
 	<header>
 	<%@include file="../includes/header.jsp" %>
@@ -45,6 +46,29 @@
 					<div class="inlineBlock">
 						<!-- 영화 제목 -->
 						<h1 class="movieTitle">${movieInfo.movieTitle}</h1>
+					</div>
+					<!-- 권한 체크 용도 -->
+					<div style="padding-bottom:10px; color: #CCC;">
+					<c:choose>
+								<c:when test="${movieInfo.movieCheck == 9 }">
+								* 판권 만료된 영화입니다.
+								</c:when>
+								<c:when test="${movieInfo.movieCheck == 8 }">
+								* 개봉되지 않은 영화입니다.
+								</c:when>
+								<c:when test="${movieInfo.movieCheck == 1 }">
+								* 대여만 가능한 영화입니다.
+								</c:when>
+								<c:when test="${movieInfo.movieCheck == 2 }">
+								* 구매만 가능한 영화입니다.
+								</c:when>
+								<c:when test="${movieInfo.movieCheck == 3 }">
+								* 대여와 구매 모두 가능한 영화입니다.
+								</c:when>
+								<c:when test="${movieInfo.movieCheck == 0 }">
+								* 멤버십만 열람 가능한 영화입니다.
+								</c:when>
+							</c:choose>
 					</div>
 					<div> 
 						<ul>
@@ -70,13 +94,13 @@
 						</div>
 					<div class="buttons">
 						<div class="inlineBlock">
-							<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구독하기</button>
-							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/subscribe${member.ugrade}?movieId=${movieInfo.movieId}'">구매하기</button>
+							<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe${member.ugrade}?movieId=${movieInfo.movieId}'">구독하기</button>
+							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
 							<c:if test="${member.ugrade == 0}">
 							<p>관리자 전용 각 단계 이동 버튼</p>
-							<button id="buyBtn_1" class="btn_buy_btn" onclick="location.href='../purchase/subscribe1?movieId=${movieInfo.movieId}'">구매하기(일반회원)</button>
-							<button id="buyBtn_2" class="btn_buy_btn" onclick="location.href='../purchase/subscribe2?movieId=${movieInfo.movieId}'">구매하기(베이직)</button>
-							<button id="buyBtn_3" class="btn_buy_btn" onclick="location.href='../purchase/subscribe3?movieId=${movieInfo.movieId}'">구매하기(프리미엄)</button>
+							<button id="buyBtn_1" class="btn_buy_btn" onclick="location.href='../purchase/subscribe1?movieId=${movieInfo.movieId}'">구독하기(일반회원)</button>
+							<button id="buyBtn_2" class="btn_buy_btn" onclick="location.href='../purchase/subscribe2?movieId=${movieInfo.movieId}'">구독하기(베이직)</button>
+							<button id="buyBtn_3" class="btn_buy_btn" onclick="location.href='../purchase/subscribe3?movieId=${movieInfo.movieId}'">구독하기(프리미엄)</button>
 							</c:if>
 						</div>
 					</div>
@@ -133,7 +157,7 @@
 	window.open(popUrl,"리뷰 쓰기",popOption);
 }
 */
-
+/*
 let moveForm = $('#moveForm');
 
 //영화 상세 페이지 이동
@@ -145,7 +169,7 @@ $(".move").on("click", function(e){
 	moveForm.submit();
 
 });
-
+*/
 
 
 //버튼 눌러서 연결
@@ -253,6 +277,37 @@ function makeReplyContent(obj){
 			}); 
 			 
 			$(".reply_content_ul").html(reply_list);
+			
+			/* 페이지 버튼 */
+			
+			let reply_pageMaker = '';	
+			
+				/* prev */
+				if(pf.prev){
+					let prev_num = pf.pageStart -1;
+					reply_pageMaker += '<li class="pageMaker_btn prev">';
+					reply_pageMaker += '<a href="'+ prev_num +'">이전</a>';
+					reply_pageMaker += '</li>';	
+				}
+				/* numbre btn */
+				for(let i = pf.pageStart; i < pf.pageEnd+1; i++){
+					reply_pageMaker += '<li class="pageMaker_btn ';
+					if(pf.cri.pageNum === i){
+						reply_pageMaker += 'active';
+					}
+					reply_pageMaker += '">';
+					reply_pageMaker += '<a href="'+i+'">'+i+'</a>';
+					reply_pageMaker += '</li>';
+				}
+				/* next */
+				if(pf.next){
+					let next_num = pf.pageEnd +1;
+					reply_pageMaker += '<li class="pageMaker_btn next">';
+					reply_pageMaker += '<a href="'+ next_num +'">다음</a>';
+					reply_pageMaker += '</li>';	
+				}
+				
+			$(".pageMaker").html(reply_pageMaker);	
 		}
 }
 
