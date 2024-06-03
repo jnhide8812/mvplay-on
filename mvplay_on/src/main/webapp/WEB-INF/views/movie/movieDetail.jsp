@@ -170,9 +170,6 @@ $(".reply_button_wrap").on("click", function(e){
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
 	
-	console.log("userId : "+${member.userId});
-	console.log("movieId 2 : "+${movieInfo.movieId});
-	
 	$.ajax({
 		data : {
 			userId : userId,
@@ -214,6 +211,16 @@ const movieId = '${movieInfo.movieId}';
 	pageNum : 1,
 	amount : 10
 }
+	
+/* 댓글 페이지 이동 버튼 동작 */
+$(document).on('click', 'pageMaker btn a', function(e) {
+	e.preventDefault();
+	
+	let page = $(this).attr("href");	
+	cri.pageNum = page;		
+	
+	replyListInit();
+});
 	
 	
 /* 댓글 데이터 서버 요청 및 댓글 동적 생성 메서드 */
@@ -304,14 +311,47 @@ function makeReplyContent(obj){
 /* 리뷰 수정 버튼 */
 $(document).on('click', '.update_reply_btn', function(e){
 		
-		e.preventDefault();
-		let replyNum = $(this).attr("href");		 
-		let popUrl = "/movie/replyUpdate?replyNum=" + replyNum + "&movieId=" + '${movieInfo.movieId}' + "&userId=" + '${member.userId}';	
-		let popOption = "width = 490px, height=490px, top=300px, left=300px, scrollbars=yes"	
+	const userId = '${member.userId}';
+	const movieId = '${movieInfo.movieId}';
+	
+	e.preventDefault();
+	let replyNum = $(this).attr("href");		 
+	let popUrl = "/movie/replyUpdate?replyNum=" + replyNum + "&movieId=" + movieId + "&userId=" + userId;	
+	let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes"	
 		
-		window.open(popUrl,"리뷰 수정",popOption);			
+	window.open(popUrl,"리뷰 수정",popOption);			
 	 
 });	
+
+/*버튼 눌러서 연결
+$(".reply_button_wrap").on("click", function(e){
+	
+	e.preventDefault();
+	
+	const userId = '${member.userId}';
+	const movieId = '${movieInfo.movieId}';
+	
+	console.log("userId : "+${member.userId});
+	console.log("movieId 2 : "+${movieInfo.movieId});
+	
+	$.ajax({
+		data : {
+			userId : userId,
+			movieId : movieId
+		},
+		url : '/movie/check',
+		type : 'POST',
+		success : function(result){
+
+			if(result === '1'){
+				alert("이미 등록된 리뷰가 존재 합니다.")
+			} else if(result === '0'){
+				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
+				console.log(popUrl);
+				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
+				
+				window.open(popUrl,"리뷰 쓰기",popOption);					
+*/
 
 /* 리뷰 삭제 버튼 */
 $(document).on('click', '.delete_reply_btn', function(e){

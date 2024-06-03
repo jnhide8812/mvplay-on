@@ -58,13 +58,13 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 	}
 	
 	//댓글 수정
-	@PostMapping("/update")
+	@PostMapping("/replyUpdate")
 	public void replyUpdatePOST(ReplyVO vo) {
 		RepService.replyUpdate(vo);
 	}
 	
 	//댓글 삭제
-	@PostMapping("/delete")
+	@PostMapping("/replyDelete")
 	public void replyDeletePOST(ReplyVO vo) {
 		RepService.replyDelete(vo);
 	}

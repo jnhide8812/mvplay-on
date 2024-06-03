@@ -51,7 +51,7 @@
 	    line-height: 21px; 	
 	    border-radius: 40px;
   	}
-  	.enroll_btn{
+  	.update_btn{
    	    display: inline-block;
 	    width: 100%;
 	    background-color: #f82f62;
@@ -62,17 +62,7 @@
 	    line-height: 21px;  
 	    border-radius: 40px;	
   	}
-	.update_btn{
-   	    display: inline-block;
-	    width: 130px;
-	    background-color: #7b8ed1;
-	    padding-top: 10px;
-	    height: 27px;
-	    color: #fff;
-	    font-size: 14px;
-	    line-height: 18px;   	
-  	}
-
+  	
 	/* 책제목 영역 */
 	.bookName_div h2{
 		margin : 0;
@@ -147,11 +137,7 @@
 	</div>
 	
 	
-	<script>
-	$(document).ready(function(){
-		console.log(${movieInfo.movieId});
-	});
-	
+	<script>	
 	/* 취소 버튼 */
 	$(".cancel_btn").on("click", function(e){
 		window.close();
@@ -159,9 +145,9 @@
 	
 	/* 등록 버튼 */ 
 	$(".update_btn").on("click", function(e){
-		const movieId = '${movieId}';
+		const movieId = '${movieInfo.movieId}';
 		const userId = '${userId}';
-		//const rating = $("select").val();
+		const rating = $("select").val();
 		const replyContent = $("textarea").val();
 		const data = {
 				movieId : movieId,
@@ -169,16 +155,13 @@
 				//rating : rating,
 				replyContent : replyContent
 		}
-		console.log("movieId 2 : "+ movieId);
+		console.log("movieId 업데이트 : "+ movieId);
 		$.ajax({
 			data : data,
 			type : 'POST',
-			url : '/movie/replyWrite',
+			url : '/movie/replyUpdate',
 			success : function(result){
-				
-				/* 댓글 초기화 */
 				$(opener.location).attr("href", "javascript:replyListInit();");
-				
 				window.close();
 			}
 			
