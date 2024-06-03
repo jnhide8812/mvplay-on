@@ -215,8 +215,8 @@
 			}
 
 			if (userIdCheck && codeCheck && upwCheck && upwckCheck && ubirthCheck ) {
-				//$("#sign_form").attr("action", "/member/signUp");
-				//$("#sign_form").submit();
+				$("#sign_form").attr("action", "/member/signUp");
+				$("#sign_form").submit();
 			} else {
 				return;
 			}
