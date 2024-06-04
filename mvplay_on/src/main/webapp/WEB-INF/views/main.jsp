@@ -8,13 +8,12 @@
 <meta charset="UTF-8">
 <title>MVPlayer</title>
 <link rel="stylesheet" href="resources/css/main.css">
-<script src="path/to/swiper.min.js"></script>
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
- 
-  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 </head>
 <body>
 <div id = "container">
@@ -52,13 +51,6 @@
 										</c:forEach>
 									</div>
 								</div> <!-- swiper-wrapper -->
-								<div class="swiper_button_next">
-									<img class="slide" src="/resources/icon/slide_right.png">
-								</div> 
-								<div class="swiper_button_prev">
-									<img class="slide" src="/resources/icon/slide_left.png">
-								</div> 
-								<div class="swiper_pagination"></div>  <!-- 페이징 -->
 						</div> <!-- swiper-container -->	
 					</c:if>
 				</section>
@@ -90,13 +82,6 @@
 									</c:forEach>
 								</div>
 							</div>
-							<div class="swiper_button_next">
-								<img class="slide" src="/resources/icon/slide_right.png">
-							</div>  <!-- 다음버튼 -->
-							<div class="swiper_button_prev">
-									<img class="slide" src="/resources/icon/slide_left.png">
-							</div>  <!-- 이전버튼 -->
-							<div class="swiper_pagination"></div>
 						</div> <!-- swiper2 -->
 					</c:if>
 				</section>
@@ -121,28 +106,32 @@ let moveForm = $('#moveForm');
 
 <!-- swiper script -->
 <script>
-new Swiper('.swiper-container', {
+document.addEventListener("DOMContentLoaded", function() {
 
-	slidesPerView : 5, // 동시에 보여줄 슬라이드 갯수
-	spaceBetween : 15, // 슬라이드간 간격
-	slidesPerGroup : 5, // 그룹으로 묶을 수, slidesPerView 와 같은 값을 지정하는게 좋음
+    var mySwiper = new Swiper('.swiper-container', {
+        slidesPerView: 6,
+        slidesPerGroup: 6,
+        observer: true,
+        observeParents: true,
+        spaceBetween: 15,
+        
+    	loopFillGroupWithBlank : true,
 
-	// 그룹수가 맞지 않을 경우 빈칸으로 메우기
-	// 3개가 나와야 되는데 1개만 있다면 2개는 빈칸으로 채워서 3개를 만듬
-	loopFillGroupWithBlank : true,
-
-	loop : true, // 무한 반복
-
-	pagination : { // 페이징
-		el : '.swiper-pagination',
-		clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-	},
-	navigation : { // 네비게이션
-		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
-		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
-	},
+    	loop : true, // 무한 반복
+    	
+        breakpoints: {
+            1280: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+            },
+            720: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+            }
+        }
+    });
+    
 });
-
 </script>
 </body>
 </html>
