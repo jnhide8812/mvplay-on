@@ -54,7 +54,7 @@ public class ReplyServiceImpl implements ReplyService {
 	//댓글 삭제
 	@Override
 	public int replyDelete(ReplyVO vo) {
-		int result = replyMapper.replyDelete(vo.getMovieId());
+		int result = replyMapper.replyDelete(vo.getReplyNum());
 		return result;
 	}
 

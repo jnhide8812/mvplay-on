@@ -358,10 +358,8 @@ $(".reply_button_wrap").on("click", function(e){
 
 /* 리뷰 삭제 버튼 */
 $(document).on('click', '.delete_reply_btn', function(e){
-
 	e.preventDefault();
-	let replyNum = $(this).attr("href");	
-	
+	let replyNum = $(this).attr("href");
 	$.ajax({
 		data : {
 			replyNum : replyNum,
@@ -372,6 +370,7 @@ $(document).on('click', '.delete_reply_btn', function(e){
 		success : function(result){
 			replyListInit();
 			alert('삭제가 완료되엇습니다.');
+			console.log(replyNum);
 		}
 	});		
 		
