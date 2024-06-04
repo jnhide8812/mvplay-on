@@ -72,11 +72,10 @@ section.list {
 }
 img.poster {
 	width: 220px;
-	height:300px;
+	height:350px;
 	display: block;
 	position: relative;
 	padding-bottom: 8px;
-	border-radius: 10px 10px 0 0;
 	object-fit:cover;
 }
 li.subject {
