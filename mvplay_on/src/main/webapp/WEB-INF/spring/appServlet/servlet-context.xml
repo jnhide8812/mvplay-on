@@ -32,6 +32,12 @@
          <beans:bean id="AdminInterceptor"
                class="com.mvp.interceptor.AdminInterceptor"/>
       </interceptor>
+      
+      <interceptor>
+         <mapping path="/purchase/**" />
+         <beans:bean id="LoginInterceptor"
+               class="com.mvp.interceptor.LoginInterceptor"/>
+      </interceptor>    
    </interceptors>
 
    

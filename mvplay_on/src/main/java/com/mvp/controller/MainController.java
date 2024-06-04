@@ -129,6 +129,20 @@ public class MainController {
 		
 	}*/
 	
+	@GetMapping("/movie/purchaseMain")
+	public void getPurchaseMain() throws Exception {
+		logger.info("getPurchaseMain");
+	}
+	
+	/*@GetMapping("/movie/rating")
+	public void getRating() throws Exception {
+		logger.info("getRating");
+	}*/
+	
+	@GetMapping("/movie/wishList")
+	public void getWishList() throws Exception {
+		logger.info("getWishList");
+	}
 	
 	
 }

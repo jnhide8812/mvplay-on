@@ -453,7 +453,7 @@
 		    moveForm.find("input[name='movieId']").remove(); // movieId input 제거
 		    moveForm.append('<input type="hidden" name="movieId" value="${movieInfo.movieId}">'); // movieId input 재추가
 		    moveForm.attr("action", "/admin/movieDelete"); // 액션 지정
-		    moveForm.attr("method", "post"); // 메서드 지정
+		    moveForm.attr("method", "post"); // 메소드 지정
 		    moveForm.submit(); // 폼 전송
 		});
 		

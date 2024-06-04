@@ -8,13 +8,13 @@
 				<div class="m_wrap">
 					<ul class="up">
 						<li>
-							<a href="#" class="side_menu">
+							<a href="/movie/subscribeMain" class="side_menu">
 								<img src="/resources/icon/sub_icon.png" class="side_icon">
 								<span class="menu_name">구독</span>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="side_menu">
+							<a href="/movie/purchaseMain" class="side_menu">
 								<img src="/resources/icon/pay_icon.png" class="side_icon">
 								<span class="menu_name">개별 구매</span>
 							</a>
@@ -23,13 +23,13 @@
 					<hr>
 					<ul class="down">
 						<li>
-							<a href="#" class="side_menu">
+							<a href="/movie/rating" class="side_menu">
 								<img src="/resources/icon/star_icon.png" class="side_icon">
 								<span class="menu_name">평가</span>
 							</a>
 						</li>
 						<li>
-							<a href="#" class="side_menu">
+							<a href="/movie/wishList" class="side_menu">
 								<img src="/resources/icon/b_icon.png" class="side_icon">
 								<span class="menu_name">보관함</span>
 							</a>
