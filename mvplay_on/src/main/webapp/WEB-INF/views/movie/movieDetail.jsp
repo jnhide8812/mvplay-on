@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
-<link rel="stylesheet" href="../resources/css/movietest.css">
+<link rel="stylesheet" href="../resources/css/movie/movietest.css">
+<link rel="stylesheet" href="../resources/css/main.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
@@ -28,7 +29,7 @@
 <input type="hidden" value="${movieInfo.movieCheck}" name="movieCheck">
 	<!-- 헤더 -->
 	<header>
-	<%@include file="../includes/header.jsp" %>
+		<%@include file="../includes/header.jsp" %>
 	</header>
 		<!-- 네비 (왼쪽 사이드 메뉴) -->
 		<nav>
@@ -108,7 +109,7 @@
 					<!-- 댓글 영역 -->
 				<div class="replyArea">	
 					<div class="reply_subject">
-						<h2>리뷰</h2>
+						<h2>Review</h2>
 					</div>
 					
 					<c:if test="${member != null}">

@@ -62,23 +62,24 @@ h1 {
 	.comment_wrap{
 		position: relative;
     	border-bottom: 1px solid #d4d4d4;
-    	padding: 14px 0 10px 0;	
-    	font-size: 12px;
+    	padding: 14px 0 5px 0;	
+    	font-size: 14px;
 	}
 		/* 리뷰 머리 부분 */
 		.reply_top{
 			padding-bottom: 10px;
 		}
 		.id_span{
-			padding: 0 15px 0 3px;
-		    font-weight: bold;		
+			padding: 0 5px 3px 3px;
+		    font-weight: bold;
+		    font-size: 16px;		
 		}
 		.date_span{
 			padding: 0 15px 0;
 		}
 		/* 리뷰 컨텐트 부분 */
 		.reply_bottom{
-			padding-bottom: 10px;
+			padding-bottom: 4px;
 		}
 		
 	
@@ -91,6 +92,9 @@ h1 {
 	
 	/* 리뷰 제목 */
 	.reply_subject h2{
+		font-size: 28px;
+		font-weight: 700px;
+		color: #Ffffff;
 		padding: 15px 0 5px 5px;
 	}
 	
@@ -221,6 +225,7 @@ h1 {
 	letter-spacing: 0.1em;
 	word-spacing: 0.1em;
 	line-height: 1.2em;
+	font-size: 14px;
 }
 
 /* 영화 정보 */
@@ -233,44 +238,55 @@ h1 {
 }
 
 /* 버튼 */
-.buttons {
-	padding-left: 5px;
-	padding-bottom: 10px;
-}
 
-.btn, .btn_buy_btn, .btn_like_btn {
-	font-weight: bold;
-    font-size: 14px;
-    border-radius: 6px;
+
+button.btn,
+button.btn_buy_btn {
+	font-weight: 600;
+    font-size: 15px;
+    border-radius: 4px;
     color: white; 
     cursor: pointer;	
-    background-color: #e7578f;
-    border: none;
-    padding: 5px 10px 5px 10px;
+    background-color: #F82F62;
+    border:1px solid #F82F62;
+    padding: 6px 13px;
     margin-bottom: 20px;
 }
-
- .btn:hover, .btn_buy_btn:hover, .btn_like_btn:hover {
-    background-color: #f82f62;
-}
-
-#ratingCancelBtn {
-	margin-top: 5px;
-	font-weight: bold;
-    font-size: 14px;
-    border-radius: 6px;
+button.btn_like_btn {
+	font-weight: 600;
+    font-size: 15px;
     color: white; 
     cursor: pointer;	
     background-color: transparent;
-    border: solid 0.5px #e7578f;
-    padding: 5px 10px 5px 10px;
-    margin-bottom: 10px;
-    margin-left: 8.5px;
+    padding: 6px 13px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    border:none;
 }
-
+button.btn_like_btn:hover {
+	color: yellow;
+	font-weight: 700;
+}
+#ratingCancelBtn {
+	font-weight: 600;
+    font-size: 15px;
+    border-radius: 4px;
+    color: #141517; 
+    cursor: pointer;	
+    background-color: #E1E1E1;
+    border:1px solid #E1E1E1;
+    padding: 5px 11px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+.rating_span {
+	font-weight: 500;
+	color: yellow;
+}
 #ratingCancelBtn:hover {
-	background-color: red;
-	border: solid 0.5px red;
+	background-color: #000000;
+	border: 1px solid #000000;
+	color: #ffffff;
 	opacity: 1;
 }
 
