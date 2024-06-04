@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mvp.model.Criteria;
 import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
+import com.mvp.model.PageVO;
 import com.mvp.model.PurchaseVO;
 import com.mvp.model.PurchaseViewVO;
 import com.mvp.model.RefundVO;
@@ -52,6 +54,7 @@ public class PurchaseController {
 	 * IamportClient(apiKey, secretKey); }
 	 */
 
+
 	// 개별 구매 페이지 이동
 	@GetMapping("/purchase/vod")
 	public void purchasePageGET(@RequestParam("movieId") int movieId, HttpServletRequest request, Model model) {
@@ -59,11 +62,9 @@ public class PurchaseController {
 		logger.info("purchasePageGET()........." + movieId);
 
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
-		session.setAttribute("userId", userId);
-		// String userId = (String) session.getAttribute("userId");
-
-		model.addAttribute("memberInfo", userId);
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		
+		model.addAttribute("memberInfo", mvo.getUserId());
 		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
 		logger.info(" getmapping vod" + movieId);
 
@@ -71,13 +72,14 @@ public class PurchaseController {
 
 	// 대여,소장
 	@PostMapping("/purchase/vod")
-	public String purchasePagePost(@RequestParam("buymethod")String selectedMethod, PurchaseVO pvo, HttpServletRequest request, Model model) {
+	public String purchasePagePost(@RequestParam("buymethod") String selectedMethod, PurchaseVO pvo,
+			HttpServletRequest request, Model model) {
 		logger.info("purchasePagePost()........." + pvo);
 
 		if (pvo.getUserId() == null) {
 			return "redirect:/member/login";
 		}
-		//구매 또는 대여 판단
+		// 구매 또는 대여 판단
 
 		if ("rent".equals(selectedMethod)) {
 			purchaseService.enrollPurchase_2(pvo);
@@ -92,10 +94,12 @@ public class PurchaseController {
 	}
 
 	@GetMapping("/movie/purchaseDetail")
-	public void purchaseDetailPage(HttpServletRequest request) {
+	public void purchaseDetailPage(HttpServletRequest request,Model model) {
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
-		session.setAttribute("userId", userId);
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		
+		model.addAttribute("memberInfo", mvo.getUserId());
+
 		logger.info("purchaseDetail로 이동");
 
 	}
@@ -114,30 +118,36 @@ public class PurchaseController {
 
 	}
 
-	// 구매 취소(환불)
-	@PostMapping("/purchase/pList")
-	public String refundPost(@RequestParam("movieId") int movieId, MemberVO member, PurchaseViewVO pview, Model model, HttpServletRequest request) {
-		logger.info("POST purchase/refund........... "+member);
-		System.out.println("puschaseVeiwVO ; "+pview );
+	
+
+	@GetMapping("/purchase/refund")
+	public void refundPage(Model model,PurchaseViewVO pview ,HttpServletRequest request) {
+		logger.info("getmappingRefund" +pview);
+		HttpSession session = request.getSession();
+		
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		purchaseService.getRefund(pview.getId());
+		logger.info("get refund");
+
+	}
+
+	// 환불 신청
+	@PostMapping("/purchase/refund")
+	public String refundPost(@RequestParam("movieId") int movieId, MemberVO member) {
 		String userId = member.getUserId();
 
-		if (userId == null) {
-			return "redirect:/member/login";
-		}
-
 		RefundVO rvo = new RefundVO();
-		//int refundPirce = rvo.getRefundPrice();
+		// int refundPirce = rvo.getRefundPrice();
 		rvo.setUserId(userId);
 		rvo.setId(movieId);
-		
-		//purchase table 만료일 변경
+
 		purchaseService.refund(rvo);
 		System.out.println();
-		//refund table 등록
+		// refund table 등록
 		int result = purchaseService.enrollRefund(rvo);
-		System.out.println("result: "+result);
-		return "redirect:/purchase/pList";
+		System.out.println("result: " + result);
 
+		return "redirect:/purchase/refund";
 	}
 
 	/*

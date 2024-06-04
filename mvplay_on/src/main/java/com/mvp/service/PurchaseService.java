@@ -35,6 +35,9 @@ public interface PurchaseService {
     //구매 목록 가져오기
     public List<PurchaseViewVO> getPList(String userId);
     
+  //환불
+    public PurchaseViewVO getRefund(int id);
+    
  // 결제 검증 서비스 메서드
     //boolean validatePayment(PaymentValidationRequest request);
 }

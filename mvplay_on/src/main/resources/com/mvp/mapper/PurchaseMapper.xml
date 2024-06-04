@@ -51,7 +51,7 @@
             UPDATE purchase 
             SET expiredDate = startDate - INTERVAL '1' DAY
             WHERE sysdate <= startDate + INTERVAL '3' DAY
-            AND Id = #{Id}
+            AND id = #{id}
         ]]>
 	</update>
 
@@ -59,7 +59,7 @@
 	<insert id="enrollRefund">
 		insert into refund( id, refundPrice, userId,
 		refundDate,refundStatus) values( #{id}, #{refundPrice}, #{userId},
-		sysdate, #{refundStatus} )
+		sysdate, "환불신청" )
 	</insert>
 
 	<!-- 구매한 영화 목록보기(pList) -->
@@ -69,6 +69,19 @@
 		movie m
 		JOIN purchase p ON m.movieId = p.movieId
 		WHERE p.userId = #{userId}
+	</select>
+	
+	<select id="getRefund" resultType="com.mvp.model.PurchaseViewVO">
+		<![CDATA[
+			SELECT  id, userId, movieId,
+				(SELECT movieTitle FROM movie WHERE movie.movieId=purchase.movieId) movieTitle,
+			startDate, expiredDate,rentalPrice, buyPrice,
+				(SELECT refundId FROM refund where refund.id=purchase.id)refundId,
+            	(SELECT refundStatus FROM refund where refund.id=purchase.id)refundStatus,
+            	(SELECT refundDate FROM refund where refund.id=purchase.id)refundDate
+			FROM purchase where id=#{id}
+		]]>    
+	
 	</select>
 
 

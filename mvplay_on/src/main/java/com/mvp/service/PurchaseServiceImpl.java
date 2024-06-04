@@ -82,6 +82,11 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public List<PurchaseViewVO> getPList(String userId){
 		return purchasemapper.getPList(userId);
 	}
+	
+	@Override
+	public PurchaseViewVO getRefund(int id) {
+		return purchasemapper.getRefund(id);
+	}
 
 	
 	
