@@ -11,20 +11,19 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- import -->
 <!-- <script type="text/javascript" src="http://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script> -->
+
 </head>
 <body>
+  
 <div id="container">
-	<header>
-		<div class="logoo">
-			<img class="loogg" src="/resources/icon/logo_m.png" >
-		</div>
-	</header>	
+	
 	<div class="pur_wrap">
+		
 		<form id="movie_move" action="/purchase/vod" method="post">	
 			<div class="subh">
 				<h1 class="contents">구매 컨텐츠</h1>
 			</div>
-		    <input type="hidden" name="userId" value="${memberInfo}">
+		    <input type="hidden" name="userId" value="${member.userId}">
 		    <input type="hidden" name="movieId" value="${movieInfo.movieId}">
 		    <input type="hidden" name="buyPrice" value="${movieInfo.buyPrice}">
 		    <input type="hidden" name="rentalPrice" value="${movieInfo.rentalPrice}">
@@ -44,7 +43,7 @@
 		       	</div>
 		       	<div class="price_section">
 					<ul>
-						<li class="j">정가 |</li>
+						<li class="j">정가 | </li>
 						<li>소장: ${movieInfo.buyPrice}원 /</li>
 						<li>대여: ${movieInfo.rentalPrice}원</li>
 					</ul>
@@ -97,14 +96,6 @@
 		                <button id="purchaseBtn" type="button" class="sbtn">결제하기</button>
 		            </div>
 		        </div>
-		        <div class="writing">
-		        	<ul class="con_list">
-		        		<li>결제 금액에는 VAT가 포함되어 있어요.</li>
-		        		<li>저작권자의 요청에 따라 일부 콘텐츠는 소장 유효기간이 제한될 수 있어요.</li>
-		        		<li>한국에서만 감상할 수 있어요.</li>
-		        		<li>구매한 콘텐츠는 다른 계정으로 옮길 수 었어요.</li>
-		        	</ul>
-		        </div>
 		    </div> <!-- content_wrap -->
 		</form>
 	</div>  <!-- ps_main -->
@@ -113,7 +104,7 @@
 
 
 $(document).ready(function() {
-
+    alert("vod script");
 	<%-- var apiKey = '<%= ApiUtil.getProperty("imp.api.key") %>';
 	var secretKey = '<%= ApiUtil.getProperty("imp.api.secretkey") %>';
 	var impCode = '<%= ApiUtil.getProperty("imp.code") %>'; --%>

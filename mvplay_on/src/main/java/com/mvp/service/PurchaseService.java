@@ -33,7 +33,7 @@ public interface PurchaseService {
     public int enrollRefund(RefundVO rvo);
     
     //구매 목록 가져오기
-    List<PurchaseViewVO> getPList(String userId);
+    public List<PurchaseViewVO> getPList(String userId);
     
  // 결제 검증 서비스 메서드
     //boolean validatePayment(PaymentValidationRequest request);

@@ -5,65 +5,75 @@
 <head>
     <meta charset="UTF-8">
     <title>영화 구매 목록</title>
+<link rel="stylesheet" href="/resources/css/purchase/pList.css">
+<link rel="stylesheet" href="/resources/css/basic/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <h1>대여/소장 중인 영화</h1>
 
     <!-- 헤더 -->
-   <%--  <%@include file="../includes/header.jsp"%>
-    <%@include file="../includes/nav.jsp"%> --%>
+    <%@include file="../includes/header.jsp"%>
+    <%@include file="../includes/nav.jsp"%> 
     <div class="main_content">
-        <form id="deleteForm" action="/purchase/pList" method="post"></form>
-         <input type="hidden" name="userId" value="${memberInfo}">
-  		 <input type="hidden" name="movieId" value="${movieInfo.movieId}">
+        <form id="refundForm" action="/purchase/pList" method="post">
+        
         <div class="show_list">
             <section class="list">
-                <c:if test="${not empty movieList}">
-                    <h1 class="list_name">"${memberInfo}"님이 대여 소장 중인 영화</h1>
+                <c:if test="${not empty list}">
+                    <h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
 
-                    <c:forEach items="${movieList}" var="movie">
+                    <c:forEach items="${list}" var="list">
                         <!-- 각 영화 정보 표시 -->
+                         <input type="hidden" name="userId" value="${list.userId}">
+  						 <input type="hidden" name="movieId" value="${list.movieId}">
                         <ul>
-                            <li><a class="move" href="/movie/movieDetail?movieId=${movieInfo.movieId}">
-                                <img src="/resources/img/${movieInfo.poster}" class="poster">
+                            <li><a class="move" href="/movie/movieDetail?movieId=${list.movieId}">
+                                <img src="/resources/img/${list.poster}" class="poster">
                             </a></li>
-                            <li class="subject"><a class="move" href="/movie/movieDetail?movieId=${movieInfo.movieId}">
-                                ${movie.movieTitle}<br>
+                            <li class="subject"><a class="move" href="/movie/movieDetail?movieId=${list.movieId}">
+                                ${list.movieTitle}<br>
                             </a></li>
                             <li class="iinn">
-                                <span class="c">${movieInfo.cate1}</span>
+                                <span class="c"></span>
                                 <!-- 환불하기 버튼 -->
-                                <button class="delete_btn" data-movieid="${movieInfo.movieId}">환불하기</button>
+                                <input type="submit" value="환불하기">
                             </li>
                         </ul>
                     </c:forEach>
                 </c:if>
             </section>
         </div>
+        </form>
     </div>
 
     <!-- FOOTER -->
-    <%-- <%@include file="../includes/footer.jsp"%> --%>
+     <%@include file="../includes/footer.jsp"%> 
+    
+<script>
+//환불 요청 폼
+ let refundForm = $('#refundForm');
+
+
+$("#refund_btn").on("click", function(e){
+    e.preventDefault();
+    
+    refundForm.attr("method", "post");
+    refundForm.attr("action", "/purchase/refundUpdate");
+    refundForm.submit();
+
+});   
+ 
+
+</script>
+
+
+
 </body>
 </html>
 
 
 
-<script>
-alert("영화리스트")
-$(document).ready(function() {
-    $(".delete_btn").on("click", function(e){
-        e.preventDefault();
-        
-        console.log("userId : "+${member.userId});
-       
-        let movieId = $(this).data("movieid");
-        $.get("/purchase/refund", {movieId: movieId}, function(data) {
-            alert("환불 신청이 완료되었습니다.");
-            // 환불 요청이 성공했을 때 추가적인 처리 가능
-        });
-    });
-});
-</script>
+
 
 

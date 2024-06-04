@@ -64,7 +64,7 @@
 
 	<!-- 구매한 영화 목록보기(pList) -->
 	<select id="getPList" resultType="com.mvp.model.PurchaseViewVO">
-		SELECT m.movieId, m.movieTitle, m.poster, p.buyPrice, p.rentalPrice, p.startDate
+		SELECT m.movieId, m.movieTitle, m.poster, p.id, p.userId, p.buyPrice, p.rentalPrice, p.startDate
 		FROM
 		movie m
 		JOIN purchase p ON m.movieId = p.movieId
