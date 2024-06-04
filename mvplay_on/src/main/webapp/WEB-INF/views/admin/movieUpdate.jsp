@@ -107,8 +107,8 @@
 						<br>
 						<div class="form_section_content">
 							<label class="radio"><input type="radio" name="movieCheck" value="0" onclick="priceReadOnly()"/>구독전용</label>
-							<label class="radio"><input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매만 가능</label>
-							<label class="radio"><input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여만 가능</label>
+							<label class="radio"><input type="radio" name="movieCheck" value="1" onclick="priceReadOnly()"/>구매전용</label>
+							<label class="radio"><input type="radio" name="movieCheck" value="2" onclick="priceReadOnly()"/>대여전용</label>
 							<label class="radio"><input type="radio" name="movieCheck" value="3" onclick="priceReadOnly()"/>구매 + 대여</label>
 							<label class="radio"><input type="radio" name="movieCheck" value="8" onclick="priceReadOnly()"/>임시</label>
 							<br>
