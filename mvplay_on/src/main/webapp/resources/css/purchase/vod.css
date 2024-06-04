@@ -15,11 +15,21 @@ ul, li {
 }
 #container {
 	background-color: #000000;
-	width: 1900px;
+	width: 1900px;	
+	margin: 0 auto;
+}
+.logoo {
+	top: 20px;
+	left: 30px;
+	position: absolute;
+}
+img.loogg {
+	width: 120px;
+	height: 38px;
 }
 .pur_wrap {
 	width: 700px;
-	height: 900px;
+	height: 100%;
 	margin: 0 auto;
 }
 #movie_move {
@@ -28,7 +38,7 @@ ul, li {
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;
-	padding-top: 80px;
+	padding-top: 35px;
 }
 .subh {
 	width: 100%;
@@ -117,7 +127,7 @@ p.explain {
 	padding: 6px 0 8px 15px; 
 }
 li.j {
-	padding-right: 1px;
+	padding-right: 0.5px;
 }
 .way_buy {
 	border: 1px solid #1B1C1D;
@@ -144,15 +154,15 @@ ul.how {
 	align-items: flex-start;
 }
 ul.how li {
-	padding-bottom: 3px;
-	font-size: 18px;
+	padding-bottom: 6px;
+	font-size: 20px;
 }
 .way_buy ul li {
 	font-size: 16px;
 	color: #84868D;
 	font-weight: 600;
 }
-.way_buy ul:active {
+.way_buy ul li:active {
 	color:#ffffff;
 }
 .pway_wrap {
@@ -162,7 +172,7 @@ ul.how li {
 	align-items: flex-start;
 }
 .way_buy {
-	font-size: 18px;
+	font-size: 20px;
 	color: #84868D;
 	font-weight: 600;
 }
@@ -170,10 +180,10 @@ ul.how li {
 	color:#ffffff;
 }
 .price_info {
-	margin: 15px 0;
+	margin: 5px 0;
 	border: 1px solid #1B1C1D;
 	border-radius: 8px;
-	padding: 5px;
+	padding: 10px 0 3px 15px;
 	width: 700px;
 }
 .price_info ul {
@@ -185,32 +195,80 @@ ul.how li {
 .price_info ul li {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
+	color: #ffffff;
+	padding-bottom: 7px;
 }
-label.contentPrice {
+#contentPrice {
 	font-size: 16px;
 	color:#ffffff;
 	font-weight: 400;
 }
-label.totalAmount {
+#totalAmount {
 	font-size: 24px;
 	font-weight: 600;
 	color: #ffffff;
 }
+.btn_buy {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin-top: 15px;
+}
 button.sbtn {
-	font-size: 14px;
-	font-weight: 500;
+	font-size: 18px;
+	font-weight: 600;
 	color: #84868D;
 	border: 1px solid #505155;
 	color: #999CA1;
 	border-radius: 6px;
 	background-color: #505155;
-	text-align: center;
-	align-items: center;
+	margin-bottom: 15px;
+	width: 715px;
+	height: 50px;
 }
 button.sbtn:hover{
 	color:#ffffff;
 	background-color: #F82F62;
 	border: 1px solid #F82F62;
+}
+
+/*기본스타일을 없애고, 버튼모양을 구현한다.*/
+input[type='radio'] {
+  -webkit-appearance: none;     /*웹킷 브라우저에서 기본 스타일 제거*/
+  -moz-appearance: none;      /*모질라 브라우저에서 기본 스타일 제거 */
+  appearance: none;     /*기본 브라우저에서 기본 스타일 제거*/
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #ccc;   /*체크되지 않았을 때의 테두리 색상*/
+  border-radius: 50%;
+  outline: none; 			/*focus 시에 나타나는 기본 스타일 제거*/
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+/*체크될 시에, 변화되는 스타일 설정*/
+input[type='radio']:checked {
+  background-color: #F82F62;       /*체크 시 내부 원으로 표시될 색상*/
+  border: 3px solid white;       /*테두리가 아닌, 테두리와 원 사이의 색상*/
+  box-shadow: 0 0 0 1.6px #F82F62;     /*얘가 테두리가 됨*/
+ /*그림자로 테두리를 직접 만들어야 함 (퍼지는 정도를 0으로 주면 테두리처럼 보입니다.)
+ 그림자가 없으면 그냥 설정한 색상이 꽉 찬 원으로만 나옵니다.*/
+}
+.writing {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+ul.con_list {
+	display:flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 15px;
+}
+ul.con_list li{
+	list-style: circle;
+	font-size: 12px;
+	color: #9D9BA6;
+	padding-bottom: 4px;
 }
