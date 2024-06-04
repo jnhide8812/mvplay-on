@@ -82,6 +82,19 @@
 		values(#{id}, #{refundPrice}, #{userId}, '환불신청')
 	
 	</insert>
+	<!-- 구매 테이블에 만료일 업데이트 -->
+	<update id="adminRefundPurchaseUpdate">
+		 <![CDATA[
+            UPDATE purchase 
+            SET expiredDate = startDate - INTERVAL '1' DAY
+            WHERE sysdate <= startDate + INTERVAL '3' DAY
+            AND id = #{id}
+        ]]>
+	
+	</update>
+	
+	
+	
 	<!-- 관리자 환불 완료 업데이트 -->
 	<update id="adminRefundUpdate">
 		UPDATE refund 
@@ -94,4 +107,9 @@
 		SELECT * FROM refund where refundId=#{refundId}
 	</select>
 	
+	<!-- 관리자 환불 취소(삭제) -->
+	<delete id="adminRefundDelete">
+		DELETE FROM refund WHERE refundId=#{refundId}
+	
+	</delete>
   </mapper>

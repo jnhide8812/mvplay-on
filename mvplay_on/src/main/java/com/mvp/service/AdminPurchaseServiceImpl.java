@@ -44,14 +44,18 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 	@Override
 	public int adminRefundInsert(RefundVO rvo) {
 		return apMapper.adminRefundInsert(rvo);
-		
 	}
 
 	//환불 완료 업데이트
 	@Override
 	public int adminRefundUpdate(RefundVO rvo) {
 		return apMapper.adminRefundUpdate(rvo);
-		
+	}
+
+	//환불 취소(삭제)
+	@Override
+	public int adminRefundDelete(RefundVO rvo) {
+		return apMapper.adminRefundDelete(rvo);
 	}
 
 }

@@ -86,7 +86,7 @@ public class AdminPurchaseController {
 	//환불진행 사항 업데이트
 	@PostMapping("/refundUpdate")
 	public String postAdminRefundUpdate(RefundVO rvo, RedirectAttributes rttr) {
-		logger.info("post admin refund rvo update==>"+rvo);
+		logger.info("post admin refund rvo update");
 		int result = apService.adminRefundUpdate(rvo);
 		
 		if(result==1) {
@@ -98,6 +98,19 @@ public class AdminPurchaseController {
 		return "redirect:/admin/purchase";
 		
 		
+	}
+	//환불 취소(삭제)
+	@PostMapping("/refundDelete")
+	public String postAdminRefundDelete(RefundVO rvo, RedirectAttributes rttr) {
+		logger.info("post admin refund rvo delete==>"+rvo);
+		System.out.println("환불 삭제 rvo::"+rvo);
+		
+		int result = apService.adminRefundDelete(rvo);
+		if(result==1) {
+			rttr.addFlashAttribute("refund_cancel", rvo.getId());
+		}
+		
+		return "redirect:/admin/purchase"; 
 	}
 	
 	

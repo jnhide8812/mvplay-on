@@ -28,4 +28,8 @@ public interface AdminPurchaseService {
 	
 	//관리자 환불 완료 업데이트
 	public int adminRefundUpdate(RefundVO rvo);
+	
+	//관리자 환불 취소(삭제)
+	public int adminRefundDelete(RefundVO rvo);
+	
 }

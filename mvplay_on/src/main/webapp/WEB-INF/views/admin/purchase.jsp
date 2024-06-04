@@ -132,24 +132,23 @@
 					<tr>
 						<td>${list.id }</td>
 						<td>${list.userId }</td>
-						<td>${list.movieName }</td>
+						<td><a class="move" href='<c:out value="${list.movieId}"/>'>${list.movieName }</a></td>
 						<td>${list.rentalPrice }</td>
 						<td>${list.buyPrice }</td>
 						<td><fmt:formatDate value="${list.startDate}" pattern="yyyy-MM-dd" /></td>
 						<td><fmt:formatDate value="${list.expiredDate}" pattern="yyyy-MM-dd" /></td>
 						<td>
 							
-
-							 
-							<!-- 잠시 --> 
+							<!-- 환불 진행사항 보기 --> 
 							<c:if test="${empty list.refundStatus && list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
-							<c:if test="${!empty list.refundStatus}"><a href="/admin/refund?id=${list.id }">진행사항 보기</a></c:if>
+							<c:if test="${!empty list.refundStatus}">
+								<a href="/admin/refund?id=${list.id }">
+									<c:if test="${list.refundStatus=='환불완료' }"><b>환불완료</b></c:if>
+									<c:if test="${list.refundStatus!='환불완료' }">진행사항 보기</c:if>
+								</a>
+							</c:if>
+										
 							<c:if test="${list.buyPrice ==0}">-</c:if>
-							
-							
-							<%-- 만료일 없는 기준으로 할지 소장가가 0 아닌 걸로 할지 
-							<c:if test="${empty list.expiredDate}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
-							<c:if test="${!empty list.expiredDate}">-</c:if> --%>
 							
 						</td>
 
@@ -226,9 +225,6 @@
 
 <script>
 $(document).ready(function(){
-
-	console.log('<c:out value="${refund_result_confirm}" />');
-	
 	
 let rResult = '<c:out value="${refund_result}" />';
 	checkResult(rResult);
@@ -240,7 +236,6 @@ let rResult = '<c:out value="${refund_result}" />';
 		alert("주문번호 '" + rResult +"'의 환불이 신청되었습니다.\n");
 	}
 
-
 //환불 완료 알림
 let rcResult = '<c:out value="${refund_confirm}" />';
 	checkComResult(rcResult);
@@ -250,14 +245,22 @@ let rcResult = '<c:out value="${refund_confirm}" />';
 		}
 		alert("주문번호 '" + rcResult +"'의 환불이 완료되었습니다.\n");
 	}
+//환불 취소 알림
+let rcancelResult = '<c:out value="${refund_cancel}" />';
+	checkCancelResult(rcancelResult);
+	
+	function checkCancelResult(result){
+		if(result ===''){
+			return;
+		}
+		alert("주문번호 '" + rcancelResult +"'의 환불이 취소되었습니다.\n");
+	}
+
 }); //$(document).ready(function)
-
-
 
 
 let moveForm = $('#moveForm');
 let searchForm = $('#searchForm');
-
 
 //페이지 이동 버튼
 $(".pageMaker_btn a").on("click", function(e){
@@ -284,7 +287,16 @@ $("#searchForm button").on("click", function(e){
 	
 });
 
-
+//영화 상세 페이지 이동
+$(".move").on("click", function(e){
+	
+	e.preventDefault();
+	
+	moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr('href') + "'>");
+	moveForm.attr("action", "/admin/movieDetail");
+	moveForm.submit();
+	
+});
 
 
 

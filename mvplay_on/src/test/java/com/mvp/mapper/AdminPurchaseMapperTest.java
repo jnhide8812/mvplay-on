@@ -22,9 +22,19 @@ private static final Logger logger = LoggerFactory.getLogger(AdminPurchaseMapper
 	@Test
 	public void apmTest() {
 		RefundVO rvo = new RefundVO();
-		rvo.setRefundId(83);
+		rvo.setId(401);
 		
-		mapper.adminRefundUpdate(rvo);
+		//purchase update 만료일
+		int result = mapper.adminRefundPurchaseUpdate(rvo);
+		
+		System.out.println("result : "+result);
+		
+		//환불 신청
+		//rvo.setRefundId(84);
+		//mapper.adminRefundDelete(rvo);		
+		
+		
+		//mapper.adminRefundUpdate(rvo);
 		
 		
 		//logger.info("테스트"); m  
