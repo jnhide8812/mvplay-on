@@ -210,3 +210,7 @@ span.e2{
 	color: red;
 	display: none;
 }
+img.title_icon {
+	width: 185px;
+	height: 45px;
+}
