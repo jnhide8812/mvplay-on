@@ -74,7 +74,10 @@
 		
 		<table class="table_purchase">
 			<tr>
-				<th>구매자</th><td><c:out value="${purchaseInfo.id}"/></td>
+				<th>구매번호</th><td><c:out value="${purchaseInfo.id}"/></td>
+			</tr>
+			<tr>
+				<th>구매자</th><td><c:out value="${purchaseInfo.userId}"/></td>
 			</tr>		
 			<tr>
 				<th>영화 제목</th>
@@ -82,6 +85,9 @@
 			</tr>
 			<tr>
 				<th>구매일</th><td><fmt:formatDate value="${purchaseInfo.startDate}" pattern="yyyy-MM-dd" /></td>
+			</tr>
+			<tr>
+				<th>만료일</th><td><fmt:formatDate value="${purchaseInfo.expiredDate}" pattern="yyyy-MM-dd" /></td>
 			</tr>
 			<tr>
 				<th>구매 금액</th><td><c:out value="${purchaseInfo.buyPrice}"/></td>
@@ -156,7 +162,6 @@ $(".pageMaker_btn a").on("click", function(e){
 //환불 완료 버튼
 refundConfirm.on("click", function(e){
 	e.preventDefault();
-	
 	
 	//refundForm.append("<input type='hidden' name='refundId' value='"+$(this).attr('href') + "'>");
 	refundForm.attr("method", "post");

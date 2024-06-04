@@ -58,4 +58,9 @@ public class AdminPurchaseServiceImpl implements AdminPurchaseService {
 		return apMapper.adminRefundDelete(rvo);
 	}
 
+	@Override
+	public int adminRefundPurchaseUpdate(RefundVO rvo) {
+		return apMapper.adminRefundPurchaseUpdate(rvo);
+	}
+
 }

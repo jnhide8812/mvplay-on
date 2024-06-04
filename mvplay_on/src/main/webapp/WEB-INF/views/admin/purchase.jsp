@@ -140,18 +140,21 @@
 						<td>
 							
 							<!-- 환불 진행사항 보기 --> 
-							<c:if test="${empty list.refundStatus && list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if>
-							<c:if test="${!empty list.refundStatus}">
-								<a href="/admin/refund?id=${list.id }">
-									<c:if test="${list.refundStatus=='환불완료' }"><b>환불완료</b></c:if>
-									<c:if test="${list.refundStatus!='환불완료' }">진행사항 보기</c:if>
-								</a>
-							</c:if>
-										
-							<c:if test="${list.buyPrice ==0}">-</c:if>
-							
-						</td>
+						<!-- <c:if test="${empty list.refundStatus && list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if> -->
+						
+						
+						<c:if test="${list.startDate<list.expiredDate  }">
+							<a href="/admin/refund?id=${list.id }"><c:if test="${empty list.refundStatus}">환불하기</c:if></a>
+						</c:if>
+						
+						<c:if test="${!empty list.refundStatus}">
+							<a href="/admin/refund?id=${list.id }">
+								<c:if test="${list.refundStatus=='환불완료' }"><b>환불완료</b></c:if>
+								<c:if test="${list.refundStatus!='환불완료' }">진행사항 보기</c:if>
+							</a>
+						</c:if>
 
+						</td>
 					</tr>
 				</c:forEach>
 			

@@ -32,4 +32,7 @@ public interface AdminPurchaseService {
 	//관리자 환불 취소(삭제)
 	public int adminRefundDelete(RefundVO rvo);
 	
+	//구매 테이블에 만료일 업데이트(purchase table)
+	public int adminRefundPurchaseUpdate(RefundVO rvo);
+	
 }
