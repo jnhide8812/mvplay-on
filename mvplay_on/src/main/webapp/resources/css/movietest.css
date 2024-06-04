@@ -213,7 +213,7 @@ h1 {
 /* 영화 줄거리 */
 .movieContent{
 	width : max-content;
-	max-width : 25%;
+	max-width : 500px;
 	word-break : keep-all;
 	padding-top: 5px;
 	padding-bottom: 10px;
@@ -229,7 +229,7 @@ h1 {
 	padding-bottom: 10px;
 	position: absolute;
 	left : 19.5%;
-	top: 25%;
+	bottom: -1.7%;
 }
 
 /* 버튼 */
@@ -237,6 +237,73 @@ h1 {
 	padding-left: 5px;
 	padding-bottom: 10px;
 }
+
+.btn, .btn_buy_btn, .btn_like_btn {
+	font-weight: bold;
+    font-size: 14px;
+    border-radius: 6px;
+    color: white; 
+    cursor: pointer;	
+    background-color: #e7578f;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 20px;
+}
+
+ .btn:hover, .btn_buy_btn:hover, .btn_like_btn:hover {
+    background-color: #f82f62;
+}
+
+#ratingCancelBtn {
+	margin-top: 5px;
+	font-weight: bold;
+    font-size: 14px;
+    border-radius: 6px;
+    color: white; 
+    cursor: pointer;	
+    background-color: transparent;
+    border: solid 0.5px #e7578f;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+    margin-left: 8.5px;
+}
+
+#ratingCancelBtn:hover {
+	background-color: red;
+	border: solid 0.5px red;
+	opacity: 1;
+}
+
+
+
+/*
+  .update_reply_btn{
+ 	font-weight: bold;
+    background-color: #f82f62;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px 0 30px;
+    border-radius: 6px;
+    color: white; 
+    cursor: pointer;
+  }
+  .delete_reply_btn{
+ 	font-weight: bold;
+    background-color: #e7578f;
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 6px;
+    color: white; 
+  	cursor: pointer;
+  }
+  
+*/
 
 /* 리뷰 영역 */
 .replyArea {

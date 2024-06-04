@@ -39,7 +39,7 @@
 			<div class="posterFrame">
 				<div class="poster">
 					<!-- <img src="/resources/img/${movieInfo.poster}" width="300px"> -->
-					<img class="moviePoster" alt="임시 포스터 입니당" src="/resources/img/듄.png" width="300px">	
+					<img class="moviePoster" alt="임시 포스터 입니당" src="/resources/img/${movieInfo.poster}" width="300px">	
 				</div>
 				
 				<div class="textArea_movieInfo">
@@ -99,13 +99,10 @@
 							<button id="buyBtn_2" class="btn_buy_btn" onclick="location.href='../purchase/subscribe2?movieId=${movieInfo.movieId}'">구독하기(베이직)</button>
 							<button id="buyBtn_3" class="btn_buy_btn" onclick="location.href='../purchase/subscribe3?movieId=${movieInfo.movieId}'">구독하기(프리미엄)</button>
 							</c:if>
+							<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
+							<%@include file="rating.jsp" %>
 						</div>
-					</div>
-					<div class="buttons">
-						<%@include file="rating.jsp" %>
-						<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
-					<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/4xnsmyI5KMQ?si=_oi5Mhmnp7wnfJeB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-					</div>					
+					</div>				
 				</div>
 			</div>	
 					<!-- 댓글 영역 -->
