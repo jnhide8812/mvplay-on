@@ -82,8 +82,15 @@
 						</div>
 					<div class="buttons">
 						<div class="inlineBlock">
-							<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
-							<c:if test="${member.ugrade != 0 }">
+							<c:choose>
+								<c:when test="${member.userId == null }">
+								<button id="subscribeBtn" class="btn" onclick="javascript:btns()">구독하기</button>
+								</c:when>
+								<c:when test="${member.userId != null }">
+								<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
+								</c:when>
+							</c:choose>
+							<c:if test="${member.userId != null }">
 							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
 							</c:if>
 							<c:if test="${member.ugrade == 0}">
@@ -375,6 +382,12 @@ $(document).on('click', '.delete_reply_btn', function(e){
 	});		
 		
 });	
+
+//로그인 안하고 구매, 구독 시도 시...
+function btns(){
+	alert("로그인 이후 이용 가능합니다.");
+	location.href = "/member/login";
+}
 
 /*보고 싶어요
 $(".btn_like_btn").on('click', function(e){
