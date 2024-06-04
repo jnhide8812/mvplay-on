@@ -7,29 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>MVPlayer</title>
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/movie/movieSearch.css">
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<style>
-li {
-	list-style: none;
-}
-
-#container {
-	width: 1900px;
-	background-color: #000000;
-}
-
-.main_content {
-	width: 1900px;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	padding: 86px 240px 0 330px;
-}
-
-p {
-	color: white;
-}
-</style>
 </head>
 <body>
 <div id="container">
@@ -40,22 +20,20 @@ p {
 		<div class="main_content">
 		    <div class="search_area">
 		        <c:forEach items="#{movieList}" var="movieList">
-		            <div>
-			            <ul>
-			                <li>
-			                    <a href="/movie/movieDetail?movieId=${movieList.movieId}">
-			                        <img src="/resources/img/${movieList.poster}" width="100px">
-			                    </a>
-			                </li>
-			                <li>
-			                    <div>
-			                        <p>${movieList.movieTitle}</p>
-			                        <p>${movieList.cate1}</p>
-			                        <p>${movieList.movieDate}</p>
-			                    </div>
-			                </li>
-			            </ul>    
+		            <div class="ls">
+		               <a href="/movie/movieDetail?movieId=${movieList.movieId}">
+			              <img src="/resources/img/${movieList.poster}" class="res">
+			           </a>
 		            </div>
+		            <div class="rs">
+			            <ul>
+			                <li class="tt">${movieList.movieTitle}</li>
+			                <li class="info">
+			                	<span>${movieList.cate1}</span>
+			               		<span>${movieList.movieDate}</span>
+			                </li>
+			            </ul> 
+			       </div> 
 		        </c:forEach>
 		    </div>
 		</div>
