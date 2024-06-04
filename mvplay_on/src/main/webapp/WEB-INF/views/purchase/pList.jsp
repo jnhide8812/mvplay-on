@@ -25,7 +25,7 @@
 
                     <c:forEach items="${list}" var="list">
                         <!-- 각 영화 정보 표시 -->
-                         <input type="hidden" name="userId" value="${list.userId}">
+                         <%-- <input type="hidden" name="userId" value="${list.userId}"> --%>
   						 <input type="hidden" name="movieId" value="${list.movieId}">
                         <ul>
                             <li><a class="move" href="/movie/movieDetail?movieId=${list.movieId}">

@@ -104,7 +104,7 @@
 
 
 $(document).ready(function() {
-    alert("vod script");
+   
 	<%-- var apiKey = '<%= ApiUtil.getProperty("imp.api.key") %>';
 	var secretKey = '<%= ApiUtil.getProperty("imp.api.secretkey") %>';
 	var impCode = '<%= ApiUtil.getProperty("imp.code") %>'; --%>

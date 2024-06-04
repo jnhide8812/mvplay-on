@@ -78,6 +78,7 @@ public class PurchaseController {
 			return "redirect:/member/login";
 		}
 		//구매 또는 대여 판단
+
 		if ("rent".equals(selectedMethod)) {
 			purchaseService.enrollPurchase_2(pvo);
 			logger.info("enrollPurchase_2");
@@ -115,9 +116,8 @@ public class PurchaseController {
 
 	// 구매 취소(환불)
 	@PostMapping("/purchase/pList")
-	public String refundPost(@RequestParam("movieId") int movieId, MemberVO member, PurchaseViewVO pview, Model model,
-			HttpServletRequest request) {
-		logger.info("POST purchase/refund........... ");
+	public String refundPost(@RequestParam("movieId") int movieId, MemberVO member, PurchaseViewVO pview, Model model, HttpServletRequest request) {
+		logger.info("POST purchase/refund........... "+member);
 		System.out.println("puschaseVeiwVO ; "+pview );
 		String userId = member.getUserId();
 
