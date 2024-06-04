@@ -63,6 +63,7 @@ private static final Logger logger = LoggerFactory.getLogger(ReplyController.cla
 		RepService.replyUpdate(vo);
 	}
 	
+	
 	//댓글 삭제
 	@PostMapping("/replyDelete")
 	public void replyDeletePOST(ReplyVO vo) {

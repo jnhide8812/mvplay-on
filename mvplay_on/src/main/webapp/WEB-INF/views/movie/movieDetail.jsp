@@ -315,13 +315,14 @@ $(document).on('click', '.update_reply_btn', function(e){
 		
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
+	//const replyNum = '${replyNum}';
 	
 	e.preventDefault();
 	let replyNum = $(this).attr("href");		 
-	let popUrl = "/movie/replyUpdate?replyNum=" + replyNum + "&movieId=" + movieId + "&userId=" + userId;	
+	let popUrl = "/movie/replyUpdate?replyNum=" + replyNum + "&movieId=" + '${movieInfo.movieId}' + "&userId=" + '${member.userId}';	
 	let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes"	
 		
-	window.open(popUrl,"리뷰 수정",popOption);			
+	window.open(popUrl,"리뷰 수정 버튼 눌림",popOption);			
 	 
 });	
 

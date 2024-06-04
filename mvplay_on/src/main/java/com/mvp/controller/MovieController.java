@@ -59,7 +59,6 @@ public class MovieController {
 		
 	}
 	
-	
 	/*
 	//영화 디테일 확인
 	@GetMapping("movieDetail")

@@ -104,7 +104,7 @@
 </head>
 <body>
 <input type="hidden" value="${movieInfo.movieId}" name="movieId">
-
+<input type="hidden" value='${replyInfo.replyNum}' name="replyNum">
 <div class="wrapper_div">
 		<div class="subject_div">
 			리뷰 수정
@@ -126,7 +126,7 @@
 			</div>-->
 			<div class="content_div">
 				<h4>리뷰</h4>
-				<textarea name="replyContent">${replyInfo.replyContent }</textarea>
+				<textarea name="replyContent">${replyInfo.replyContent}</textarea>
 			</div>
 		</div>
 		
@@ -147,12 +147,14 @@
 	$(".update_btn").on("click", function(e){
 		const movieId = '${movieInfo.movieId}';
 		const userId = '${userId}';
+		const replyNum = '${replyInfo.replyNum}';
 		const rating = $("select").val();
 		const replyContent = $("textarea").val();
 		const data = {
 				movieId : movieId,
 				userId : userId,
 				//rating : rating,
+				replyNum : replyNum,
 				replyContent : replyContent
 		}
 		console.log("movieId 업데이트 : "+ movieId);
@@ -163,8 +165,9 @@
 			success : function(result){
 				$(opener.location).attr("href", "javascript:replyListInit();");
 				window.close();
-			}
-			
+				console.log("전달된 내용 " + replyContent);		
+				console.log("replyNum : "+ replyNum);
+			}	
 		});
 		
 	});

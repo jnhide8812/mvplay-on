@@ -26,9 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 댓글 수정 -->
 	<update id="replyUpdate">
-	   update reply
-	       set replyContent = #{replyContent}
-	       where replyNum = #{replyNum}
+	   update reply set replyContent = #{replyContent}
+	   where replyNum = #{replyNum}
 	</update>
 	
 	<select id="getUpdateReply" resultType="com.mvp.model.ReplyVO">
