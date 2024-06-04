@@ -139,10 +139,8 @@
 						<td><fmt:formatDate value="${list.expiredDate}" pattern="yyyy-MM-dd" /></td>
 						<td>
 							
-							<!-- 환불 진행사항 보기 --> 
+						<!-- 환불 진행사항 보기 --> 
 						<!-- <c:if test="${empty list.refundStatus && list.buyPrice != 0}"><a href="/admin/refund?id=${list.id }">환불하기</a></c:if> -->
-						
-						
 						<c:if test="${list.startDate<list.expiredDate  }">
 							<a href="/admin/refund?id=${list.id }"><c:if test="${empty list.refundStatus}">환불하기</c:if></a>
 						</c:if>
