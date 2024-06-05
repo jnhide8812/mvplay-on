@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.mvp.mapper.WishListMapper">
+	<!-- 위시리스트 추가 -->
+	<insert id="insertWishList">
+		INSERT INTO wishList(userId, movieId, wish) values(#{userId}, #{movieId}, #{wish})
+	</insert>
+	
+	<!-- 위시리스트 수정 값 변경 취소:0, 좋아요:1, 사용여부 고민중 -->
+	<update id="updateWishList">
+		UPDATE wishList 
+		SET wish = #{wish}
+		WHERE id = #{id}
+    </update>
+    
+    <!-- 위시리스트 삭제 -->
+	<delete id="deleteWishList">
+		DELETE FROM wishList WHERE id=#{id}
+	</delete>
+	
+	<!-- 전체 위시리스트 출력 -->
+  	<select id="getWishList" resultType="com.mvp.model.MovieVO">
+	  	SELECT /*+INDEX_DESC(movie SYS_C008625) */ m.movieId, m.movieTitle, m.cate1,m.cate2, m.movieDate, m.movieCheck, m.poster 
+		FROM movie m
+		JOIN wishList w
+		ON m.movieId =  w.movieId
+	    ORDER BY w.id desc, m.movieDate desc
+  	</select> 
+  
+  
+</mapper>

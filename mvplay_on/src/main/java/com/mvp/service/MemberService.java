@@ -22,4 +22,7 @@ public interface MemberService {
 	//개인 별점 영화, 별점순 정렬, 개봉일순 정렬
 	public List<MovieVO> getUserRatingList(MemberVO member);
 
+	//개인 위시리스트 출력
+	public List<MovieVO> getUserWishList(MemberVO member);
+	
 }

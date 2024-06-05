@@ -52,4 +52,9 @@ public class MemberServiceImpl implements MemberService {
 	public List<MovieVO> getUserRatingList(MemberVO member) {
 		return membermapper.getUserRatingList(member);
 	}
+
+	@Override
+	public List<MovieVO> getUserWishList(MemberVO member) {
+		return membermapper.getUserWishList(member);
+	}
 }

@@ -146,8 +146,6 @@ public class MainController {
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
 		if(mvo!=null) { //세션이 있는 경우
-			logger.info("mvo:::"+mvo);
-			
 			List<MovieVO> movieList = memberService.getUserRatingList(mvo);
 			model.addAttribute("movieList", movieList);
 			model.addAttribute("result", "notEmpty");
@@ -160,8 +158,23 @@ public class MainController {
 	}
 	
 	@GetMapping("/movie/wishList")
-	public void getWishList() throws Exception {
+	public void getWishList(HttpServletRequest request, Model model) throws Exception {
 		logger.info("getWishList");
+		
+		//세션 가져오기!!
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		
+		if(mvo!=null) { //세션이 있는 경우
+			List<MovieVO> movieList = memberService.getUserWishList(mvo);
+			model.addAttribute("movieList", movieList);
+			model.addAttribute("result", "notEmpty");
+		}
+		else {
+			//로그인이 없으면 결과창 empty
+			model.addAttribute("result", "empty");
+		}
+		
 	}
 	
 	

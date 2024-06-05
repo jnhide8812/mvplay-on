@@ -33,4 +33,15 @@
 	    WHERE r.userId = #{userId} 
 	    ORDER BY r.rating desc, m.movieDate desc
   	</select> 
+  	
+  	<!-- 개인 위시리스트 출력 -->
+  	<select id="getUserWishList" resultType="com.mvp.model.MovieVO">
+	  	SELECT /*+INDEX_DESC(movie SYS_C008625) */ m.movieId, m.movieTitle, m.cate1,m.cate2, m.movieDate, m.movieCheck, m.poster 
+		FROM movie m
+		JOIN wishList w
+		ON m.movieId =  w.movieId
+	    WHERE w.userId = #{userId} 
+	    ORDER BY w.regDate, m.movieDate desc
+  	</select> 
+  	
   </mapper>
