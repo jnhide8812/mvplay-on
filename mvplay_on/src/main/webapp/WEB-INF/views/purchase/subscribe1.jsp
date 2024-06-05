@@ -93,10 +93,10 @@
 					<h2 class="sub_tit">결제 정보만 입력하면 바로 감상할 수 있어요</h2>
 				</div>
 				<ul class="payment">
-					<li><input type="radio" name="payment" value="card">카드결제</li>
-					<li><input type="radio" name="payment" value="카카오페이">카카오페이</li>
+				<!-- 	<li><input type="radio" name="payment" value="card">네이버페이</li>
+					<li><input type="radio" name="payment" value="카카오페이">토스페이</li>
 				
-				
+				 -->
 				
 					<c:choose>
 						<c:when test="${period == '1개월'}">
