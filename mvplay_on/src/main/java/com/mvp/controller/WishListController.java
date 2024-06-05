@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mvp.model.MemberVO;
 import com.mvp.model.WishListVO;
@@ -29,7 +30,7 @@ public class WishListController {
 	//보고싶어요 등록 
 	@ResponseBody
 	@PostMapping("/wish")
-	public ResponseEntity<String> postMovieWish(HttpServletRequest request, WishListVO wvo) {
+	public ResponseEntity<String> postMovieWish(HttpServletRequest request, WishListVO wvo, RedirectAttributes rttr) {
 		logger.info("위시리스트 wvo::"+wvo);
 		
 		//세션 가져오기!!
@@ -46,14 +47,16 @@ public class WishListController {
 			WishListVO myWishVO = new WishListVO();
 			myWishVO = wishService.selectUserWish(wvo);
 			
-			//2. 기존에 별점 점수가 없다면 인서트
+			//2. 기존에 위시리스트가 없다면 인서트
 			if (myWishVO ==null) {
 				wishService.insertWishList(wvo);
+				rttr.addAttribute("result", "보고싶어요가 등록되었습니다.");
 				
 			}else {
-				//기존 별점이 있다면 삭제
+				//기존 위시리스트가 있다면 삭제
 				wvo.setId(myWishVO.getId());
 				wishService.deleteWishList(wvo);
+				rttr.addAttribute("result", "보고싶어요가 삭제되었습니다.");
 			}
 			
 			return new ResponseEntity<>("ok", HttpStatus.OK);

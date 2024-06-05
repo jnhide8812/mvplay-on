@@ -390,21 +390,33 @@ function btns(){
 	location.href = "/member/login";
 }
 
-/*보고 싶어요
+/* 보고 싶어요 버튼 */
 $(".btn_like_btn").on('click', function(e){
 	
 	e.preventDefault();
+
+	//AJAX 요청 보내기
+	let formData = new FormData();
+	formData.append('userId', '${member.userId}'); // userId 추가
+	formData.append('movieId','${movieInfo.movieId}' ); //movieId
 	
-	const userId = '${member.userId}';
-	const movieId = '${movieInfo.movieId}';
-	
-	console.log("userId for like : "+${member.userId});
-	console.log("movieId  for like : "+${movieInfo.movieId});
-	
-	if(userId === ""){
-		alert("로그인 후 이용하실 수 있습니다.");
-	}	
+	$.ajax({
+		url : '/movie/wish',
+		processData: false,
+        contentType: false,
+        data: formData,
+        type: 'POST',
+        success: function(ok) {
+        	alert("보고싶어요에 등록되었습니다.");
+            console.log("평가가 성공적으로 전송되었습니다.");
+        },
+        error: function (request, status, error) {
+            alert("로그인 해주세요.");
+        
+        }
+	});
 });
+
 
 //구매
 $(".btn_buy_btn").on('click', function(e){
