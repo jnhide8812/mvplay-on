@@ -59,7 +59,7 @@
 	<insert id="enrollRefund">
 		insert into refund( id, refundPrice, userId,
 		refundDate,refundStatus) values( #{id}, #{refundPrice}, #{userId},
-		sysdate, "환불신청" )
+		sysdate, '환불신청' )
 	</insert>
 
 	<!-- 구매한 영화 목록보기(pList) -->

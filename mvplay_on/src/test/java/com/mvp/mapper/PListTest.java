@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mvp.model.PurchaseVO;
+import com.mvp.model.RefundVO;
 
 
 
@@ -43,20 +44,20 @@ public class PListTest {
 	 * }
 	 */
     
-    @Test 
-    public void refundTest() {
-    	PurchaseVO vo = new PurchaseVO();
+ 
+    @Test
+    public void RefundTest() {
+    	RefundVO vo = new RefundVO();
     	
-    	vo.setId(2);
+    	int id = 2;
+    	String userId ="1";
+    	vo.setId(id);
+    	vo.setUserId(userId);
     	
-    	PurchaseVO result = mapper.getBuyInfo(vo);
-    	
-    	System.out.println(result);
-    	
+    	mapper.enrollRefund(vo);
     	
     	
     }
-    
     
     
     

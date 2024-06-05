@@ -19,11 +19,13 @@
 			<c:if test="${not empty list}">
 				<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
 				<input type="hidden" name="userId" value="${member.userId}">
+				
 				<div class="ai_list">
 				<c:forEach items="${list}" var="list">
 	                <div class="watch">
 	                   <!-- 각 영화 정보 표시 -->
-	                   <%--  <input type="hidden" name="userId" value="${list.userId}"> --%>
+	                     <input type="hidden" name="movieId" value="${list.movieId}"> 
+	                     <input type="hidden" name="id" value="${list.id}">
 	                   <ul>
 							<li>
 								<a class="move" href="/movie/movieDetail?movieId=${list.movieId}">

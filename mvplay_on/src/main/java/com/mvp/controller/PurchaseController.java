@@ -115,13 +115,12 @@ public class PurchaseController {
 
 		// model.addAttribute("refundInfo", rvo.getRefundPrice());
 		List<PurchaseViewVO> list = purchaseService.getPList(mvo.getUserId());
-
+		
 		model.addAttribute("list", list);
-
 	}
 
 	@GetMapping("/purchase/refund")
-	public void refundPage(Model model, PurchaseViewVO pview, PurchaseVO pvo, HttpServletRequest request) {
+	public void refundPage(Model model, PurchaseViewVO pview, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 
@@ -129,14 +128,14 @@ public class PurchaseController {
 		/* model.addAttribute("purchaseInfo", purchaseService.getBuyInfo(pview)); */
 		model.addAttribute("refundInfo",purchaseService.getRefund(pview.getId()));
 		logger.info("getmappingRefund" + pview);
-		purchaseService.getRefund(pview.getId());
-		logger.info("get refund");
+	
 
 	}
 
 	// 환불 신청
 	@PostMapping("/purchase/refund")
 	public String refundPost(@RequestParam("movieId") int movieId, MemberVO member) {
+		System.out.println("postRefund");
 		String userId = member.getUserId();
 
 		RefundVO rvo = new RefundVO();
@@ -145,10 +144,10 @@ public class PurchaseController {
 		rvo.setId(movieId);
 
 		purchaseService.refund(rvo);
-		System.out.println();
+		System.out.println("purchaseService.refund");
 		// refund table 등록
-		int result = purchaseService.enrollRefund(rvo);
-		System.out.println("result: " + result);
+		purchaseService.enrollRefund(rvo);
+		
 
 		return "redirect:/purchase/refund";
 	}

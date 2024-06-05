@@ -20,6 +20,7 @@
 	<!-- 영화 구매 정보 영역 -->
 	<div class="purchase_table_area">
 		<%@ include file="../includes/header.jsp"%>
+		<%-- <%@include file="../includes/nav.jsp"%> --%>
 	<form action="/purchase/refund" method="post" id="refundForm">		
 	
 		<input type="hidden" name="id" value='<c:out value="${refundInfo.id}"/>' >
@@ -30,7 +31,7 @@
 				
 			<tr>
 				<th>영화 제목</th>
-				<td><a class="move" href='<c:out value="${refundInfo.movieId}"/>'><c:out value="${refundInfo.movieTitle}"/></a></td>
+				<td><c:out value="${refundInfo.movieTitle}"/></td>
 			</tr>
 			<tr>
 				<th>구매일</th><td><fmt:formatDate value="${refundInfo.startDate}" pattern="yyyy-MM-dd" /></td>
@@ -38,20 +39,17 @@
 			<tr>
 				<th>환불 금액</th><td><c:out value="${refundInfo.buyPrice}"/></td>
 			</tr>
-			<c:if test="${!empty refundInfo.refundStatus}">
-				<input type="hidden" name="refundId" value="${refundInfo.refundId }">
-				<tr>
-					<th>환불 진행 사항</th><td><c:out value="${refundInfo.refundStatus}"/>
-					<c:if test="${refundInfo.refundStatus != '환불완료'}">
-						<input type="submit" value="환불신청">
-					</c:if>
-					</td>
-				</tr>
-			</c:if>
+			<tr>
+				
+			</tr>
+				
+		
+		
 			
 		
 		</table>
 	</form>	
+	<button id="refundBtn">환불 신청</button>
 	</div>
 	</div><!-- wrap -->
 
@@ -61,6 +59,10 @@
 	<%@ include file="../includes/footer.jsp"%>
 </footer>
 
-
+<script>
+$("#refundBtn").click(function(){
+	alert("환불신청이 완료되었습니다");
+}
+</script>
 </body>
 </html>
