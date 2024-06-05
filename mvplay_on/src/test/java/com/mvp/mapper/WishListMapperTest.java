@@ -21,12 +21,20 @@ public class WishListMapperTest {
 	
 	@Test
 	public void wishListMapperTest() {
+		WishListVO vo = new WishListVO();
+		vo.setUserId("admin1");
+		vo.setMovieId(62);
+		
+		mapper.selectUserWish(vo);
+		
+		
+		/*
 		WishListVO wvo = new WishListVO();
 		wvo.setId(7);
 		mapper.deleteWishList(wvo);
 		
 		mapper.getWishList();
-		
+		*/
 		
 		/* 위시리스트 추가
 		WishListVO wvo = new WishListVO();
