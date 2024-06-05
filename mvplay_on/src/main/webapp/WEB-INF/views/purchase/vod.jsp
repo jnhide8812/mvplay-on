@@ -1,6 +1,7 @@
 <%@page import="com.mvp.model.ApiUtil"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
@@ -14,93 +15,107 @@
 
 </head>
 <body>
-  
-<div id="container">
-	
-	<div class="pur_wrap">
-		
-		<form id="movie_move" action="/purchase/vod" method="post">	
-			<div class="subh">
-				<h1 class="contents">구매 컨텐츠</h1>
-			</div>
-		    <input type="hidden" name="userId" value="${member.userId}">
-		    <input type="hidden" name="movieId" value="${movieInfo.movieId}">
-		    <input type="hidden" name="buyPrice" value="${movieInfo.buyPrice}">
-		    <input type="hidden" name="rentalPrice" value="${movieInfo.rentalPrice}">
-		    <div class="content_wrap">
-		        <div class="content_subject"></div>
-		        <div class="content_main">
-		            <div class="pst_img">
-		            	<img src="/resources/img/${movieInfo.poster}">
-		            </div>
-		            <dl>
-		            	<dd class="alone">개별 구매</dd>
-		            	<dt>${movieInfo.movieTitle}</dt>
-		            	<dd><fmt:formatDate value='${movieInfo.movieDate}' pattern='yyyy-MM-dd'/></dd>
-		            	<dd>${movieInfo.cate1}</dd>
-		            	<dd>${movieInfo.cate2}</dd>
-		            </dl>
-		       	</div>
-		       	<div class="price_section">
-					<ul>
-						<li class="j">정가 | </li>
-						<li>소장: ${movieInfo.buyPrice}원 /</li>
-						<li>대여: ${movieInfo.rentalPrice}원</li>
-					</ul>
-		            <p class="explain">*이벤트, 쿠폰, 결제 수단 및 캐시 충전 금액 등에 따라 가격이 달라질 수 있어요</p>
+
+	<div id="container">
+
+		<div class="pur_wrap">
+
+			<!-- 에러 메시지 출력 -->
+			<c:if test="${not empty errorMessage}">
+				<div style="color: red;">${errorMessage}</div>
+			</c:if>
+
+			<form id="movie_move" action="/purchase/vod" method="post">
+				<div class="subh">
+					<h1 class="contents">구매 컨텐츠</h1>
 				</div>
-				<div class="buy_wrap">
-		            <h2>구매 방법</h2>
-		            <div class="way_buy" id="howtobuy">
-		                <ul>
-		                    <li class="j"><input type="radio" name="buymethod" value="collect"> 소장</li>
-		                    <li>${movieInfo.buyPrice}원</li>
-		                    <li>지금 구매하면 평생 감상할 수 있어요</li>
-		                </ul>
-		                <ul>    
-		                    <li><input type="radio" name="buymethod" value="rent"> 대여</li>
-		                    <li>${movieInfo.rentalPrice}원</li>
-		                    <li>지금 구매하면 7일 동안 대여할 수 있어요</li>
-		                </ul>
-		            </div>
-				</div>
-				<div class="pway_wrap">
-		            <h2>결제방법</h2>
-		                <div class="way_buy" id="howtopay">
-		                	<ul class="how">
-		                		<li><input type="radio" name="paymentMethod" value="card"> 카드 결제</li>
-		                		<li><input type="radio" name="paymentMethod" value="kakao"> 카카오페이</li>
-		                	</ul>
-		                </div>
-		                <div class="price_info">
-		                    <ul>
-		                        <li>
-			                        <label id="contentPrice">콘텐츠 가격:
-			                            <c:choose>
-			                                <c:when test="${param.buymethod == 'rent'}">${movieInfo.rentalPrice}원</c:when>
-			                                <c:otherwise>${movieInfo.buyPrice}원</c:otherwise>
-			                            </c:choose>
-			                        </label>
-		                        </li>
-		                        <li>
+				<input type="hidden" name="userId" value="${member.userId}">
+				<input type="hidden" name="movieId" value="${movieInfo.movieId}">
+				<input type="hidden" name="buyPrice" value="${movieInfo.buyPrice}">
+				<input type="hidden" name="rentalPrice"
+					value="${movieInfo.rentalPrice}">
+				<div class="content_wrap">
+					<div class="content_subject"></div>
+					<div class="content_main">
+						<div class="pst_img">
+							<img src="/resources/img/${movieInfo.poster}">
+						</div>
+						<dl>
+							<dd class="alone">개별 구매</dd>
+							<dt>${movieInfo.movieTitle}</dt>
+							<dd>
+								<fmt:formatDate value='${movieInfo.movieDate}'
+									pattern='yyyy-MM-dd' />
+							</dd>
+							<dd>${movieInfo.cate1}</dd>
+							<dd>${movieInfo.cate2}</dd>
+						</dl>
+					</div>
+					<div class="price_section">
+						<ul>
+							<li class="j">정가 |</li>
+							<li>소장: ${movieInfo.buyPrice}원 /</li>
+							<li>대여: ${movieInfo.rentalPrice}원</li>
+						</ul>
+						<p class="explain">*이벤트, 쿠폰, 결제 수단 및 캐시 충전 금액 등에 따라 가격이 달라질 수
+							있어요</p>
+					</div>
+					<div class="buy_wrap">
+						<h2>구매 방법</h2>
+						<div class="way_buy" id="howtobuy">
+							<ul>
+								<li class="j"><input type="radio" name="buymethod"
+									value="collect"> 소장</li>
+								<li>${movieInfo.buyPrice}원</li>
+								<li>지금 구매하면 평생 감상할 수 있어요</li>
+							</ul>
+							<ul>
+								<li><input type="radio" name="buymethod" value="rent">
+									대여</li>
+								<li>${movieInfo.rentalPrice}원</li>
+								<li>지금 구매하면 7일 동안 대여할 수 있어요</li>
+							</ul>
+						</div>
+					</div>
+					<div class="pway_wrap">
+						<h2>결제방법</h2>
+						<div class="way_buy" id="howtopay">
+							<ul class="how">
+								<li><input type="radio" name="paymentMethod" value="card">
+									카드 결제</li>
+								<li><input type="radio" name="paymentMethod" value="kakao">
+									카카오페이</li>
+							</ul>
+						</div>
+						<div class="price_info">
+							<ul>
+								<li><label id="contentPrice">콘텐츠 가격: <c:choose>
+											<c:when test="${param.buymethod == 'rent'}">${movieInfo.rentalPrice}원</c:when>
+											<c:otherwise>${movieInfo.buyPrice}원</c:otherwise>
+										</c:choose>
+								</label></li>
+								<%-- <li>
 			                        <label id="totalAmount">총 결제 금액:
 			                            <c:choose>
 			                                <c:when test="${param.buymethod == 'rent'}">${movieInfo.rentalPrice}원</c:when>
 			                                <c:otherwise>${movieInfo.buyPrice}원</c:otherwise>
 			                            </c:choose>
 			                        </label>
-		                        </li>
-		                    </ul>
-		                </div>
-		            <div class="btn_buy">
-		                <button id="purchaseBtn" type="button" class="sbtn">결제하기</button>
-		            </div>
-		        </div>
-		    </div> <!-- content_wrap -->
-		</form>
-	</div>  <!-- ps_main -->
-</div>  <!-- container -->
-<script>
+		                        </li> --%>
+							</ul>
+						</div>
+						<div class="btn_buy">
+							<button id="purchaseBtn" type="button" class="sbtn">결제하기</button>
+						</div>
+					</div>
+				</div>
+				<!-- content_wrap -->
+			</form>
+		</div>
+		<!-- ps_main -->
+	</div>
+	<!-- container -->
+	<script>
 
 
 $(document).ready(function() {
@@ -155,8 +170,8 @@ $(document).ready(function() {
 	 
 	});
 	</script>
-	</body>
-	</html>
+</body>
+</html>
 
 
 <%-- function requestPay(itemName) {

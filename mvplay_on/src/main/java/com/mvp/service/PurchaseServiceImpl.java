@@ -87,6 +87,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public PurchaseViewVO getRefund(int id) {
 		return purchasemapper.getRefund(id);
 	}
+	//중복구매 방지
+	@Override
+	public int checkPurchase(PurchaseVO pvo) {
+		return purchasemapper.checkPurchase(pvo);
+	}
+	
 
 	
 	

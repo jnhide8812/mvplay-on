@@ -54,7 +54,6 @@ public class PurchaseController {
 	 * IamportClient(apiKey, secretKey); }
 	 */
 
-
 	// 개별 구매 페이지 이동
 	@GetMapping("/purchase/vod")
 	public void purchasePageGET(@RequestParam("movieId") int movieId, HttpServletRequest request, Model model) {
@@ -63,7 +62,7 @@ public class PurchaseController {
 
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
-		
+
 		model.addAttribute("memberInfo", mvo.getUserId());
 		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
 		logger.info(" getmapping vod" + movieId);
@@ -74,13 +73,20 @@ public class PurchaseController {
 	@PostMapping("/purchase/vod")
 	public String purchasePagePost(@RequestParam("buymethod") String selectedMethod, PurchaseVO pvo,
 			HttpServletRequest request, Model model) {
-		logger.info("purchasePagePost()........." + pvo);
-
+	
 		if (pvo.getUserId() == null) {
 			return "redirect:/member/login";
 		}
-		// 구매 또는 대여 판단
 
+		// 중복구매확인-> detail에서 작업해주기
+		
+		/*
+		 * int count = purchaseService.checkPurchase(pvo);
+		 * 
+		 * if (count > 0) { model.addAttribute("errorMessage", "이미 구매한 영화입니다."); return
+		 * "purchase/vod"; }
+		 */
+		// 구매 또는 대여 판단
 		if ("rent".equals(selectedMethod)) {
 			purchaseService.enrollPurchase_2(pvo);
 			logger.info("enrollPurchase_2");
@@ -90,18 +96,7 @@ public class PurchaseController {
 			logger.info("enrollPurchase_1");
 		}
 
-		return "redirect:/movie/purchaseDetail";
-	}
-
-	@GetMapping("/movie/purchaseDetail")
-	public void purchaseDetailPage(HttpServletRequest request,Model model) {
-		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO) session.getAttribute("member");
-		
-		model.addAttribute("memberInfo", mvo.getUserId());
-
-		logger.info("purchaseDetail로 이동");
-
+		return "redirect:/movie/movieDetail";
 	}
 
 	// 고객 구매 리스트
@@ -118,13 +113,11 @@ public class PurchaseController {
 
 	}
 
-	
-
 	@GetMapping("/purchase/refund")
-	public void refundPage(Model model,PurchaseViewVO pview ,HttpServletRequest request) {
-		logger.info("getmappingRefund" +pview);
+	public void refundPage(Model model, PurchaseViewVO pview, HttpServletRequest request) {
+		logger.info("getmappingRefund" + pview);
 		HttpSession session = request.getSession();
-		
+
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		purchaseService.getRefund(pview.getId());
 		logger.info("get refund");

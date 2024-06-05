@@ -83,7 +83,12 @@
 		]]>    
 	
 	</select>
-
+	
+	<!-- 중복구매 방지(구매자 확인) -->
+	 <select id="checkPurchase" parameterType="com.mvp.model.PurchaseVO" resultType="int">
+        select count(*) from purchase
+        where userId=#{userId} and  movieId=#{movieId}
+    </select>
 
 
 
