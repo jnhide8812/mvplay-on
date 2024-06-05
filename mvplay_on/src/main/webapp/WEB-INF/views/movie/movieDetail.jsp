@@ -92,8 +92,10 @@
 								</c:when>
 							</c:choose>
 							<!-- 로그인이 되어 있고, movieCheck의 값이 1(구매) or 3(대여, 구매 가능)일 경우 구매 버튼이 보임 -->
-							<c:if test="${member.userId != null && movieInfo.movieCheck == 1 || movieInfo.movieCheck == 3 }">
-							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
+							<c:if test="${movieInfo.movieCheck == 1 || movieInfo.movieCheck == 3 }">
+								<c:if test="${member.userId != null}">
+								<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
+								</c:if>
 							</c:if>
 							<c:if test="${member.ugrade == 0}">
 							<p>관리자 전용 각 단계 이동 버튼</p>
