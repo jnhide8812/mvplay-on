@@ -8,26 +8,8 @@
 <meta charset="UTF-8">
 <title>MVPlayer</title>
 <link rel="stylesheet" href="/resources/css/main.css">
-<link rel="stylesheet" href="/resources/css/movie/movieSearch.css">
+<link rel="stylesheet" href="/resources/css/movie/ratingMain.css">
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
-<style>
-.loginBtn{
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    width: 300px;
-    height: 50px;
-    color:#ffffff;
-	background-color: #F82F62;
-	border: 1px solid #F82F62;
-	
-}
-
-</style>
-
 </head>
 <body>
 <div id="container">
@@ -37,39 +19,39 @@
 		<%@include file="../includes/nav.jsp"%>
 		<div class="main_content">
 		    <div class="search_area">
-		    
-		    
 		    <c:if test="${result !='empty' }">
+		    	<h1 class="list_name">시청하신 작품의 별점을 선택해주세요.</h1>
+		        <div class="content">
 		        <c:forEach items="#{movieList}" var="movieList">
-		            <div class="ls">
-		               <a href="/movie/movieDetail?movieId=${movieList.movieId}">
-			              <img src="/resources/img/${movieList.poster}" class="res">
-			           </a>
-		            </div>
-		            <div class="rs">
-			            <ul>
+		             	<ul class="info">
+		               		<li>
+								<a href="/movie/movieDetail?movieId=${movieList.movieId}">
+			             			 <img src="/resources/img/${movieList.poster}" class="res">
+			           			</a>
+							</li>
 			                <li class="tt">${movieList.movieTitle}</li>
-			                <li class="info">
+			                <li class="star">
 			                	<img class="star_rate" src="/resources/icon/star-fill.svg">
 			               		<span> ${movieList.rating}</span>
-			                	<span>${movieList.cate1}</span>
+			               	</li>
+			               	<li>
+			               		<span>${movieList.cate1}</span>
 			               		<span>${movieList.movieDate}</span>
-			               		
-			                </li>
+			               	</li>
 			            </ul> 
-			       </div> 
 		        </c:forEach>
+		        </div>
 		    </c:if>
 		    
 		    
 		    <c:if test="${result =='empty' }">
-		    	<div>
-		    	<button class="loginBtn">로그인을 해주세요</button>
+		    	<div class="lg_before">
+		    		<button class="loginBtn">로그인을 해주세요</button>
 		    	</div> 
 		    </c:if>    
 		    
 		    </div>
-		</div>
+		</div>  <!-- main_content -->
 		
 		
 		<!--사용 안할듯 페이지이동 -->
