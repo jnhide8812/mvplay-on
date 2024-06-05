@@ -1,11 +1,11 @@
-package com.mvp.mapper;
+package com.mvp.service;
 
 import java.util.List;
 
 import com.mvp.model.MovieVO;
 import com.mvp.model.WishListVO;
 
-public interface WishListMapper {
+public interface WishListService {
 	//위시리스트 추가
 	public void insertWishList(WishListVO wvo);
 	
@@ -18,5 +18,4 @@ public interface WishListMapper {
 	//개인 위시리스트 출력-중복 위시 방지용
 	public WishListVO selectUserWish(WishListVO wvo);
 	
-
 }

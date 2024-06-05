@@ -28,6 +28,13 @@
 		ON m.movieId =  w.movieId
 	    ORDER BY w.id desc, m.movieDate desc
   	</select> 
+
+  	<!-- 개인 영화에 관한 위시리스트 확인(기존에 위시에 넣은 값이 있다면 중복 방지) -->
+  	<select id="selectUserWish" resultType="com.mvp.model.WishListVO">
+  		SELECT id, userId, movieId, wish, regDate
+		FROM wishList 
+		WHERE userId = #{userId} and movieId = #{movieId}
+  	</select>
   
   
 </mapper>
