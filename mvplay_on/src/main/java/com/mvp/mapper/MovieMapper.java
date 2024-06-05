@@ -32,4 +32,16 @@ public interface MovieMapper {
 	
 	//영화 랭킹용
 	public List<MovieVO> getMovieRank();
+	
+	
+	/* 이하 카테고리별 분류를 위한 임시 조치 */
+	//임시 purchase용
+	public List<MovieVO> getMovieSF();
+	public List<MovieVO> getMovieMystery();
+	public List<MovieVO> getMovieCrime();
+	public List<MovieVO> getMovieAnimation();
+	public List<MovieVO> getMovieDrama();
+	public List<MovieVO> getMovieRomance();
+	public List<MovieVO> getMovieThriller();
+	public List<MovieVO> getMovieComedy();
 }

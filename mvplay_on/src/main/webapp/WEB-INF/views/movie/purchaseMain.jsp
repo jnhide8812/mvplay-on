@@ -25,28 +25,30 @@
 			<div class="show_list">
 				 <section class="list"> <!-- 영화 신작 -->
 					 <c:if test="${listcheck != 'empty'}">
-						<h1 class="list_name">New</h1>
+						<h1 class="list_name">카테고리별</h1>
 						<div class="swiper-container swiper1">
+								<!-- 장르명 -->
+								<h2 style="color: white; font-size: 30px; font-weight: bold; margin-left: 10px;">
+								SF
+								</h2>
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
-										<c:forEach items="${movieList}" var="movieList">
+										<c:forEach items="${movieSF}" var="movieSF">
 											<ul>
 												<li>
-													<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
-														<!--<c:out value="${movieList.poster}"></c:out>-->
-														<!--<c:out value="${movieList.movieTitle}"></c:out>  임시 앵커 -->
-														<img src="/resources/img/${movieList.poster}" class="poster">
+													<a class="move" href="/movie/purchaseDetail?movieId=${movieSF.movieId}">
+														<img src="/resources/img/${movieSF.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/movieDetail?movieId=${movieList.movieId}">
-														<c:out value="${movieList.movieTitle}"></c:out><br>
+													<a class="move" href="/movie/purchaseDetail?movieId=${movieSF.movieId}">
+														<c:out value="${movieSF.movieTitle}"></c:out><br>
 													</a>
 												</li>
 												<li class="iinn">
 													<img class="star_rate" src="/resources/icon/star-fill.svg">
-													<span class="r"><fmt:formatNumber value="${movieList.rating}" pattern="0.00" /></span>
-													<span class="c"><c:out value="${movieList.cate1}"></c:out></span>
+													<span class="r"><fmt:formatNumber value="${movieSF.rating}" pattern="0.0" /></span>
+													<span class="c"><c:out value="${movieSF.cate1}"></c:out></span>
 												</li>		
 											</ul>
 										</c:forEach>
@@ -55,7 +57,6 @@
 						</div> <!-- swiper-container -->	
 					</c:if>
 				</section>
-	
 				<section class="list">  <!-- 영화 랭킹 -->
 					<c:if test="${listcheck != 'empty'}">
 					<h1 class="list_name">Ranking</h1>
@@ -65,12 +66,12 @@
 									<c:forEach items="${movieRank}" var="movieRank">
 										<ul>
 											<li>
-												<a class="move" href="/movie/movieDetail?movieId=${movieRank.movieId}">
+												<a class="move" href="/movie/purchaseDetail?movieId=${movieRank.movieId}">
 													<img src="/resources/img/${movieRank.poster}" class="poster">
 												</a>
 											</li>
 											<li class="subject">
-												<a class="move" href="/movie/movieDetail?movieId=${movieRank.movieId}">
+												<a class="move" href="/movie/purchaseDetail?movieId=${movieRank.movieId}">
 													<c:out value="${movieRank.movieTitle}"></c:out><br>
 												</a>
 											</li>
@@ -99,7 +100,7 @@ let moveForm = $('#moveForm');
 	$(".move").click(function(e) {
 		e.preventDefault();
 		moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr("href") + "'>");
-		moveForm.attr("action", "/movie/movieDetail");
+		moveForm.attr("action", "/movie/purchaseDetail");
 		moveForm.submit();
 	});
 	

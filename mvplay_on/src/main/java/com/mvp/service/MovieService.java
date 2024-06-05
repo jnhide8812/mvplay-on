@@ -36,4 +36,14 @@ public interface MovieService {
 	//영화 랭킹용
 	public List<MovieVO> movieRank();
 	
+	/* 이하 카테고리별 분류를 위한 임시 조치 */
+	//임시 purchase용
+	public List<MovieVO> movieSF();
+	public List<MovieVO> movieMystery();
+	public List<MovieVO> movieCrime();
+	public List<MovieVO> movieAnimation();
+	public List<MovieVO> movieDrama();
+	public List<MovieVO> movieRomance();
+	public List<MovieVO> movieThriller();
+	public List<MovieVO> movieComedy();
 }

@@ -76,5 +76,37 @@ public class MovieServiceImpl implements MovieService {
 		return mapper.getMovieRank();
 	}
 	
+	/* 이하 카테고리별 분류를 위한 임시 조치 */
+	//임시 purchase용
+	public List<MovieVO> movieSF(){
+		return mapper.getMovieSF();
+	}
+	
+	public List<MovieVO> movieMystery() {
+		return mapper.getMovieMystery();
+	}
+	
+	public List<MovieVO> movieCrime(){
+		return mapper.getMovieMystery();
+	}
+	
+	public List<MovieVO> movieAnimation(){
+		return mapper.getMovieAnimation();
+	}
+	
+	public List<MovieVO> movieDrama(){
+		return mapper.getMovieDrama();
+	}
+	
+	public List<MovieVO> movieRomance(){
+		return mapper.getMovieRomance();
+	}
+	public List<MovieVO> movieThriller(){
+		return mapper.getMovieThriller();
+	}
+	
+	public List<MovieVO> movieComedy(){
+		return mapper.getMovieComedy();
+	}
 	
 }

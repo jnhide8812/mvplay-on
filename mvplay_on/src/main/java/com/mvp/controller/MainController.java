@@ -134,8 +134,10 @@ public class MainController {
 	}*/
 	
 	@GetMapping("/movie/purchaseMain")
-	public void getPurchaseMain() throws Exception {
+	public void getPurchaseMain(HttpServletRequest request) throws Exception {
 		logger.info("getPurchaseMain");
+		List<MovieVO> movieSF = movieService.movieSF();
+		request.setAttribute("movieSF", movieSF);
 	}
 	
 	@GetMapping("/movie/ratingMain")
