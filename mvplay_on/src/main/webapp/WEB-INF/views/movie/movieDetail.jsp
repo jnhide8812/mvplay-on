@@ -84,14 +84,15 @@
 					<div class="buttons">
 						<div class="inlineBlock">
 							<c:choose>
-								<c:when test="${member.userId == null }">
+								<c:when test="${member.userId == null }"> <!-- 로그인이 안되어 있을 경우 로그인 화면으로 보내버림 -->
 								<button id="subscribeBtn" class="btn" onclick="javascript:btns()">구독하기</button>
 								</c:when>
-								<c:when test="${member.userId != null }">
+								<c:when test="${member.userId != null }"> <!-- 로그인이 되어있을 경우 구독 페이지로 보내주는 버튼 -->
 								<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
 								</c:when>
 							</c:choose>
-							<c:if test="${member.userId != null }">
+							<!-- 로그인이 되어 있고, movieCheck의 값이 1(구매) or 3(대여, 구매 가능)일 경우 구매 버튼이 보임 -->
+							<c:if test="${member.userId != null && movieInfo.movieCheck == 1 || movieInfo.movieCheck == 3 }">
 							<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
 							</c:if>
 							<c:if test="${member.ugrade == 0}">
