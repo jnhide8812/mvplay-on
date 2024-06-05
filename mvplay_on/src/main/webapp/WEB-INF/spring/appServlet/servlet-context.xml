@@ -35,6 +35,7 @@
       
       <interceptor>
          <mapping path="/purchase/**" />
+         <mapping path="/member/myPage" />
          <beans:bean id="LoginInterceptor"
                class="com.mvp.interceptor.LoginInterceptor"/>
       </interceptor>    

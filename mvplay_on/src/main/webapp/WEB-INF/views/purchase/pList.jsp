@@ -17,9 +17,7 @@
     <div class="main_content">
 	   <form id="refundForm" action="/purchase/refund" method="get">  
 			<c:if test="${not empty list}">
-				<div class="doll_dance">
-					<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
-		        </div>
+				<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
 				<input type="hidden" name="userId" value="${member.userId}">
 				<div class="ai_list">
 				<c:forEach items="${list}" var="list">
