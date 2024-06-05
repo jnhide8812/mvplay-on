@@ -22,6 +22,7 @@ import com.mvp.model.Criteria;
 import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
 import com.mvp.model.RatingVO;
+import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.RatingService;
 
@@ -35,6 +36,9 @@ public class MainController {
 	
 	@Autowired
 	private RatingService ratingService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	
 	/*메인 페이지 이동
@@ -141,16 +145,17 @@ public class MainController {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		if(mvo != null) { //세션이 있는 경우
+		if(mvo!=null) { //세션이 있는 경우
 			logger.info("mvo:::"+mvo);
 			
-			
-			
-			
-			
+			List<MovieVO> movieList = memberService.getUserRatingList(mvo);
+			model.addAttribute("movieList", movieList);
+			model.addAttribute("result", "notEmpty");
 		}
-		
-		
+		else {
+			//로그인이 없으면 결과창 empty
+			model.addAttribute("result", "empty");
+		}
 		
 	}
 	

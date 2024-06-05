@@ -10,6 +10,24 @@
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="/resources/css/movie/movieSearch.css">
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<style>
+.loginBtn{
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    width: 300px;
+    height: 50px;
+    color:#ffffff;
+	background-color: #F82F62;
+	border: 1px solid #F82F62;
+	
+}
+
+</style>
+
 </head>
 <body>
 <div id="container">
@@ -20,7 +38,9 @@
 		<div class="main_content">
 		    <div class="search_area">
 		    
-		        <%-- <c:forEach items="#{movieList}" var="movieList">
+		    
+		    <c:if test="${result !='empty' }">
+		        <c:forEach items="#{movieList}" var="movieList">
 		            <div class="ls">
 		               <a href="/movie/movieDetail?movieId=${movieList.movieId}">
 			              <img src="/resources/img/${movieList.poster}" class="res">
@@ -30,13 +50,24 @@
 			            <ul>
 			                <li class="tt">${movieList.movieTitle}</li>
 			                <li class="info">
+			                	<img class="star_rate" src="/resources/icon/star-fill.svg">
+			               		<span> ${movieList.rating}</span>
 			                	<span>${movieList.cate1}</span>
 			               		<span>${movieList.movieDate}</span>
+			               		
 			                </li>
 			            </ul> 
 			       </div> 
-		        </c:forEach> --%>
-		        
+		        </c:forEach>
+		    </c:if>
+		    
+		    
+		    <c:if test="${result =='empty' }">
+		    	<div>
+		    	<button class="loginBtn">로그인을 해주세요</button>
+		    	</div> 
+		    </c:if>    
+		    
 		    </div>
 		</div>
 		
@@ -70,20 +101,23 @@
 		<!-- 하단 -->
 		<%@include file="../includes/footer.jsp"%>	
 </div>
-    <script>
+<script>
+let loginBtn = $('.loginBtn');
+
+loginBtn.on("click",function(e){
+	e.preventDefault();
+	location.href = '/member/login';
+});
+
+
+
+/* let moveForm = $('#moveForm');
+$(".page_btn a").on("click", function(e){
+    e.preventDefault();
+    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+    moveForm.submit();
+}); */
     
-	    /* let moveForm = $('#moveForm');
-		 
-		
-		$(".page_btn a").on("click", function(e){
-		    
-		    e.preventDefault();
-		    
-		    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
-		    
-		    moveForm.submit();
-		}); */
-    
-    </script>
+</script>
 </body>
 </html>

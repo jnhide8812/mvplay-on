@@ -1,5 +1,7 @@
 package com.mvp.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvp.mapper.MemberMapper;
 import com.mvp.model.MemberVO;
+import com.mvp.model.MovieVO;
 import com.mvp.model.SubscribtionVO;
 
 @Service
@@ -42,8 +45,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void updateMemberGrade(MemberVO member) throws Exception {
 		membermapper.updateMemberGrade(member);
+	}
 
-		
-	
-}
+	//개인이 별점 준 영화 리스트 출력하기  
+	@Override
+	public List<MovieVO> getUserRatingList(MemberVO member) {
+		return membermapper.getUserRatingList(member);
+	}
 }

@@ -45,7 +45,7 @@
 												</li>
 												<li class="iinn">
 													<img class="star_rate" src="/resources/icon/star-fill.svg">
-													<span class="r"><fmt:formatNumber value="${movieList.rating}" pattern="0.00" /></span>
+													<span class="r"><fmt:formatNumber value="${movieList.rating}" pattern="0.0#" /></span>
 													<span class="c"><c:out value="${movieList.cate1}"></c:out></span>
 												</li>		
 											</ul>
