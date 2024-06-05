@@ -38,7 +38,7 @@ public class MovieController {
 	
 	//리뷰 작성
 	@GetMapping("/movie/replyWrite/{userId}")
-	public String replyWriteWindowGET(@PathVariable("userId")int userId, int movieId, Model model) {
+	public String replyWriteWindowGET(@PathVariable("userId")String userId, int movieId, Model model) {
 		MovieVO vo = movieService.getMovieIdTitle(movieId);
 		model.addAttribute("movieId", movieId);
 		model.addAttribute("userId",userId);

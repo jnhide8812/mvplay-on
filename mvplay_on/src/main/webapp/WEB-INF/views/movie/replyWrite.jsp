@@ -150,7 +150,7 @@
 	/* 등록 버튼 */ 
 	$(".enroll_btn").on("click", function(e){
 		const movieId = '${movieId}';
-		const userId = '${userId}';
+		const userId = '${member.userId}';
 		//const rating = $("select").val();
 		const replyContent = $("textarea").val();
 		const data = {
