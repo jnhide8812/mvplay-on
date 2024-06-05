@@ -221,7 +221,7 @@ input.mon {
 	display: flex;
 	justify-content: flex-start;
 	flex-direction: column;
-	
+	color: #ffffff;
 }
 ul.payment {
 	border-radius: 8px;
@@ -273,6 +273,7 @@ button.sbtn {
 	font-weight: 600;
 	width: 320px;
 	height: 55px;
+	cursor: pointer;
 }
 
 input.grade:checked + ul.pink {
