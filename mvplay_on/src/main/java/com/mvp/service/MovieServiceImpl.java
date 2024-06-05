@@ -78,33 +78,35 @@ public class MovieServiceImpl implements MovieService {
 	
 	/* 이하 카테고리별 분류를 위한 임시 조치 */
 	//임시 purchase용
+	@Override
 	public List<MovieVO> movieSF(){
 		return mapper.getMovieSF();
 	}
-	
+	@Override
 	public List<MovieVO> movieMystery() {
 		return mapper.getMovieMystery();
 	}
-	
+	@Override
 	public List<MovieVO> movieCrime(){
-		return mapper.getMovieMystery();
+		return mapper.getMovieCrime();
 	}
-	
+	@Override
 	public List<MovieVO> movieAnimation(){
 		return mapper.getMovieAnimation();
 	}
-	
+	@Override
 	public List<MovieVO> movieDrama(){
 		return mapper.getMovieDrama();
 	}
-	
+	@Override
 	public List<MovieVO> movieRomance(){
 		return mapper.getMovieRomance();
 	}
+	@Override
 	public List<MovieVO> movieThriller(){
 		return mapper.getMovieThriller();
 	}
-	
+	@Override
 	public List<MovieVO> movieComedy(){
 		return mapper.getMovieComedy();
 	}

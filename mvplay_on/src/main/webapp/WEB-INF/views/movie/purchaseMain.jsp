@@ -15,6 +15,15 @@
 <!-- slide js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<style>
+h2{
+	color: white; 
+	font-size: 30px; 
+	font-weight: bold; 
+	margin :10px 0 10px 10px;
+	}
+</style>
+
 </head>
 <body>
 <div id = "container">
@@ -26,9 +35,9 @@
 				 <section class="list"> <!-- 영화 신작 -->
 					 <c:if test="${listcheck != 'empty'}">
 						<h1 class="list_name">카테고리별</h1>
-						<div class="swiper-container swiper1">
+						<div class="swiper-container swiper1" style="margin-bottom: 30px;">
 								<!-- 장르명 -->
-								<h2 style="color: white; font-size: 30px; font-weight: bold; margin-left: 10px;">
+								<h2>
 								SF
 								</h2>
 								<div class="swiper-wrapper">
@@ -55,36 +64,67 @@
 									</div>
 								</div> <!-- swiper-wrapper -->
 						</div> <!-- swiper-container -->	
-					</c:if>
-				</section>
-				<section class="list">  <!-- 영화 랭킹 -->
-					<c:if test="${listcheck != 'empty'}">
-					<h1 class="list_name">Ranking</h1>
-						<div class="swiper-container swiper2">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<c:forEach items="${movieRank}" var="movieRank">
-										<ul>
-											<li>
-												<a class="move" href="/movie/purchaseDetail?movieId=${movieRank.movieId}">
-													<img src="/resources/img/${movieRank.poster}" class="poster">
-												</a>
-											</li>
-											<li class="subject">
-												<a class="move" href="/movie/purchaseDetail?movieId=${movieRank.movieId}">
-													<c:out value="${movieRank.movieTitle}"></c:out><br>
-												</a>
-											</li>
-											<li class="iinn">
-												<img class="star_rate" src="/resources/icon/star-fill.svg">
-												<span class="r"><c:out value="${movieRank.rating}"></c:out></span>
-												<span class="c"><c:out value="${movieRank.cate1}"></c:out></span>
-											</li>		
-										</ul>
-									</c:forEach>
-								</div>
-							</div>
-						</div> <!-- swiper2 -->
+						
+						<div class="swiper-container swiper1">
+								<!-- 장르명 -->
+								<h2>
+								미스터리
+								</h2>
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<c:forEach items="${movieMystery}" var="movieMystery">
+											<ul>
+												<li>
+													<a class="move" href="/movie/purchaseDetail?movieId=${movieMystery.movieId}">
+														<img src="/resources/img/${movieMystery.poster}" class="poster">
+													</a>
+												</li>
+												<li class="subject">
+													<a class="move" href="/movie/purchaseDetail?movieId=${movieMystery.movieId}">
+														<c:out value="${movieMystery.movieTitle}"></c:out><br>
+													</a>
+												</li>
+												<li class="iinn">
+													<img class="star_rate" src="/resources/icon/star-fill.svg">
+													<span class="r"><fmt:formatNumber value="${movieMystery.rating}" pattern="0.0" /></span>
+													<span class="c"><c:out value="${movieMystery.cate1}"></c:out></span>
+												</li>		
+											</ul>
+										</c:forEach>
+									</div>
+								</div> <!-- swiper-wrapper -->
+						</div> <!-- swiper-container -->
+						
+						<div class="swiper-container swiper1">
+								<!-- 장르명 -->
+								<h2>
+								범죄
+								</h2>
+								<div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<c:forEach items="${movieCrime}" var="movieCrime">
+											<ul>
+												<li>
+													<a class="move" href="/movie/purchaseDetail?movieId=${movieCrime.movieId}">
+														<img src="/resources/img/${movieCrime.poster}" class="poster">
+													</a>
+												</li>
+												<li class="subject">
+													<a class="move" href="/movie/purchaseDetail?movieId=${movieCrime.movieId}">
+														<c:out value="${movieCrime.movieTitle}"></c:out><br>
+													</a>
+												</li>
+												<li class="iinn">
+													<img class="star_rate" src="/resources/icon/star-fill.svg">
+													<span class="r"><fmt:formatNumber value="${movieCrime.rating}" pattern="0.0" /></span>
+													<span class="c"><c:out value="${movieCrime.cate1}"></c:out></span>
+												</li>		
+											</ul>
+										</c:forEach>
+									</div>
+								</div> <!-- swiper-wrapper -->
+						</div> <!-- swiper-container -->
+							
 					</c:if>
 				</section>
 			</div> <!-- showlist -->

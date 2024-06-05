@@ -94,7 +94,7 @@ public class MainController {
 		model.addAttribute("movieInfo", movieService.movieGetDetail(movieId));
 	}*/
 	
-	@GetMapping("/movie/movieDetail")
+	@GetMapping(value = {"/movie/movieDetail", "/movie/purchaseDetail"})
 	public void movieGetInfoGET(HttpServletRequest request, int movieId, Model model) {
 		//세션 가져오기!!
 		HttpSession session = request.getSession();
@@ -138,6 +138,27 @@ public class MainController {
 		logger.info("getPurchaseMain");
 		List<MovieVO> movieSF = movieService.movieSF();
 		request.setAttribute("movieSF", movieSF);
+		
+		List<MovieVO> movieMystery = movieService.movieMystery();
+		request.setAttribute("movieMystery", movieMystery);
+		
+		List<MovieVO> movieCrime = movieService.movieCrime();
+		request.setAttribute("movieCrime", movieCrime);
+		
+		List<MovieVO> movieAnimation = movieService.movieAnimation();
+		request.setAttribute("movieAnimation", movieAnimation);
+		
+		List<MovieVO> movieDrama = movieService.movieDrama();
+		request.setAttribute("movieDrama", movieDrama);
+		
+		List<MovieVO> movieRomance = movieService.movieRomance();
+		request.setAttribute("movieRomance", movieRomance);
+		
+		List<MovieVO> movieThriller = movieService.movieThriller();
+		request.setAttribute("movieThriller", movieThriller);
+		
+		List<MovieVO> movieComedy = movieService.movieComedy();
+		request.setAttribute("movieComedy", movieComedy);
 	}
 	
 	@GetMapping("/movie/ratingMain")

@@ -85,25 +85,25 @@
 						<div class="inlineBlock">
 							<c:choose>
 								<c:when test="${member.userId == null }"> <!-- 로그인이 안되어 있을 경우 로그인 화면으로 보내버림 -->
-								<button id="subscribeBtn" class="btn" onclick="javascript:btns()">구독하기</button>
+								<!-- 로그인 안하고 개별 구매로 넘어올 가능성도 있기에 넣어뒀습니다. -->
+								<button id="buyBtn" class="btn" onclick="javascript:btns()">로그인하기</button>
 								</c:when>
-								<c:when test="${member.userId != null }"> <!-- 로그인이 되어있을 경우 구독 페이지로 보내주는 버튼 -->
-								<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
+								<c:when test="${member.userId != null }"> <!-- 로그인이 되어있을 경우 구매하기 페이지로 보내주는 버튼 -->
+								<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod=${movieInfo.movieId}'">구매하기</button>
 								</c:when>
 							</c:choose>
-							<!-- 로그인이 되어 있고, movieCheck의 값이 1(구매) or 3(대여, 구매 가능)일 경우 구매 버튼이 보임 -->
-							<c:if test="${movieInfo.movieCheck == 1 || movieInfo.movieCheck == 3 }">
+							
+							<!-- 로그인이 되어 있고, movieCheck의 값이 2(대여) or 3(대여, 구매 가능)일 경우 대여 버튼이 보임 -->
+							<c:if test="${movieInfo.movieCheck == 2 || movieInfo.movieCheck == 3 }">
 								<c:if test="${member.userId != null}">
-								<button id="buyBtn" class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
+									<button id="valBtn" class="btn_buy_btn" onclick="location.href='../purchase/validation?movieId=${movieInfo.movieId}'">대여하기</button>
 								</c:if>
 							</c:if>
-							<c:if test="${member.ugrade == 0}">
-							<p>관리자 전용 각 단계 이동 버튼</p>
-							<button id="buyBtn_1" class="btn_buy_btn" onclick="location.href='../purchase/subscribe1?movieId=${movieInfo.movieId}'">구독하기(일반회원)</button>
-							<button id="buyBtn_2" class="btn_buy_btn" onclick="location.href='../purchase/subscribe2?movieId=${movieInfo.movieId}'">구독하기(베이직)</button>
-							<button id="buyBtn_3" class="btn_buy_btn" onclick="location.href='../purchase/subscribe3?movieId=${movieInfo.movieId}'">구독하기(프리미엄)</button>
+							
+							<!-- 구매했을 경우 나타나는 재생버튼 -->
+							<c:if test="">
+							<button id=""></button>
 							</c:if>
-							<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
 							<%@include file="rating.jsp" %>
 						</div>
 					</div>				

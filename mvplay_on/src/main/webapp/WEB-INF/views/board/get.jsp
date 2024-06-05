@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="/resources/css/board/get.css">
 <script
   src="https://code.jquery.com/jquery-3.4.1.js"
@@ -15,83 +16,65 @@
 </head>
 <body>
 <div id="container">
-	<div class="view_wrap">
-		<h1>조회 페이지</h1>
-		<div class="view">
-			<ul>
-				<li>
-					<div class="input_wrap">
-						<label>게시판 번호</label>
-						<input name="ano" readonly="readonly" value='<c:out value="${pageInfo.ano}"/>' >
+ 	<%@include file="../includes/header.jsp" %>
+ 		<%@include file="../includes/nav.jsp" %>
+		<div class="main_content">
+			<div class="view_wrap">
+				<h1>조회 페이지</h1>
+				<div class="view">
+					<table>
+						<tr>
+							<th>게시판 번호</th>
+							<td><input name="ano" readonly="readonly" value='<c:out value="${pageInfo.ano}"/>' ></td>
+						</tr>
+						<tr>
+							<th>게시판 제목</th>
+							<td><input name="title" readonly="readonly" value='<c:out value="${pageInfo.title}"/>' ></td>
+						</tr>
+						<tr>
+							<th>게시판 내용</th>
+							<td><textarea rows="3" name="content" readonly="readonly"><c:out value="${pageInfo.content}"/></textarea></td>
+						</tr>
+						<tr>
+							<th>게시판 작성자</th>
+							<td><input name="userId" readonly="readonly" value='<c:out value="${pageInfo.userId}"/>' ></td>
+						</tr>
+						<tr>
+							<th>게시판 등록일</th>
+							<td><input name="regdater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regDate}"/>' ></td>
+						</tr>
+						<tr>
+							<th>게시판 수정일</th>
+							<td><input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >></td>
+						</tr>
+						<!-- 답변이 있으면 보임 -->
+						<c:if test="${pageInfo.answerCk =='O'}">
+						<tr>
+							<th>관리자 답변</th>
+							<td><pre>${pageInfo.answer }</pre></td>
+						</tr>
+						<tr>
+							<th>답변일</th>
+							<td><c:out value="${pageInfo.answerDate }"/></td>
+						</tr>
+						</c:if>
+					</table>
+					<div class="btn_wrap">
+						<a class="btn" id="list_btn">목록 페이지</a> 
+						<a class="btn" id="modify_btn">수정 하기</a>
 					</div>
-				</li>
-				<li>
-					<div class="input_wrap">
-						<label>게시판 제목</label>
-						<input name="title" readonly="readonly" value='<c:out value="${pageInfo.title}"/>' >
-					</div>
-				</li>
-				<li>
-					<div class="input_wrap">
-						<label>게시판 내용</label>
-						<textarea rows="3" name="content" readonly="readonly"><c:out value="${pageInfo.content}"/></textarea>
-					</div>
-				</li>
-				<li>
-					<div class="input_wrap">
-						<label>게시판 작성자</label>
-						<input name="userId" readonly="readonly" value='<c:out value="${pageInfo.userId}"/>' >
-					</div>
-				</li>
-				<li>
-					<div class="input_wrap">
-						<label>게시판 등록일</label>
-						<input name="regdater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regDate}"/>' >
-					</div>
-				</li>
-				<li>
-					<div class="input_wrap">
-						<label>게시판 수정일</label>
-						<input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >
-					</div>
-				</li>
+				</div> <!-- view -->
 				
-				<!-- 답변이 있으면 보임 -->
-				<c:if test="${pageInfo.answerCk =='O'}">
-				
-				<li>
-					<div class="input_wrap">
-						<label>관리자 답변</label>
-						<div><pre>${pageInfo.answer }</pre></div>
-					</div>
-				</li>
-				<li>
-					<div class="input_wrap">
-						<label>답변일</label>
-						<span><c:out value="${pageInfo.answerDate }"/></span>
-					</div>
-				</li>
-				</c:if>
-				
-			</ul>
-			
-			
-				
-			
-			<div class="btn_wrap">
-				<a class="btn" id="list_btn">목록 페이지</a> 
-				<a class="btn" id="modify_btn">수정 하기</a>
-			</div>
-		</div> <!-- view -->
-		
-		<form id="infoForm" action="/board/modify" method="get">
-		<input type="hidden" id="ano" name="ano" value='<c:out value="${pageInfo.ano}"/>'>
-		<!-- <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
-			<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
-			<input type="hidden" name="keyword" value="${cri.keyword}"> -->
-		</form>
-		
-	</div> <!-- view_wrap -->
+				<form id="infoForm" action="/board/modify" method="get">
+				<input type="hidden" id="ano" name="ano" value='<c:out value="${pageInfo.ano}"/>'>
+				<!-- <input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
+					<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+					<input type="hidden" name="keyword" value="${cri.keyword}"> -->
+				</form>
+			</div><!-- view_wrap -->
+		</div> <!-- main_content-->
+		<!-- FOOTER -->
+	<%@include file="../includes/footer.jsp" %>
 </div> <!-- container -->
 <script>
 	let form = $("#infoForm");
