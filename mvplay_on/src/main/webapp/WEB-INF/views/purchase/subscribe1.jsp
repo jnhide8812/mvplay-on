@@ -114,7 +114,7 @@
 				</ul>	
 				<!-- 체크박스 disable기능 추후 추가 예정 -->
 				<div class="check_list">
-					<p class="ck1">(필수)언제든 해지 가능하며, 구독이 끝날 때까지 이용할 수 있어요</p>
+					<p class="ck1"><input type="radio">(필수)언제든 해지 가능하며, 구독이 끝날 때까지 이용할 수 있어요</p>
 					<p class="ck2">결제 후 3일 이내이고, 이용 내역이 없다면 환불 받을 수 있어요</p>
 				</div>
 			</div>  <!-- pay_wrap -->
