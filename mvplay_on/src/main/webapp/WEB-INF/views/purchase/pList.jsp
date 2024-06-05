@@ -11,45 +11,47 @@
 </head>
 <body>
   <div id="container">
-    <h1>대여/소장 중인 영화</h1>
-
     <!-- 헤더 -->
     <%@include file="../includes/header.jsp"%>
     <%@include file="../includes/nav.jsp"%> 
     <div class="main_content">
-        <form id="refundForm" action="/purchase/refund" method="get">
-        
-        <div class="show_list">
-            <section class="list">
-                <c:if test="${not empty list}">
-                    <h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
+	   <form id="refundForm" action="/purchase/refund" method="get">
+	        <div class="ai_list">
+	            <c:if test="${not empty list}">
+		            <div class="doll_dance">
+		            	<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
+		            </div>
 					<input type="hidden" name="userId" value="${member.userId}">
-                    <c:forEach items="${list}" var="list">
-                        <!-- 각 영화 정보 표시 -->
-                        <%--  <input type="hidden" name="userId" value="${list.userId}"> --%>
-  						
-                        <ul>
-                            <li><a class="move" href="/movie/movieDetail?movieId=${list.movieId}">
-                                <img src="/resources/img/${list.poster}" class="poster">
-                            </a></li>
-                            <li class="subject"><a class="move" href="/movie/movieDetail?movieId=${list.movieId}">
-                                ${list.movieTitle}<br>
-                            </a></li>
-                            <li class="iinn">
-                                <span class="c"></span>
-                                <!-- 환불하기 버튼 -->
-                                <input type="submit" value="환불하기">
-                            </li>
-                        </ul>
-                    </c:forEach>
-                </c:if>
-            </section>
-        </div>
-        </form>
-    </div>
-</div>
-    <!-- FOOTER -->
+	                <c:forEach items="${list}" var="list">
+	                <div class="watch">
+	                   <!-- 각 영화 정보 표시 -->
+	                   <%--  <input type="hidden" name="userId" value="${list.userId}"> --%>
+	                   <ul>
+							<li>
+								<a class="move" href="/movie/movieDetail?movieId=${list.movieId}">
+									<img src="/resources/img/${list.poster}" class="poster">
+								</a>
+	                       	</li>
+	                        <li>
+		                        <a class="subject" href="/movie/movieDetail?movieId=${list.movieId}">
+		                           ${list.movieTitle}<br>
+		                        </a>
+	                        </li>
+	                        <li>
+	                           <!-- 환불하기 버튼 -->
+	                           <input type="submit" value="환불하기" class="refund">
+	                        </li>
+						</ul>
+					</div>
+	                </c:forEach>
+				</c:if>
+			</div>
+	     </form>
+    </div>  <!--main_content -->
+     <!-- FOOTER -->
      <%@include file="../includes/footer.jsp"%> 
+</div>  <!-- container -->
+
     
 <script>
 //환불 요청 폼

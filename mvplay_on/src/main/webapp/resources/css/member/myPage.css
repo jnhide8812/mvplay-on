@@ -113,14 +113,6 @@ span.sub_type{
 	color: #ffffff;
 }
 
-span.hd {
-	font-size: 12px;
-	font-weight: 300;
-	display: block;
-	border: 1px solid #89898A;
-	padding: 2px;
-	margin-left: 5px;
-}
 button.pbtn{
 	border:none;
 	background-color: transparent;

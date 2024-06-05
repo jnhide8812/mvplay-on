@@ -41,13 +41,11 @@
 									<c:if test="${member.ugrade == '2'}">
 										<div class="ugrade">
 											<span class="sub_type">베이직</span>
-											<span class="hd">Full HD</span>
 										</div>
 									</c:if>
 									<c:if test="${member.ugrade == '3'}">
 										<div class="ugrade">
 											<span class="sub_type">프리미엄</span>
-											<span class="hd">Ultra HD 4K</span>
 										</div>
 									</c:if>
 								</div>

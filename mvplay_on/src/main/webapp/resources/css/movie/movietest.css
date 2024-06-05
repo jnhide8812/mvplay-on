@@ -44,11 +44,12 @@ h1 {
   .reply_button_wrap button{
 	background-color: #f82f62;
     color: white;
-    font-weight: bold;
-    font-size: 10px;
-    padding: 5px 12px;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 8px 20px;
     cursor: pointer;  
-    border-radius: 6px;
+    border-radius: 5px;
+    margin-top: 5px;
   }
   
   /* 리뷰 영역 */
@@ -92,10 +93,10 @@ h1 {
 	
 	/* 리뷰 제목 */
 	.reply_subject h2{
-		font-size: 28px;
+		font-size:32px;
 		font-weight: 700px;
 		color: #Ffffff;
-		padding: 15px 0 5px 5px;
+		padding: 15px 0 5px 10px;
 	}
 	
 	/* pageMaker */
@@ -133,7 +134,10 @@ h1 {
   .reply_not_div span{
 	display: block;
     margin-top: 30px;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  
   }
   
   /* 리뷰 수정 삭제 버튼 */
@@ -176,7 +180,7 @@ h1 {
   }
 
   .poster{
-   padding-left: 15px;
+   padding-left: 20px;
    padding-bottom: 10px;
   }
   /*  
@@ -251,6 +255,7 @@ button.btn_buy_btn {
     border:1px solid #F82F62;
     padding: 6px 13px;
     margin-bottom: 20px;
+    margin-right: 5px;
 }
 button.btn_like_btn {
 	font-weight: 600;
