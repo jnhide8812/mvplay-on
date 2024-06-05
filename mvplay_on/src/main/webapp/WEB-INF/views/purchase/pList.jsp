@@ -15,14 +15,14 @@
     <%@include file="../includes/header.jsp"%>
     <%@include file="../includes/nav.jsp"%> 
     <div class="main_content">
-	   <form id="refundForm" action="/purchase/refund" method="get">
-	        <div class="ai_list">
-	            <c:if test="${not empty list}">
-		            <div class="doll_dance">
-		            	<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
-		            </div>
-					<input type="hidden" name="userId" value="${member.userId}">
-	                <c:forEach items="${list}" var="list">
+	   <form id="refundForm" action="/purchase/refund" method="get">  
+			<c:if test="${not empty list}">
+				<div class="doll_dance">
+					<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
+		        </div>
+				<input type="hidden" name="userId" value="${member.userId}">
+				<div class="ai_list">
+				<c:forEach items="${list}" var="list">
 	                <div class="watch">
 	                   <!-- 각 영화 정보 표시 -->
 	                   <%--  <input type="hidden" name="userId" value="${list.userId}"> --%>
@@ -43,9 +43,9 @@
 	                        </li>
 						</ul>
 					</div>
-	                </c:forEach>
-				</c:if>
-			</div>
+	            </c:forEach>
+	            </div>
+			</c:if>
 	     </form>
     </div>  <!--main_content -->
      <!-- FOOTER -->
