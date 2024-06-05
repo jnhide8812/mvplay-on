@@ -23,7 +23,7 @@
 					<hr>
 					<ul class="down">
 						<li>
-							<a href="/movie/rating" class="side_menu">
+							<a href="/movie/ratingMain" class="side_menu">
 								<img src="/resources/icon/star_icon.png" class="side_icon">
 								<span class="menu_name">평가</span>
 							</a>

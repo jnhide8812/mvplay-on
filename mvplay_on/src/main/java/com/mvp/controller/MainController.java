@@ -134,10 +134,25 @@ public class MainController {
 		logger.info("getPurchaseMain");
 	}
 	
-	/*@GetMapping("/movie/rating")
-	public void getRating() throws Exception {
-		logger.info("getRating");
-	}*/
+	@GetMapping("/movie/ratingMain")
+	public void getRating(HttpServletRequest request, Model model) throws Exception {
+		logger.info("getRatingMain");
+		//세션 가져오기!!
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		
+		if(mvo != null) { //세션이 있는 경우
+			logger.info("mvo:::"+mvo);
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+	}
 	
 	@GetMapping("/movie/wishList")
 	public void getWishList() throws Exception {

@@ -23,5 +23,14 @@
     <update id="updateMemberGrade" parameterType="com.mvp.model.MemberVO" >
         UPDATE member SET ugrade = #{ugrade} WHERE userId = #{userId}
     </update>
-	
+    
+	<!-- 개인 별점 영화, 별점순 정렬, 개봉일순 정렬 -->
+  	<select id="getUserRatingList" resultType="com.mvp.model.MovieVO">
+		SELECT /*+INDEX_DESC(movie SYS_C008625) */ m.movieId, m.movieTitle,r.rating, m.cate1,m.cate2, m.movieDate, m.movieCheck, m.poster
+		FROM movie m
+		JOIN rating r
+		ON m.movieId =  r.movieId
+	    WHERE r.userId = #{userId} 
+	    ORDER BY r.rating desc, m.movieDate desc
+  	</select> 
   </mapper>

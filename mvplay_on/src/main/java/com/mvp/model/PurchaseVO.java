@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class PurchaseVO {
 	//뷰로부터 넘겨받을 값
+	private int id; 		//자동증가 주문번호
 	private String userId;	//유저id
 	private int movieId;	//영화id
 	//db에서 받아올 값

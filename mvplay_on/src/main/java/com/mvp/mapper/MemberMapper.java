@@ -1,8 +1,9 @@
 package com.mvp.mapper;
 
+import java.util.List;
+
 import com.mvp.model.MemberVO;
-import com.mvp.model.PurchaseVO;
-import com.mvp.model.SubscribtionVO;
+import com.mvp.model.MovieVO;
 
 public interface MemberMapper {
 
@@ -17,5 +18,8 @@ public interface MemberMapper {
 	
 	//구독권-등급 변경
 	public void updateMemberGrade(MemberVO member);
+	
+	//개인 별점 영화, 별점순 정렬, 개봉일순 정렬
+	public List<MovieVO> getUserRatingList(MemberVO member);
 	
 }
