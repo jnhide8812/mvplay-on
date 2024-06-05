@@ -13,9 +13,10 @@
 </head>
 <body>
 <div id="container">
-	<header class="logo">
+	<!-- <header class="logo">
 		<img src="/resources/icon/logo_m.png">
-	</header>
+	</header> -->
+	 <%@include file="../includes/header.jsp"%>
 	<div class="sub_wrap">
 	<div class="middle_wrap">
 		<div class="top">
@@ -92,23 +93,24 @@
 					<h2 class="sub_tit">결제 정보만 입력하면 바로 감상할 수 있어요</h2>
 				</div>
 				<ul class="payment">
+					<li><input type="radio" name="payment" value="card">카드결제</li>
+					<li><input type="radio" name="payment" value="카카오페이">카카오페이</li>
+				
+				
+				
 					<c:choose>
 						<c:when test="${period == '1개월'}">
-							<li><input type="radio" name="payment" value="card">
-								카드결제</li>
+							<li><input type="radio" name="payment" value="card">카드결제</li>
 							<li>${priceMonthly}원</li>
 
-							<li><input type="radio" name="payment" value="카카오페이">
-								카카오페이</li>
+							<li><input type="radio" name="payment" value="카카오페이">카카오페이</li>
 							<li>${priceMonthly}원</li>
 						</c:when>
 						<c:when test="${period == '12개월'}">
-							<li><input type="radio" name="payment" value="card">
-								카드결제</li>
-							<li><input type="radio" name="payment" value="카카오페이">
-								카카오페이</li>
+							<li><input type="radio" name="payment" value="card">카드결제</li>
+							<li><input type="radio" name="payment" value="카카오페이">카카오페이</li>
 						</c:when>
-					</c:choose>
+					</c:choose> 
 				</ul>	
 				<!-- 체크박스 disable기능 추후 추가 예정 -->
 				<div class="check_list">

@@ -27,17 +27,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private MemberMapper membermapper;
 
 	// 구매
-	@Override
-	@Transactional
-	public void getBuyInfo(PurchaseVO pvo) {
-		// 구매 정보
-		PurchaseVO purchase = purchasemapper.getBuyInfo(pvo.getMovieId());
-
-		// db에 구매 정보 삽입
-		purchasemapper.enrollPurchase_1(pvo); // 소장
-		purchasemapper.enrollPurchase_2(pvo); // 대여
-
-	}
+	
+	 
 	/*
 	 * @Override public boolean validatePayment(PaymentValidationRequest request) {
 	 * // 여기에 결제 검증 로직을 구현합니다. // 필요한 경우 결제 정보를 데이터베이스에서 조회하여 검증합니다. // 예시로는 간단히
@@ -91,6 +82,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Override
 	public int checkPurchase(PurchaseVO pvo) {
 		return purchasemapper.checkPurchase(pvo);
+	}
+
+	@Override
+	public PurchaseVO getBuyInfo(PurchaseViewVO pview) {
+		
+		return purchasemapper.getBuyInfo(pview);
 	}
 	
 

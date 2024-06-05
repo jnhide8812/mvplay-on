@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mvp.model.Criteria;
 import com.mvp.model.MemberVO;
@@ -65,27 +66,29 @@ public class PurchaseController {
 
 		model.addAttribute("memberInfo", mvo.getUserId());
 		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
-		logger.info(" getmapping vod" + movieId);
+		
 
 	}
 
 	// 대여,소장
 	@PostMapping("/purchase/vod")
 	public String purchasePagePost(@RequestParam("buymethod") String selectedMethod, PurchaseVO pvo,
-			HttpServletRequest request, Model model) {
-	
+			HttpServletRequest request, Model model, RedirectAttributes rttr) {
+
 		if (pvo.getUserId() == null) {
 			return "redirect:/member/login";
 		}
 
 		// 중복구매확인-> detail에서 작업해주기
-		
 		/*
 		 * int count = purchaseService.checkPurchase(pvo);
 		 * 
 		 * if (count > 0) { model.addAttribute("errorMessage", "이미 구매한 영화입니다."); return
 		 * "purchase/vod"; }
 		 */
+
+		logger.info("pvo:"+pvo);
+		
 		// 구매 또는 대여 판단
 		if ("rent".equals(selectedMethod)) {
 			purchaseService.enrollPurchase_2(pvo);
@@ -95,7 +98,11 @@ public class PurchaseController {
 			purchaseService.enrollPurchase_1(pvo);
 			logger.info("enrollPurchase_1");
 		}
-
+		
+		
+		rttr.addAttribute("movieId",pvo.getMovieId());
+		System.out.println("리턴 직전rttr:"+rttr);
+		
 		return "redirect:/movie/movieDetail";
 	}
 
@@ -114,11 +121,14 @@ public class PurchaseController {
 	}
 
 	@GetMapping("/purchase/refund")
-	public void refundPage(Model model, PurchaseViewVO pview, HttpServletRequest request) {
-		logger.info("getmappingRefund" + pview);
+	public void refundPage(Model model, PurchaseViewVO pview, PurchaseVO pvo, HttpServletRequest request) {
+		
 		HttpSession session = request.getSession();
 
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		/* model.addAttribute("purchaseInfo", purchaseService.getBuyInfo(pview)); */
+		model.addAttribute("refundInfo",purchaseService.getRefund(pview.getId()));
+		logger.info("getmappingRefund" + pview);
 		purchaseService.getRefund(pview.getId());
 		logger.info("get refund");
 
@@ -171,8 +181,9 @@ public class PurchaseController {
 	@GetMapping("/purchase/payFail") // payFail 페이지에 대한 매핑
 	public void GetpayFailPage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String userId = "cccc"; // 임시 로그인
-		session.setAttribute("userId", userId);
+
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
+		
 		logger.info("payFail");
 	}
 
@@ -186,15 +197,15 @@ public class PurchaseController {
 	@GetMapping("/purchase/subscribe1")
 	public void subscribe1Page(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String userId = "cccc"; // 임시 로그인
-		session.setAttribute("userId", userId);
+
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		logger.info("purchase");
 	}
 
 	@PostMapping("/purchase/subscribe1")
 	public String postSubscribe1(HttpServletRequest request, MemberVO member, SubscribtionVO svo, Model model) {
 		HttpSession session = request.getSession();
-
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		String userId = (String) session.getAttribute("userId");
 		String upw = request.getParameter("upw");
 		String ubirth = request.getParameter("ubirth");
@@ -287,8 +298,7 @@ public class PurchaseController {
 	@GetMapping("/movie/subscribeMain")
 	public void GetsubscribeMainPage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String userId = "cccc"; // 임시 로그인
-		session.setAttribute("userId", userId);
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		logger.info("subscribeMain");
 	}
 
@@ -303,8 +313,7 @@ public class PurchaseController {
 	@GetMapping("/movie/PurchaseMain")
 	public void GetsPurchaseMainPage(HttpServletRequest request) {
 		HttpSession session = request.getSession();
-		String userId = "cccc"; // 임시 로그인
-		session.setAttribute("userId", userId);
+		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		logger.info("PurchaseMain");
 	}
 

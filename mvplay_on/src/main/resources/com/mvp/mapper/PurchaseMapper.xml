@@ -22,10 +22,10 @@
 
 
 	<!-- 구매 영화 정보 갖고 오기 -->
-	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseVO">
-		select userId, movieId,
-		buyPrice,rentalPrice,startDate, expiredDate from purchase where
-		movieId = #{movieId}
+	<select id="getBuyInfo" resultType="com.mvp.model.PurchaseViewVO">
+		select p.userId, p.movieId,m.movieTitle,
+		p.buyPrice,p.rentalPrice,p.startDate, p.expiredDate from purchase p Join movie m on p.movieId = m.movieId 
+		where p.id = #{id}
 	</select>
 
 	<!-- 구독 정보 -->
@@ -87,9 +87,10 @@
 	<!-- 중복구매 방지(구매자 확인) -->
 	 <select id="checkPurchase" parameterType="com.mvp.model.PurchaseVO" resultType="int">
         select count(*) from purchase
-        where userId=#{userId} and  movieId=#{movieId}
+        where userId = #{userId} and  movieId = #{movieId}
     </select>
-
+	
+	
 
 
 </mapper>

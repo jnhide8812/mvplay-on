@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mvp.model.PurchaseVO;
+
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -41,7 +43,19 @@ public class PListTest {
 	 * }
 	 */
     
-    
+    @Test 
+    public void refundTest() {
+    	PurchaseVO vo = new PurchaseVO();
+    	
+    	vo.setId(2);
+    	
+    	PurchaseVO result = mapper.getBuyInfo(vo);
+    	
+    	System.out.println(result);
+    	
+    	
+    	
+    }
     
     
     

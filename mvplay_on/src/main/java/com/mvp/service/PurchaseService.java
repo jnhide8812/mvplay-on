@@ -11,7 +11,7 @@ import com.mvp.model.SubscribtionVO;
 public interface PurchaseService {
 
 	// 구매 영화 정보(구매 처리)
-	public void getBuyInfo(PurchaseVO pvo);
+	public PurchaseVO getBuyInfo(PurchaseViewVO pview);
 
 	// 개별 구매(소장) 영화 purchase table에 등록
 	public int enrollPurchase_1(PurchaseVO pvo);
