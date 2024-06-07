@@ -79,36 +79,70 @@ public class MovieServiceImpl implements MovieService {
 	/* 이하 카테고리별 분류를 위한 임시 조치 */
 	//임시 purchase용
 	@Override
-	public List<MovieVO> movieSF(){
-		return mapper.getMovieSF();
+	public List<MovieVO> movieSF_P(){
+		return mapper.getMovieSF_P();
 	}
 	@Override
-	public List<MovieVO> movieMystery() {
-		return mapper.getMovieMystery();
+	public List<MovieVO> movieMystery_P() {
+		return mapper.getMovieMystery_P();
 	}
 	@Override
-	public List<MovieVO> movieCrime(){
-		return mapper.getMovieCrime();
+	public List<MovieVO> movieCrime_P(){
+		return mapper.getMovieCrime_P();
 	}
 	@Override
-	public List<MovieVO> movieAnimation(){
-		return mapper.getMovieAnimation();
+	public List<MovieVO> movieAnimation_P(){
+		return mapper.getMovieAnimation_P();
 	}
 	@Override
-	public List<MovieVO> movieDrama(){
-		return mapper.getMovieDrama();
+	public List<MovieVO> movieDrama_P(){
+		return mapper.getMovieDrama_P();
 	}
 	@Override
-	public List<MovieVO> movieRomance(){
-		return mapper.getMovieRomance();
+	public List<MovieVO> movieRomance_P(){
+		return mapper.getMovieRomance_P();
 	}
 	@Override
-	public List<MovieVO> movieThriller(){
-		return mapper.getMovieThriller();
+	public List<MovieVO> movieThriller_P(){
+		return mapper.getMovieThriller_P();
 	}
 	@Override
-	public List<MovieVO> movieComedy(){
-		return mapper.getMovieComedy();
+	public List<MovieVO> movieComedy_P(){
+		return mapper.getMovieComedy_P();
+	}
+	
+	//임시 purchase용
+	@Override
+	public List<MovieVO> movieSF_S(){
+		return mapper.getMovieSF_S();
+	}
+	@Override
+	public List<MovieVO> movieMystery_S() {
+		return mapper.getMovieMystery_S();
+	}
+	@Override
+	public List<MovieVO> movieCrime_S(){
+		return mapper.getMovieCrime_S();
+	}
+	@Override
+	public List<MovieVO> movieAnimation_S(){
+		return mapper.getMovieAnimation_S();
+	}
+	@Override
+	public List<MovieVO> movieDrama_S(){
+		return mapper.getMovieDrama_S();
+	}
+	@Override
+	public List<MovieVO> movieRomance_S(){
+		return mapper.getMovieRomance_S();
+	}
+	@Override
+	public List<MovieVO> movieThriller_S(){
+		return mapper.getMovieThriller_S();
+	}
+	@Override
+	public List<MovieVO> movieComedy_S(){
+		return mapper.getMovieComedy_S();
 	}
 	
 }
