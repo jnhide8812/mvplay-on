@@ -146,7 +146,7 @@
 								
 							
 							
-							<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
+							<button id="likeBtn" class="like_btn">보고싶어요</button>
 							<%@include file="rating.jsp" %>
 						
 						</div><!-- inlineBlock -->
