@@ -69,6 +69,7 @@
 		movie m
 		JOIN purchase p ON m.movieId = p.movieId
 		WHERE p.userId = #{userId}
+		and expiredDate > sysdate
 	</select>
 	
 	<select id="getRefund" resultType="com.mvp.model.PurchaseViewVO">
