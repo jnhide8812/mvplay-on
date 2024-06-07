@@ -120,14 +120,15 @@ public class PurchaseController {
 	}
 
 	@GetMapping("/purchase/refund")
-	public void refundPage(Model model, PurchaseViewVO pview, HttpServletRequest request) {
+	public void refundPage(@RequestParam("movieId") int movieId, Model model, PurchaseViewVO pview, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		/* model.addAttribute("purchaseInfo", purchaseService.getBuyInfo(pview)); */
+		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
 		model.addAttribute("refundInfo",purchaseService.getRefund(pview.getId()));
-		logger.info("getmappingRefund" + pview);
+		logger.info("getmappingRefund :" + pview);
 	
 
 	}
