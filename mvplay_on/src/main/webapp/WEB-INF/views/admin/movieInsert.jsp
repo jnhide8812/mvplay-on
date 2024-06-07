@@ -89,8 +89,6 @@
 							<label class="radio"><input type="radio" name="cate1" value="애니메이션" onclick="cateReadOnly()"/>애니메이션</label>
 							<label class="radio"><input type="radio" name="cate1" value="판타지" onclick="cateReadOnly()"/>판타지</label>
 							<label class="radio"><input type="radio" name="cate1" value="시대" onclick="cateReadOnly()"/>시대</label>
-							<label class="radio"><input type="radio" name="cate1" value="음악" onclick="cateReadOnly()"/>음악</label>
-							<label class="radio"><input type="radio" name="cate1" value="스포츠" onclick="cateReadOnly()"/>스포츠</label>
 							<label class="radio"><input type="radio" name="cate1" value="SF" onclick="cateReadOnly()"/>SF</label>
 							<span id="warn_cate1">영화 장르1을 선택해주세요</span>
 						</div>
