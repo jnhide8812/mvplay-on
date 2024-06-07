@@ -40,7 +40,7 @@ h2{
 								<c:if test="${movieSF == 'empty' }">
 								<p> 비어있습니다. </p>
 								</c:if>
-								<h2>
+								<h2> 
 								SF
 								</h2>
 								<div class="swiper-wrapper">
