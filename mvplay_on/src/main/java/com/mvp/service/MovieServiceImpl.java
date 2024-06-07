@@ -144,5 +144,22 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieVO> movieComedy_S(){
 		return mapper.getMovieComedy_S();
 	}
+
+	//영화 카테고리 리스트 출력 
+	@Override
+	public List<MovieVO> selectCate1() {
+		return mapper.selectCate1();
+	}
+	
+	//구매/대여 영화 최신순 정렬
+	@Override
+	public List<MovieVO> getPurchaseMovieList() {
+		return mapper.getPurchaseMovieList();
+	}
+
+	@Override
+	public List<MovieVO> getPurchaseMovieRank() {
+		return mapper.getPurchaseMovieRank();
+	}
 	
 }

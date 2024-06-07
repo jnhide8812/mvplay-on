@@ -151,29 +151,14 @@ public class MainController {
 	@GetMapping("/movie/purchaseMain")
 	public void getPurchaseMain(HttpServletRequest request) throws Exception {
 		logger.info("getPurchaseMain");
-		List<MovieVO> movieSF = movieService.movieSF_P();
-		request.setAttribute("movieSF", movieSF);
 		
-		List<MovieVO> movieMystery = movieService.movieMystery_P();
-		request.setAttribute("movieMystery", movieMystery);
+		List<MovieVO> movieList = movieService.getPurchaseMovieList();
+		List<MovieVO> movieRank = movieService.getPurchaseMovieRank();
+		List<MovieVO> cate1List = movieService.selectCate1();
 		
-		List<MovieVO> movieCrime = movieService.movieCrime_P();
-		request.setAttribute("movieCrime", movieCrime);
-		
-		List<MovieVO> movieAnimation = movieService.movieAnimation_P();
-		request.setAttribute("movieAnimation", movieAnimation);
-		
-		List<MovieVO> movieDrama = movieService.movieDrama_P();
-		request.setAttribute("movieDrama", movieDrama);
-		
-		List<MovieVO> movieRomance = movieService.movieRomance_P();
-		request.setAttribute("movieRomance", movieRomance);
-		
-		List<MovieVO> movieThriller = movieService.movieThriller_P();
-		request.setAttribute("movieThriller", movieThriller);
-		
-		List<MovieVO> movieComedy = movieService.movieComedy_P();
-		request.setAttribute("movieComedy", movieComedy);
+		request.setAttribute("movieList", movieList);
+		request.setAttribute("movieRank", movieRank);
+		request.setAttribute("cate1List", cate1List);
 	}
 	
 	@GetMapping("/movie/ratingMain")

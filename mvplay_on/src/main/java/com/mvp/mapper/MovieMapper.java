@@ -54,4 +54,13 @@ public interface MovieMapper {
 	public List<MovieVO> getMovieRomance_S();
 	public List<MovieVO> getMovieThriller_S();
 	public List<MovieVO> getMovieComedy_S();
+	
+	//영화 카테고리 출력
+	public List<MovieVO> selectCate1();
+	
+	//구매/대여 영화 최신순 정렬
+	public List<MovieVO> getPurchaseMovieList();
+	
+	//구매/대여 영화 랭킹 정렬
+	public List<MovieVO> getPurchaseMovieRank();
 }
