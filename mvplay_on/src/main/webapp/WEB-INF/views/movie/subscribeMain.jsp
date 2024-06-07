@@ -37,6 +37,9 @@ h2{
 						<h1 class="list_name">카테고리별</h1>
 						<div class="swiper-container swiper1" style="margin-bottom: 30px;">
 								<!-- SF -->
+								<c:if test="${movieSF == 'empty' }">
+								<p> 비어있습니다. </p>
+								</c:if>
 								<h2>
 								SF
 								</h2>
@@ -45,12 +48,12 @@ h2{
 										<c:forEach items="${movieSF}" var="movieSF">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieSF.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieSF.movieId}">
 														<img src="/resources/img/${movieSF.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieSF.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieSF.movieId}">
 														<c:out value="${movieSF.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -73,14 +76,14 @@ h2{
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
 										<c:forEach items="${movieMystery}" var="movieMystery">
-											<ul>
+											<ul >
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieMystery.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieMystery.movieId}">
 														<img src="/resources/img/${movieMystery.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieMystery.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieMystery.movieId}">
 														<c:out value="${movieMystery.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -105,12 +108,12 @@ h2{
 										<c:forEach items="${movieCrime}" var="movieCrime">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieCrime.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieCrime.movieId}">
 														<img src="/resources/img/${movieCrime.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieCrime.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieCrime.movieId}">
 														<c:out value="${movieCrime.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -135,12 +138,12 @@ h2{
 										<c:forEach items="${movieAnimation}" var="movieAnimation">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieAnimation.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieAnimation.movieId}">
 														<img src="/resources/img/${movieAnimation.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieAnimation.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieAnimation.movieId}">
 														<c:out value="${movieAnimation.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -165,12 +168,12 @@ h2{
 										<c:forEach items="${movieDrama}" var="movieDrama">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieDrama.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieDrama.movieId}">
 														<img src="/resources/img/${movieDrama.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieDrama.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieDrama.movieId}">
 														<c:out value="${movieDrama.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -195,12 +198,12 @@ h2{
 										<c:forEach items="${movieRomance}" var="movieRomance">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieRomance.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieRomance.movieId}">
 														<img src="/resources/img/${movieRomance.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieRomance.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieRomance.movieId}">
 														<c:out value="${movieRomance.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -225,12 +228,12 @@ h2{
 										<c:forEach items="${movieThriller}" var="movieThriller">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieThriller.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieThriller.movieId}">
 														<img src="/resources/img/${movieThriller.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieThriller.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieThriller.movieId}">
 														<c:out value="${movieThriller.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -255,12 +258,12 @@ h2{
 										<c:forEach items="${movieComedy}" var="movieComedy">
 											<ul>
 												<li>
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieComedy.movieId}">
+													<a class="move" href="/movie/movieDetail?movieId=${movieComedy.movieId}">
 														<img src="/resources/img/${movieComedy.poster}" class="poster">
 													</a>
 												</li>
 												<li class="subject">
-													<a class="move" href="/movie/subscribeDetail?movieId=${movieComedy.movieId}">
+													<a class="move" href="/movie/moveiDetail?movieId=${movieComedy.movieId}">
 														<c:out value="${movieComedy.movieTitle}"></c:out><br>
 													</a>
 												</li>
@@ -290,7 +293,7 @@ let moveForm = $('#moveForm');
 	$(".move").click(function(e) {
 		e.preventDefault();
 		moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr("href") + "'>");
-		moveForm.attr("action", "/movie/subscribeDetail");
+		moveForm.attr("action", "/movie/movieDetail");
 		moveForm.submit();
 	});
 	
