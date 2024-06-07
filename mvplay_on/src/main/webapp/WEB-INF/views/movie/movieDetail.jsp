@@ -498,7 +498,7 @@ function btns(){
 let wishResult = '<c:out value="${wish_result}" />';
 
 /* 보고 싶어요 버튼 */
-$(".btn_like_btn").on('click', function(e){
+$("#likeBtn").on('click', function(e){
 	
 	e.preventDefault();
 	
