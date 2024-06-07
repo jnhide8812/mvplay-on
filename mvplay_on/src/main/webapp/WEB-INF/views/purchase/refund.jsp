@@ -41,7 +41,7 @@
 						</tr>
 					</table>
 				</form>
-				<button id="refundBtn">환불 신청</button>
+				<button id="refundBtn">환불신청</button>
 			</div>
 		</div>
 		<!-- wrap -->
