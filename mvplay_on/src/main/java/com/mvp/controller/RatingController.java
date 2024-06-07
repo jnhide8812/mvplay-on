@@ -1,5 +1,7 @@
 package com.mvp.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -101,39 +103,17 @@ public class RatingController {
 	}
 	
 	
-	//영화 상세 정보 - 별점 추가 예정임
+	//영화 상세 정보 - 임시 페이지 - 메인
 	@GetMapping("/movieDetail2_rating")
-	public void movieGetInfoGET(HttpServletRequest request, int movieId, Model model) {
+	public void movieGetInfoGET(HttpServletRequest request) {
 		//0528----
-		//추가 부분 HttpServletRequest request,
+		List<MovieVO> movieList = movieService.getPurchaseMovieList();
+		List<MovieVO> movieRank = movieService.getPurchaseMovieRank();
+		List<MovieVO> cate1List = movieService.selectCate1();
 		
-		//세션 가져오기!!
-		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO)session.getAttribute("member");
-		
-		if(mvo != null) { //세션이 있는 경우
-			logger.info("mvo:::"+mvo);
-			
-			RatingVO rvo = new RatingVO();
-			
-			//세션이 있는 경우 고객이 선택한 별점을 ratingInfo에 넣음
-			rvo.setUserId(mvo.getUserId());
-			rvo.setMovieId(movieId);
-			RatingVO myRatingVO =ratingService.selectRating(rvo);
-			
-			logger.info("myRatingVO:::"+myRatingVO);
-			model.addAttribute("ratingInfo", myRatingVO);
-			
-		} /*
-			 * else { //로그인이 없는 경우 empty 넣음 model.addAttribute("ratingInfo","empty"); }
-			 */
-		
-
-		///여기까지 수정 
-		
-		logger.info("movieId:222 " + movieId);
-		MovieVO vo = movieService.movieGetDetail(movieId);
-		model.addAttribute("movieInfo", vo);
+		request.setAttribute("movieList", movieList);
+		request.setAttribute("movieRank", movieRank);
+		request.setAttribute("cate1List", cate1List);
 		
 	}
 	
