@@ -81,13 +81,89 @@
 							${movieInfo.movieContent}
 							</div>
 						</div>
-					<div class="buttons">
+						
+						<!-- 수정 중 -->
+						<div class="buttons">
+						<div class="inlineBlock">
+							
+								<!-- 구매 또는 구독 버튼 
+								영화 테이블  0: 멤버십/ 1:구매 /2:대여 / 3:구매+대여 / 8:임시(개봉전) / 9:신규이용 불가
+								-->
+								
+								<!-- 멤버십 전용 구독 버튼 -->
+								<c:if test="${movieInfo.movieCheck == 0}">
+									<!-- 유저 권한 확인 : 로그인 x일 경우 로그인 창으로 -->
+									<c:if test="${member.userId == null}">
+										<button id="subscribeBtn" class="btn" >구독하기</button>
+									</c:if>
+
+									<!-- 유저 권한 확인 1-일반 회원일 경우 : 구독하기 결제창으로 -->
+									<c:if test="${member.ugrade == 1}">
+										<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
+									</c:if>
+
+									<!-- 유저 권한 확인 2-베이직 / 또는 3-프리미엄 회원일 경우 / 0-관리자의 경우 -->
+									<c:if test="${member.ugrade == 2 || member.ugrade == 3 || member.ugrade == 0}">
+										<button id="subscribeBtn" class="btn" onclick="location.href='/movie/moviePlay?movieId=${movieInfo.movieId}'">재생하기</button>		
+									</c:if>
+								</c:if><!--멤버십 전용 끝 -->
+								
+								<!-- 구매/대여 전용 -->
+								<c:if test="${movieInfo.movieCheck == 1 || movieInfo.movieCheck == 3 }">
+									<!-- 유저 권한 확인 : 로그인 x일 경우 로그인 창으로 -->
+									<c:if test="${member.userId == null}">
+										<button class="btn_buy_btn">구매하기</button>
+									</c:if>
+									
+									<!-- 유저 구매기록 확인 구매기록이 없다면 : 구매하기창으로 -->
+									<c:choose>
+										<c:when test='${purchase_result}'>
+											<button class="btn_buy_btn" onclick="location.href='/movie/moviePlay?movieId=${movieInfo.movieId}'">재생하기</button>	
+										</c:when>
+										<c:otherwise>
+											<button  class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
+										</c:otherwise>
+									</c:choose>
+								</c:if><!-- 구매/대여 전용 끝-->
+								
+								<!-- 대여 전용 -->
+								<c:if test="${movieInfo.movieCheck == 2}">
+									<!-- 유저 권한 확인 : 로그인 x일 경우 로그인 창으로 -->
+									<c:if test="${member.userId == null}">
+										<button class="btn_buy_btn">대여하기</button>
+									</c:if>
+									
+									<!-- 유저 구매기록 확인 구매기록이 없다면 : 구매하기창으로 -->
+									<c:choose>
+										<c:when test='${purchase_result}'>
+											<button class="btn_buy_btn" onclick="location.href='/movie/moviePlay?movieId=${movieInfo.movieId}'">재생하기</button>	
+										</c:when>
+										<c:otherwise>
+											<button class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">대여하기</button>
+										</c:otherwise>
+									</c:choose>
+								</c:if><!-- 대여 전용 끝-->
+								
+							
+							
+							<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
+							<%@include file="rating.jsp" %>
+						
+						</div><!-- inlineBlock -->
+					</div><!-- 버튼들 -->
+						
+						
+						
+						
+					<%-- <div class="buttons">
 						<div class="inlineBlock">
 							<c:choose>
 								<c:when test="${member.userId == null }"> <!-- 로그인이 안되어 있을 경우 로그인 화면으로 보내버림 -->
 								<button id="subscribeBtn" class="btn" onclick="javascript:btns()">구독하기</button>
 								</c:when>
 								<c:when test="${member.userId != null }"> <!-- 로그인이 되어있을 경우 구독 페이지로 보내주는 버튼 -->
+								
+								
 								<button id="subscribeBtn" class="btn" onclick="location.href='../purchase/subscribe1'">구독하기</button>
 								</c:when>
 							</c:choose>
@@ -106,7 +182,7 @@
 							<button id="likeBtn" class="btn_like_btn">보고싶어요</button>
 							<%@include file="rating.jsp" %>
 						</div>
-					</div>				
+					</div>	 --%>	<!-- 버튼 로직 수정중 완료시 삭제예정 -->
 				</div>
 			</div>	
 					<!-- 댓글 영역 -->
@@ -138,6 +214,31 @@
 		<%@include file="../includes/footer.jsp" %>
 	</div>  <!-- id="container" -->
 <script>
+
+//시직하자마자-적용 안됨
+$(document).ready(function(){
+
+	
+let purchase_result = '<c:out value="${purchase_result}" />';
+	
+//위시리스트 등록/취소 결과
+let wishResult = '<c:out value="${wish_result}" />';
+
+
+checkWishResult(wishResult);
+
+function checkWishResult(result){
+	if(result === ''){
+		return;
+	}
+	alert(wishResult);
+}
+
+
+	
+}); //$(document).ready(function()
+	
+
 /* 리뷰쓰기 */
 //온클릭 버전 (차후 불필요하게 될 시 삭제)
 /*
@@ -192,7 +293,7 @@ $(".reply_button_wrap").on("click", function(e){
 			} else if(result === '0'){
 				
 				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
-				console.log(popUrl);
+				//console.log(popUrl);
 				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
 				
 				window.open(popUrl,"리뷰 쓰기",popOption);					
@@ -253,8 +354,8 @@ function makeReplyContent(obj){
 			const userId = '${member.userId}';
 			const rating = '${movieInfo.rating}';
 			
-			console.log("현재 받는 평점 : "+rating);
-			console.log("댓글 정보들 : "+obj.regDate);
+			//console.log("현재 받는 평점 : "+rating);
+			//console.log("댓글 정보들 : "+obj.regDate);
 			
 			/* list */
 			
@@ -279,8 +380,8 @@ function makeReplyContent(obj){
 				reply_list += '</div>';//<div class="reply_bottom">
 				reply_list += '</div>';//<div class="comment_wrap">
 				reply_list += '</li>';
-				console.log("댓글 정보들 : "+obj.regDate);
-				console.log("댓글 번호들 : "+obj.replyNum);
+				//console.log("댓글 정보들 : "+obj.regDate);
+				//console.log("댓글 번호들 : "+obj.replyNum);
 			}); 
 			 
 			$(".reply_content_ul").html(reply_list);
@@ -378,7 +479,7 @@ $(document).on('click', '.delete_reply_btn', function(e){
 		success : function(result){
 			replyListInit();
 			alert('삭제가 완료되엇습니다.');
-			console.log(replyNum);
+			//console.log(replyNum);
 		}
 	});		
 		
@@ -390,11 +491,14 @@ function btns(){
 	location.href = "/member/login";
 }
 
+//결과를 못 불러옴
+let wishResult = '<c:out value="${wish_result}" />';
+
 /* 보고 싶어요 버튼 */
 $(".btn_like_btn").on('click', function(e){
 	
 	e.preventDefault();
-
+	
 	//AJAX 요청 보내기
 	let formData = new FormData();
 	formData.append('userId', '${member.userId}'); // userId 추가
@@ -407,8 +511,8 @@ $(".btn_like_btn").on('click', function(e){
         data: formData,
         type: 'POST',
         success: function(ok) {
-        	alert("보고싶어요에 등록되었습니다.");
-            console.log("평가가 성공적으로 전송되었습니다.");
+        	alert("보고싶어요에 등록/취소 되었습니다");
+            //console.log("평가가 성공적으로 전송되었습니다.");
         },
         error: function (request, status, error) {
             alert("로그인 해주세요.");
@@ -426,8 +530,8 @@ $(".btn_buy_btn").on('click', function(e){
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
 	
-	console.log("userId for buy : "+${member.userId});
-	console.log("movieId for buy : "+${movieInfo.movieId});
+	//console.log("userId for buy : "+${member.userId});
+	//console.log("movieId for buy : "+${movieInfo.movieId});
 	
 	if(userId === ""){
 		alert("로그인 후 이용하실 수 있습니다.");
@@ -445,7 +549,7 @@ $(".btn_buy_btn").on('click', function(e){
 				} else if(result === '0'){ 
 						
 				let popUrl = "/movie/replyWrite/" + userId + "?movieId=" + movieId;
-				console.log(popUrl);
+				//console.log(popUrl);
 				let popOption = "width = 490px, height=360px, top=300px, left=300px, scrollbars=yes";
 							
 				window.open(popUrl,"리뷰 쓰기",popOption);					
@@ -464,8 +568,8 @@ $(".btn").on('click', function(e){
 	const userId = '${member.userId}';
 	const movieId = '${movieInfo.movieId}';
 	
-	console.log("userId for subscribe : "+${member.userId});
-	console.log("movieId for subscribe : "+${movieInfo.movieId});
+	//console.log("userId for subscribe : "+${member.userId});
+	//console.log("movieId for subscribe : "+${movieInfo.movieId});
 	
 	if(userId === ""){
 		alert("로그인 후 이용하실 수 있습니다.");

@@ -11,19 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mvp.model.Criteria;
 import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
+import com.mvp.model.PurchaseVO;
 import com.mvp.model.RatingVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
+import com.mvp.service.PurchaseService;
 import com.mvp.service.RatingService;
 
 @Controller
@@ -40,6 +36,8 @@ public class MainController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private PurchaseService purchaseService;
 	
 	/*메인 페이지 이동
 	@GetMapping("/main")
@@ -94,7 +92,7 @@ public class MainController {
 		model.addAttribute("movieInfo", movieService.movieGetDetail(movieId));
 	}*/
 	
-	@GetMapping(value = {"/movie/movieDetail", "/movie/purchaseDetail"})
+	@GetMapping(value = {"/movie/movieDetail", "/movie/purchaseDetail","/movie/moviePlay"})
 	public void movieGetInfoGET(HttpServletRequest request, int movieId, Model model) {
 		//세션 가져오기!!
 		HttpSession session = request.getSession();
@@ -102,7 +100,6 @@ public class MainController {
 		
 		if(mvo != null) { //세션이 있는 경우
 			logger.info("mvo:::"+mvo);
-			
 			RatingVO rvo = new RatingVO();
 			
 			//세션이 있는 경우 고객이 선택한 별점을 ratingInfo에 넣음
@@ -110,13 +107,23 @@ public class MainController {
 			rvo.setMovieId(movieId);
 			RatingVO myRatingVO =ratingService.selectRating(rvo);
 			
-			logger.info("myRatingVO:::"+myRatingVO);
+			//고객의 별점 정보를 넣음
 			model.addAttribute("ratingInfo", myRatingVO);
 			
+			//구매기록 확인 
+			PurchaseVO pvo = new PurchaseVO();
+			pvo.setUserId(mvo.getUserId());
+			pvo.setMovieId(movieId);
+			int checkPurchase = purchaseService.checkPurchase(pvo);
+			if(checkPurchase>0) {
+				model.addAttribute("purchase_result", true);
+			}else {
+				model.addAttribute("purchase_result", false);
+			}
+			
+			
 		}
-		///여기까지 수정 
 		
-		logger.info("movie Id: " + movieId);
 		MovieVO vo = movieService.movieGetDetail(movieId);
 		model.addAttribute("movieInfo", vo);
 		

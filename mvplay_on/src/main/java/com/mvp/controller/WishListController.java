@@ -50,13 +50,13 @@ public class WishListController {
 			//2. 기존에 위시리스트가 없다면 인서트
 			if (myWishVO ==null) {
 				wishService.insertWishList(wvo);
-				rttr.addAttribute("result", "보고싶어요가 등록되었습니다.");
+				rttr.addFlashAttribute("wish_result", "보고싶어요에 등록되었습니다.");
 				
 			}else {
 				//기존 위시리스트가 있다면 삭제
 				wvo.setId(myWishVO.getId());
 				wishService.deleteWishList(wvo);
-				rttr.addAttribute("result", "보고싶어요가 삭제되었습니다.");
+				rttr.addFlashAttribute("wish_result", "보고싶어요에서 삭제되었습니다.");
 			}
 			
 			return new ResponseEntity<>("ok", HttpStatus.OK);
