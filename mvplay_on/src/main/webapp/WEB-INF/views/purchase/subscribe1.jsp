@@ -26,7 +26,7 @@
 			</div>
 			<form id="subscribe_choice" action="/purchase/subscribe1" method="post">
 			<input type="hidden" name="action" value="step1">
-			<input type="hidden" name="userId" value="${memberInfo}">	
+			<input type="hidden" name="userId" value="${memberInfo.}">	
 	
 				<div class="main_content">
 					<div class="bp">
@@ -84,7 +84,7 @@
 					</ul>
 				</div>
 				<div id="selectedPrice"></div>
-			</div>
+			
 			<div class="pay_wrap">
 				<div class="pay_tit">
 					<h1 class="main_tit">결제방법</h1>
@@ -122,6 +122,7 @@
 			</div>
 			
 		</form>
+		</div>
 	</div> <!-- middle_wrap -->
 	</div> <!-- sub_wrap -->
 	<%@include file="../includes/footer.jsp" %>
