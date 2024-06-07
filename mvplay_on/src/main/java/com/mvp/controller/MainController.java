@@ -161,6 +161,22 @@ public class MainController {
 		request.setAttribute("cate1List", cate1List);
 	}
 	
+	@GetMapping("/movie/subscribeMain")
+	public void getSubscribeMainPage(HttpServletRequest request) {
+		logger.info("get subscribe Main");
+		
+		List<MovieVO> movieList = movieService.getSubscribeMovieList();
+		List<MovieVO> movieRank = movieService.getSubscribeMovieRank();
+		List<MovieVO> cate1List = movieService.selectCate1();
+		
+		request.setAttribute("movieList", movieList);
+		request.setAttribute("movieRank", movieRank);
+		request.setAttribute("cate1List", cate1List);
+		
+		
+	}
+	
+	
 	@GetMapping("/movie/ratingMain")
 	public void getRating(HttpServletRequest request, Model model) throws Exception {
 		logger.info("getRatingMain");

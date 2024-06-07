@@ -66,4 +66,10 @@ public interface MovieService {
 	//구매/대여 영화 랭킹 정렬
 	public List<MovieVO> getPurchaseMovieRank();
 	
+	//구독 영화 최신순 정렬
+	public List<MovieVO> getSubscribeMovieList();
+	
+	//구독 영화 랭킹 정렬
+	public List<MovieVO> getSubscribeMovieRank();
+	
 }

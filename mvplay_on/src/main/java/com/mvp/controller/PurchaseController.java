@@ -196,37 +196,42 @@ public class PurchaseController {
 
 	// 구독----------------------------------------------------------------------------------------------
 	@GetMapping("/purchase/subscribe1")
-	public void subscribe1Page(HttpServletRequest request) {
+	public void subscribe1Page(HttpServletRequest request,Model model, MemberVO mvo) {
 		HttpSession session = request.getSession();
 
-		MemberVO mvo = (MemberVO) session.getAttribute("member");
-		logger.info("purchase");
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		//logger.info("purchase");
+		model.addAttribute("memberInfo", mvo);
 	}
 
 	@PostMapping("/purchase/subscribe1")
 	public String postSubscribe1(HttpServletRequest request, MemberVO member, SubscribtionVO svo, Model model) {
-		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO) session.getAttribute("member");
-		String userId = (String) session.getAttribute("userId");
-		String upw = request.getParameter("upw");
-		String ubirth = request.getParameter("ubirth");
+		 System.out.println("member11: "+member);
+		 HttpSession session = request.getSession();
+		 String userId = member.getUserId();
+		  
+		  userId = request.getParameter("userId");
+		  String upw = request.getParameter("upw");
+		  String ubirth = request.getParameter("ubirth");
+		 
 
-		System.out.println("포스트 구독");
-
+		//System.out.println("포스트 구독");
+		 System.out.println("member"+member);
 		String action = request.getParameter("action");
-		logger.info("POST movie/subscribeMain - Action: " + action);
-
+		//logger.info("POST movie/subscribeMain - Action: " + action);
+		System.out.println("포스트 구독1 :" + member.getUserId());
 		String goods = request.getParameter("goods");
 		String period = request.getParameter("period");
 
 		String ugrade = "1"; // Default 값 (일반회원)
 		session.setAttribute("ugrade", ugrade);
-		session.setAttribute("userId", userId);
-		session.setAttribute("upw", upw);
-		session.setAttribute("ubirth", ubirth);
-
-		System.out.println("goods: " + goods + " : " + period);
-
+		session.setAttribute("userId", member.getUserId());
+		session.setAttribute("upw", member.getUpw());
+		session.setAttribute("ubirth", member.getUbirth());
+		System.out.println("포스트 구독2 :" + member.getUserId());
+		//System.out.println("goods: " + goods + " : " + period);
+		
+		System.out.println("포스트 구독 :" + member.getUserId());
 		if (goods != null && period != null) {
 			session.setAttribute("goods", goods);
 			session.setAttribute("period", period);
@@ -264,7 +269,7 @@ public class PurchaseController {
 			}
 			newSubscription.setExpiredDate(calendar.getTime());
 
-			newSubscription.setUserId(userId);
+			newSubscription.setUserId(member.getUserId());
 			purchaseService.enrollSubscription(newSubscription);
 			System.out.println("enroll");
 
@@ -275,10 +280,10 @@ public class PurchaseController {
 			}
 			System.out.println("ugrade :" + ugrade);
 
-			member.setUserId(userId); // 설정된 userId를 member 객체에 설정
-			member.setUpw(upw); // 설정된 upw를 member 객체에 설정
-			member.setUbirth(null);// 설정된 ubirth를 member 객체에 설정
-			member.setUgrade(ugrade); // 설정된 ugrade를 member 객체에 설정
+			member.setUserId(member.getUserId()); 
+			member.setUpw(member.getUpw()); 
+			member.setUbirth(null);
+			member.setUgrade(ugrade); 
 
 			System.out.println("memberId" + member);
 
@@ -296,29 +301,7 @@ public class PurchaseController {
 		}
 	}
 
-	@GetMapping("/movie/subscribeMain")
-	public void GetsubscribeMainPage(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		MemberVO mvo = (MemberVO) session.getAttribute("member");
-		logger.info("subscribeMain");
-		List<MovieVO> movieSF = movieservice.movieSF_S();
-		request.setAttribute("movieSF", movieSF);
-		List<MovieVO> movieMystery = movieservice.movieMystery_S();
-		request.setAttribute("movieMystery", movieMystery);
-		List<MovieVO> movieCrime = movieservice.movieCrime_S();
-		request.setAttribute("movieCrime", movieCrime);
-		List<MovieVO> movieAnimation = movieservice.movieAnimation_S();
-		request.setAttribute("movieAnimation", movieAnimation);
-		List<MovieVO> movieDrama = movieservice.movieDrama_S();
-		request.setAttribute("movieDrama", movieDrama);
-		List<MovieVO> movieRomance = movieservice.movieRomance_S();
-		request.setAttribute("movieRomance", movieRomance);
-		List<MovieVO> movieThriller = movieservice.movieThriller_S();
-		request.setAttribute("movieThriller", movieThriller);
-		List<MovieVO> movieComedy = movieservice.movieComedy_S();
-		request.setAttribute("movieComedy", movieComedy);
-	}
-
+	
 	@PostMapping("/movie/subscribeMain")
 	public String PostsubscribeMainPage(HttpServletRequest request, Model model) {
 		String goods = (String) request.getSession().getAttribute("goods");
