@@ -26,7 +26,7 @@
 			</div>
 			<form id="subscribe_choice" action="/purchase/subscribe1" method="post">
 			<input type="hidden" name="action" value="step1">
-			<input type="hidden" name="userId" value="${memberInfo}">	
+			<input type="hidden" name="userId" value="${member.userId}">	
 	
 				<div class="main_content">
 					<div class="bp">
