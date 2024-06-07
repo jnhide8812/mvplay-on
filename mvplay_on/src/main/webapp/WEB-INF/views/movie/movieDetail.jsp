@@ -59,19 +59,19 @@
 								</c:when>
 							</c:choose>
 					</div>
-					<div> 
+					<div class="info"> 
 						<ul>
 							<!-- 영화 평점 -->
-							<li class="lavel">
-							<label>평균 <fmt:formatNumber value="${movieInfo.rating}" pattern="0.0"></fmt:formatNumber>점</label>
+							<li class="star">
+								<label>평균 <fmt:formatNumber value="${movieInfo.rating}" pattern="0.0"></fmt:formatNumber>점</label>
 							</li>
 							<!-- 영화 개봉일 -->
-							<li class="lavel">
-							<fmt:formatDate value="${movieInfo.movieDate}" pattern="yyyy년"></fmt:formatDate>
+							<li>
+								<fmt:formatDate value="${movieInfo.movieDate}" pattern="yyyy년"></fmt:formatDate>
 							</li>
 							<!-- 영화 장르 -->
-							<li class="lavel">
-							<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>
+							<li>
+								<c:out value="${movieInfo.cate1}"></c:out>, <c:out value="${movieInfo.cate2}"></c:out>
 							</li>
 						</ul>
 					</div>
@@ -116,6 +116,7 @@
 									</c:if>
 									
 									<!-- 유저 구매기록 확인 구매기록이 없다면 : 구매하기창으로 -->
+									<c:if test="${member.userId != null}">
 									<c:choose>
 										<c:when test='${purchase_result}'>
 											<button class="btn_buy_btn" onclick="location.href='/movie/moviePlay?movieId=${movieInfo.movieId}'">재생하기</button>	
@@ -124,6 +125,7 @@
 											<button  class="btn_buy_btn" onclick="location.href='../purchase/vod?movieId=${movieInfo.movieId}'">구매하기</button>
 										</c:otherwise>
 									</c:choose>
+									</c:if>
 								</c:if><!-- 구매/대여 전용 끝-->
 								
 								<!-- 대여 전용 -->
@@ -146,7 +148,7 @@
 								
 							
 							
-							<button id="likeBtn" class="like_btn">보고싶어요</button>
+							<button id="likeBtn" onclick="changeImage()"></button>
 							<%@include file="rating.jsp" %>
 						
 						</div><!-- inlineBlock -->
@@ -187,16 +189,17 @@
 			</div>	
 					<!-- 댓글 영역 -->
 				<div class="replyArea">	
-					<div class="reply_subject">
-						<h2>Review</h2>
-					</div>
-					
-					<c:if test="${member != null}">
+					<div class="shape">
+						<div class="reply_subject">
+							<h2>Review</h2>
+						</div>
+						
+						<c:if test="${member != null}">
 						<div class="reply_button_wrap">
 							<button>리뷰 쓰기</button>
 						</div>
-					</c:if>		
-					
+						</c:if>		
+					</div>
 					<div class="reply_not_div">
 						
 					</div>
@@ -208,7 +211,7 @@
 						</ul>
 					</div>
 				</div>	
-	</div>
+			</div>
 		</div>
 		<!-- 푸터 -->
 		<%@include file="../includes/footer.jsp" %>
@@ -495,7 +498,7 @@ function btns(){
 let wishResult = '<c:out value="${wish_result}" />';
 
 /* 보고 싶어요 버튼 */
-$(".btn_like_btn").on('click', function(e){
+$("#likeBtn").on('click', function(e){
 	
 	e.preventDefault();
 	
@@ -604,6 +607,11 @@ $(".btn").on('click', function(e){
 	
 });
 */
+function changeImage() {
+	var button = document.getElementById("likeBtn");
+	button.classList.toggle("clicked");
+}
+
 </script>
 </body>
 </html>
