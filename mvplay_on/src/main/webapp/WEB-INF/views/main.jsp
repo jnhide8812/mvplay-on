@@ -93,16 +93,16 @@
 </div>  <!-- id="container" -->
 
 <script>
+/* 영화 조회-
 let moveForm = $('#moveForm');
-
-	/* 영화 조회 */
-	$(".move").click(function(e) {
-		e.preventDefault();
-		moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr("href") + "'>");
-		moveForm.attr("action", "/movie/movieDetail");
-		moveForm.submit();
-	});
 	
+$(".move").click(function(e) {
+	e.preventDefault();
+	moveForm.append("<input type='hidden' name='movieId' value='"+$(this).attr("href") + "'>");
+	moveForm.attr("action", "/movie/movieDetail");
+	moveForm.submit();
+});
+ */	
 </script>
 
 <!-- swiper script -->
