@@ -13,6 +13,9 @@ a {
 ul, li {
 	list-style:none;
 }
+input {
+	margin-right: 6px;
+}
 /*내용 가운데로 */ 
 #container {
 	width: 1900px;
@@ -49,7 +52,7 @@ header.logo img {
 	margin-bottom:26px;
 }
 h1.main_tit {
-	margin: 0 0 12px;
+	margin: 0 0 10px;
 	font-size: 24px;
 	font-weight: bold;
 	line-height: 30px;
@@ -64,6 +67,7 @@ h2.sub_tit {
 	line-height: 20px;
 	letter-spacing: 0;
 	color: #babac1;
+	padding-bottom: 3px;
 }
 .main_content {
 	display: flex;
@@ -89,36 +93,30 @@ ul.pink{
 	padding: 12px 0 14px;
 	border-radius: 8px 8px 0 0;
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	width:320px;
-	height: 72px;
+	height: 40px;
 }
 ul.pink li {
 	display: flex;
 	text-align: center;
+	padding-left: 5px; 
 }
 li.up{
 	display: flex;
 	justify-content: space-around;
 }
-img.ck {
-	position: absolute;
-	top: 52px;
-	left: 12px;
-	display: inline-block;
-	width: 22px;
-	height: 22px;
-}
+
 input.grade{
 	font-weight: 500;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 20px;
 	letter-spacing: 0;
 }
 span.price {
-	font-weight: bold;
+	font-weight: 500;
 	font-size: 18px;
 	line-height: 24px;
 	letter-spacing: 0;
@@ -200,14 +198,19 @@ label.tit{
 	border-radius: 8px;
 	width: 100%;
 	color: #babac1;
+	font-size: 18px;
+}
+
+#selectedPrice {
+	font-size: 16px;
+	font-weight: 400;
+	color: #ffffff;
 }
 input.mon {
 	display: flex;
 	justify-content: flex-end;
 	color:#ffffff;
-	margin-right: 6px;
 	font-weight: bold;
-	font-size: 18px;
 	line-height: 24px;
 	letter-spacing: 0;
 }
@@ -229,11 +232,12 @@ ul.payment {
 	flex-direction: column;
 	align-items: flex-start;
 	color: #babac1;
+	border: 1px solid #191A1C;
 }
 ul.payment li {
 	padding: 10px;
-	font-size: 14px;
-	color:#ffffff;
+	font-size: 16px;
+	font-weight: 500;
 }
 
 .check_list {

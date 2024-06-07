@@ -32,7 +32,6 @@
 					<div class="bp">
 						<ul class="pink">
 							<li class="up">
-								<img class="ck" src="/resources/icon/ck_b.png">
 								<input type="radio" name="goods" value="b" class="grade"> 베이직
 							</li>
 							<li>
@@ -55,7 +54,6 @@
 					<div class="bp">
 						<ul class="pink">
 							<li class="up">
-								<img class="ck" src="/resources/icon/ck_b.png">
 								<input type="radio" name="goods" value="p" class="grade"> 프리미엄
 							</li>
 							<li>
