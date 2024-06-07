@@ -156,10 +156,22 @@ public class MovieServiceImpl implements MovieService {
 	public List<MovieVO> getPurchaseMovieList() {
 		return mapper.getPurchaseMovieList();
 	}
-
+	//구매/대여 영화 랭킹
 	@Override
 	public List<MovieVO> getPurchaseMovieRank() {
 		return mapper.getPurchaseMovieRank();
+	}
+	
+	//구독 영화 최신순 정렬
+	@Override
+	public List<MovieVO> getSubscribeMovieList() {
+		return mapper.getSubscribeMovieList();
+	}
+	//구독 영화 랭킹
+	@Override
+	public List<MovieVO> getSubscribeMovieRank() {
+		// TODO Auto-generated method stub
+		return mapper.getSubscribeMovieRank();
 	}
 	
 }
