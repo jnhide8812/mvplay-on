@@ -14,11 +14,11 @@
 }
 */
 
-.wrap{
-display: flex;
-flex-direction: row;
-
+.star {
+	display: flex;
+	flex-direction: row;
 }
+
 
 .rating {
     float: none;
@@ -56,7 +56,27 @@ flex-direction: row;
 .rating__label--half .star-icon {
    background-position: left;
 }
-
+.cancel button {
+	vertical-align: middle;
+	margin-left: 12px;
+	margin-bottom: 3px;
+	color: #ffffff;
+	padding: 3px 5px;
+	color: #ffffff;
+	border: 1px solid #84868D;
+	background-color: #84868D;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 450;
+}
+.cancel button:hover {
+	background-color: transparent;
+	border: none;
+	color: red;
+	font-weight: 600;
+	
+}
 /*적용 안됨*/
 .cancel{
 	display: block;
@@ -71,51 +91,52 @@ flex-direction: row;
     <input type="hidden" name="rating" value='<c:out value="${ratingInfo.rating }" />'>
     <input type="hidden" name="userId" value="${member.userId }">
     <input type="hidden" name="movieId" value="${movieInfo.movieId }">
-
-    <div class="rating">
-        <label class="rating__label rating__label--half" for="starhalf">
-            <input type="radio" id="starhalf" class="rating__input" name="rating" value="0.5">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--full" for="star1">
-            <input type="radio" id="star1" class="rating__input" name="rating" value="1">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--half" for="star1half">
-            <input type="radio" id="star1half" class="rating__input" name="rating" value="1.5">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--full" for="star2">
-            <input type="radio" id="star2" class="rating__input" name="rating" value="2">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--half" for="star2half">
-            <input type="radio" id="star2half" class="rating__input" name="rating" value="2.5">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--full" for="star3">
-            <input type="radio" id="star3" class="rating__input" name="rating" value="3">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--half" for="star3half">
-            <input type="radio" id="star3half" class="rating__input" name="rating" value="3.5">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--full" for="star4">
-            <input type="radio" id="star4" class="rating__input" name="rating" value="4">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--half" for="star4half">
-            <input type="radio" id="star4half" class="rating__input" name="rating" value="4.5">
-            <span class="star-icon"></span>
-        </label>
-        <label class="rating__label rating__label--full" for="star5">
-            <input type="radio" id="star5" class="rating__input" name="rating" value="5">
-            <span class="star-icon"></span>
-        </label>
-    </div><!-- rating 끝 -->
-    <div class="cancel">
-    	<button type="button" id="ratingCancelBtn">별점 취소</button>
+	<div class="star">
+	    <div class="rating">
+	        <label class="rating__label rating__label--half" for="starhalf">
+	            <input type="radio" id="starhalf" class="rating__input" name="rating" value="0.5">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--full" for="star1">
+	            <input type="radio" id="star1" class="rating__input" name="rating" value="1">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--half" for="star1half">
+	            <input type="radio" id="star1half" class="rating__input" name="rating" value="1.5">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--full" for="star2">
+	            <input type="radio" id="star2" class="rating__input" name="rating" value="2">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--half" for="star2half">
+	            <input type="radio" id="star2half" class="rating__input" name="rating" value="2.5">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--full" for="star3">
+	            <input type="radio" id="star3" class="rating__input" name="rating" value="3">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--half" for="star3half">
+	            <input type="radio" id="star3half" class="rating__input" name="rating" value="3.5">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--full" for="star4">
+	            <input type="radio" id="star4" class="rating__input" name="rating" value="4">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--half" for="star4half">
+	            <input type="radio" id="star4half" class="rating__input" name="rating" value="4.5">
+	            <span class="star-icon"></span>
+	        </label>
+	        <label class="rating__label rating__label--full" for="star5">
+	            <input type="radio" id="star5" class="rating__input" name="rating" value="5">
+	            <span class="star-icon"></span>
+	        </label>
+	    </div><!-- rating 끝 -->
+	    <div class="cancel">
+	    	<button type="button" id="ratingCancelBtn">별점 취소</button>
+	    </div>
     </div>
     </form>
 </div>

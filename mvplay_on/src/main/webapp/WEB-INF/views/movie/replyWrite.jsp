@@ -107,7 +107,7 @@
 	    border: 1px solid #dadada;
 	    padding: 12px 8px 12px 8px;
 	    font-size: 15px;
-	    color: #a9a9a9;
+	    color: #84868D;
 	    resize: none;
 	    margin-top: 10px;  	
   	}
