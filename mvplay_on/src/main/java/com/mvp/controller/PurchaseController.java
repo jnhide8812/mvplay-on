@@ -205,33 +205,27 @@ public class PurchaseController {
 	}
 
 	@PostMapping("/purchase/subscribe1")
-	public String postSubscribe1(HttpServletRequest request, MemberVO member, SubscribtionVO svo, Model model) {
-		 System.out.println("member11: "+member);
-		 HttpSession session = request.getSession();
-		 String userId = member.getUserId();
-		  
-		  userId = request.getParameter("userId");
-		  String upw = request.getParameter("upw");
-		  String ubirth = request.getParameter("ubirth");
+	public String postSubscribe1(HttpServletRequest request, SubscribtionVO svo, Model model) {
 		 
-
-		//System.out.println("포스트 구독");
-		 System.out.println("member"+member);
+		 HttpSession session = request.getSession();
+		 //String userId = member.getUserId();
+		logger.info("svo::"+svo);
+		 
 		String action = request.getParameter("action");
 		//logger.info("POST movie/subscribeMain - Action: " + action);
-		System.out.println("포스트 구독1 :" + member.getUserId());
+
 		String goods = request.getParameter("goods");
 		String period = request.getParameter("period");
 
 		String ugrade = "1"; // Default 값 (일반회원)
-		session.setAttribute("ugrade", ugrade);
-		session.setAttribute("userId", member.getUserId());
-		session.setAttribute("upw", member.getUpw());
-		session.setAttribute("ubirth", member.getUbirth());
-		System.out.println("포스트 구독2 :" + member.getUserId());
+		
+		//구독권- ugrade 변경 : userId, ugrade 필요
+		MemberVO member = new MemberVO();
+		member.setUserId(svo.getUserId());
+
 		//System.out.println("goods: " + goods + " : " + period);
 		
-		System.out.println("포스트 구독 :" + member.getUserId());
+
 		if (goods != null && period != null) {
 			session.setAttribute("goods", goods);
 			session.setAttribute("period", period);
@@ -244,6 +238,7 @@ public class PurchaseController {
 				priceMonthly = 7900;
 				priceYearly = 79900;
 				priceMonthlyDiscounted = 6660;
+				
 			} else if ("p".equals(goods)) {
 				priceMonthly = 8900;
 				priceYearly = 89900;
@@ -269,7 +264,7 @@ public class PurchaseController {
 			}
 			newSubscription.setExpiredDate(calendar.getTime());
 
-			newSubscription.setUserId(member.getUserId());
+			newSubscription.setUserId(svo.getUserId());
 			purchaseService.enrollSubscription(newSubscription);
 			System.out.println("enroll");
 
@@ -278,16 +273,12 @@ public class PurchaseController {
 			} else if (goods.equals("p")) {
 				ugrade = "3";
 			}
-			System.out.println("ugrade :" + ugrade);
+			member.setUgrade(ugrade);
 
-			member.setUserId(member.getUserId()); 
-			member.setUpw(member.getUpw()); 
-			member.setUbirth(null);
-			member.setUgrade(ugrade); 
-
-			System.out.println("memberId" + member);
+			
 
 			try {
+				
 				memberService.updateMemberGrade(member);
 				System.out.println("member(purchaseController)" + member);
 				System.out.println("ugrade(purchaseController) :" + ugrade);
