@@ -45,7 +45,7 @@
 						</tr>
 						<tr>
 							<th>게시판 수정일</th>
-							<td><input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' >></td>
+							<td><input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' ></td>
 						</tr>
 						<!-- 답변이 있으면 보임 -->
 						<c:if test="${pageInfo.answerCk =='O'}">

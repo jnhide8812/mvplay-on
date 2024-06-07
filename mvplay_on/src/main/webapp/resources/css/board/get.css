@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(style.css);  
+@import url(/resources/css/basic/style.css);  
 *{
 	margin:0;
 	padding:0;
@@ -42,26 +42,28 @@ li{
 }
 table {
 	border-collapse: collapse;
-	border: 1px solid #C8C8C8;
-	width: 500px;
+	border: 1px solid #CCCCCC;
+	width: 600px;
 	margin-top: 15px;
 	margin-bottom: 10px;
 	text-align: center;
 }
 th {
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 16px;
-	background-color: #E1E1E1;
+	background-color: #323234;
 	text-align: center;
-	border: 1px solid #C8C8C8;
+	border: 1px solid #000000;
 	vertical-align: middle;
+	color: #EBEBEB;
+	width: 200px;
 }
 td {
-	border: 1px solid #C8C8C8;
+	border: 1px solid #000000;
 	font-size: 15px;
-	font-weight: 400;
-	color: #000000;
-	background-color: #ffffff;
+	font-weight: 450;
+	color: #FFFFFF;
+	background-color: #5C5C5C;
 	height: 40px;
 	text-align: left;
 	padding-left: 5px;
@@ -69,9 +71,16 @@ td {
 }
 input, textarea {
 	border: none;
+	background-color: #5C5C5C;
+	color:#ffffff;
+	height: 40px;
+	width: 400px;
+}
+textarea {
+	resize:none;
 }
 .btn_wrap{
-	width: 500px;
+	width: 600px;
 	display:flex;
 	justify-content: center;
 	flex-direction: row;
@@ -79,15 +88,14 @@ input, textarea {
 	
 }
 a.btn {
-	width: 240px;
 	border:1px solid #F82F62;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 500;
 	text-align: center;
 	line-height: 20px;
 	margin: 0 5px;
-	padding: 6px 20px;
+	padding: 8px 60px;
 	cursor: pointer;
 }
 a#list_btn {
