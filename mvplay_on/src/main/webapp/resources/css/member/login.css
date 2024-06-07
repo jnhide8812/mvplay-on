@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(style.css);
+@import url(/resources/css/basic/style.css);
 /*화면 전체 필요없는 공백 제거*/
 *{
 	margin:0;
@@ -52,8 +52,7 @@ header {
 	height: 100%;
 	overflow: hidden;
 	z-index: 1;
-	padding-top: 350px;
-	padding-bottom: 155px;
+	padding: 350px 0 155px 30px;
 }
 
 form.l_box{
@@ -75,13 +74,15 @@ li.login_top {
 }
 
 .l_title h1 {
-	font-size: 24px;
+	font-size: 26px;
 	font-weight: 600;
 	color: #ffffff;
 }
 .find a{
-	font-size: 11px;
+	font-size: 12px;
 	color: #ffffff;
+	vertical-align: bottom;
+	font-weight: 400;
 }
 span.mf{
 	color: #ffffff;
@@ -100,6 +101,7 @@ input.login_input {
 }
 input.login_button {
 	background-color: #f82f62;
+	border: 1px solid #f82f62;
 	color: #ffffff;
 	font-weight: 700;
 	text-align: center;
