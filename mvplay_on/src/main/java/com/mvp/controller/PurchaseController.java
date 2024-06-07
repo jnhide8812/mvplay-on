@@ -300,21 +300,21 @@ public class PurchaseController {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		logger.info("subscribeMain");
-		List<MovieVO> movieSF = movieservice.movieSF_P();
+		List<MovieVO> movieSF = movieservice.movieSF_S();
 		request.setAttribute("movieSF", movieSF);
-		List<MovieVO> movieMystery = movieservice.movieMystery_P();
+		List<MovieVO> movieMystery = movieservice.movieMystery_S();
 		request.setAttribute("movieMystery", movieMystery);
-		List<MovieVO> movieCrime = movieservice.movieCrime_P();
+		List<MovieVO> movieCrime = movieservice.movieCrime_S();
 		request.setAttribute("movieCrime", movieCrime);
-		List<MovieVO> movieAnimation = movieservice.movieAnimation_P();
+		List<MovieVO> movieAnimation = movieservice.movieAnimation_S();
 		request.setAttribute("movieAnimation", movieAnimation);
-		List<MovieVO> movieDrama = movieservice.movieDrama_P();
+		List<MovieVO> movieDrama = movieservice.movieDrama_S();
 		request.setAttribute("movieDrama", movieDrama);
-		List<MovieVO> movieRomance = movieservice.movieRomance_P();
+		List<MovieVO> movieRomance = movieservice.movieRomance_S();
 		request.setAttribute("movieRomance", movieRomance);
-		List<MovieVO> movieThriller = movieservice.movieThriller_P();
+		List<MovieVO> movieThriller = movieservice.movieThriller_S();
 		request.setAttribute("movieThriller", movieThriller);
-		List<MovieVO> movieComedy = movieservice.movieComedy_P();
+		List<MovieVO> movieComedy = movieservice.movieComedy_S();
 		request.setAttribute("movieComedy", movieComedy);
 	}
 
@@ -331,6 +331,22 @@ public class PurchaseController {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		logger.info("PurchaseMain");
+		List<MovieVO> movieSF = movieservice.movieSF_P();
+		request.setAttribute("movieSF", movieSF);
+		List<MovieVO> movieMystery = movieservice.movieMystery_P();
+		request.setAttribute("movieMystery", movieMystery);
+		List<MovieVO> movieCrime = movieservice.movieCrime_P();
+		request.setAttribute("movieCrime", movieCrime);
+		List<MovieVO> movieAnimation = movieservice.movieAnimation_P();
+		request.setAttribute("movieAnimation", movieAnimation);
+		List<MovieVO> movieDrama = movieservice.movieDrama_P();
+		request.setAttribute("movieDrama", movieDrama);
+		List<MovieVO> movieRomance = movieservice.movieRomance_P();
+		request.setAttribute("movieRomance", movieRomance);
+		List<MovieVO> movieThriller = movieservice.movieThriller_P();
+		request.setAttribute("movieThriller", movieThriller);
+		List<MovieVO> movieComedy = movieservice.movieComedy_P();
+		request.setAttribute("movieComedy", movieComedy);
 	}
 
 	@PostMapping("/movie/PurchaseMain")
