@@ -68,7 +68,7 @@ section.list {
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	padding: 0 8px;
+	padding: 0 25px;
 }
 img.poster {
 	width: 220px;
