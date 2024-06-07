@@ -26,12 +26,13 @@
 			</div>
 			<form id="subscribe_choice" action="/purchase/subscribe1" method="post">
 			<input type="hidden" name="action" value="step1">
-			<input type="hidden" name="userId" value="${memberInfo.}">	
+			<input type="hidden" name="userId" value="${memberInfo}">	
 	
 				<div class="main_content">
 					<div class="bp">
 						<ul class="pink">
 							<li class="up">
+								<img class="ck" src="/resources/icon/ck_b.png">
 								<input type="radio" name="goods" value="b" class="grade"> 베이직
 							</li>
 							<li>
@@ -54,6 +55,7 @@
 					<div class="bp">
 						<ul class="pink">
 							<li class="up">
+								<img class="ck" src="/resources/icon/ck_b.png">
 								<input type="radio" name="goods" value="p" class="grade"> 프리미엄
 							</li>
 							<li>
