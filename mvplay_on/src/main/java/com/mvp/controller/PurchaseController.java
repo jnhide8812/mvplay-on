@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mvp.model.Criteria;
+
 import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
-import com.mvp.model.PageVO;
+
 import com.mvp.model.PurchaseVO;
 import com.mvp.model.PurchaseViewVO;
 import com.mvp.model.RefundVO;
@@ -126,7 +126,7 @@ public class PurchaseController {
 
 		MemberVO mvo = (MemberVO) session.getAttribute("member");
 		/* model.addAttribute("purchaseInfo", purchaseService.getBuyInfo(pview)); */
-		model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId));
+		/* model.addAttribute("movieInfo", movieservice.movieGetDetail(movieId)); */
 		model.addAttribute("refundInfo",purchaseService.getRefund(pview.getId()));
 		logger.info("getmappingRefund :" + pview);
 	
@@ -135,22 +135,23 @@ public class PurchaseController {
 
 	// 환불 신청
 	@PostMapping("/purchase/refund")
-	public String refundPost(@RequestParam("movieId") int movieId, MemberVO member) {
+	public String refundPost(@RequestParam("movieId") int movieId, @RequestParam("id") int id,MemberVO member) {
 		System.out.println("postRefund");
 		String userId = member.getUserId();
 
 		RefundVO rvo = new RefundVO();
 		// int refundPirce = rvo.getRefundPrice();
 		rvo.setUserId(userId);
-		rvo.setId(movieId);
-
+		rvo.setId(id);
+		
+		// purchaseTable table 수정
 		purchaseService.refund(rvo);
 		System.out.println("purchaseService.refund");
 		// refund table 등록
 		purchaseService.enrollRefund(rvo);
-		
+		System.out.println("purchaseService.enrollRefund(rvo);");
 
-		return "redirect:/purchase/refund";
+		return "redirect:/purchase/pList";
 	}
 
 	/*

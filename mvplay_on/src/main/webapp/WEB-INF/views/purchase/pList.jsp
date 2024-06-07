@@ -21,25 +21,24 @@
 				<input type="hidden" name="userId" value="${member.userId}">
 				
 				<div class="ai_list">
-				<c:forEach items="${list}" var="list">
+				<c:forEach items="${list}" var="item">
 	                <div class="watch">
 	                   <!-- 각 영화 정보 표시 -->
-	                     <input type="hidden" name="movieId" value="${list.movieId}"> 
-	                     <input type="hidden" name="id" value="${list.id}">
+	                    
 	                   <ul>
 							<li>
-								<a class="move" href="/movie/movieDetail?movieId=${list.movieId}">
-									<img src="/resources/img/${list.poster}" class="poster">
+								<a class="move" href="/movie/movieDetail?movieId=${item.movieId}">
+									<img src="/resources/img/${item.poster}" class="poster">
 								</a>
 	                       	</li>
 	                        <li>
-		                        <a class="subject" href="/movie/movieDetail?movieId=${list.movieId}">
-		                           ${list.movieTitle}<br>
+		                        <a class="subject" href="/movie/movieDetail?movieId=${item.movieId}">
+		                           ${item.movieTitle}<br>
 		                        </a>
 	                        </li>
 	                        <li>
 	                           <!-- 환불하기 버튼 -->
-	                           <input type="submit" value="환불하기" class="refund">
+	                           <input type="button" value="환불하기" class="refund"  data-movie-id="${item.movieId}" data-id="${item.id}">
 	                        </li>
 						</ul>
 					</div>
@@ -55,20 +54,25 @@
     
 <script>
 //환불 요청 폼
-/*let refundForm = $('#refundForm');
-
-
- $("#refund_btn").on("click", function(e){
-    e.preventDefault();
+$(".refund").on("click", function() {
+    var movieId = $(this).data("movieId");
+    var id = $(this).data("id");
     
-    refundForm.attr("method", "post");
-    refundForm.attr("action", "/purchase/refund");
-    refundForm.submit();
-   
-   
-   
-});   
- */
+    console.log("movieId:", movieId);  // 디버깅용 콘솔 출력
+    console.log("id:", id);  // 디버깅용 콘솔 출력
+    
+    // 기존의 hidden input 요소 제거
+    $("#refundForm input[name='movieId']").remove();
+    $("#refundForm input[name='id']").remove();
+    
+    
+    
+    // 새로운 hidden input 요소 추가
+    $("#refundForm").append('<input type="hidden" name="movieId" value="' + movieId + '">');
+    $("#refundForm").append('<input type="hidden" name="id" value="' + id + '">');
+    
+    $("#refundForm").submit();
+});
 
 </script>
 
