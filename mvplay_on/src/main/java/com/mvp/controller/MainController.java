@@ -1,5 +1,6 @@
 package com.mvp.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,12 +95,12 @@ public class MainController {
 	
 	@GetMapping(value = {"/movie/movieDetail", "/movie/purchaseDetail","/movie/moviePlay"})
 	public void movieGetInfoGET(HttpServletRequest request, int movieId, Model model) {
+		logger.info("movie Get Info");
 		//세션 가져오기!!
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
 		if(mvo != null) { //세션이 있는 경우
-			logger.info("mvo:::"+mvo);
 			RatingVO rvo = new RatingVO();
 			
 			//세션이 있는 경우 고객이 선택한 별점을 ratingInfo에 넣음
@@ -116,12 +117,19 @@ public class MainController {
 			pvo.setMovieId(movieId);
 			int checkPurchase = purchaseService.checkPurchase(pvo);
 			if(checkPurchase>0) {
-				model.addAttribute("purchase_result", true);
+				//오늘 날짜
+				Date now = new Date();
+				
+				//만료일 확인
+				PurchaseVO date = purchaseService.purchaseCheckDate(pvo);
+				Date expiredDate = date.getExpiredDate();
+				
+				boolean result = expiredDate.after(now);
+				
+				model.addAttribute("purchase_result", result);
 			}else {
 				model.addAttribute("purchase_result", false);
 			}
-			
-			
 		}
 		
 		MovieVO vo = movieService.movieGetDetail(movieId);

@@ -90,6 +90,22 @@
         where userId = #{userId} and  movieId = #{movieId}
     </select>
 	
+	<!-- 구매 만료일 확인 1개만 가져오기 -->
+	<select id="purchaseCheckDate" resultType="com.mvp.model.PurchaseVO">
+	<!-- SELECT expiredDate FROM purchase
+        WHERE userId = #{userId} AND  movieId = #{movieId}
+        and expiredDate>=sysdate
+     -->	
+     <![CDATA[
+     	SELECT * 
+		FROM (SELECT expiredDate 
+			  FROM purchase 
+		      WHERE userId = #{userId} and movieId = #{movieId}
+		      ORDER BY expiredDate DESC) 
+		WHERE ROWNUM <= 1
+     ]]>
+         
+	</select>
 	
 
 

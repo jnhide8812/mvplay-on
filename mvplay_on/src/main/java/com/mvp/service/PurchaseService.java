@@ -42,4 +42,8 @@ public interface PurchaseService {
 
 	// 결제 검증 서비스 메서드
 	// boolean validatePayment(PaymentValidationRequest request);
+	
+	//구매 만료일 확인
+	public PurchaseVO purchaseCheckDate(PurchaseVO pvo);
+	
 }

@@ -38,5 +38,9 @@ public interface PurchaseMapper {
 
 	// 중복구매 확인
 	public int checkPurchase(PurchaseVO pvo);
+	
+	//구매 만료일 확인
+	public PurchaseVO purchaseCheckDate(PurchaseVO pvo);
+	
 
 }
