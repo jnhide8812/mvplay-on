@@ -78,7 +78,6 @@ public class MainController {
 	//기존 매핑
 	@RequestMapping("/main")
 	public void list(HttpServletRequest request) {
-		System.out.println("test");
 		List<MovieVO> movieList = movieService.movieList();
 		List<MovieVO> movieRank = movieService.movieRank();
 		request.setAttribute("movieList", movieList);

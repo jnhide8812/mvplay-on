@@ -108,6 +108,18 @@
          
 	</select>
 	
+	<!-- 구독권 만료일 확인 1개만 가져오기 -->
+	<select id="subscribeCheckDate" resultType="com.mvp.model.PurchaseVO">
+     <![CDATA[
+     	SELECT * 
+		FROM (SELECT expiredDate 
+			  FROM subscribePayment 
+			  WHERE userId = #{userId}
+		      ORDER BY expiredDate DESC) 
+		WHERE ROWNUM <= 1
+     ]]>
+	</select>
+	
 
 
 </mapper>

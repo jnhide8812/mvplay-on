@@ -46,8 +46,6 @@ public class RatingController {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		logger.info("mvo:: "+mvo);
-		
 		if(mvo != null) { //세션이 있는 경우
 			RatingVO myRatingVO = new RatingVO();
 			myRatingVO = ratingService.selectRating(rvo);
@@ -72,9 +70,6 @@ public class RatingController {
 		//세션 가져오기!!
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
-		
-		logger.info("mvo::: "+mvo);
-		
 		
 		if(mvo != null) { //세션이 있는 경우
 			
