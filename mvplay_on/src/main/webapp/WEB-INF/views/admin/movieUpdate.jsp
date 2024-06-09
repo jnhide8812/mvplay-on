@@ -75,7 +75,6 @@
 						<br>
 						<div class="form_section_content">
 							<label class="radio"><input type="radio" name="cate1" value="코믹" onclick="cateReadOnly()"/>코믹</label>
-						    <label class="radio"><input type="radio" name="cate1" value="호러" onclick="cateReadOnly()"/>호러</label>
 						    <label class="radio"><input type="radio" name="cate1" value="로맨스" onclick="cateReadOnly()"/>로맨스</label>
 							<label class="radio"><input type="radio" name="cate1" value="액션" onclick="cateReadOnly()"/>액션</label>
 							<label class="radio"><input type="radio" name="cate1" value="미스터리" onclick="cateReadOnly()"/>미스터리</label>
