@@ -284,6 +284,11 @@ li.star label {
 
 }
 
+#likeBtn.unfilled {
+	background-image: url("/resources/icon/heart2.png");
+
+}
+
 
 
 

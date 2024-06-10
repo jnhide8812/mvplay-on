@@ -18,10 +18,12 @@ import com.mvp.model.MemberVO;
 import com.mvp.model.MovieVO;
 import com.mvp.model.PurchaseVO;
 import com.mvp.model.RatingVO;
+import com.mvp.model.WishListVO;
 import com.mvp.service.MemberService;
 import com.mvp.service.MovieService;
 import com.mvp.service.PurchaseService;
 import com.mvp.service.RatingService;
+import com.mvp.service.WishListService;
 
 @Controller
 public class MainController {
@@ -39,6 +41,10 @@ public class MainController {
 	
 	@Autowired
 	private PurchaseService purchaseService;
+	
+	//위시리스트 확인
+	@Autowired
+	private WishListService wishService;
 	
 	/*메인 페이지 이동
 	@GetMapping("/main")
@@ -110,6 +116,20 @@ public class MainController {
 			//고객의 별점 정보를 넣음
 			model.addAttribute("ratingInfo", myRatingVO);
 			
+			//위시리스트 확인
+			//1. 기존 위시리스트 값이 있는지 없는지 검색
+			WishListVO wvo = new WishListVO();
+			wvo.setUserId(rvo.getUserId());
+			wvo.setMovieId(movieId);
+			WishListVO myWishVO = wishService.selectUserWish(wvo);
+			//2. 위시리스트가 있다면 모델에 담음
+			if (myWishVO !=null) {
+				model.addAttribute("wishInfo", myWishVO);
+			}else {
+				model.addAttribute("wishInfo", null);
+			}
+			
+			
 			//구매기록 확인 
 			PurchaseVO pvo = new PurchaseVO();
 			pvo.setUserId(mvo.getUserId());
@@ -175,7 +195,7 @@ public class MainController {
 		
 	}
 	
-	
+	//평가(nav)
 	@GetMapping("/movie/ratingMain")
 	public void getRating(HttpServletRequest request, Model model) throws Exception {
 		logger.info("getRatingMain");
