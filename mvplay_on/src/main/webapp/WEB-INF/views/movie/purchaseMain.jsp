@@ -122,11 +122,11 @@ document.addEventListener("DOMContentLoaded", function() {
         observer: true,
         observeParents: true,
         spaceBetween: 20,
-        centeredSlides : true,
+        /* centeredSlides : true, */
         
     	loopFillGroupWithBlank : true,
 
-    	loop : true, // 무한 반복
+    	loop : false, //true 무한 반복
     	
         breakpoints: {
             1280: {

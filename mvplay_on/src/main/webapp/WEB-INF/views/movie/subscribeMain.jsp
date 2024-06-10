@@ -122,13 +122,13 @@ document.addEventListener("DOMContentLoaded", function() {
         observer: true,
         observeParents: true,
         spaceBetween: 20,
-        centeredSlides : true,
+        /* centeredSlides : true, */
         
     	loopFillGroupWithBlank : true,
 
-    	loop : true, // 무한 반복
+    	loop : false, // 무한 반복
     	
-        breakpoints: {
+         breakpoints: {
             1280: {
                 slidesPerView: 4,
                 slidesPerGroup: 4,
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 slidesPerView: 2,
                 slidesPerGroup: 2,
             }
-        }
+        } 
     });
     
 });
