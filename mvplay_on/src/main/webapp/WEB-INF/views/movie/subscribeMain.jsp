@@ -17,9 +17,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 <style type="text/css">
 	img.icon {
-		width: 60px;
-		height: 60px;
-		object-fit:cover;
+		width: 70px;
+		height: 70px;
+		object-fit: contain;
+		margin-left: 8px;
+	}
+		img.ricon {
+		width: 50px;
+		height: 50px;
+		object-fit: contain;
 		margin-left: 8px;
 	}
 </style>
@@ -73,7 +79,7 @@
 				</section>
 				<section class="list">  <!-- 영화 랭킹 -->
 					<c:if test="${listcheck != 'empty'}">
-					<h1 class="list_name">Ranking</h1>
+					<h1 class="list_name">Ranking<img src="/resources/icon/ranking.png" class="ricon"></h1>
 						<div class="swiper-container swiper2">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
