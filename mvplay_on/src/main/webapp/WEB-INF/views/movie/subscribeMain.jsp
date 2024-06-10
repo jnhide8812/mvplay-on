@@ -27,7 +27,7 @@
 					 <c:if test="${listcheck != 'empty'}">
 					 
 					 <c:forEach items="${cate1List}" var="cate1List">
-						<h1 class="list_name"><c:out value='${cate1List.cate1}'/></h1>
+						<h1 class="list_name"><c:out value='${cate1List.cate1}'/><img src="/resources/icon/${cate1List.cate1}.png" class="icon"></h1>
 						<div class="swiper-container swiper1">
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">
