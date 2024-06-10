@@ -30,10 +30,10 @@
 			           			</a>
 							</li>
 			                <li class="tt">${movieList.movieTitle}</li>
-			                <li class="star">
+			                <%-- <li class="star">
 			                	<img class="star_rate" src="/resources/icon/star-fill.svg">
 			               		<span> ${movieList.rating}</span>
-			               	</li>
+			               	</li> --%>
 			               	<li>
 			               		<span>${movieList.cate1}</span>
 			               		<span>${movieList.movieDate}</span>

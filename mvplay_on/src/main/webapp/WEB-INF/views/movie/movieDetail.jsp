@@ -152,8 +152,8 @@
 								</c:if><!-- 대여 전용 끝-->
 								
 							
-							
-							<button id="likeBtn" onclick="changeImage()"></button>
+							<button id="likeBtn" class="wishValue" onclick="changeImage()"></button>
+							<!-- <button id="likeBtn" class="wishValue"></button> -->
 							<%@include file="rating.jsp" %>
 						
 						</div><!-- inlineBlock -->
@@ -226,26 +226,50 @@
 //시직하자마자-적용 안됨
 $(document).ready(function(){
 
+	let purchase_result = '<c:out value="${purchase_result}" />';
+		
+	//위시리스트 등록/취소 결과-적용 안됨
+	let wishResult = '<c:out value="${wish_result}" />';
 	
-let purchase_result = '<c:out value="${purchase_result}" />';
+	checkWishResult(wishResult);
 	
-//위시리스트 등록/취소 결과
-let wishResult = '<c:out value="${wish_result}" />';
-
-
-checkWishResult(wishResult);
-
-function checkWishResult(result){
-	if(result === ''){
-		return;
+	function checkWishResult(result){
+		if(result === ''){
+			return;
+		}
+		alert(wishResult);
 	}
-	alert(wishResult);
-}
+	
+	
+	//위시리스트
+	let wishValue = parseInt('<c:out value="${wishInfo}" />');
+	
+	//위시리스트 값이 유효한지 확인 후 설정
+	if (!isNaN(wishValue) && wishValue >=0) {
+	    setWishList();
+	}
+	
+	function setWishList() {
+		//let wishIcon = document.querySelectorAll('.wishValue');
+		let wishIcon = document.querySelectorAll('#likeBtn');
+		//let wishRemoveIcon = document.querySelectorAll('#likeBtn');
+		wishIcon.classList.remove('unfilled')
+		wishIcon.classList.toggle('clicked');
+		
+	}
+
 
 
 	
 }); //$(document).ready(function()
-	
+
+		
+function changeImage() {
+	var button = document.getElementById("likeBtn");
+	button.classList.toggle("clicked");
+}		 
+		
+		
 
 /* 리뷰쓰기 */
 //온클릭 버전 (차후 불필요하게 될 시 삭제)
@@ -612,10 +636,7 @@ $(".btn").on('click', function(e){
 	
 });
 */
-function changeImage() {
-	var button = document.getElementById("likeBtn");
-	button.classList.toggle("clicked");
-}
+
 
 </script>
 </body>
