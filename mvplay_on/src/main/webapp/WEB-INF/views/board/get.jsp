@@ -23,37 +23,37 @@
 				<h1>조회 페이지</h1>
 				<div class="view">
 					<table>
-						<tr>
+						<tr class="can">
 							<th>게시판 번호</th>
 							<td><input name="ano" readonly="readonly" value='<c:out value="${pageInfo.ano}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="can">
 							<th>게시판 제목</th>
 							<td><input name="title" readonly="readonly" value='<c:out value="${pageInfo.title}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="can">
 							<th>게시판 내용</th>
 							<td><textarea rows="3" name="content" readonly="readonly"><c:out value="${pageInfo.content}"/></textarea></td>
 						</tr>
-						<tr>
+						<tr class="can">
 							<th>게시판 작성자</th>
 							<td><input name="userId" readonly="readonly" value='<c:out value="${pageInfo.userId}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="can">
 							<th>게시판 등록일</th>
 							<td><input name="regdater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regDate}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="can">
 							<th>게시판 수정일</th>
 							<td><input name="updateDate" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' ></td>
-						</tr>
+						</tr class="can">
 						<!-- 답변이 있으면 보임 -->
 						<c:if test="${pageInfo.answerCk =='O'}">
-						<tr>
+						<tr class="can">
 							<th>관리자 답변</th>
 							<td><pre>${pageInfo.answer }</pre></td>
 						</tr>
-						<tr>
+						<tr class="can">
 							<th>답변일</th>
 							<td><c:out value="${pageInfo.answerDate }"/></td>
 						</tr>

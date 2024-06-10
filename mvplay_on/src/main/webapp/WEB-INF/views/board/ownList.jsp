@@ -27,7 +27,7 @@
 					<c:if test="${listCheck != 'empty' }">
 					<table>
 						<thead>
-							<tr>
+							<tr class="name">
 								<th class="ano">번호</th>
 								<th class="title">제목</th>
 								<th class="userId">작성자</th>
@@ -37,7 +37,7 @@
 							</tr>
 						</thead>
 						<c:forEach items="${ownList }" var="ownList">
-							<tr>
+							<tr class="nei">
 								<td><c:out value="${ownList.ano}"></c:out></td>
 								<td>
 									<a class="move" href='/board/get?ano=<c:out value="${ownList.ano}"/>'>

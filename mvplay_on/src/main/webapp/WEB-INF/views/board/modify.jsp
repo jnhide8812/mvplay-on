@@ -24,27 +24,27 @@
 				<div class="view">
 					<form id="modifyForm" action="/board/modify" method="post">
 					<table>
-						<tr>
+						<tr class="do">
 							<th>게시판 번호</th>
 							<td><input name="ano" readonly="readonly" value='<c:out value="${pageInfo.ano}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="do">
 							<th>게시판 제목</th>
 							<td><input name="title" value='<c:out value="${pageInfo.title}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="do">
 							<th>게시판 내용</th>
 							<td><textarea rows="3" name="content"><c:out value="${pageInfo.content}"/></textarea></td>
 						</tr>
-						<tr>
+						<tr class="do">
 							<th>게시판 작성자</th>
 							<td><input name="userId" readonly="readonly" value='<c:out value="${pageInfo.userId}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="do">
 							<th>게시판 등록일</th>
 							<td><input name="regDater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.regDate}"/>' ></td>
 						</tr>
-						<tr>
+						<tr class="do">
 							<th>게시판 수정일</th>
 							<td><input name="updateDater" readonly="readonly" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${pageInfo.updateDate}"/>' ></td>
 						</tr>
