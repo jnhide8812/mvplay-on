@@ -22,7 +22,7 @@
 		)avg_rating ON m.movieId = avg_rating.movieId
 		
 		<![CDATA[
-		where sysdate <= movieDate + INTERVAL '90' DAY
+		where sysdate <= movieDate + (INTERVAL '1' YEAR) 
 		]]> <!-- 최근 90일 개봉 영화만 출력 -->
 		
 		order by movieDate desc

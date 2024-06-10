@@ -39,8 +39,13 @@
 		<div class="main_content">
 			<div class="posterFrame">
 				<div class="poster">
-					<!-- <img src="/resources/img/${movieInfo.poster}" width="300px"> -->
-					<img class="moviePoster" alt="임시 포스터 입니당" src="/resources/img/${movieInfo.poster}" width="300px">	
+					<c:if test="${movieInfo.poster != null}">
+						<!-- <img src="/resources/img/${movieInfo.poster}" width="300px"> -->
+						<img class="moviePoster" alt="영화 포스터" src="/resources/img/${movieInfo.poster}" width="300px">
+					</c:if>
+					<c:if test="${movieInfo.poster == null}">
+						<img class="moviePoster" alt="임시 포스터" src="/resources/img/noimg.png" width="300px">
+					</c:if>
 				</div>
 				
 				<div class="textArea_movieInfo">

@@ -32,6 +32,9 @@ public interface PurchaseMapper {
 
 	// 구매 목록 가져오기
 	public List<PurchaseViewVO> getPList(String userId);
+	
+	// 구매 만료된 목록 가져오기
+	public List<PurchaseViewVO> getexPList(String userId);
 
 	// 환불
 	public PurchaseViewVO getRefund(int id);

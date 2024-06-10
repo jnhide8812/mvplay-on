@@ -115,8 +115,10 @@ public class PurchaseController {
 
 		// model.addAttribute("refundInfo", rvo.getRefundPrice());
 		List<PurchaseViewVO> list = purchaseService.getPList(mvo.getUserId());
+		List<PurchaseViewVO> exList = purchaseService.getexPList(mvo.getUserId());
 		
 		model.addAttribute("list", list);
+		model.addAttribute("exList", exList);
 	}
 
 	@GetMapping("/purchase/refund")
@@ -146,10 +148,8 @@ public class PurchaseController {
 		
 		// purchaseTable table 수정
 		purchaseService.refund(rvo);
-		System.out.println("purchaseService.refund");
 		// refund table 등록
 		purchaseService.enrollRefund(rvo);
-		System.out.println("purchaseService.enrollRefund(rvo);");
 
 		return "redirect:/purchase/pList";
 	}

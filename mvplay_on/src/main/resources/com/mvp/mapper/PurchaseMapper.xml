@@ -71,6 +71,20 @@
 		WHERE p.userId = #{userId}
 		and expiredDate > sysdate
 	</select>
+	<!-- 구매 만료된 영화 목록보기(pList) -->
+	<select id="getexPList" resultType="com.mvp.model.PurchaseViewVO">
+		SELECT m.movieId, m.movieTitle, m.poster, p.id, p.userId, p.buyPrice, p.rentalPrice, p.startDate
+		FROM
+		movie m
+		JOIN purchase p ON m.movieId = p.movieId
+		WHERE p.userId = #{userId}
+		
+		<![CDATA[
+		and sysdate >= expiredDate
+		]]>
+		
+	</select>
+	
 	
 	<select id="getRefund" resultType="com.mvp.model.PurchaseViewVO">
 		<![CDATA[

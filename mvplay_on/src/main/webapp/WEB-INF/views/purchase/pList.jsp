@@ -45,6 +45,36 @@
 	            </c:forEach>
 	            </div>
 			</c:if>
+			<br><br>
+			<c:if test="${not empty exList}">
+				<h1 class="list_name">구매 만료된 영화</h1>
+				<input type="hidden" name="userId" value="${member.userId}">
+				
+				<div class="ai_list">
+				<c:forEach items="${exList}" var="exItem">
+	                <div class="watch">
+	                   <!-- 각 영화 정보 표시 -->
+	                    
+	                   <ul>
+							<li>
+								<a class="move" href="/movie/movieDetail?movieId=${exItem.movieId}">
+									<img src="/resources/img/${exItem.poster}" class="poster">
+								</a>
+	                       	</li>
+	                        <li>
+		                        <a class="subject" href="/movie/movieDetail?movieId=${exItem.movieId}">
+		                           ${exItem.movieTitle}<br>
+		                        </a>
+	                        </li>
+	                        <%-- <li>
+	                           <!-- 환불하기 버튼 -->
+	                           <input type="button" value="환불하기" class="refund"  data-movie-id="${item.movieId}" data-id="${item.id}">
+	                        </li> --%>
+						</ul>
+					</div>
+	            </c:forEach>
+	            </div>
+			</c:if>
 	     </form>
     </div>  <!--main_content -->
      <!-- FOOTER -->
