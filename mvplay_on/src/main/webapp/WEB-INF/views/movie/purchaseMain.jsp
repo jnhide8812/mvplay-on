@@ -120,7 +120,8 @@ document.addEventListener("DOMContentLoaded", function() {
         slidesPerGroup: 6,
         observer: true,
         observeParents: true,
-        spaceBetween: 15,
+        spaceBetween: 20,
+        centeredSlides : true,
         
     	loopFillGroupWithBlank : true,
 

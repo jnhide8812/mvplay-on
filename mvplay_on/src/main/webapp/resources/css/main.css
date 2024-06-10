@@ -46,11 +46,11 @@ h1.list_name {
 }
 section.list {
 	width: 1620px;
-	margin: 30px 10px;
+	margin: 30px 30px;
 }
 .swiper-container {
 	width: 1620px;
-	margin: 0 auto;
+	
 }
 .swiper-wrapper {
 	display: flex;

@@ -62,7 +62,7 @@
 						<div class="swiper-container swiper2">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<c:forEach items="${movieRank}" var="movieRank">
+									<c:forEach items="${movieRank}" var="movieRank" end="12">
 										<ul>
 											<li>
 												<a class="move" href="/movie/movieDetail?movieId=${movieRank.movieId}">
@@ -114,8 +114,8 @@ document.addEventListener("DOMContentLoaded", function() {
         slidesPerGroup: 6,
         observer: true,
         observeParents: true,
-        spaceBetween: 15,
-       	centeredSlides: true; 
+        spaceBetween: 25,
+        centeredSlides : true,
         
     	loopFillGroupWithBlank : true,
 
