@@ -15,6 +15,14 @@
 <!-- slide js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<style type="text/css">
+	img.icon {
+		width: 60px;
+		height: 60px;
+		object-fit:cover;
+		margin-left: 8px;
+	}
+</style>
 </head>
 <body>
 <div id = "container">
