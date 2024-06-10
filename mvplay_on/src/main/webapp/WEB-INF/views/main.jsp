@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
         observer: true,
         observeParents: true,
         spaceBetween: 15,
+       	centeredSlides: true; 
         
     	loopFillGroupWithBlank : true,
 
