@@ -278,8 +278,8 @@ public class PurchaseController {
 			
 
 			try {
-				
 				memberService.updateMemberGrade(member);
+				session.setAttribute("member", member);
 				System.out.println("member(purchaseController)" + member);
 				System.out.println("ugrade(purchaseController) :" + ugrade);
 			} catch (Exception e) {

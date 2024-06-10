@@ -37,8 +37,6 @@ public class WishListController {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		
-		logger.info("로그인 정보mvo::: "+mvo);
-		
 		if(mvo != null) { //세션이 있는 경우
 			//기존 평가 검색 
 			

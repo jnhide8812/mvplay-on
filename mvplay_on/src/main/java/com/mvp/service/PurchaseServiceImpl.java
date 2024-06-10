@@ -95,6 +95,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	public PurchaseVO purchaseCheckDate(PurchaseVO pvo) {
 		return purchasemapper.purchaseCheckDate(pvo);
 	}
+
+	//구독 만료일 확인
+	@Override
+	public PurchaseVO subscribeCheckDate(PurchaseVO pvo) {
+		return purchasemapper.subscribeCheckDate(pvo);
+	}
 	
 
 	

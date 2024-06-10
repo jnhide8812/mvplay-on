@@ -36,9 +36,17 @@
       <interceptor>
          <mapping path="/purchase/**" />
          <mapping path="/member/myPage" />
+         <mapping path="/movie/moviePlay" />
          <beans:bean id="LoginInterceptor"
                class="com.mvp.interceptor.LoginInterceptor"/>
-      </interceptor>    
+      </interceptor>  
+      
+      <interceptor>
+      	<mapping path="/movie/moviePlay" />
+      	<beans:bean id="MoviePlayInterceptor"
+      			class="com.mvp.interceptor.MoviePlayInterceptor" />
+      </interceptor>
+        
    </interceptors>
 
    

@@ -42,5 +42,8 @@ public interface PurchaseMapper {
 	//구매 만료일 확인
 	public PurchaseVO purchaseCheckDate(PurchaseVO pvo);
 	
+	//구독 만료일 확인
+	public PurchaseVO subscribeCheckDate(PurchaseVO pvo);
 
+	
 }

@@ -15,6 +15,14 @@
 <!-- slide js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<style>
+#player iframe{
+width: 1200px;
+height: 678px;
+
+}
+
+</style>
 </head>
 <body>
 <div id = "container">
@@ -23,9 +31,8 @@
 <%@include file="../includes/nav.jsp" %>
 <div class="main_content">
 		
-재생창 
 
-<pre>${movieInfo.movieUrl}</pre>
+<pre id="player">${movieInfo.movieUrl}</pre>
 		
 		
 		
