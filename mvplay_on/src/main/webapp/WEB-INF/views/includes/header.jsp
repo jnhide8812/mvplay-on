@@ -15,8 +15,8 @@
                 <c:if test="${member == null}">     <!-- 로그인 X -->
 					<div class="login_area">
 						<ul class="l_area">
-							<li class="lg"><a href="/member/login">로그인</a></li>
-							<li class="join_button"><a href="/member/signUp">회원가입</a></li>
+							<li><a href="/member/login"  class="lg" >로그인</a></li>
+							<li><a href="/member/signUp" class="join_button">회원가입</a></li>
 						</ul>
 					</div>
 				</c:if>

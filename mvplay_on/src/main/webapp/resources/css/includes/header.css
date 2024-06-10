@@ -6,7 +6,8 @@ header {
 	top:0;
 	left:0;
 	z-index: 500;
-	width:1900px;
+	width: 100%;
+	min-width:1900px;
 	padding-left: 240px;
 	background-color: #141517;
 }
@@ -80,17 +81,17 @@ ul.l_area li {
 	cursor: pointer;
 }
 
-li.join_button {
+a.join_button {
 	width: 86px;
 	height: 32px;
 	background-color: #f82f62;
 	border: 1px solid #f82f62;
 	border-radius: 4px;
 	text-align: center;
-	padding: 8px 5px 0px 5px;
+	padding: 4px 5px;
 	cursor: pointer;
 }
-li.lg{
+a.lg{
 	padding-top: 10px;
 }
 ul.after_login{
