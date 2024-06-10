@@ -122,7 +122,7 @@ public class PurchaseController {
 	}
 
 	@GetMapping("/purchase/refund")
-	public void refundPage(@RequestParam("movieId") int movieId, Model model, PurchaseViewVO pview, HttpServletRequest request) {
+	public void refundPage(Model model, PurchaseViewVO pview, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 

@@ -21,6 +21,7 @@
 			<br>
 				<!-- 영화 구매 정보 영역 -->
 				<div class="purchase_table">
+				
 					<form action="/purchase/refund" method="post" id="refundForm">
 						    <input type="hidden" name="id" value='<c:out value="${refundInfo.id}"/>'> 
 							<input type="hidden" name="movieId" value='<c:out value="${refundInfo.movieId}"/>'> 
@@ -38,9 +39,23 @@
 								<th>환불 예정 금액 : </th>
 								<td><c:out value="${refundInfo.buyPrice}" /></td>
 							</tr>
+							<!-- 환불 신청했다면 진행사항 출력 -->
+							<c:if test="${!empty refundInfo.refundStatus}">
+							
+							<tr class="r">
+								<th>환불 진행 사항</th>
+								<td><c:out value="${refundInfo.refundStatus}"/></td>
+							</tr>
+							
+							</c:if>
+							
+							
 						</table>
 					</form>
+				<c:if test="${empty refundInfo.refundStatus}">	
 					<button id="refundBtn">환불신청</button>
+				</c:if>
+				
 				</div>
 			</div><!-- refund_wrap -->
 		</div><!-- main_wrap -->

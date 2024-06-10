@@ -15,6 +15,20 @@
 <!-- slide js -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+<style type="text/css">
+	img.icon {
+		width: 70px;
+		height: 70px;
+		object-fit: contain;
+		margin-left: 8px;
+	}
+		img.ricon {
+		width: 50px;
+		height: 50px;
+		object-fit: contain;
+		margin-left: 8px;
+	}
+</style>
 </head>
 <body>
 <div id = "container">
@@ -27,7 +41,7 @@
 					 <c:if test="${listcheck != 'empty'}">
 					 
 					 <c:forEach items="${cate1List}" var="cate1List">
-						<h1 class="list_name"><c:out value='${cate1List.cate1}'/></h1>
+						<h1 class="list_name"><c:out value='${cate1List.cate1}'/><img src="/resources/icon/${cate1List.cate1}.png" class="icon"></h1>
 						<div class="swiper-container swiper1">
 								<div class="swiper-wrapper">
 									<div class="swiper-slide">

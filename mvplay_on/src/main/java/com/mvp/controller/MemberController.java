@@ -122,6 +122,7 @@ public class MemberController {
 		logger.info("logoutMainGET메서드 진입");
 
 		HttpSession session = request.getSession();
+		session.invalidate();
 
 		return "redirect:/main";
 	}

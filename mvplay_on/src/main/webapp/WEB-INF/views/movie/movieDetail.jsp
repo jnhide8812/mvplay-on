@@ -56,11 +56,17 @@
 					<!-- 권한 체크 용도 -->
 					<div style="padding-bottom:10px; color: #f82f62;">
 					<c:choose>
+								<c:when test="${movieInfo.movieCheck == 0 }">
+								* 구독 가능한 영화입니다.
+								</c:when>
 								<c:when test="${movieInfo.movieCheck == 1 }">
 								* 구매만 가능한 영화입니다.
 								</c:when>
 								<c:when test="${movieInfo.movieCheck == 2 }">
 								* 대여만 가능한 영화입니다.
+								</c:when>
+								<c:when test="${movieInfo.movieCheck == 3 }">
+								* 구매/대여 가능한 영화입니다.
 								</c:when>
 							</c:choose>
 					</div>
@@ -192,6 +198,8 @@
 					</div>	 --%>	<!-- 버튼 로직 수정중 완료시 삭제예정 -->
 				</div>
 			</div>	
+			<br><br><br>
+			
 					<!-- 댓글 영역 -->
 				<div class="replyArea">	
 					<div class="shape">

@@ -18,7 +18,7 @@
 	   <form id="refundForm" action="/purchase/refund" method="get">  
 			<c:if test="${not empty list}">
 				<h1 class="list_name">"${member.userId}"님이 대여 소장 중인 영화</h1>
-				<input type="hidden" name="userId" value="${member.userId}">
+				<%-- <input type="hidden" name="userId" value="${member.userId}"> --%>
 				
 				<div class="ai_list">
 				<c:forEach items="${list}" var="item">
@@ -39,6 +39,7 @@
 	                        <li>
 	                           <!-- 환불하기 버튼 -->
 	                           <input type="button" value="환불하기" class="refund"  data-movie-id="${item.movieId}" data-id="${item.id}">
+	                           <!-- <input type="button" value="환불하기" class="refund"> -->
 	                        </li>
 						</ul>
 					</div>
@@ -48,7 +49,7 @@
 			<br><br>
 			<c:if test="${not empty exList}">
 				<h1 class="list_name">구매 만료된 영화</h1>
-				<input type="hidden" name="userId" value="${member.userId}">
+				
 				
 				<div class="ai_list">
 				<c:forEach items="${exList}" var="exItem">
@@ -98,7 +99,7 @@ $(".refund").on("click", function() {
     
     
     // 새로운 hidden input 요소 추가
-    $("#refundForm").append('<input type="hidden" name="movieId" value="' + movieId + '">');
+    /* $("#refundForm").append('<input type="hidden" name="movieId" value="' + movieId + '">'); */
     $("#refundForm").append('<input type="hidden" name="id" value="' + id + '">');
     
     $("#refundForm").submit();
