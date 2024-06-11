@@ -13,13 +13,14 @@ ul, li {
 	list-style: none;
 }
 #container {
-	width: 1900px;
-	height: 866px;
-	margin: 0 auto
-}
-.sign_wrap{
 	width: 100%;
 	background-color: #000000;
+	min-width: 1900px;
+	height: 100%;
+	margin: 0 auto;
+}
+.sign_wrap{
+	height: 866px;
 }
 .member_h {
 	height: 72px;

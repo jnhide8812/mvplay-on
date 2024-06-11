@@ -13,7 +13,9 @@ li{
 }
 
 #container{
-	width: 1900px;
+	width: 100%;
+	min-width: 1900px;
+	height: 100%;
 	background-color: #000000;
 }
 
@@ -24,8 +26,6 @@ li{
 
 /*메인*/
 .main_content{
-	width: 1900px;
-	height: 100%;
 	display:flex;
 	flex-direction:column;
 	padding:86px 0 0 240px;

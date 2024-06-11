@@ -30,8 +30,6 @@
 							<h1>로그인</h1>
 						</div>
 						<div class="find">
-							<a href="findId.do">아이디 찾기</a>
-							<span class="mf">|</span>
 							<a href="findPass.do">비밀번호 찾기</a>
 						</div>
 					</li>

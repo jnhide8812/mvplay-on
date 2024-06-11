@@ -15,6 +15,7 @@ li{
 #container{
 	width: 1900px;
 	background-color: #000000;
+	margin: 0 auto;
 }
 
 /*메인*/
@@ -26,19 +27,16 @@ li{
 	padding:86px 0 0 240px;
 	overflow: hidden;
 }
-.search_area {
-	margin: 0 auto;
-}
 h1.list_name {
 	text-align:left;
-	font-size: 50px;
-	font-weight: 500;
+	font-size: 35px;
+	font-weight: 400;
 	color: #ffffff;
-	text-align: center;
+	text-align: left;
 	position: absolute;
-	padding-left: 15px;
+	padding-left: 25px;
 	padding-bottom: 10px;
-	z-index: 1
+	z-index: 1;
 }
 .content {
 	margin: 0 auto;

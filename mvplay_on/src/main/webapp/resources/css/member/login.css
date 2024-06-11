@@ -10,14 +10,14 @@ a {
 	text-decoration: none;
 }
 #container {
-	width: 1900px;
-	height: 866px;
-	margin: 0 auto;
-}
-.l_wrap {
 	width: 100%;
 	background-color: #000000;
-	
+	margin: 0 auto;
+	min-width: 1900px;
+	height: 100%;
+}
+.l_wrap {
+	width: 1900px;
 }
 .member_h {
 	height: 72px;
@@ -49,10 +49,10 @@ header {
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	height: 100%;
+	height: 950px;
 	overflow: hidden;
 	z-index: 1;
-	padding: 350px 0 155px 30px;
+	padding: 250px 0 155px 30px;
 }
 
 form.l_box{
@@ -60,13 +60,13 @@ form.l_box{
 	height: 450px;
 	display: flex;
 	flex-direction: column;
-	align-items: centerl;
+	align-items: center;
 }
 form.l_box ul li {
 	position: relative;
 }
 li.login_top {
-	margin-bottom: 8px;
+	margin-bottom: 4px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -79,7 +79,7 @@ li.login_top {
 	color: #ffffff;
 }
 .find a{
-	font-size: 12px;
+	font-size: 14px;
 	color: #ffffff;
 	vertical-align: bottom;
 	font-weight: 400;

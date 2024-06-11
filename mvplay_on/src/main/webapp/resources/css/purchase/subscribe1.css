@@ -18,8 +18,9 @@ input {
 }
 /*내용 가운데로 */ 
 #container {
-	width: 1900px;
-	min-height: 100%;
+	width: 100%;
+	min-width: 1900px;
+	height: 100%;
 	background-color: #000000;
 }
 .middle_wrap {
@@ -30,12 +31,9 @@ input {
 	align-items: center;
 }
 .sub_wrap{
-	width: 100%;
 	min-width: 320px;
-	max-width: 670px;
 	padding-top: 56px;
 	padding-bottom: 20px;
-	height: 100%;
 	overflow: hidden;
 	margin: 0 auto;
 }

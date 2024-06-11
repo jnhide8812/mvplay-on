@@ -16,8 +16,10 @@
 </head>
 <body>
 
-	<div id="container">
-
+<div id="container">
+	<%@include file="../includes/header.jsp"%>
+		<!-- 네비 (왼쪽 사이드 메뉴) -->
+		<%@include file="../includes/nav.jsp"%>
 		<div class="pur_wrap">
 
 			<!-- 에러 메시지 출력 -->
@@ -42,13 +44,13 @@
 						</div>
 						<dl>
 							<dd class="alone">개별 구매</dd>
-							<dt>${movieInfo.movieTitle}</dt>
-							<dd>
+							<dt class="name">${movieInfo.movieTitle}</dt>
+							<dd class="p">
 								<fmt:formatDate value='${movieInfo.movieDate}'
 									pattern='yyyy-MM-dd' />
 							</dd>
-							<dd>${movieInfo.cate1}</dd>
-							<dd>${movieInfo.cate2}</dd>
+							<dd class="c">${movieInfo.cate1}</dd>
+							<dd class="c">${movieInfo.cate2}</dd>
 						</dl>
 					</div>
 					<div class="price_section">
@@ -113,6 +115,7 @@
 			</form>
 		</div>
 		<!-- ps_main -->
+		<%@include file="../includes/footer.jsp" %>
 	</div>
 	<!-- container -->
 	<script>
