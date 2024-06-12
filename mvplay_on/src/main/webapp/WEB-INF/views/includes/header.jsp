@@ -4,40 +4,45 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <link rel="stylesheet" href="/resources/css/includes/header.css">
 		<header>
-			<div class="top_content">
-				<form action="/movie/movieSearch" class="sc" method="get" id="movieSearch">
-				<div class="search">
-                	<input type="text" placeholder="작품명을 입력해주세요" name="keyword" class="main_search">
-                	<input type ="button" class="search_icon">
-                	<!-- <input type="hidden" name="pageNum"> -->
-                </div>
-                </form>
-                <c:if test="${member == null}">     <!-- 로그인 X -->
-					<div class="login_area">
-						<ul class="l_area">
-							<li><a href="/member/login"  class="lg" >로그인</a></li>
-							<li><a href="/member/signUp" class="join_button">회원가입</a></li>
-						</ul>
-					</div>
-				</c:if>
-				<c:if test="${member != null}">		<!-- 로그인 O -->
-				<input type="hidden" name="userId" value="${member.userId }">
-				<input type="hidden" name="ugrade" value="${member.ugrade}">
-					<ul class="after_login">
-					<c:if test="${member.ugrade == 0}">
-					<!-- 관리자 계정 -->
-						<li class="manager">
-							<a href="/admin/movieList">관리자 페이지</a>
-						</li>
+			<div class="head">
+				<div class="logo_w">
+					<a href="/main"><img src="/resources/icon/logo_m.png" class="title_icon"></a>
+				</div>
+				<div class="top_content">
+					<form action="/movie/movieSearch" class="sc" method="get" id="movieSearch">
+					<div class="search">
+	                	<input type="text" placeholder="작품명을 입력해주세요" name="keyword" class="main_search">
+	                	<input type ="button" class="search_icon">
+	                	<!-- <input type="hidden" name="pageNum"> -->
+	                </div>
+	                </form>
+	                <c:if test="${member == null}">     <!-- 로그인 X -->
+						<div class="login_area">
+							<ul class="l_area">
+								<li><a href="/member/login"  class="lg" >로그인</a></li>
+								<li><a href="/member/signUp" class="join_button">회원가입</a></li>
+							</ul>
+						</div>
 					</c:if>
-						<li>
-							<button id="logout_button" class="lout">로그아웃</button>
-						</li>
-						<li>
-							<button id="myinfo" class="move">My</button>
-						</li>
-					</ul>
-				</c:if>
+					<c:if test="${member != null}">		<!-- 로그인 O -->
+					<input type="hidden" name="userId" value="${member.userId }">
+					<input type="hidden" name="ugrade" value="${member.ugrade}">
+						<ul class="after_login">
+						<c:if test="${member.ugrade == 0}">
+						<!-- 관리자 계정 -->
+							<li class="manager">
+								<a href="/admin/movieList">관리자 페이지</a>
+							</li>
+						</c:if>
+							<li>
+								<button id="logout_button" class="lout">로그아웃</button>
+							</li>
+							<li>
+								<button id="myinfo" class="move">My</button>
+							</li>
+						</ul>
+					</c:if>
+				</div>
 			</div>
 		</header>
 		<form id="moveForm" action="/member/myPage" method="get">

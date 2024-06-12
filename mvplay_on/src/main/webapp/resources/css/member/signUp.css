@@ -18,9 +18,10 @@ ul, li {
 	min-width: 1900px;
 	height: 100%;
 	margin: 0 auto;
+	min-height: 866px;
 }
 .sign_wrap{
-	height: 866px;
+	
 }
 .member_h {
 	height: 72px;

@@ -4,22 +4,34 @@
 header {
 	position:fixed;
 	top:0;
-	left:0;
-	z-index: 500;
+	z-index: 502;
 	width: 100%;
 	min-width:1900px;
-	padding-left: 240px;
 	background-color: #141517;
+}
+.head {
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	align-items: center;
+	min-width: 1900px;
+	height: 56px;
 }
 .top_content{
 	display: flex;
 	position: relative;
 	justify-content: flex-end;
 	align-items: center;
-	width: 1900px;
-	height: 56px;
 	padding: 12px 20px 12px 500px;
-	right:0;
+}
+/*logo*/
+.logo_w {
+	padding-left: 35px;
+	padding-top: 15px;
+}
+img.title_icon{
+	height: 40px;
+	width: 160px;
 }
 /*검색창*/
 form.sc {

@@ -11,25 +11,14 @@ nav.sd_nv{
 	border-right: 1px solid #1b1c1d;
 	z-index: 501;
 }
-img.title_icon{
-	height: 45px;
-	width: 170px;
-}
-.bar_wrap {
-	display:flex;
-	flex-direction: column;
-	justify-content: flex-start;
-}
-.logo_w {
-	display: block;
-	margin: 24px 0 0 26px;
-}
+
 .m_wrap {
 	padding: 0 16px;
-	margin: 30px 0 0;
+	margin: 100px 0 0;
+	background-color: #141517;
 }
 hr {
-	background-color: #1B1C1D;
+	background-color: #141517;
 	margin: 18px 0;
 	height: 1px;
 	border:0;
@@ -40,9 +29,7 @@ ul.up {
 ul.down{
 	margin-top: 25px;
 }
-m_wrap ul li{
 
-}
 a.side_menu{
 	padding: 8px 12px;
 	outline: none;
@@ -50,6 +37,7 @@ a.side_menu{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	background-color: #141517;
 }
 span.menu_name {
 	font-size: 15px;
