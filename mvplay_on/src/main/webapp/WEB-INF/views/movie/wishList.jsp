@@ -19,10 +19,10 @@
 		<%@include file="../includes/nav.jsp"%>
 		<div class="main_content">
 		    <div class="search_area">
-		    <c:if test="${result !='empty' }">
+		    <c:if test="${result =='notEmpty' }">
 		    	<h1 class="list_name">보고싶어요</h1>
 		        <div class="content">
-		        <c:forEach items="#{movieList}" var="movieList">
+		        <c:forEach items="${movieList}" var="movieList">
 		             	<ul class="info">
 		               		<li>
 								<a href="/movie/movieDetail?movieId=${movieList.movieId}">
@@ -41,6 +41,13 @@
 			            </ul> 
 		        </c:forEach>
 		        </div>
+		    </c:if>
+		    
+		    <c:if test="${result =='emptyList' }">
+		    <div class="content" style="font-size:20px; height:700px;">
+		    	<h1><img src="/resources/icon/rheart.png" style="width:15px">보관함에 등록해주세요</h1>
+		    </div>
+		    
 		    </c:if>
 		    
 		    

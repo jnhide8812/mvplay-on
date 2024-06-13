@@ -205,8 +205,14 @@ public class MainController {
 		
 		if(mvo!=null) { //세션이 있는 경우
 			List<MovieVO> movieList = memberService.getUserRatingList(mvo);
-			model.addAttribute("movieList", movieList);
-			model.addAttribute("result", "notEmpty");
+			
+			if(movieList.isEmpty()) {
+				model.addAttribute("result", "emptyList");
+				
+			}else {
+				model.addAttribute("movieList", movieList);
+				model.addAttribute("result", "notEmpty");
+			}
 		}
 		else {
 			//로그인이 없으면 결과창 empty
@@ -225,8 +231,14 @@ public class MainController {
 		
 		if(mvo!=null) { //세션이 있는 경우
 			List<MovieVO> movieList = memberService.getUserWishList(mvo);
-			model.addAttribute("movieList", movieList);
-			model.addAttribute("result", "notEmpty");
+			
+			if(movieList.isEmpty()) {
+				model.addAttribute("result", "emptyList");
+			}else {
+				model.addAttribute("movieList", movieList);
+				model.addAttribute("result", "notEmpty");
+			}
+
 		}
 		else {
 			//로그인이 없으면 결과창 empty
