@@ -32,6 +32,11 @@ li{
 	margin: 0 auto;
 	color: white;
 }
+.main_sub {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
 h1.movieTitle {
 	color: #ffffff;
 	font-size: 60px;
@@ -189,25 +194,24 @@ h1.movieTitle {
   .posterFrame{
     display: flex;
     flex-direction: row;
+    justify-content:flex-start;
     position: relative;
     margin-right: 20px;
+    height: 430px;
     @media screen and (max-width: 48em) {
         margin-top:40px;
         margin-top:0}
   }
 
   .poster{
+   height: 430px;
+   object-fit: cover;
+   width: 300px;
    padding-left: 20px;
    padding-bottom: 10px;
+   padding-right: 10px;
   }
-  /*  
-  .moviePoster{
-    height: 300px;
-    -o-object-fit: cover;
-    object-fit: cover;
-    width: 100%
-  }*/
-  
+
   /*링크 짙은 파랑색*/
   .qboard_area a:link{color: #3065ac;}
   .qboard_area a:visited{color: #3065ac;}
@@ -260,9 +264,12 @@ li.star label {
 .textArea_movieInfo {
 	padding-left: 10px;
 	padding-bottom: 10px;
-	position: absolute;
-	left : 19.5%;
-	bottom: -1.7%;
+	position:relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	
 }
 
 /* 버튼 */
